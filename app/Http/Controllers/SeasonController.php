@@ -42,7 +42,6 @@ class SeasonController extends Controller
      */
     public function store(Request $request)
     {
-
         // Validation
         $request->validate([
             // 'planned_hectares' => 'required|string|max:255',
@@ -62,7 +61,7 @@ class SeasonController extends Controller
                             'rice_farmers_id'=>$request->rice_farmers_id [$key],
                             'planned_hectares'=>$request->planned_hectares [$key],
                             'planned_num_farmers'=>$request->planned_num_farmers [$key],
-                            'planned_qty'=>$request->planned_hectares [$key]);
+                            'planned_qty'=>$request->planned_qty [$key]);
 
                 SeasonList::insert($data);
             }  
