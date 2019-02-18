@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- BREADCRUMB --}}
+<!-- BREADCRUMB -->
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
@@ -21,18 +21,18 @@
             <p class="card-category">Complete your profile</p>
         </div>
         <div class="card-body">
-        {{-- FORM --}}
+        <!-- FORM -->
         <form method="post" action="{{action('RiceFarmerController@store')}}" enctype="multipart/form-data">
             @csrf
             <div class="row">
-                {{-- FIRST NAME --}}
+                <!-- FIRST NAME -->
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="first_name">First Name:</label>
                         <input type="text" class="form-control" name="first_name" value="" />
                     </div>
                 </div>
-                {{-- LAST NAME --}}
+                <!-- LAST NAME -->
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="last_name">Last Name:</label>
@@ -42,23 +42,14 @@
             </div>
         
             <div class="row">
-            {{-- ADDRESS --}}
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="address">Address:</label>
-                        <input type="text" class="form-control" name="address" value="" />
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                {{-- PHONE --}}
+                <!-- PHONE -->
                 <div class="col-md-6">
                     <div class="form-group">
                     <label for="phone">Phone:</label>
                     <input type="text" class="form-control" name="phone" value=""/>
                     </div>
                 </div>
-                {{-- EMAIL --}}
+                <!-- EMAIL -->
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="email">Email (Optional):</label>
@@ -66,8 +57,19 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
-                {{-- COMAPNY --}}
+            <!-- ADDRESS -->
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="address">Address:</label>
+                        <input type="text" class="form-control" name="address" value="" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- COMAPNY -->
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label class="control-lable" for="company">Company:</label>
@@ -76,7 +78,7 @@
                 </div>
             </div>
 
-            {{-- SUBMIT BUTTON --}}
+            <!-- SUBMIT BUTTON -->
             <button type="submit" class="btn btn-success">Create</button>
             </form>
         </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Role;
+use App\Barangay;
 
 class UsersController extends Controller
 {
@@ -28,6 +29,7 @@ class UsersController extends Controller
     public function create()
     {
         $roles = \App\Role::get()->pluck('title', 'id');
+        $barangays = Barangay::orderBy('name')->get();
 
         return view('users.create', compact('roles'));
     }

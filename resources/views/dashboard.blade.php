@@ -13,7 +13,7 @@
                         </div>
                     @endif
 
-                    Hello World Git!!!!
+                    Hello World!!!!
                 </div>
             </div>
         </div>
