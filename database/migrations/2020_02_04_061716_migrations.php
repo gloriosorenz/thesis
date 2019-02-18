@@ -41,13 +41,13 @@ class Migrations extends Migration
                 ->references('id')->on('users')->onDelete('cascade');
         });
 
-        //  // Planned Product List
-        //  Schema::table('planned_product_lists',function(Blueprint $table){
-        //     $table->foreign('seasons_id')
-        //         ->references('id')->on('seasons')->onDelete('cascade');
-        //     $table->foreign('rice_farmers_id')
-        //         ->references('id')->on('rice_farmers')->onDelete('cascade');
-        // });
+        // Cart
+         Schema::table('carts',function(Blueprint $table){
+            $table->foreign('product_lists_id')
+                ->references('id')->on('product_lists')->onDelete('cascade');
+            $table->foreign('customers_id')
+                ->references('id')->on('customers')->onDelete('cascade');
+        });
 
         // Product List
         Schema::table('product_lists',function(Blueprint $table){
