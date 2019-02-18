@@ -22,7 +22,7 @@
         <div class="card">
         <div class="card-header card-header-primary">
             <h4 class="card-title">New Season</h4>
-            <p class="card-category">Complete your profile</p>
+            {{-- <p class="card-category">Complete your profile</p> --}}
         </div>
         <div class="card-body">
         
@@ -73,9 +73,9 @@
                             @endforeach
                         </select>
                     </td>
-                    <td><input type="text" class="form-control" name="planned_hectares" value="" /></td>
-                    <td><input type="text" class="form-control" name="planned_num_farmers" value="" /></td>
-                    <td><input type="text" class="form-control" name="planned_qty" value="" /></td>
+                    <td><input type="text" class="form-control" name="planned_hectares[]" value="" /></td>
+                    <td><input type="text" class="form-control" name="planned_num_farmers[]" value="" /></td>
+                    <td><input type="text" class="form-control" name="planned_qty[]" value="" /></td>
                     <td><input type="button" class="btn btn-danger remove" value="x"></td>
                 </tr>
             </tbody>
