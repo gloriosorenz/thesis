@@ -31,7 +31,8 @@ class UsersController extends Controller
         $roles = \App\Role::get()->pluck('title', 'id');
         $barangays = Barangay::orderBy('name')->get();
 
-        return view('users.create', compact('roles'));
+        return view('users.create', compact('roles'))
+            ->with('barangays', $barangays);
     }
 
     /**
@@ -48,7 +49,7 @@ class UsersController extends Controller
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'phone' => 'required|string|max:255',
-            'address' => 'required|string|max:255',
+            'barangay' => 'required|string|max:255',
             'password' => 'required|string|min:6',
         ]);
         $user = new User;
@@ -56,7 +57,7 @@ class UsersController extends Controller
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
         $user->phone = $request->input('phone');
-        $user->address = $request->input('address');
+        $user->barangay = $request->input('barangay');
         $user->roles_id = $request->input('roles_id');
         $user->password = Hash::make($request['password']);
         $user->save();

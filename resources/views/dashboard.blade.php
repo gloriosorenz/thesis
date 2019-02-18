@@ -13,7 +13,7 @@
                         </div>
                     @endif
 
-                    Hello World!!!!
+                    You are logged in!
                 </div>
             </div>
         </div>

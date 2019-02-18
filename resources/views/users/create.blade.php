@@ -42,15 +42,6 @@
             </div>
         
             <div class="row">
-            {{-- ADDRESS --}}
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="address">Address:</label>
-                        <input type="text" class="form-control" name="address" value="" />
-                    </div>
-                </div>
-            </div>
-            <div class="row">
                 {{-- PHONE --}}
                 <div class="col-md-6">
                     <div class="form-group">
@@ -68,30 +59,32 @@
             </div>
 
             <div class="row">
+            {{-- ADDRESS --}}
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="barangay">Address (Barangay):</label>
+                        <select class="form-control" name="barangay" id="barangay">
+                            <option value="0" selected="true" disabled="True">Select Role</option>
+                            @foreach ($barangays as $barangay)
+                                <option value="{{ $barangay['name']}}">{{ $barangay['name']}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
                 {{-- ROLES --}}
                 <div class="col-lg-6">
                     <div class="form-group">
-                        {!! Form::label('roles_id', 'Role:', ['class' => 'control-label']) !!}
-                        {!! Form::select('roles_id', $roles, old('roles_id'), ['class' => 'form-control select2', 'required' => '']) !!}
-                        <p class="help-block"></p>
-                        @if($errors->has('roles_id'))
-                            <p class="help-block">
-                                {{ $errors->first('roles_id') }}
-                            </p>
-                        @endif
-                    </div>
-
-                    {{-- <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text" for="role">Options</label>
-                        </div>
-                        <select class="custom-select" id="inputGroupSelect01">
-                            <option selected>Choose...</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <label for="roles_id">Role:</label>
+                        <select class="form-control" name="roles_id" id="roles_id">
+                            <option value="0" selected="true" disabled="True">Select Role</option>
+                            @foreach ($roles as $key=>$p)
+                            <option value="{{$key}}">{{$p}}</option>
+                            @endforeach
                         </select>
-                    </div> --}}
+                    </div>
                 </div>
             </div>
 
