@@ -11,8 +11,6 @@
     @if(count($product_lists) > 0)
         @foreach($product_lists as $product_list)
         <div class="col-md-4">
-        <!-- Code not to show damaged products -->
-            {{-- @if($product_list->products->type != 'Damaged Product') --}}
             <div class="card-deck mb-3 text-center"> 
                 <div class="card mb-4 shadow-sm">
                 <div class="card-header">
@@ -30,7 +28,6 @@
                     </div>
                 </div>
             </div>
-            {{-- @endif --}}
         </div> 
         @endforeach
     @else
