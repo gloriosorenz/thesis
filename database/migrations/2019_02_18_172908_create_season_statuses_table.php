@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSeasonsTable extends Migration
+class CreateSeasonStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,9 @@ class CreateSeasonsTable extends Migration
      */
     public function up()
     {
-        Schema::create('seasons', function (Blueprint $table) {
+        Schema::create('season_statuses', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('season_start')->nullable();
-            $table->date('season_end')->nullable();
-
-            $table->integer('season_types_id')->unsigned()->nullable();
-            $table->integer('season_statuses_id')->unsigned()->nullable();
-
-
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ class CreateSeasonsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seasons');
+        Schema::dropIfExists('season_statuses');
     }
 }
