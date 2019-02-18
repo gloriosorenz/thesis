@@ -23,6 +23,10 @@ class ProductListController extends Controller
     {
         $product_lists = ProductList::all();
         return view('product_lists.index', compact('product_lists'));
+
+        // $products = DB::table('products')
+        //     ->join('product_lists', 'products.id', '=', 'product_lists.products_id');
+        // return view('product_lists.index', compact('product_lists'));
     }
 
     /**
