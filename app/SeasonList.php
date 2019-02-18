@@ -10,4 +10,9 @@ class SeasonList extends Model
     {
         return $this->belongsTo(RiceFarmer::class, 'rice_farmers_id');
     }
+
+    public function seasons()
+    {
+        return $this->belongsTo(Season::class, 'seasons_id');
+    }
 }
