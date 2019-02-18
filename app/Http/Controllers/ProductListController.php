@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+// use Illuminate\Support\Facades\DB;
 
 use App\ProductList;
 use Illuminate\Http\Request;
@@ -21,12 +22,10 @@ class ProductListController extends Controller
      */
     public function index()
     {
-        $product_lists = ProductList::all();
+        $product_lists = ProductList::where('products_id', '!=', 3)
+                        ->get();
+      
         return view('product_lists.index', compact('product_lists'));
-
-        // $products = DB::table('products')
-        //     ->join('product_lists', 'products.id', '=', 'product_lists.products_id');
-        // return view('product_lists.index', compact('product_lists'));
     }
 
     /**
