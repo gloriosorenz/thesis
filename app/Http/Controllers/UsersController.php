@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Role;
 use App\Barangay;
+// use App\Province;
+// use App\City;
 
 class UsersController extends Controller
 {
@@ -30,9 +32,13 @@ class UsersController extends Controller
     {
         $roles = \App\Role::get()->pluck('title', 'id');
         $barangays = Barangay::orderBy('name')->get();
+        // $provinces = Province::orderBy('name')->get();
+        // $cities = City::orderBy('name')->get();
 
         return view('users.create', compact('roles'))
             ->with('barangays', $barangays);
+            // ->with('provinces', $provinces)
+            // ->with('cities', $cities);
     }
 
     /**

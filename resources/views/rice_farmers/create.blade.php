@@ -17,7 +17,7 @@
     <div class="col-md-8">
         <div class="card">
         <div class="card-header card-header-primary">
-            <h4 class="card-title">Create an Account</h4>
+            <h4 class="card-title">Create a Farmer Account</h4>
             <p class="card-category">Complete your profile</p>
         </div>
         <div class="card-body">
@@ -60,10 +60,16 @@
 
             <div class="row">
             <!-- ADDRESS -->
-                <div class="col-md-12">
+                <div class="col-md-6">
+                    <!-- Barangay -->
                     <div class="form-group">
-                        <label for="address">Address:</label>
-                        <input type="text" class="form-control" name="address" value="" />
+                        <label for="barangay">Farm Address (Barangay):</label>
+                        <select class="form-control" name="barangay" id="barangay">
+                            <option value="0" selected="true" disabled="True">Select Barangay</option>
+                            @foreach ($barangays as $barangay)
+                                <option value="{{ $barangay['name']}}">{{ $barangay['name']}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
             </div>

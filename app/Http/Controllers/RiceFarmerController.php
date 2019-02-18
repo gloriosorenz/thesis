@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\RiceFarmer;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\RiceFarmer;
+use App\User;
+use App\Barangay;
 
 class RiceFarmerController extends Controller
 {
@@ -27,7 +28,10 @@ class RiceFarmerController extends Controller
      */
     public function create()
     {
-        return view('rice_farmers.create');
+        $barangays = Barangay::orderBy('name')->get();
+      
+        return view('rice_farmers.create')
+            ->with('barangays', $barangays);
     }
 
     /**
@@ -44,7 +48,7 @@ class RiceFarmerController extends Controller
             'last_name' => 'required|string|max:255',
             'email' => 'string|email|max:255',
             'phone' => 'required|string|max:255',
-            'address' => 'required|string|max:255',
+            'barangay' => 'required|string|max:255',
         ]);
         
         $user = new User;
@@ -52,7 +56,7 @@ class RiceFarmerController extends Controller
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
         $user->phone = $request->input('phone');
-        $user->address = $request->input('address');
+        $user->barangay = $request->input('barangay');
         $user->password = Hash::make($request['password']);
         $user->roles_id = 2;
         

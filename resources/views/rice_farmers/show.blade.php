@@ -22,20 +22,6 @@
       </div>
       <div class="card-body">
           <div class="row">
-            <div class="col-md-5">
-              <div class="form-group">
-                <label class="bmd-label-floating">Company (disabled)</label>
-                <input type="text" class="form-control" disabled>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-group">
-                  <label for="email">Email:</label>
-                  <input type="text" class="form-control" disabled placeholder="company" name="email" value="{{ $farmer->users->email }}" />
-              </div>
-            </div>
-          </div>
-          <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                   <label for="first_name">First Name:</label>
@@ -50,18 +36,32 @@
             </div>
           </div>
           <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                  <label for="email">Email:</label>
+                  <input type="text" class="form-control" disabled placeholder="company" name="email" value="{{ $farmer->users->email }}" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                  <label for="phone">Phone:</label>
+                  <input type="text" class="form-control" disabled placeholder="company" name="phone" value="{{ $farmer->users->phone }}" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-md-12">
               <div class="form-group">
                   <label for="address">Address:</label>
-                  <input type="text" class="form-control" disabled placeholder="company" name="address" value="{{ $farmer->users->address }}" />
+                  <input type="text" class="form-control" disabled placeholder="" name="barangay" value="{{ $farmer->users->barangay }}" />
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
-                <label for="phone">Phone:</label>
-                <input type="text" class="form-control" disabled placeholder="company" name="phone" value="{{ $farmer->users->phone }}" />
+                <label for="phone">Company:</label>
+                <input type="text" class="form-control" disabled placeholder="company" name="company" value="{{ $farmer->company }}" />
               </div>
             </div>
           </div>

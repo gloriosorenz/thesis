@@ -61,16 +61,45 @@
             <div class="row">
             {{-- ADDRESS --}}
                 <div class="col-md-6">
+                    <!-- Barangay -->
                     <div class="form-group">
                         <label for="barangay">Address (Barangay):</label>
                         <select class="form-control" name="barangay" id="barangay">
-                            <option value="0" selected="true" disabled="True">Select Role</option>
+                            <option value="0" selected="true" disabled="True">Select Barangay</option>
                             @foreach ($barangays as $barangay)
                                 <option value="{{ $barangay['name']}}">{{ $barangay['name']}}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
+                {{-- <div class="col-md-6">
+                    <!-- Province -->
+                    <div class="form-group">
+                        <label for="province">Address (Province):</label>
+                        <select class="form-control" name="province" id="province">
+                            <option value="0" selected="true" disabled="True">Select Province</option>
+                            @foreach ($provinces as $province)
+                                <option value="{{ $province['name']}}">{{ $province['name']}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div> --}}
+            </div>
+
+            <div class="row">
+            {{-- ADDRESS --}}
+                {{-- <div class="col-md-6">
+                    <!-- City -->
+                    <div class="form-group">
+                        <label for="city">Address (City):</label>
+                        <select class="form-control" name="city" id="city">
+                            <option value="0" selected="true" disabled="True">Select City</option>
+                            @foreach ($cities as $city)
+                                <option value="{{ $city['name']}}">{{ $city['name']}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div> --}}
             </div>
 
             <div class="row">

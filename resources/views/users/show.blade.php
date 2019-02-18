@@ -60,7 +60,7 @@
             <div class="col-md-12">
               <div class="form-group">
                   <label for="address">Address:</label>
-                  <input type="text" class="form-control" disabled placeholder="company" name="address" value="{{ $user->address }}" />
+                  <input type="text" class="form-control" disabled placeholder="company" name="barangay" value="{{ $user->barangay }}" />
               </div>
             </div>
           </div>
