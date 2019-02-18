@@ -85,14 +85,13 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Customer Type:</label>
-                    <select class="form-control" id="exampleFormControlSelect1"  placeholder="">
-                        <option>{{ $customer->customer_types->type }}</option>
-                    </select>
-            @if($errors->has('types'))
-                <p class="help-block">
-                    {{ $errors->first('types') }}
-                </p>
-            @endif
+                    {!! Form::select('customer_types_id', $types, old('customer_types_id'), ['class' => 'form-control select2', 'required' => '']) !!}
+                      <p class="help-block"></p>
+                      @if($errors->has('customer_types_id'))
+                          <p class="help-block">
+                              {{ $errors->first('customer_types_id') }}
+                          </p>
+                      @endif
                 </div>
             </div>
           </div>

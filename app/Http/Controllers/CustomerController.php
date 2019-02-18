@@ -122,7 +122,7 @@ class CustomerController extends Controller
         $customer->users->email = $request->input('email');
         $customer->users->phone = $request->input('phone');
         $customer->users->barangay = $request->input('barangay');
-        $customer->customer_types->type = $request->input('type');
+        $customer->customer_types_id = $request->input('customer_types_id');
         $customer->save();
 
         // dd($customer);
