@@ -55,42 +55,38 @@ class SeasonController extends Controller
         $season->season_types_id = $request->input('season_types_id');
         $season->save();
 
-        $season_list = new SeasonList;
-        $season_list->seasons_id = $season->id;
-        $season_list->rice_farmers_id = $request->input('rice_farmers_id');
-        $season_list->planned_hectares = $request->input('planned_hectares');
-        $season_list->planned_num_farmers = $request->input('planned_num_farmers');
-        $season_list->planned_qty = $request->input('planned_qty');
+        
+        $farmers = $request->get('rice_farmers_id');
+            foreach($request->rice_farmers_id as $key => $value) {
+                $season_list = new SeasonList;
+                $season_list->seasons_id = $season->id;
+                $season_list->rice_farmers_id = $farmers[$key];
+                $season_list->planned_hectares =$request->input('planned_hectares');
+                $season_list->planned_num_farmers =$request->input('planned_num_farmers');
+                $season_list->planned_qty =$request->input('planned_qty');
+                $season_list->save();
+            }  
+
+        // $season_list = new SeasonList;
+        // $season_list->seasons_id = $season->id;
+        // $season_list->rice_farmers_id = $request->input('rice_farmers_id');
+        // $season_list->planned_hectares = $request->input('planned_hectares');
+        // $season_list->planned_num_farmers = $request->input('planned_num_farmers');
+        // $season_list->planned_qty = $request->input('planned_qty');
 
 
-        $season_list->actual_hectares = $request->input('actual_hectares');
-        $season_list->actual_num_farmers = $request->input('actual_num_farmers');
-        $season_list->actual_qty = $request->input('actual_qty');
+        // $season_list->actual_hectares = $request->input('actual_hectares');
+        // $season_list->actual_num_farmers = $request->input('actual_num_farmers');
+        // $season_list->actual_qty = $request->input('actual_qty');
         
-        $season_list->save();
-        
+        // $season_list->save();
 
-        
-        // $rice_farmers = $request->get('rice_farmers_id');
-        //     foreach($request->rice_farmers_id as $key => $value) {
-                
-        //         $data=array('seasons_id'=>$season->id,
+        // $data=array('rice_farmers_id'=>$request->rice_farmers_id [$key],
         //                     'planned_hectares'=>$request->planned_hectares [$key],
-        //                     'planned_num_farmers'=>$request->planned_nume_farmers [$key],
-        //                     'planned_qty'=>$request->qty [$key]);
+        //                     'planned_num_farmers'=>$request->planned_num_famers [$key],
+        //                     'planned_qty'=>$request->planned_qty [$key]);
 
         //         SeasonList::insert($data);
-
-        //         $season_list = new SeasonList;
-        //         $season_list->seasons_id = $season->id;
-        //         $season_list->planned_hectares = $request->input('planned_hectares');
-        //         $season_list->planned_num_farmers = $request->input('planned_num_farmers');
-        //         $season_list->planned_qty = $request->input('planned_qty');
-        //         $season_list->rice_farmers_id = $rice_farmers[$key];
-        //         $season_list->save();                
-        //     }  
-
-
         
 
         return redirect()->route('seasons.index')->with('success','Season Created ');
@@ -110,6 +106,9 @@ class SeasonController extends Controller
         return view('seasons.show')
             ->with('season', $season)
             ->with('lists', $lists);
+
+        // $season = SeasonList::all();
+        // dd($season);
     }
 
     /**

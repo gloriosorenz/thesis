@@ -66,7 +66,7 @@
             <tbody class="resultbody1">
                 <tr>
                     <td>
-                        <select class="form-control" name="rice_farmers_id" id="rice_farmers_id">
+                        <select class="form-control" name="rice_farmers_id[]" id="rice_farmers_id">
                             <option value="0" selected="true" disabled="True">Select Farmer</option>
                             @foreach ($rice_farmers as $key=>$p)
                             <option value="{{$key}}">{{$p}}</option>
