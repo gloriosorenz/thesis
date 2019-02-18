@@ -49,6 +49,7 @@ class RiceFarmerController extends Controller
             'email' => 'string|email|max:255',
             'phone' => 'required|string|max:255',
             'barangay' => 'required|string|max:255',
+            'password' => 'required|string|min:6',
         ]);
         
         $user = new User;
@@ -84,6 +85,7 @@ class RiceFarmerController extends Controller
     public function show($id)
     {
         $farmer = RiceFarmer::find($id);
+
         return view('rice_farmers.show')
             ->with('farmer', $farmer);
     }
@@ -97,9 +99,11 @@ class RiceFarmerController extends Controller
     public function edit($id)
     {
         $farmer = RiceFarmer::find($id);
+        $barangays = Barangay::orderBy('name')->get();
 
         return view('rice_farmers.edit')
-            ->with('farmer', $farmer);
+            ->with('farmer', $farmer)
+            ->with('barangays', $barangays);
     }
 
     /**
@@ -117,7 +121,7 @@ class RiceFarmerController extends Controller
         $farmer->users->last_name = $request->input('last_name');
         $farmer->users->email = $request->input('email');
         $farmer->users->phone = $request->input('phone');
-        $farmer->users->address = $request->input('address');
+        $farmer->users->barangay = $request->input('barangay');
         $farmer->save();
 
         

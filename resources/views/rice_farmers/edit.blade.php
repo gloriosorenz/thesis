@@ -26,20 +26,6 @@
           @method('PATCH')
           @csrf
           <div class="row">
-            <div class="col-md-5">
-              <div class="form-group">
-                <label class="bmd-label-floating">Company (disabled)</label>
-                <input type="text" class="form-control" disabled>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-group">
-                  <label for="email">Email:</label>
-                  <input type="text" class="form-control" name="email" value="{{ $farmer->users->email }}" />
-              </div>
-            </div>
-          </div>
-          <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                   <label for="first_name">First Name:</label>
@@ -54,20 +40,34 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
               <div class="form-group">
-                  <label for="address">Address:</label>
-                  <input type="text" class="form-control" name="address" value="{{ $farmer->users->address }}" />
+                  <label for="email">Email:</label>
+                  <input type="text" class="form-control" name="email" value="{{ $farmer->users->email }}" />
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="form-group">
                 <label for="phone">Phone:</label>
                 <input type="text" class="form-control" name="phone" value="{{ $farmer->users->phone }}" />
               </div>
             </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                  <label for="barangay">Farm Address:</label>
+                  <select class="form-control" name="barangay" id="barangay">
+                      <option value="0" selected="true" disabled="True">{{ $farmer->users->barangay }}</option>
+                      @foreach ($barangays as $barangay)
+                          <option value="{{ $barangay['name']}}">{{ $barangay['name']}}</option>
+                      @endforeach
+                  </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            
             <div class="col-md-4">
               <div class="form-group">
                 <label for="company">Company:</label>

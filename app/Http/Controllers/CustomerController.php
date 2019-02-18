@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Customer;
 use App\CustomerType;
 use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use App\Barangay;
 
 class CustomerController extends Controller
 {
@@ -29,8 +30,10 @@ class CustomerController extends Controller
     public function create()
     {
         $types = \App\CustomerType::get()->pluck('type', 'id');
+        $barangays = Barangay::orderBy('name')->get();
 
-        return view('customers.create', compact('types'));
+        return view('customers.create', compact('types'))
+            ->with('barangays', $barangays);
     }
 
     /**
@@ -47,7 +50,7 @@ class CustomerController extends Controller
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'phone' => 'required|string|max:255',
-            'address' => 'required|string|max:255',
+            'barangay' => 'required|string|max:255',
             'password' => 'required|string|min:6',
             'company' => 'required|string|max:255',
         ]);
@@ -57,7 +60,7 @@ class CustomerController extends Controller
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
         $user->phone = $request->input('phone');
-        $user->address = $request->input('address');
+        $user->barangay = $request->input('barangay');
         $user->password = Hash::make($request['password']);
         $user->roles_id = 3;
         $user->save();
@@ -95,10 +98,12 @@ class CustomerController extends Controller
     {
         $customer = Customer::find($id);
         $types = \App\CustomerType::get()->pluck('type', 'id');
+        $barangays = Barangay::orderBy('name')->get();
 
         return view('customers.edit')
             ->with('customer', $customer)
-            ->with('types', $types);
+            ->with('types', $types)
+            ->with('barangays', $barangays);
     }
 
     /**
@@ -116,7 +121,7 @@ class CustomerController extends Controller
         $customer->users->last_name = $request->input('last_name');
         $customer->users->email = $request->input('email');
         $customer->users->phone = $request->input('phone');
-        $customer->users->address = $request->input('address');
+        $customer->users->barangay = $request->input('barangay');
         $customer->customer_types->type = $request->input('type');
         $customer->save();
 

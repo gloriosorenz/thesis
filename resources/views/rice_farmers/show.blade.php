@@ -52,7 +52,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                  <label for="address">Address:</label>
+                  <label for="address">Farm Address:</label>
                   <input type="text" class="form-control" disabled placeholder="" name="barangay" value="{{ $farmer->users->barangay }}" />
               </div>
             </div>

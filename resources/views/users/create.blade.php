@@ -86,21 +86,6 @@
                 </div> --}}
             </div>
 
-            <div class="row">
-            {{-- ADDRESS --}}
-                {{-- <div class="col-md-6">
-                    <!-- City -->
-                    <div class="form-group">
-                        <label for="city">Address (City):</label>
-                        <select class="form-control" name="city" id="city">
-                            <option value="0" selected="true" disabled="True">Select City</option>
-                            @foreach ($cities as $city)
-                                <option value="{{ $city['name']}}">{{ $city['name']}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div> --}}
-            </div>
 
             <div class="row">
                 {{-- ROLES --}}

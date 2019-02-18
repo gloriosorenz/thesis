@@ -50,10 +50,10 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
               <div class="form-group">
                   <label for="address">Address:</label>
-                  <input type="text" class="form-control" disabled placeholder="company" name="address" value="{{ $customer->users->address }}" />
+                  <input type="text" class="form-control" disabled placeholder="" name="address" value="{{ $customer->users->barangay }}" />
               </div>
             </div>
           </div>

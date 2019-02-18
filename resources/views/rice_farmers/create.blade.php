@@ -84,6 +84,16 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-lg-6">
+                    <!-- PASSWORD -->
+                    <div class="form-group">
+                        <label class="control-lable" for="password">Password:</label>
+                        <input type="password" class="form-control" name="password" value="" />
+                    </div>
+                </div>
+            </div>
+
             <!-- SUBMIT BUTTON -->
             <button type="submit" class="btn btn-success">Create</button>
             </form>

@@ -59,10 +59,15 @@
           </div>
           <div class="row">
           {{-- ADDRESS --}}
-            <div class="col-md-12">
+            <div class="col-md-6">
               <div class="form-group">
-                  <label for="address">Address:</label>
-                  <input type="text" class="form-control" name="address" value="{{ $customer->users->address }}" />
+                  <label for="barangay">Address:</label>
+                  <select class="form-control" name="barangay" id="barangay">
+                      <option value="0" selected="true" disabled="True">{{ $customer->users->barangay }}</option>
+                      @foreach ($barangays as $barangay)
+                          <option value="{{ $barangay['name']}}">{{ $barangay['name']}}</option>
+                      @endforeach
+                  </select>
               </div>
             </div>
           </div>

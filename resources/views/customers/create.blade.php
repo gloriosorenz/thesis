@@ -42,15 +42,6 @@
             </div>
         
             <div class="row">
-            <!-- {{-- ADDRESS --}} -->
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="address">Address:</label>
-                        <input type="text" class="form-control" name="address" value="" />
-                    </div>
-                </div>
-            </div>
-            <div class="row">
                 <!-- {{-- PHONE --}} -->
                 <div class="col-md-6">
                     <div class="form-group">
@@ -66,6 +57,22 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+            <!-- {{-- ADDRESS --}} -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="barangay">Address (Barangay):</label>
+                        <select class="form-control" name="barangay" id="barangay">
+                            <option value="0" selected="true" disabled="True">Select Barangay</option>
+                            @foreach ($barangays as $barangay)
+                                <option value="{{ $barangay['name']}}">{{ $barangay['name']}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-lg-6">
                     <!-- {{-- Company --}} -->
@@ -92,8 +99,18 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-lg-6">
+                    <!-- PASSWORD -->
+                    <div class="form-group">
+                        <label class="control-lable" for="password">Password:</label>
+                        <input type="text" class="form-control" name="password" value="" />
+                    </div>
+                </div>
+            </div>
 
-            <!-- {{-- SUBMIT BUTTON --}} -->
+
+            <!-- SUBMIT BUTTON -->
             <button type="submit" class="btn btn-success">Create</button>
             </form>
         </div>
