@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SeasonTypeTableSeeder::class);
         // $this->call(PhilippineBarangaysTableSeeder::class);
         $this->call(BarangayTableSeeder::class);
+        $this->call(SeasonStatusTableSeeder::class);
 
         $this->call(CountriesTableSeeder::class);
         $this->call(CitiesTableSeeder::class);

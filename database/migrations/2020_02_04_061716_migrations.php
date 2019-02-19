@@ -59,16 +59,7 @@ class Migrations extends Migration
                 ->references('id')->on('rice_farmers')->onDelete('cascade');
         });
 
-       
-
-        // Products
-        // Schema::table('products',function(Blueprint $table){
-        //     $table->foreign('seasons_id')
-        //         ->references('id')->on('seasons')->onDelete('cascade');
-        //     $table->foreign('rice_farmers_id')
-        //         ->references('id')->on('rice_farmers')->onDelete('cascade');
-        // });
-
+        // Season List
         Schema::table('season_lists',function(Blueprint $table){
             $table->foreign('rice_farmers_id')
                 ->references('id')->on('rice_farmers')->onDelete('cascade');
@@ -80,31 +71,9 @@ class Migrations extends Migration
         Schema::table('seasons',function(Blueprint $table){
             $table->foreign('season_types_id')
                 ->references('id')->on('season_types')->onDelete('cascade');
+            $table->foreign('season_statuses_id')
+                ->references('id')->on('season_statuses')->onDelete('cascade');
         });
-
-        //  // Planned Crops
-        //  Schema::table('planned_crops',function(Blueprint $table){
-        //     $table->foreign('seeds_id')
-        //         ->references('id')->on('seeds')->onDelete('cascade');
-        // });
-
-        //  // Seasons
-        //  Schema::table('rice_products',function(Blueprint $table){
-        //     $table->foreign('products_id')
-        //         ->references('id')->on('products')->onDelete('cascade');
-        // });
-
-        // // Seasons
-        // Schema::table('withered_products',function(Blueprint $table){
-        //     $table->foreign('products_id')
-        //         ->references('id')->on('products')->onDelete('cascade');
-        // });
-
-        // // Seasons
-        // Schema::table('damaged_products',function(Blueprint $table){
-        //     $table->foreign('products_id')
-        //         ->references('id')->on('products')->onDelete('cascade');
-        // });
 
     }
 
