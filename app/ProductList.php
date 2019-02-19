@@ -15,14 +15,9 @@ class ProductList extends Model
         return $this->belongsTo(Product::class, 'products_id');
     }
 
-    public function seasons()
+    public function season_lists()
     {
-        return $this->belongsTo(Season::class, 'seasons_id');
-    }
-
-    public function rice_farmers()
-    {
-        return $this->belongsTo(RiceFarmer::class, 'rice_farmers_id');
+        return $this->belongsTo(SeasonList::class, 'season_lists_id');
     }
 }
 
