@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\RiceFarmer;
 use App\Season;
+use App\SeasonList;
 use App\User;
 use App\Barangay;
 
@@ -22,11 +23,15 @@ class ProductListController extends Controller
      */
     public function index()
     {
-        $product_lists = ProductList::where('products_id', '!=', 3)
-                        ->get();
+        $seasons = Season::all();
+        $product_lists = ProductList::all();
       
-        return view('product_lists.index', compact('product_lists'));
+        return view('product_lists.index')
+            ->with('seasons', $seasons)
+            ->with('product_lists', $product_lists);
     }
+
+     
 
     /**
      * Show the form for creating a new resource.
@@ -57,7 +62,12 @@ class ProductListController extends Controller
      */
     public function show($id)
     {
-        //
+        $season = Season::find($id);
+        $lists = SeasonList::where('rice_farmers_id', '=', Auth::user()->id)->get();
+
+        return view('seasons.show')
+            ->with('season', $season)
+            ->with('lists', $lists);
     }
 
     /**
@@ -92,5 +102,19 @@ class ProductListController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function display_products()
+    {
+        $product_lists = ProductList::where('products_id', '!=', 3)
+                        ->get();
+      
+        return view('product_lists/show_products', compact('product_lists'));
     }
 }

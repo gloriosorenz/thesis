@@ -115,7 +115,7 @@
         </li>
          {{-- PRODUCTS --}}
          <li class="nav-item">
-            <a href="#">
+            <a href="{{ route('product_lists.index' )}}">
                 <i class="fas fa-box"></i>
                 Products
             </a>

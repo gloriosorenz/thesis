@@ -14,7 +14,7 @@
                             <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="{{Request:: is('product_lists') ? 'active' : ''}}">
-                            <a class="nav-link" href="{{ route('product_lists.index') }}">Products</a>
+                            <a class="nav-link" href="{{ url('product_lists/show_products') }}">Products</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('cart') }}">Cart</a>
@@ -22,12 +22,12 @@
                     <!-- {{-- ADMIN --}} -->
                     @elseif(Auth::user()->roles_id == 1)
                         <li class="{{Request:: is('product_lists') ? 'active' : ''}}">
-                            <a class="nav-link" href="{{ route('product_lists.index') }}">Products</a>
+                            <a class="nav-link" href="{{ url('product_lists/show_products') }}">Products</a>
                         </li>
                     <!-- {{-- FARMER --}} -->
                     @elseif(Auth::user()->roles_id == 2)
                     <li class="{{Request:: is('product_lists') ? 'active' : ''}}">
-                        <a class="nav-link" href="{{ route('product_lists.index') }}">Products</a>
+                        <a class="nav-link" href="{{ url('product_lists/show_products') }}">Products</a>
                     </li>
                     @endguest
                 </ul>

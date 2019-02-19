@@ -89,22 +89,33 @@
             </div>
         </div>
 
-        <div class="row">
-    
-      
-        {{-- TITLE --}}
-        {{-- <div class="title m-b-md">
-            SMSRL Portal
-        </div>
-
-        <div class="links">
-            <a href="https://laravel.com/docs">Docs</a>
-            <a href="https://laracasts.com">Laracasts</a>
-            <a href="https://laravel-news.com">News</a>
-            <a href="https://blog.laravel.com">Blog</a>
-            <a href="https://nova.laravel.com">Nova</a>
-            <a href="https://forge.laravel.com">Forge</a>
-            <a href="https://github.com/laravel/laravel">GitHub</a>
+        
+        {{-- <div class="row">
+        @if(count($lists) > 0)
+            @foreach($lists as $product_list)
+            <div class="col-md-4">
+                <div class="card-deck mb-3 text-center"> 
+                    <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">{{ $product_list->products->type }}</h4>
+                    </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">P{{ $product_list->price }} <small class="text-muted">/ kaban</small></h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                            <li>FOR TEST REASONS = Season {{ $product_list->season_lists->seasons->id }}</li>
+                            <li>Available: {{ $product_list->curr_quantity }}</li>
+                            <li>Producer: {{ $product_list->season_lists->rice_farmers->company }}</li>
+                            <li>Barangay Location: {{ $product_list->season_lists->rice_farmers->users->barangays->name }}</li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-primary">Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            @endforeach
+        @else
+            <p>No products found</p>
+        @endif
         </div> --}}
 
 

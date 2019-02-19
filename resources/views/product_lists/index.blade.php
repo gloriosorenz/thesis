@@ -1,41 +1,57 @@
-@extends('layouts.web')
+@extends('layouts.app')
+
 @section('content')
 
-<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">Samahan ng Magsasaka Sta. Rosa Laguna Portal</h1>
-    <p class="lead">All products are produced by the farmers of Laguna.</p>
-</div>
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Products</li>
+  </ol>
+</nav>
 
-<div class="container">
-    <div class="row">
-    @if(count($product_lists) > 0)
-        @foreach($product_lists as $product_list)
-        <div class="col-md-4">
-            <div class="card-deck mb-3 text-center"> 
-                <div class="card mb-4 shadow-sm">
-                <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">{{ $product_list->products->type }}</h4>
-                </div>
-                    <div class="card-body">
-                        <h1 class="card-title pricing-card-title">P{{ $product_list->price }} <small class="text-muted">/ kaban</small></h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                        <li>FOR TEST REASONS = Season {{ $product_list->season_lists->seasons->id }}</li>
-                        <li>Available: {{ $product_list->curr_quantity }}</li>
-                        <li>Producer: {{ $product_list->season_lists->rice_farmers->company }}</li>
-                        <li>Barangay Location: {{ $product_list->season_lists->rice_farmers->users->barangays->name }}</li>
-                        </ul>
-                        <button type="button" class="btn btn-lg btn-block btn-primary">Add to cart</button>
-                    </div>
-                </div>
-            </div>
-        </div> 
-        @endforeach
-    @else
-        <p>No products found</p>
-    @endif
+<!-- Add Planned Crop -->
+{{-- <a class="btn btn-secondary btn-md" href="{{ route('seasons.create') }}">+Add</a> --}}
+<br>
+<br>
+
+<!-- Seasons List Datatable -->
+<div class="card">
+    <div class="card-header">
+        <h2 class="title">Seasons</h2>
+    </div>
+    <div class="card-body">
+        <table id="seasons_table" class="table table-hover">
+            @if(count($seasons) > 0)
+            <thead>
+                <tr>
+                    <th width="">Season</th>
+                    <th width="">Type</th>
+                    <th width="">Date Start</th>
+                    <th width="">Date End</th>
+                    <th width="">Status</th>
+                    <th width="">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($seasons as $season)
+                <tr class="tr">
+                    <td>{{ $season->id }}</td>
+                    <td>{{ $season->season_types->type }}</td>
+                    <td>{{ $season->season_start }}</td>
+                    <td>{{ $season->season_end }}</td>
+                    {{-- <td></td> --}}
+                    <td>{{ $season->season_statuses->status }}</td>
+                    <td>
+                        <a href="/product_lists/{{$season->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
+                        <a href="/product_lists/{{$season->id}}/edit" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                    </td>
+                </tr>
+                @endforeach
+            @else
+                <p>No seasons found</p>
+            @endif
+        </table>
     </div>
 </div>
-
-    
-
 @endsection

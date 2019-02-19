@@ -11,7 +11,7 @@
 </nav>
 
 <!-- Add Farmer -->
-{{-- <a class="btn btn-secondary btn-md" href="{{ route('seasons.create') }}">+Add</a> --}}
+<a class="btn btn-secondary btn-md" href="{{ route('seasons.create') }}">+Add</a>
 <br>
 <br>
 
