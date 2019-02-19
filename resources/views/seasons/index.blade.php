@@ -28,6 +28,7 @@
                     <th width="">ID</th>
                     <th width="">Season</th>
                     <th width="">Type</th>
+                    <th width="">Status</th>
                     <th width="">Options</th>
                 </tr>
             </thead>
@@ -37,6 +38,7 @@
                     <td>{{ $season->id }}</td>
                     <td>Season {{ $season->id }}</td>
                     <td>{{ $season->season_types->type }}</td>
+                    <td>{{ $season->season_statuses->status }}</td>
                     <td>
                         <a href="/seasons/{{$season->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
                         <a href="{{--/seasons/{{$season->id}}/edit--}}" class="btn btn-success"><i class="fas fa-edit"></i></a>
