@@ -25,7 +25,6 @@
             @if(count($seasons) > 0)
             <thead>
                 <tr>
-                    <th width="">ID</th>
                     <th width="">Season</th>
                     <th width="">Type</th>
                     <th width="">Date Start</th>
@@ -38,7 +37,6 @@
                 @foreach($seasons as $season)
                 <tr class="tr">
                     <td>{{ $season->id }}</td>
-                    <td>Season {{ $season->id }}</td>
                     <td>{{ $season->season_types->type }}</td>
                     <td>{{ $season->season_start }}</td>
                     <td>{{ $season->season_end }}</td>
