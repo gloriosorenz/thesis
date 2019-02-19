@@ -15,8 +15,7 @@ class CreateProductListsTable extends Migration
     {
         Schema::create('product_lists', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('seasons_id')->unsigned()->nullable();
-            $table->integer('rice_farmers_id')->unsigned()->nullable();
+            $table->integer('season_lists_id')->unsigned()->nullable();
             $table->integer('products_id')->unsigned()->nullable();
             $table->integer('orig_quantity');
             $table->integer('curr_quantity');
