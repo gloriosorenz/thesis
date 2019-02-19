@@ -88,7 +88,7 @@
                 <div class="col-lg-6">
                     <!-- PASSWORD -->
                     <div class="form-group">
-                        <label class="control-lable" for="password">Password:</label>
+                        <label class="control-lable" for="password">Password (TEST PURPOSES)</label>
                         <input type="password" class="form-control" name="password" value="" />
                     </div>
                 </div>

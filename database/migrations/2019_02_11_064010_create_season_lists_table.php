@@ -18,11 +18,11 @@ class CreateSeasonListsTable extends Migration
             
             $table->integer('rice_farmers_id')->unsigned()->nullable();
             $table->integer('seasons_id')->unsigned()->nullable();
-            $table->double('planned_hectares')->nullable();
+            $table->double('planned_hectares')->nullable(); //not supposed to be nullable
             $table->double('actual_hectares')->nullable();
-            $table->integer('planned_num_farmers')->nullable();
+            $table->integer('planned_num_farmers')->nullable(); //not supposed to be nullable
             $table->integer('actual_num_farmers')->nullable();
-            $table->integer('planned_qty')->nullable();
+            $table->integer('planned_qty')->nullable(); //not supposed to be nullable
             $table->integer('actual_qty')->nullable();
 
             $table->timestamps();

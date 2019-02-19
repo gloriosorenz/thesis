@@ -30,7 +30,7 @@ class SeasonTableSeeder extends Seeder
             [
                 'id' => 3, 
                 'season_types_id' => 2,
-                'season_statuses_id' => 1,
+                'season_statuses_id' => 2,
                 'season_start'=> '2019-04-29',
                 'season_end'=> '2019-08-12',
             ],
@@ -39,7 +39,6 @@ class SeasonTableSeeder extends Seeder
                 'season_types_id' => 1,
                 'season_statuses_id' => 1,
                 'season_start'=> '2019-10-17',
-                'season_end'=> '2020-02-04',
             ],
 
         ];
