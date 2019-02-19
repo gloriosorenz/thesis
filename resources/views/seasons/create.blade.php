@@ -18,17 +18,16 @@
 @csrf
 
 <div class="row">
-    <div class="offset-md-3 col-md-6 offset-md-3">
+    <div class="offset-md-1 col-md-8 ">
         <div class="card">
         <div class="card-header card-header-primary">
             <h4 class="card-title">New Season</h4>
             {{-- <p class="card-category">Complete your profile</p> --}}
         </div>
         <div class="card-body">
-        
             <div class="row">
                 {{-- SEASON TYPE--}}
-                <div class="offset-md-3 col-md-6">
+                <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('season_types_id', 'Type:', ['class' => 'control-label']) !!}
                         {!! Form::select('season_types_id', $types, old('season_types_id'), ['class' => 'form-control select2', 'required' => '']) !!}
@@ -38,14 +37,24 @@
                                 {{ $errors->first('season_types_id') }}
                             </p>
                         @endif
-                    </div>
+                        </div>
                 </div>
             </div> 
+            <div class="row">
+                {{-- START DATE --}}
+                <div class="col-md-6">
+                    <div class="form-group row">
+                            {{ Form::label('season_start', 'Season Start:') }}
+                        <div class="col-12">
+                            {{ Form::date('season_start', \Carbon\Carbon::now(), ['class' => 'datepicker form-control','id'=>'date_start'])}}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         </div>
     </div>
 </div>
-
 
 <br>
 

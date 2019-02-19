@@ -36,5 +36,6 @@
         $('#customers_table').DataTable();
         $('#seasons_table').DataTable();
     } );
+
 </script>
 

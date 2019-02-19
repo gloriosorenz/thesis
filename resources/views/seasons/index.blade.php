@@ -40,6 +40,7 @@
                     <td>{{ $season->season_types->type }}</td>
                     <td>{{ $season->season_start }}</td>
                     <td>{{ $season->season_end }}</td>
+                    {{-- <td></td> --}}
                     <td>{{ $season->season_statuses->status }}</td>
                     <td>
                         <a href="/seasons/{{$season->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>

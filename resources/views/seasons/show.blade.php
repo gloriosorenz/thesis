@@ -18,7 +18,7 @@
 <!-- Seasons List Datatable -->
 <div class="card">
     <div class="card-header">
-    <h2 class="title">Season #</h2>
+    <h2 class="title">Season {{ $season->id }}</h2>
     </div>
     <div class="card-body">
         <table id="seasons_table" class="table table-hover">

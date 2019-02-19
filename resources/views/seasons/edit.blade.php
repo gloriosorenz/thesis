@@ -19,29 +19,59 @@
 @csrf
 
 <div class="row">
-    <div class="offset-md-3 col-md-6 offset-md-3">
+        <div class="offset-md-1 col-md-8 ">
         <div class="card">
-        <div class="card-header card-header-primary">
-            <h4 class="card-title">New Season</h4>
-            {{-- <p class="card-category">Complete your profile</p> --}}
-        </div>
-        <div class="card-body">
-        
-            <div class="row">
-                {{-- SEASON TYPE--}}
-                <div class="offset-md-3 col-md-6">
-                    <div class="form-group">
-                        <label for="season_types_id">Type:</label>
-                        <select class="form-control" name="season_types_id" id="season_types_id">
-                            <option value="0" selected="true" disabled="True">{{ $season->season_types->type }}</option>
-                            @foreach ($types as $key=>$t)
-                                <option value="{{ $key }}">{{ $t }}</option>
-                            @endforeach
-                        </select>
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">New Season</h4>
+                <!--<p class="card-category"></p>-->
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <!-- SEASON TYPE-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="season_types_id">Type:</label>
+                            <select class="form-control" name="season_types_id" id="season_types_id">
+                                <option value="0" selected="true" disabled="True">{{ $season->season_types->type }}</option>
+                                @foreach ($types as $key=>$t)
+                                    <option value="{{ $key }}">{{ $t }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div> 
+                <div class="row">
+                    <!-- START DATE -->
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label for="season_start">Season Start:</label>
+                            <div class="col-12">
+                                {{ Form::date('season_start', \Carbon\Carbon::now(), ['class' => 'datepicker form-control','id'=>'season_start'])}}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- START END -->
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label for="season_end">Season End:</label>
+                            <div class="col-12">
+                                {{ Form::date('season_end', \Carbon\Carbon::now(), ['class' => 'datepicker form-control','id'=>'season_end'])}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='col-md-6'>
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input type='date' name='season_end' id='season_end' class="form-control" />
+                                <div class="input-group-append">
+                                    <label class="input-group-text" for="inputGroupSelect02"><i class="fas fa-calendar-alt"></i></label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div> 
-        </div>
+            </div>
         </div>
     </div>
 </div>

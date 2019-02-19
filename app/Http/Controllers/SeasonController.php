@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Season;
 use App\SeasonList;
+use App\SeasonStatus;
 use App\RiceFarmer;
 
 class SeasonController extends Controller
@@ -29,9 +30,12 @@ class SeasonController extends Controller
     {
         $types = \App\SeasonType::get()->pluck('type', 'id');
         $rice_farmers = \App\RiceFarmer::get()->pluck('company', 'id');
+        $statuses = SeasonStatus::get()->pluck('status', 'id');
+
         return view('seasons.create')
             ->with('types', $types)
-            ->with('rice_farmers', $rice_farmers);
+            ->with('rice_farmers', $rice_farmers)
+            ->with('statuses', $statuses);
     }
 
     /**
@@ -50,7 +54,9 @@ class SeasonController extends Controller
         ]);
 
         $season = new Season;
+        $season->season_start = $request->input('season_start');
         $season->season_types_id = $request->input('season_types_id');
+        $season->season_statuses_id =1;
 
         if($season->save()){
             $id = $season->id;

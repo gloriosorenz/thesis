@@ -104,7 +104,7 @@
                     <!-- PASSWORD -->
                     <div class="form-group">
                         <label class="control-lable" for="password">Password:</label>
-                        <input type="text" class="form-control" name="password" value="" />
+                        <input type="password" class="form-control" name="password" value="" />
                     </div>
                 </div>
             </div>
