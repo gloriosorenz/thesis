@@ -24,4 +24,9 @@ class Season extends Model
     {
         return $this->belongsTo(SeasonType::class, 'season_types_id');
     }
+
+    public function season_statuses()
+    {
+        return $this->belongsTo(SeasonStatus::class, 'season_statuses_id');
+    }
 }

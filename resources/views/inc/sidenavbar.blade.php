@@ -19,6 +19,7 @@
                 Dashboard
             </a>
         </li>
+
         {{-- PROFILE --}}
         {{-- <li>
             <a href="#">
@@ -26,6 +27,16 @@
                 Profile
             </a>
         </li> --}}
+        
+        {{-- Season --}}
+        <li lass="{{Request:: is('seasons') ? 'active' : ''}}">
+            <a href="{{ route('seasons.index') }}">
+                <i class="fas fa-sun"></i>
+                Seasons
+            </a>
+        </li>
+
+
         {{-- USER MANAGEMENT --}}
         <li class="{{Request:: is('roles', 'users') ? 'active' : ''}}"><!-- Link with dropdown items -->
             <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false"><i class="fa fa-users"></i> User Management <i class="fa fa-caret-down"></i></a>
@@ -50,13 +61,6 @@
             <a href="{{ route('customers.index') }}">
                 <i class="fas fa-user-alt"></i>
                 Customers
-            </a>
-        </li>
-        {{-- Season --}}
-        <li lass="{{Request:: is('seasons') ? 'active' : ''}}">
-            <a href="{{ route('seasons.index') }}">
-                <i class="fas fa-sun"></i>
-                Season
             </a>
         </li>
         {{-- Planned Crops --}}
