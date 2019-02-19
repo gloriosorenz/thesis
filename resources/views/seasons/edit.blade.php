@@ -95,8 +95,8 @@
                     <td><input readonly="true" type="text" class="form-control" name="planned_num_farmers[]" value="{{ $list->planned_num_farmers }}" /></td>
                     <td><input readonly="true" type="text" class="form-control" name="planned_qty[]" value="{{ $list->planned_qty }}" /></td>
                     <td><input type="text" class="form-control" name="actual_hectares[]" value="{{ $list->actual_hectares }}" /></td>
-                    <td><input type="text" class="form-control" name="actual_num_farmers[]" value="{{ $list->actual_hectares }}" /></td>
-                    <td><input type="text" class="form-control" name="actual_qty[]" value="{{ $list->actual_hectares }}" /></td>
+                    <td><input type="text" class="form-control" name="actual_num_farmers[]" value="{{ $list->actual_num_farmers }}" /></td>
+                    <td><input type="text" class="form-control" name="actual_qty[]" value="{{ $list->actual_qty }}" /></td>
                     <td><input type="button" class="btn btn-danger remove" value="x"></td>
                 </tr>
                 @endforeach
