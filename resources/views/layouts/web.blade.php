@@ -32,5 +32,7 @@
     </div>
 
     @include('partials.javascripts')
+    @yield('extra-js')
+
 </body>
 </html>

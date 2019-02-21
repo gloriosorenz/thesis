@@ -38,7 +38,7 @@ Route::get('/dashboard', function() {
 // });
 Route::get('/cart','CartController@index')->name('cart.index');
 Route::post('/cart','CartController@store')->name('cart.index');
-Route::get('empty',function(){
+Route::get('emptycart',function(){
     Cart:destroy();
 });
 

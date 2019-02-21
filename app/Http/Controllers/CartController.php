@@ -47,8 +47,15 @@ class CartController extends Controller
         Cart::add($request->id, $request->name, 1, $request->price)->associate('App\Product');
         return redirect('cart')->withSuccessMessage('Item was added to your cart!');
         */
+        $duplicates = Cart::search(function ($cartItem, $rowId) use ($request) {
+            return $cartItem->id === $request->id;
+        });
 
-        Cart::add($request->id, $request->id, 1, $request->price)
+        if (!$duplicates->isEmpty()) {
+            return redirect('cart')->withSuccessMessage('Item is already in your cart!');
+        }
+
+        Cart::add($request->id, $request->name, 1, $request->price)
                 ->associate('App\ProductList');
 
         return redirect('cart')->withSuccessMessage('Product was added to your cart!');
@@ -85,6 +92,7 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         //
     }
 
@@ -96,6 +104,19 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Cart::remove($id);
+        return redirect('cart')->withSuccessMessage('Item has been removed!');
     }
+
+    /**
+     * Remove the resource from storage.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function emptyCart()
+    {
+        Cart::destroy();
+        return redirect('cart')->withSuccessMessage('Your cart has been cleared!');
+    }
+
 }
