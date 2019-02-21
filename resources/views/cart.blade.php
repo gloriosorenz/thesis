@@ -26,6 +26,7 @@
                     <thead>
                         <tr>
                             <th>Product</th>
+                            <th>Farmer Organization</th>
                             <th>Quantity</th>
                             <th>Price</th>
                             <th class="column-spacer"></th>
@@ -34,11 +35,18 @@
                     </thead>
     
                     <tbody>
+                        {{-- @foreach(Cart::content() as $x)
+                            <td>{{ $x->model->curr_quantity }}</td>
+                        
+
+                        @endforeach --}}
+
                         @foreach (Cart::content() as $item)
                         <tr>
-                            <td><a href="{{ url('/product_lists/show_products', [$item->model->slug]) }}">{{ $item->name }}</a></td>
+                            <td><a href="{{ url('/product_lists/show_products', [$item->model->slug]) }}">{{ $item->model->products->type }}</a></td>
+                            <td>{{ $item->model->rice_farmers->company }}</td>
                             <td>
-                                <select class="quantity" data-id="{{ $item->rowId }}">
+                                <select class="quantity" data-id="{{ $item->model->curr_quantity }}">
                                     <option {{ $item->qty == 1 ? 'selected' : '' }}>1</option>
                                     <option {{ $item->qty == 2 ? 'selected' : '' }}>2</option>
                                     <option {{ $item->qty == 3 ? 'selected' : '' }}>3</option>
@@ -71,6 +79,7 @@
                     </tbody>
                 </table>
     
+                
                 <a href="{{ url('//product_lists/show_products') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
                 <a href="#" class="btn btn-success btn-lg">Proceed to Checkout</a>
     
