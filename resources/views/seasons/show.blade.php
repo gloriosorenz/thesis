@@ -10,8 +10,7 @@
   </ol>
 </nav>
 
-<!-- Add Farmer -->
-<a class="btn btn-secondary btn-md" href="{{ route('seasons.create') }}">+Add</a>
+<a class="btn btn-md btn-secondary" href="{{URL::previous()}}">Back</a>
 <br>
 <br>
 

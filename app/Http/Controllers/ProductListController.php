@@ -8,8 +8,11 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\RiceFarmer;
 use App\Season;
+use App\SeasonList;
 use App\User;
 use App\Barangay;
+use Auth;
+use DB;
 
 
 
@@ -22,11 +25,25 @@ class ProductListController extends Controller
      */
     public function index()
     {
-        $product_lists = ProductList::where('products_id', '!=', 3)
-                        ->get();
+        $seasons = Season::all();
+        // $lists = SeasonList::where('rice_farmers_id', '=', Auth::user()->id)->get();
+        // $lists = SeasonList::all();
+
+        $lists = DB::table('season_lists')
+                ->join('rice_farmers', 'season_lists.rice_farmers_id', '=', 'rice_farmers.id')
+                ->join('users', 'rice_farmers.users_id', '=', 'users.id')
+                ->select('season_lists.*', 'rice_farmers.company', 'users.*')
+                ->where('rice_farmers.users_id', '=', auth()->user()->id)
+                ->get();
+
+        // dd($lists);
       
-        return view('product_lists.index', compact('product_lists'));
+        return view('product_lists.index')
+            ->with('seasons', $seasons)
+            ->with('lists', $lists);
     }
+
+     
 
     /**
      * Show the form for creating a new resource.
@@ -57,7 +74,12 @@ class ProductListController extends Controller
      */
     public function show($id)
     {
-        //
+        $season = Season::find($id);
+        $lists = SeasonList::where('rice_farmers_id', '=', Auth::user()->id)->get();
+
+        return view('seasons.show')
+            ->with('season', $season)
+            ->with('lists', $lists);
     }
 
     /**
@@ -92,5 +114,19 @@ class ProductListController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function display_products()
+    {
+        $product_lists = ProductList::where('products_id', '!=', 3)
+                        ->get();
+      
+        return view('product_lists/show_products', compact('product_lists'));
     }
 }

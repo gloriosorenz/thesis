@@ -117,16 +117,17 @@ class RiceFarmerController extends Controller
     {
         $farmer = RiceFarmer::find($id);
         $farmer->company = $request->input('company');
-        $farmer->users->first_name = $request->input('first_name');
-        $farmer->users->last_name = $request->input('last_name');
-        $farmer->users->email = $request->input('email');
-        $farmer->users->phone = $request->input('phone');
-        $farmer->users->barangay = $request->input('barangay');
+        $farmer->users()->first_name = $request->input('first_name');
+        $farmer->users()->last_name = $request->input('last_name');
+        $farmer->users()->email = $request->input('email');
+        $farmer->users()->phone = $request->input('phone');
+        $farmer->users()->barangay = $request->input('barangay');
+        // $farmer->users()->associate($farmer);
         $farmer->save();
 
-        
+        // dd($farmer);
 
-        return redirect('rice_farmers')->with('success','User Updated ');
+        return redirect('rice_farmers')->with('success','Farmer Updated ');
     }
 
     /**

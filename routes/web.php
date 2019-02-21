@@ -40,7 +40,8 @@ Route::get('/cart', function () {
 //Products
 Route::get('/products', 'ProductController@products');
 
-
+//Product Lists
+Route::get('/product_lists/show_products', 'ProductListController@display_products');
 
 // Season
 Route::get('/seasons/add_farmer/{id}', 'SeasonController@add_farmer');

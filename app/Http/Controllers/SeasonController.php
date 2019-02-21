@@ -7,6 +7,7 @@ use App\Season;
 use App\SeasonList;
 use App\SeasonStatus;
 use App\RiceFarmer;
+use DB;
 
 class SeasonController extends Controller
 {
@@ -17,7 +18,9 @@ class SeasonController extends Controller
      */
     public function index()
     {
-        $seasons = Season::all();
+        $seasons = Season::orderBy('id', 'desc')->get();
+
+        // dd($seasons);
         return view('seasons.index', compact('seasons'));
     }
 
@@ -48,7 +51,9 @@ class SeasonController extends Controller
     {
         // Validation
         $request->validate([
-            // 'planned_hectares' => 'required|string|max:255',
+            // 'season_start' => 'required|date|',
+            // 'season_types_id' => 'required|int',
+            // 'planned_hectares' => 'required|int',
             // 'planned_num_farmers' => 'required|string|max:255',
             // 'planned_qty' => 'required|string|max:255',
         ]);
@@ -120,21 +125,28 @@ class SeasonController extends Controller
     public function update(Request $request, $id)
     {
         $season = Season::findOrFail($id);
-        $season->season_types_id = $request->input('season_types_id');
+        $season->season_end = $request->input('season_end');
+        $season->season_statuses_id =2;
 
         if($season->save()){
             $id = $season->id;
-            foreach($request->planned_hectares as $key => $value) {
-                $data=array(
-                            // 'seasons_id' => $id,
-                            'rice_farmers_id'=>$request->rice_farmers_id [$key],
-                            'planned_hectares'=>$request->planned_hectares [$key],
-                            'planned_num_farmers'=>$request->planned_num_farmers [$key],
-                            'planned_qty'=>$request->planned_qty [$key]);
+       
+            $season_lists = $request->all();
 
-                SeasonList::insert($data);
-            }  
+            $lists = SeasonList::where('seasons_id', $season->id)->get(); 
+            foreach($lists as $list){
+                $key = array_search($list->id, $season_lists['id']);
+                $list->actual_hectares = $request->actual_hectares[$key];
+                $list->actual_num_farmers = $request->actual_num_farmers[$key];
+                $list->actual_qty = $request->actual_qty[$key];
+                $list->save();
+            
+            }
         }
+        
+
+
+     
         return redirect()->route('seasons.index')->with('success','Season Updated ');
     }
 
