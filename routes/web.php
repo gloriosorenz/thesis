@@ -50,6 +50,7 @@ Route::get('/product_lists/show_products', 'ProductListController@display_produc
 
 // Season
 Route::get('/seasons/add_farmer/{id}', 'SeasonController@add_farmer');
+Route::get('/seasons/farmer_seasons', 'SeasonController@farmer_seasons');
 
 
 

@@ -162,6 +162,21 @@ class SeasonController extends Controller
     }
 
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function farmer_seasons()
+    {
+        $seasons = Season::all();
+
+        // dd($seasons);
+        return view('seasons.farmer_seasons')
+            ->with('seasons', $seasons);
+    }
+
+
 
 
 }

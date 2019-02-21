@@ -6,64 +6,38 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Products</li>
+    <li class="breadcrumb-item active" aria-current="page">Seasons</li>
   </ol>
 </nav>
 
-<!-- Add Planned Crop -->
-{{-- <a class="btn btn-secondary btn-md" href="{{ route('seasons.create') }}">+Add</a> --}}
+<!-- Add Season -->
+<a class="btn btn-secondary btn-md" href="{{ route('product_lists.create') }}">+Add</a>
 <br>
 <br>
 
-<!-- Seasons List Datatable -->
-<div class="card">
-    <div class="card-header">
-    <h2 class="title">Seasons</h2>
+@if(count($seasons) > 0)
+    <div class="row">
+    @foreach ($seasons as $season)
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">
+                    Season {{ $season->id }}
+                </div>
+                <div class="card-body">
+                    {{-- <h5 class="card-title">Season Type:</h5> --}}
+                    <p class="card-text">Type: {{$season->season_types->type}}</p>
+                    <p class="card-text">Start: {{$season->season_start}}</p>
+                    <p class="card-text">End: {{$season->season_end}}</p>
+                    <p class="card-text">Status: {{$season->season_statuses->status}}</p>
+                    <a href="/product_lists/{{$season->id}}" class="btn btn-primary">Show</a>
+                </div>
+            </div>
+        </div>
+    @endforeach
     </div>
-    <div class="card-body">
-        <table id="seasons_table" class="table table-hover">
-            {{-- @if(count($season) > 0) --}}
-            <thead>
-                <tr>
-                    <th width="">Season</th>
-                    {{-- <th width="">Season</th> --}}
-                    {{-- <th width="">Rice Farmer</th> --}}
-                    <th width="">Planned Hectares</th>
-                    <th width="">Planned No. Of Farmers</th>
-                    <th width="">Planned Quantity</th>
-                    <th width="">Actual Hectares</th>
-                    <th width="">Actual No. Of Farmers</th>
-                    <th width="">Actual Quantity</th>
-                    {{-- <th width="">Options</th> --}}
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($lists as $list)
-                <tr class="tr">
-                    <td>{{ $list->seasons->id }}</td>
-                    {{-- <td>Season {{ $list->seasons->id }}</td> --}}
-                    {{-- <td>{{ $list->rice_farmers->users->first_name }} </td> --}}
-                    <td>{{ $list->planned_hectares }}</td>
-                    <td>{{ $list->planned_num_farmers }}</td>
-                    <td>{{ $list->planned_qty }}</td>
-                    <td>{{ $list->actual_hectares }}</td>
-                    <td>{{ $list->actual_num_farmers }}</td>
-                    <td>{{ $list->actual_qty }}</td>
-                    <td>
-                        {{-- <a href="/seasons_lists/{{$list->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
-                        <a href="/season_lists/{{$list->id}}/edit" class="btn btn-success"><i class="fas fa-edit"></i></a>
-                        <form action="{{ route('season_lists.destroy', $list->id)}}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger" type="submit"><i class="fas fa-trash-alt"></i></button>
-                        </form> --}}
-                    </td>
-                </tr>
-                @endforeach
-            {{-- @else
-                <p>No seasons found</p>
-            @endif --}}
-        </table>
-    </div>
-</div>
+    <br>
+@else
+    <p>No seasons found</p>
+@endif
+
 @endsection

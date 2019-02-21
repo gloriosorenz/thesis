@@ -68,8 +68,8 @@
                     </li>
                 <!-- {{-- FARMER --}} -->
                 @elseif(Auth::user()->roles_id == 2)
-                <li class="{{Request:: is('users') ? 'active' : ''}}">
-                    <a class="nav-link" href="{{ route('users.index') }}">Farmer Dashboard</a>
+                <li class="{{Request:: is('dashboard') ? 'active' : ''}}">
+                    <a class="nav-link" href="{{ url('dashboard') }}">Farmer Dashboard</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

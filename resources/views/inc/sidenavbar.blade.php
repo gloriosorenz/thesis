@@ -29,7 +29,7 @@
         </li> --}}
         
         {{-- Season --}}
-        <li lass="{{Request:: is('seasons') ? 'active' : ''}}">
+        <li class="{{Request:: is('seasons') ? 'active' : ''}}">
             <a href="{{ route('seasons.index') }}">
                 <i class="fas fa-sun"></i>
                 Seasons
@@ -63,13 +63,6 @@
                 Customers
             </a>
         </li>
-        {{-- Planned Crops --}}
-        {{-- <li lass="{{Request:: is('seasons') ? 'active' : ''}}">
-            <a href="{{ route('seasons.index') }}">
-                <i class="fas fa-sun"></i>
-                Season
-            </a>
-        </li> --}}
         {{-- Reports --}}
         <li>
             <a href="#">
@@ -96,6 +89,9 @@
         </li> --}}
 
         <hr>
+
+
+
         {{-- Rice Farmer --}}
         @elseif(Auth::user()->roles_id == 2)
         {{-- <li><h4>Rice Farmer</h4></li> --}}
@@ -113,8 +109,15 @@
                 Profile
             </a>
         </li>
+        {{-- SEASON --}}
+        {{-- <li lass="{{Request:: is('seasons') ? 'active' : ''}}">
+            <a href="{{ url('seasons/farmer_seasons') }}">
+                <i class="fas fa-sun"></i>
+                Seasons
+            </a>
+        </li> --}}
          {{-- PRODUCTS --}}
-         <li class="nav-item">
+         <li class="{{Request:: is('product_lists') ? 'active' : ''}}">
             <a href="{{ route('product_lists.index' )}}">
                 <i class="fas fa-box"></i>
                 Products
@@ -123,6 +126,9 @@
 
 
         <hr>
+
+
+
         {{-- Customers --}}
         @elseif(Auth::user()->roles_id == 3)
         {{-- <li><h4>Customers</h4></li> --}}
