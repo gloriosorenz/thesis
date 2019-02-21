@@ -33,8 +33,13 @@ Route::get('/dashboard', function() {
 });
 
 // Cart 
-Route::get('/cart', function () {
-    return view('cart');
+// Route::get('/cart', function () {
+//     return view('cart');
+// });
+Route::get('/cart','CartController@index')->name('cart.index');
+Route::post('/cart','CartController@store')->name('cart.index');
+Route::get('empty',function(){
+    Cart:destroy();
 });
 
 //Products

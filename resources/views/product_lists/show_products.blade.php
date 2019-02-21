@@ -24,7 +24,15 @@
                         <li>Producer: {{ $product_list->season_lists->rice_farmers->company }}</li>
                         <li>Barangay Location: {{ $product_list->season_lists->rice_farmers->users->barangays->name }}</li>
                         </ul>
-                        <button type="button" class="btn btn-lg btn-block btn-primary">Add to cart</button>
+
+                        <form method="post" action="{{action('CartController@store')}}">
+                             @csrf
+                            <input type="hidden" name="id" value="{{ $product_list->id }}">
+                            <input type="hidden" name="price" value="{{ $product_list->price }}">
+
+                            <button type="submit" class="button button-plain">Add to Cart</button>
+                        </form>                    
+                    
                     </div>
                 </div>
             </div>
@@ -34,6 +42,7 @@
         <p>No products found</p>
     @endif
     </div>
+    
 </div>
 
     
