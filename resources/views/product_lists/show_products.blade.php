@@ -19,10 +19,10 @@
                     <div class="card-body">
                         <h1 class="card-title pricing-card-title">₱{{ $product_list->price }} <small class="text-muted">/ kaban</small></h1>
                         <ul class="list-unstyled mt-3 mb-4">
-                        <li>FOR TEST REASONS = Season {{ $product_list->season_lists->seasons->id }}</li>
+                        <li>FOR TEST REASONS = Season {{ $product_list->seasons->id }}</li>
                         <li>Available: {{ $product_list->curr_quantity }}</li>
-                        <li>Producer: {{ $product_list->season_lists->rice_farmers->company }}</li>
-                        <li>Barangay Location: {{ $product_list->season_lists->rice_farmers->users->barangays->name }}</li>
+                        <li>Producer: {{ $product_list->rice_farmers->company }}</li>
+                        <li>Barangay Location: {{ $product_list->rice_farmers->users->barangays->name }}</li>
                         </ul>
 
                         <form method="post" action="{{action('CartController@store')}}">

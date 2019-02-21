@@ -51,10 +51,12 @@ class Migrations extends Migration
 
         // Product List
         Schema::table('product_lists',function(Blueprint $table){
-            $table->foreign('season_lists_id')
-                ->references('id')->on('season_lists')->onDelete('cascade');
+            $table->foreign('seasons_id')
+                ->references('id')->on('seasons')->onDelete('cascade');
             $table->foreign('products_id')
                 ->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('rice_farmers_id')
+                ->references('id')->on('rice_farmers')->onDelete('cascade');
         });
 
         // Season List
