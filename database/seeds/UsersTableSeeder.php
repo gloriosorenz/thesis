@@ -73,7 +73,7 @@ class UsersTableSeeder extends Seeder
                 'phone' => '09178484154',
                 'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
                 'roles_id' => 2, 
-                'barangays_id'=> 8,
+                'barangays_id'=> 2,
                 'remember_token' => '',
             ],
             [
