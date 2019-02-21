@@ -25,13 +25,13 @@
             <div class="col-md-6">
               <div class="form-group">
                   <label for="first_name">First Name:</label>
-                  <input type="text" class="form-control" disabled placeholder="company" name="first_name" value="{{ $farmer->users->first_name }}" />
+                  <input type="text" class="form-control" readonly name="first_name" value="{{ $farmer->users->first_name }}" />
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label for="last_name">Last Name:</label>
-                <input type="text" class="form-control" disabled placeholder="company" name="last_name" value="{{ $farmer->users->last_name }}" />
+                <input type="text" class="form-control" readonly name="last_name" value="{{ $farmer->users->last_name }}" />
               </div>
             </div>
           </div>
@@ -39,13 +39,13 @@
             <div class="col-md-6">
               <div class="form-group">
                   <label for="email">Email:</label>
-                  <input type="text" class="form-control" disabled placeholder="company" name="email" value="{{ $farmer->users->email }}" />
+                  <input type="text" class="form-control" readonly name="email" value="{{ $farmer->users->email }}" />
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                   <label for="phone">Phone:</label>
-                  <input type="text" class="form-control" disabled placeholder="company" name="phone" value="{{ $farmer->users->phone }}" />
+                  <input type="text" class="form-control" readonly name="phone" value="{{ $farmer->users->phone }}" />
               </div>
             </div>
           </div>
@@ -53,7 +53,7 @@
             <div class="col-md-12">
               <div class="form-group">
                   <label for="address">Farm Address:</label>
-                  <input type="text" class="form-control" disabled placeholder="" name="barangay" value="{{ $farmer->users->barangay }}" />
+                  <input type="text" class="form-control" readonly name="barangay" value="{{ $farmer->users->barangay }}" />
               </div>
             </div>
           </div>
@@ -61,7 +61,7 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label for="phone">Company:</label>
-                <input type="text" class="form-control" disabled placeholder="company" name="company" value="{{ $farmer->company }}" />
+                <input type="text" class="form-control" readonly name="company" value="{{ $farmer->company }}" />
               </div>
             </div>
           </div>

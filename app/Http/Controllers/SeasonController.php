@@ -18,8 +18,9 @@ class SeasonController extends Controller
      */
     public function index()
     {
-        $seasons = Season::all();
+        $seasons = Season::orderBy('id', 'desc')->get();
 
+        // dd($seasons);
         return view('seasons.index', compact('seasons'));
     }
 
@@ -50,7 +51,9 @@ class SeasonController extends Controller
     {
         // Validation
         $request->validate([
-            // 'planned_hectares' => 'required|string|max:255',
+            // 'season_start' => 'required|date|',
+            // 'season_types_id' => 'required|int',
+            // 'planned_hectares' => 'required|int',
             // 'planned_num_farmers' => 'required|string|max:255',
             // 'planned_qty' => 'required|string|max:255',
         ]);

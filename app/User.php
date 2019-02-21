@@ -38,4 +38,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Barangay::class, 'barangays_id');
     }
+
+    public function rice_farmers()
+    {
+        return $this->hasMany('App\RiceFarmer');
+    }
 }

@@ -11,6 +11,8 @@ use App\Season;
 use App\SeasonList;
 use App\User;
 use App\Barangay;
+use Auth;
+use DB;
 
 
 
@@ -24,11 +26,21 @@ class ProductListController extends Controller
     public function index()
     {
         $seasons = Season::all();
-        $product_lists = ProductList::all();
+        // $lists = SeasonList::where('rice_farmers_id', '=', Auth::user()->id)->get();
+        // $lists = SeasonList::all();
+
+        $lists = DB::table('season_lists')
+                ->join('rice_farmers', 'season_lists.rice_farmers_id', '=', 'rice_farmers.id')
+                ->join('users', 'rice_farmers.users_id', '=', 'users.id')
+                ->select('season_lists.*', 'rice_farmers.company', 'users.*')
+                ->where('rice_farmers.users_id', '=', auth()->user()->id)
+                ->get();
+
+        // dd($lists);
       
         return view('product_lists.index')
             ->with('seasons', $seasons)
-            ->with('product_lists', $product_lists);
+            ->with('lists', $lists);
     }
 
      
