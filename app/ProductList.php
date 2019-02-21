@@ -10,6 +10,11 @@ class ProductList extends Model
         'products_id', 'seasons_id', 'rice_farmers_id', 'orig_quantity','price', 'orig_quantity'
     ];
 
+    public function presentPrice()
+    {
+        return money_format('$%i',$this->price);
+    }
+
     public function products()
     {
         return $this->belongsTo(Product::class, 'products_id');
