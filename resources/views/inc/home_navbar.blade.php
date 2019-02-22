@@ -91,7 +91,9 @@
                 <!-- {{-- CUSTOMER --}} -->
                 @elseif(Auth::user()->roles_id == 3)
                 <li class="nav-item">
-                            <a class="nav-link" href="{{ url('cart') }}">Cart</a>
+                            <a class="nav-link" href="{{ url('cart') }}">Cart ({{ Cart::instance('default')->count(false) }})</a>
+                            {{-- <li class="{{ set_active('cart') }}"><a href="{{ url('/cart') }}">Cart ({{ Cart::instance('default')->count(false) }})</a></li> --}}
+
                         </li>
                 <li class="nav-item dropdown">
                 

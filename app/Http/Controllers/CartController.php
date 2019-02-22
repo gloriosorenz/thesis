@@ -61,27 +61,6 @@ class CartController extends Controller
         return redirect('cart')->withSuccessMessage('Product was added to your cart!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -93,7 +72,20 @@ class CartController extends Controller
     public function update(Request $request, $id)
     {
 
-        //
+         // Validation on max quantity
+         $validator = Validator::make($request->all(), [
+            'quantity' => 'required|numeric|between:1,5'
+        ]);
+
+         if ($validator->fails()) {
+            session()->flash('error_message', 'Quantity must be between 1 and 5.');
+            return response()->json(['success' => false]);
+         }
+
+        Cart::update($id, $request->quantity);
+        session()->flash('success_message', 'Quantity was updated successfully!');
+
+        return response()->json(['success' => true]);
     }
 
     /**
@@ -104,7 +96,9 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        Cart::remove($id);
+        // Cart::remove($id);
+        $cart = Cart::find($id);
+                $cart->delete();
         return redirect('cart')->withSuccessMessage('Item has been removed!');
     }
 

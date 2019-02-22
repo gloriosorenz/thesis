@@ -43,10 +43,10 @@
 
                         @foreach (Cart::content() as $item)
                         <tr>
-                            <td><a href="{{ url('/product_lists/show_products', [$item->model->slug]) }}">{{ $item->model->products->type }}</a></td>
+                            <td><a href="{{ url('/product_lists/show_products', [$item->model->products->type]) }}">{{ $item->model->products->type }}</a></td>
                             <td>{{ $item->model->rice_farmers->company }}</td>
                             <td>
-                                <select class="quantity" data-id="{{ $item->model->curr_quantity }}">
+                                <select class="quantity" data-id="{{ $item->rowId }}">
                                     <option {{ $item->qty == 1 ? 'selected' : '' }}>1</option>
                                     <option {{ $item->qty == 2 ? 'selected' : '' }}>2</option>
                                     <option {{ $item->qty == 3 ? 'selected' : '' }}>3</option>
@@ -57,10 +57,15 @@
                             <td>₱{{ $item->subtotal }}</td>
                             <td class=""></td>
                             <td>
-                                <form action="{{ url('cart', [$item->rowId]) }}" method="POST" class="side-by-side">
+                                    {{-- <a href="/cart/{{$item->model->id}}/delete" class="btn btn-success"><i class="fas fa-delete"></i></a> --}}
+                                    
+                                <form action=" {{url ('cart.destroy',$item->id) }}" method="post">
+                                    @csrf @method('DELETE') 
+                                    <button class="btn btn-danger" type="submit"> Delete </button>
+                                {{-- <form action="{{ url('cart', [$item->rowId]) }}" method="POST" class="side-by-side">
                                     {!! csrf_field() !!}
                                     <input type="hidden" name="_method" value="DELETE">
-                                    <input type="submit" class="btn btn-danger btn-sm" value="Remove">
+                                    <input type="submit" class="btn btn-danger btn-sm" value="Remove"> --}}
                                 </form>
                             </td>
                         </tr>
