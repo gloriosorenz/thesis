@@ -16,7 +16,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        return view('cart');
+        return view('cart.cart');
     }
 
     /**
@@ -51,14 +51,15 @@ class CartController extends Controller
             return $cartItem->id === $request->id;
         });
 
-        if (!$duplicates->isEmpty()) {
-            return redirect('cart')->withSuccessMessage('Item is already in your cart!');
+       
+        if ($duplicates->isNotEmpty()) {
+            return redirect()->route('cart.index')->with('success_message', 'Item is already in your cart!');
         }
 
         Cart::add($request->id, $request->id, 1, $request->price)
-                ->associate('App\ProductList');
+            ->associate('App\ProductList');
 
-        return redirect('cart')->withSuccessMessage('Product was added to your cart!');
+        return redirect()->route('cart.index')->with('success_message', 'Item was added to your cart!');
     }
 
 
@@ -97,9 +98,14 @@ class CartController extends Controller
     public function destroy($id)
     {
         // Cart::remove($id);
-        $cart = Cart::find($id);
-                $cart->delete();
-        return redirect('cart')->withSuccessMessage('Item has been removed!');
+        // $cart = Cart::find($id);
+        //         $cart->delete();
+                
+        Cart::remove($id);
+
+        return back()->with('success_message', 'Item has been removed!');
+
+        // return redirect('cart')->withSuccessMessage('Item has been removed!');
     }
 
     /**

@@ -46,22 +46,23 @@
                             <td><a href="{{ url('/product_lists/show_products', [$item->model->products->type]) }}">{{ $item->model->products->type }}</a></td>
                             <td>{{ $item->model->rice_farmers->company }}</td>
                             <td>
-                                <select class="quantity" data-id="{{ $item->rowId }}">
-                                    <option {{ $item->qty == 1 ? 'selected' : '' }}>1</option>
-                                    <option {{ $item->qty == 2 ? 'selected' : '' }}>2</option>
-                                    <option {{ $item->qty == 3 ? 'selected' : '' }}>3</option>
-                                    <option {{ $item->qty == 4 ? 'selected' : '' }}>4</option>
-                                    <option {{ $item->qty == 5 ? 'selected' : '' }}>5</option>
+                                <select class="quantity" data-id="{{ $item->rowId }}" data-productQuantity="{{ $item->model->curr_quantity }}">
+                                    @for ($i = 1; $i < $item->model->curr_quantity + 1 ; $i++)
+                                        <option {{ $item->model->curr_quantity == $i ? 'selected' : '' }}>{{ $i }}</option>
+                                    @endfor                                
                                 </select>
                             </td>
-                            <td>₱{{ $item->subtotal }}</td>
+                            <td>₱{{ $item->model->price }}</td>
                             <td class=""></td>
                             <td>
                                     {{-- <a href="/cart/{{$item->model->id}}/delete" class="btn btn-success"><i class="fas fa-delete"></i></a> --}}
                                     
-                                <form action=" {{url ('cart.destroy',$item->id) }}" method="post">
-                                    @csrf @method('DELETE') 
-                                    <button class="btn btn-danger" type="submit"> Delete </button>
+                                <form action=" {{route ('cart.destroy',$item->rowId) }}" method="POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+    
+                                    <button type="submit" class="cart-options">Remove</button>
+                                </form>
                                 {{-- <form action="{{ url('cart', [$item->rowId]) }}" method="POST" class="side-by-side">
                                     {!! csrf_field() !!}
                                     <input type="hidden" name="_method" value="DELETE">
@@ -88,13 +89,13 @@
                 <a href="{{ url('//product_lists/show_products') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
                 <a href="#" class="btn btn-success btn-lg">Proceed to Checkout</a>
     
-                <div style="float:right">
-                    <form action="{{ url('/emptyCart') }}" method="POST">
+                {{-- <div style="float:right">
+                    <form action="{{route ('cart.emptycart') }}" method="POST">
                         {!! csrf_field() !!}
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="submit" class="btn btn-danger btn-lg" value="Empty Cart">
                     </form>
-                </div>
+                </div> --}}
     
             @else
     

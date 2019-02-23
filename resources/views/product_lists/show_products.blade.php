@@ -29,6 +29,7 @@
                              @csrf
                             <input type="hidden" name="id" value="{{ $product_list->id }}">
                             <input type="hidden" name="price" value="{{ $product_list->price }}">
+                            <input type="hidden" name="quantity" value="{{ $product_list->curr_quantity }}">
 
                             <button type="submit" class="button button-plain">Add to Cart</button>
                         </form>                    

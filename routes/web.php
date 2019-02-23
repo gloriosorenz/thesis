@@ -38,9 +38,11 @@ Route::get('/dashboard', function() {
 // });
 Route::get('/cart','CartController@index')->name('cart.index');
 Route::post('/cart','CartController@store')->name('cart.index');
-Route::get('emptycart',function(){
-    Cart:destroy();
-});
+Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy');
+// Route::delete('/cart/emptycart', 'CartController@emptycart')->name('cart.emptycart');
+// Route::get('/cart/emptycart',function(){
+//     Cart:destroy();
+// });
 
 //Products
 Route::get('/products', 'ProductController@products');
