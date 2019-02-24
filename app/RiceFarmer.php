@@ -25,4 +25,7 @@ class RiceFarmer extends Model
         return $this->belongsTo(Barangay::class, 'barangays_id');
     }
    
+    public function products(){
+        return $this->hasMany('App\ProductList');
+    }
 }

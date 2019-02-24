@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Season;
 use App\SeasonList;
 use App\SeasonStatus;
+use App\SeasonType;
 use App\RiceFarmer;
+use App\ProductList;
+use App\Product;
 use DB;
 
 class SeasonController extends Controller
@@ -89,10 +92,12 @@ class SeasonController extends Controller
     {
         $season = Season::find($id);
         $lists = SeasonList::where('seasons_id', $season->id)->get();
+        $product_lists = ProductList::where('seasons_id', $season->id)->get();
 
         return view('seasons.show')
             ->with('season', $season)
-            ->with('lists', $lists);
+            ->with('lists', $lists)
+            ->with('product_lists', $product_lists);
     }
 
     /**
@@ -104,15 +109,19 @@ class SeasonController extends Controller
     public function edit($id)
     {
         $season = Season::findOrFail($id);
-        $types = \App\SeasonType::get()->pluck('type', 'id');
-        $rice_farmers = \App\RiceFarmer::get()->pluck('company', 'id');
-        $lists = SeasonList::where('seasons_id', $season->id)->get();
+        $types = SeasonType::get()->pluck('type', 'id');
+        $rice_farmers = RiceFarmer::get()->pluck('company', 'id');
+        $season_lists = SeasonList::where('seasons_id', $season->id)->get();
+        $products = Product::get()->pluck('type', 'id');
+        $product_lists = ProductList::where('seasons_id', $season->id)->get();
 
         return view('seasons.edit')
             ->with('season', $season)
             ->with('types', $types)
             ->with('rice_farmers', $rice_farmers)
-            ->with('lists', $lists);
+            ->with('season_lists', $season_lists)
+            ->with('products', $products)
+            ->with('product_lists', $product_lists);
     }
 
     /**
@@ -130,19 +139,31 @@ class SeasonController extends Controller
 
         if($season->save()){
             $id = $season->id;
-       
-            $season_lists = $request->all();
-
-            $lists = SeasonList::where('seasons_id', $season->id)->get(); 
-            foreach($lists as $list){
-                $key = array_search($list->id, $season_lists['id']);
-                $list->actual_hectares = $request->actual_hectares[$key];
-                $list->actual_num_farmers = $request->actual_num_farmers[$key];
-                $list->actual_qty = $request->actual_qty[$key];
-                $list->save();
-            
+            $plist = $request->all();
+            $plist = ProductList::where('seasons_id', $season->id)->get();
+            foreach($request->id as $i => $id) { 
+                $list = SeasonList::findOrFail($id);
+                $list->update([
+                    'actual_hectares' => $request->actual_hectares[$i],
+                    'actual_num_farmers' => $request->actual_num_farmers[$i],
+                    'actual_qty' => $request->actual_qty[$i],
+                    ]);
             }
+
+        
+            foreach($request->rice_farmers_id as $key => $value) {
+                $data=array(
+                            'seasons_id' => $season->id,
+                            'rice_farmers_id'=>$request->rice_farmers_id [$key],
+                            'products_id'=>$request->products_id [$key],
+                            'orig_quantity'=>$request->orig_quantity [$key],
+                            'curr_quantity'=>$request->curr_quantity [$key],
+                            'price'=>$request->price [$key]);
+ 
+                ProductList::insert($data);
+            }  
         }
+
         
 
 

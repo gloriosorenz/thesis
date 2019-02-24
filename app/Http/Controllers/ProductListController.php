@@ -28,19 +28,12 @@ class ProductListController extends Controller
     {
         $seasons = Season::orderBy('id', 'desc')->get();
         // $lists = SeasonList::where('rice_farmers_id', '=', Auth::user()->id)->get();
-        $lists = SeasonList::all();
+        $product_lists = SeasonList::all();
 
-        // $lists = DB::table('season_lists')
-        //         ->join('rice_farmers', 'season_lists.rice_farmers_id', '=', 'rice_farmers.id')
-        //         ->join('users', 'rice_farmers.users_id', '=', 'users.id')
-        //         ->select('season_lists.*', 'rice_farmers.company', 'users.*')
-        //         ->where('rice_farmers.users_id', '=', auth()->user()->id)
-        //         ->get();
-
-        // dd($lists);
+        
         return view('product_lists.index')
             ->with('seasons', $seasons)
-            ->with('lists', $lists);
+            ->with('product_lists', $product_lists);
     }
 
      
@@ -81,13 +74,24 @@ class ProductListController extends Controller
      */
     public function show($id)
     {
-        $season = Season::find($id);
-        // $lists = SeasonList::where('rice_farmers_id', '=', Auth::user()->id)->get();
-        $lists = SeasonList::where('seasons_id', $season->id)->get();
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
 
-        return view('seasons.show')
+        $season = Season::find($id);
+        $lists = SeasonList::where('seasons_id', $season->id)->get();
+        $product_lists = ProductList::where('seasons_id', $season->id)->get();
+
+        // $user = DB::table('product_lists')
+        //             ->join('rice_farmers', 'product_lists.rice_farmers_id', '=', 'rice_farmers.id')
+        //             ->join('users', 'rice_farmers.users_id', '=', 'users.id')
+        //             ->where(auth()->user()->id, '=', 'users.id')
+        //             ->get();
+
+        // dd($product_lists);
+        return view('product_lists.show')
             ->with('season', $season)
-            ->with('lists', $lists);
+            ->with('lists', $lists)
+            ->with('product_lists', $user->rice_farmers->products);
     }
 
     /**

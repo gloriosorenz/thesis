@@ -1975,17 +1975,17 @@
     },
     {
         "name": "opis/closure",
-        "version": "3.1.5",
-        "version_normalized": "3.1.5.0",
+        "version": "3.1.6",
+        "version_normalized": "3.1.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/opis/closure.git",
-            "reference": "41f5da65d75cf473e5ee582df8fc7f2c733ce9d6"
+            "reference": "ccb8e3928c5c8181c76cdd0ed9366c5bcaafd91b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/opis/closure/zipball/41f5da65d75cf473e5ee582df8fc7f2c733ce9d6",
-            "reference": "41f5da65d75cf473e5ee582df8fc7f2c733ce9d6",
+            "url": "https://api.github.com/repos/opis/closure/zipball/ccb8e3928c5c8181c76cdd0ed9366c5bcaafd91b",
+            "reference": "ccb8e3928c5c8181c76cdd0ed9366c5bcaafd91b",
             "shasum": ""
         },
         "require": {
@@ -1995,7 +1995,7 @@
             "jeremeamia/superclosure": "^2.0",
             "phpunit/phpunit": "^4.0|^5.0|^6.0|^7.0"
         },
-        "time": "2019-01-14T14:45:33+00:00",
+        "time": "2019-02-22T10:30:00+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {

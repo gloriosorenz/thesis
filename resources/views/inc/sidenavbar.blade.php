@@ -35,8 +35,13 @@
                 Seasons
             </a>
         </li>
-
-
+        {{-- PRODUCTS --}}
+        <li class="{{Request:: is('product_lists') ? 'active' : ''}}">
+            <a href="{{ route('product_lists.index' )}}">
+                <i class="fas fa-box"></i>
+                Products
+            </a>
+        </li>
         {{-- USER MANAGEMENT --}}
         <li class="{{Request:: is('roles', 'users') ? 'active' : ''}}"><!-- Link with dropdown items -->
             <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false"><i class="fa fa-users"></i> User Management <i class="fa fa-caret-down"></i></a>
@@ -110,12 +115,12 @@
             </a>
         </li>
         {{-- SEASON --}}
-        {{-- <li lass="{{Request:: is('seasons') ? 'active' : ''}}">
-            <a href="{{ url('seasons/farmer_seasons') }}">
+        <li lass="{{Request:: is('seasons') ? 'active' : ''}}">
+            <a href="{{ route('seasons.index') }}">
                 <i class="fas fa-sun"></i>
                 Seasons
             </a>
-        </li> --}}
+        </li>
          {{-- PRODUCTS --}}
          <li class="{{Request:: is('product_lists') ? 'active' : ''}}">
             <a href="{{ route('product_lists.index' )}}">

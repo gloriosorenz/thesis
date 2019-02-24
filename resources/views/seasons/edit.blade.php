@@ -1,23 +1,24 @@
 @extends('layouts.app')
-@include('partials.add_farmer_javascript')
+@include('partials.update_farmer_javascript')
 @section('content')
-{{-- BREADCRUMB --}}
+{{-- Breadcru,b --}}
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('users.index') }}">Users</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Create</li>
+    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('seasons.index') }}">Seasons</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Update</li>
 </ol>
 </nav>
 
 <a class="btn btn-md btn-secondary" href="{{URL::previous()}}">Back</a>
 <br>
 <br>
-{{-- FORM --}}
+{{-- Form --}}
 <form method="post" action="{{action('SeasonController@update', $season->id)}}">
 @method('PATCH')
 @csrf
 
+{{-- Update Season Info --}}
 <div class="row">
         <div class="offset-md-1 col-md-8 ">
         <div class="card">
@@ -58,51 +59,90 @@
     </div>
 </div>
 
-
 <br>
 
+{{-- Update Farmer --}}
 <div class="row">
     <div class="offset-md-1 col-md-10 offset-md-1">
         <h3>Update Farmer/s</h3>
         <table class="table table-bordered" id="table_id">
             <thead>
                 <tr>
-                    <th></th>
+                    <th>ID</th>
                     <th>Rice Farmer</th>
-                    <th>Planned Hectares</th>
-                    <th>Planned Number of Farmers</th>
-                    <th>Planned Quantity</th>
                     <th>Actual Hectares</th>
                     <th>Actual Number of Farmers</th>
                     <th>Actual Quantity</th>
-                    <th>Delete</th>
-                    {{-- <th style="text-align:center"><a href="#" class="addRow"><i class="fas fa-plus"></i></a></th> --}}
+                    <th style="text-align:center"><a href="#" class="addRow2"><i class="fas fa-plus"></i></a></th>
                 </tr>
             </thead>
-            <tbody class="resultbody2">
-                @foreach ($lists as $list)
+            <tbody>
+                @foreach ($season_lists as $list)
                 <tr>
-                    <td><input type="hidden" name="id[]" value="{{ $list->id }}"></td>
+                    <td><input readonly class="form-control" type="text" name="id[]" id="id" value="{{$list->id}}"/></td>
                     <td>
-                        <select class="form-control" name="rice_farmers_id[]" id="rice_farmers_id">
+                        <select class="form-control" name="rice_farmers_id[]">
                             <option value="0" selected="true" disabled="True">{{ $list->rice_farmers->company }}</option>
                             @foreach ($rice_farmers as $key=>$p)
-                            <option value="{{$key}}">{{$p}}</option>
+                                <option value="{{$key}}">{{$p}}</option>
                             @endforeach
                         </select>
                     </td>
-                    <td><input readonly="true" type="text" class="form-control" name="planned_hectares[]" value="{{ $list->planned_hectares }}" /></td>
-                    <td><input readonly="true" type="text" class="form-control" name="planned_num_farmers[]" value="{{ $list->planned_num_farmers }}" /></td>
-                    <td><input readonly="true" type="text" class="form-control" name="planned_qty[]" value="{{ $list->planned_qty }}" /></td>
                     <td><input type="text" class="form-control" name="actual_hectares[]" value="{{ $list->actual_hectares }}" /></td>
                     <td><input type="text" class="form-control" name="actual_num_farmers[]" value="{{ $list->actual_num_farmers }}" /></td>
                     <td><input type="text" class="form-control" name="actual_qty[]" value="{{ $list->actual_qty }}" /></td>
-                    <td><input type="button" class="btn btn-danger remove" value="x"></td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-        <center><input type="button" class="btn btn-lg btn-warning addRow2" value="+"></center>
+        <br>
+        <br>
+    </div>
+</div>
+
+
+{{-- Add Products --}}
+<div class="row">
+    <div class="offset-md-1 col-md-10 offset-md-1">
+        <h3>Prducts</h3>
+        <table class="table table-bordered" id="table_id">
+            <thead>
+                <tr>
+                    <th>Rice Farmer</th>
+                    <th>Product</th>
+                    <th>Original Quantity</th>
+                    <th>Current Quantity</th>
+                    <th>Price</th>
+                    <th>Delete</th>
+                    <th style="text-align:center"><a href="#" class="addRow"><i class="fas fa-plus"></i></a></th>
+                </tr>
+            </thead>
+            <tbody class="resultbody3">
+                <tr>
+                    <td>
+                        <select class="form-control" name="rice_farmers_id[]" id="rice_farmers_id">
+                            <option value="0" selected="true" disabled="True">Select Farmer</option>
+                            @foreach ($rice_farmers as $key=>$p)
+                                <option value="{{$key}}">{{$p}}</option>
+                            @endforeach
+                        </select>
+                    </td>
+                    <td>
+                        <select class="form-control" name="products_id[]" id="products_id">
+                            <option value="0" selected="true" disabled="True">Select Product</option>
+                            @foreach ($products as $key=>$p)
+                                <option value="{{$key}}">{{$p}}</option>
+                            @endforeach
+                        </select>
+                    </td>
+                    <td><input type="text" class="form-control" name="orig_quantity[]" value="" /></td>
+                    <td><input type="text" class="form-control" name="curr_quantity[]" value="" /></td>
+                    <td><input type="text" class="form-control" name="price[]" value="" /></td>
+                    <td><input type="button" class="btn btn-danger remove" value="x"></td>
+                </tr>
+            </tbody>
+        </table>
+        <center><input type="button" class="btn btn-lg btn-warning addRow3" value="+"></center>
         <br>
         <br>
     </div>

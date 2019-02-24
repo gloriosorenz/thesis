@@ -35,6 +35,7 @@
         $('#farmers_table').DataTable();
         $('#customers_table').DataTable();
         $('#seasons_table').DataTable();
+        $('#product_lists_table').DataTable();
     } );
 
 </script>

@@ -15,29 +15,44 @@
 <br>
 <br>
 
-@if(count($seasons) > 0)
-    <div class="row">
-    @foreach ($seasons as $season)
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-header">
-                    Season {{ $season->id }}
-                </div>
-                <div class="card-body">
-                    {{-- <h5 class="card-title">Season Type:</h5> --}}
-                    <p class="card-text">Type: {{$season->season_types->type}}</p>
-                    <p class="card-text">Start: {{$season->season_start}}</p>
-                    <p class="card-text">End: {{$season->season_end}}</p>
-                    <p class="card-text">Status: {{$season->season_statuses->status}}</p>
-                    <a href="/product_lists/{{$season->id}}" class="btn btn-primary">Show</a>
-                </div>
-            </div>
-        </div>
-    @endforeach
+<!-- Seasons List Datatable -->
+<div class="card">
+    <div class="card-header">
+        <h2 class="title">Seasons (Products)</h2>
     </div>
-    <br>
-@else
-    <p>No seasons found</p>
-@endif
+    <div class="card-body">
+        <table id="seasons_table" class="table table-hover">
+            @if(count($seasons) > 0)
+            <thead>
+                <tr>
+                    <th width="">Season</th>
+                    <th width="">Type</th>
+                    <th width="">Date Start</th>
+                    <th width="">Date End</th>
+                    <th width="">Status</th>
+                    <th width="">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($seasons as $season)
+                <tr class="tr">
+                    <td>{{ $season->id }}</td>
+                    <td>{{ $season->season_types->type }}</td>
+                    <td>{{ $season->season_start }}</td>
+                    <td>{{ $season->season_end }}</td>
+                    {{-- <td></td> --}}
+                    <td>{{ $season->season_statuses->status }}</td>
+                    <td>
+                        <a href="/product_lists/{{$season->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
+                        <a href="/seasons/{{$season->id}}/edit" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                    </td>
+                </tr>
+                @endforeach
+            @else
+                <p>No seasons found</p>
+            @endif
+        </table>
+    </div>
+</div>
 
 @endsection
