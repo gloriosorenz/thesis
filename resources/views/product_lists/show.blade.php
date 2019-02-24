@@ -6,12 +6,10 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Seasons</li>
+    <li class="breadcrumb-item active" aria-current="page">Products</li>
   </ol>
 </nav>
 
-<!-- Add Farmer -->
-{{-- <a class="btn btn-secondary btn-md" href="{{ route('seasons.create') }}">+Add</a> --}}
 <br>
 <br>
 
@@ -23,7 +21,7 @@
     </div>
     <div class="card-body">
         <table id="product_lists_table" class="table table-bordered">
-            @if(count($season) > 0)
+            @if(count($product_lists) > 0)
             <thead>
                 <tr>
                     <th width="">ID</th>
@@ -47,18 +45,18 @@
                     <td>{{ $list->curr_quantity }}</td>
                     <td>{{ $list->price }}</td>
                     <td>
-                        {{-- <a href="/seasons_lists/{{$list->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
-                        <a href="/season_lists/{{$list->id}}/edit" class="btn btn-success"><i class="fas fa-edit"></i></a>
-                        <form action="{{ route('season_lists.destroy', $list->id)}}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger" type="submit"><i class="fas fa-trash-alt"></i></button>
-                        </form> --}}
+                        @if(!Auth::guest())
+                            @if(Auth::user()->id == $list->rice_farmers->users->id)
+                                <a href="/product_lists/{{$list->id}}" class="btn btn-secondary">Edit</a>
+                            @elseif(Auth::user()->roles_id == 1)
+                                <a href="/product_lists/{{$list->id}}" class="btn btn-secondary">Edit</a>
+                            @endif
+                        @endif
                     </td>
                 </tr>
                 @endforeach
             @else
-                <p>No seasons found</p>
+                <p>No products found</p>
             @endif
         </table>
     </div>

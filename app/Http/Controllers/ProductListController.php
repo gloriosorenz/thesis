@@ -26,7 +26,7 @@ class ProductListController extends Controller
      */
     public function index()
     {
-        $seasons = Season::orderBy('id', 'desc')->get();
+        $seasons = Season::orderBy('id', 'desc')->paginate(10);
         // $lists = SeasonList::where('rice_farmers_id', '=', Auth::user()->id)->get();
         $product_lists = SeasonList::all();
 
@@ -78,20 +78,12 @@ class ProductListController extends Controller
         $user = User::find($user_id);
 
         $season = Season::find($id);
-        $lists = SeasonList::where('seasons_id', $season->id)->get();
         $product_lists = ProductList::where('seasons_id', $season->id)->get();
 
-        // $user = DB::table('product_lists')
-        //             ->join('rice_farmers', 'product_lists.rice_farmers_id', '=', 'rice_farmers.id')
-        //             ->join('users', 'rice_farmers.users_id', '=', 'users.id')
-        //             ->where(auth()->user()->id, '=', 'users.id')
-        //             ->get();
-
-        // dd($product_lists);
+       
         return view('product_lists.show')
             ->with('season', $season)
-            ->with('lists', $lists)
-            ->with('product_lists', $user->rice_farmers->products);
+            ->with('product_lists', $product_lists);
     }
 
     /**

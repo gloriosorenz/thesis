@@ -16,7 +16,7 @@
 <br>
 
 <!-- Seasons List Datatable -->
-<div class="card">
+{{-- <div class="card">
     <div class="card-header">
         <h2 class="title">Seasons (Products)</h2>
     </div>
@@ -40,7 +40,6 @@
                     <td>{{ $season->season_types->type }}</td>
                     <td>{{ $season->season_start }}</td>
                     <td>{{ $season->season_end }}</td>
-                    {{-- <td></td> --}}
                     <td>{{ $season->season_statuses->status }}</td>
                     <td>
                         <a href="/product_lists/{{$season->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
@@ -53,6 +52,28 @@
             @endif
         </table>
     </div>
+</div> --}}
+
+<br>
+
+@if (count($seasons) > 0)
+<div class="row">
+    @foreach ($seasons as $season)
+    <div class="col-md-6">
+        <div class="jumbotron">
+            <h1>Season {{$season->id}}</h1>
+            <p class="lead">Type: {{$season->season_types->type}}</p>
+            <p class="lead">Start: {{$season->season_start}}</p>
+            <p class="lead">End: {{$season->season_end}}</p>
+            <p class="lead">Status: {{ $season->season_statuses->status }}</p>
+            <a class="btn btn-lg btn-secondary" href="/product_lists/{{$season->id}}" role="button">Show</a>
+        </div>
+    </div>
+    @endforeach
 </div>
+{{$seasons->links()}}
+@else
+<p>No seasons found</p>
+@endif
 
 @endsection

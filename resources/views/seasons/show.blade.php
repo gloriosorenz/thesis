@@ -32,7 +32,7 @@
                     <th width="">Actual Hectares</th>
                     <th width="">Actual No. Of Farmers</th>
                     <th width="">Actual Quantity</th>
-                    <th width="">Products</th>
+                    <th width="">Options</th>
                 </tr>
             </thead>
             <tbody>
