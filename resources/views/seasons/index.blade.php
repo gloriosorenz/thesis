@@ -16,7 +16,7 @@
 <br>
 
 <!-- Seasons List Datatable -->
-<div class="card">
+<div class="card shadow">
     <div class="card-header">
         <h2 class="title">Seasons</h2>
     </div>

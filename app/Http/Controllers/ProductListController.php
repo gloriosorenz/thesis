@@ -77,6 +77,7 @@ class ProductListController extends Controller
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
 
+        
         $season = Season::find($id);
         $product_lists = ProductList::where('seasons_id', $season->id)->get();
 

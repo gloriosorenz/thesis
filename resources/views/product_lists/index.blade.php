@@ -59,7 +59,7 @@
 @if (count($seasons) > 0)
 <div class="row">
     @foreach ($seasons as $season)
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="jumbotron">
             <h1>Season {{$season->id}}</h1>
             <p class="lead">Type: {{$season->season_types->type}}</p>
