@@ -25,7 +25,6 @@
             <thead>
                 <tr>
                     <th width="">ID</th>
-                    <th width="">Season</th>
                     <th width="">Product Type</th>
                     <th width="">Rice Farmer</th>
                     <th width="">Original Quantity</th>
@@ -38,7 +37,6 @@
                 @foreach($product_lists as $list)
                 <tr class="tr">
                     <td>{{ $list->id }}</td>
-                    <td>Season {{ $list->seasons->id }}</td>
                     <td>{{ $list->products->type }}</td>
                     <td>{{ $list->rice_farmers->users->first_name}} {{ $list->rice_farmers->users->last_name}}</td>
                     <td>{{ $list->orig_quantity }}</td>
