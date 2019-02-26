@@ -31,6 +31,7 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '0d8253363903f0ac7b0978dcde4e28a0' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/helpers.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
+        'b4e3f29b106af37a2bb239f73cdf68c7' => __DIR__ . '/../..' . '/app/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -437,7 +438,6 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Customer' => __DIR__ . '/../..' . '/app/Customer.php',
         'App\\CustomerType' => __DIR__ . '/../..' . '/app/CustomerType.php',
-        'App\\DamagedProduct' => __DIR__ . '/../..' . '/app/DamagedProduct.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -468,7 +468,6 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Order' => __DIR__ . '/../..' . '/app/Order.php',
         'App\\OrderProduct' => __DIR__ . '/../..' . '/app/OrderProduct.php',
-        'App\\PlannedCrop' => __DIR__ . '/../..' . '/app/PlannedCrop.php',
         'App\\Product' => __DIR__ . '/../..' . '/app/Product.php',
         'App\\ProductList' => __DIR__ . '/../..' . '/app/ProductList.php',
         'App\\ProductType' => __DIR__ . '/../..' . '/app/ProductType.php',
@@ -479,7 +478,6 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Province' => __DIR__ . '/../..' . '/app/Province.php',
         'App\\RiceFarmer' => __DIR__ . '/../..' . '/app/RiceFarmer.php',
-        'App\\RiceProduct' => __DIR__ . '/../..' . '/app/RiceProduct.php',
         'App\\RiceType' => __DIR__ . '/../..' . '/app/RiceType.php',
         'App\\Role' => __DIR__ . '/../..' . '/app/Role.php',
         'App\\Season' => __DIR__ . '/../..' . '/app/Season.php',
@@ -488,7 +486,6 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'App\\SeasonType' => __DIR__ . '/../..' . '/app/SeasonType.php',
         'App\\Seed' => __DIR__ . '/../..' . '/app/Seed.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
-        'App\\WitheredProduct' => __DIR__ . '/../..' . '/app/WitheredProduct.php',
         'BarangayTableSeeder' => __DIR__ . '/../..' . '/database/seeds/BarangayTableSeeder.php',
         'BeyondCode\\DumpServer\\DumpServerCommand' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',

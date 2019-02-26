@@ -38,12 +38,20 @@ Route::get('/home', 'HomeController@index')->name('home');
 //     return view('cart');
 // });
 Route::get('/cart','CartController@index')->name('cart.index');
-Route::post('/cart','CartController@store')->name('cart.index');
+// Route::post('/cart','CartController@store')->name('cart.index');
+Route::post('/cart', 'CartController@store')->name('cart.index');
+Route::patch('/cart/{product}','CartController@update')->name('cart.update');
+// Route::patch('/cart/{product}', 'CartController@update')->name('cart.update');
 Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy');
 // Route::delete('/cart/emptycart', 'CartController@emptycart')->name('cart.emptycart');
 // Route::get('/cart/emptycart',function(){
 //     Cart:destroy();
 // });
+
+//Checkout
+Route::get('/checkout', 'CheckoutController@index')->name('checkout.index')->middleware('auth');
+Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
+
 
 //Products
 Route::get('/products', 'ProductController@products');

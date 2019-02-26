@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use \Cart as Cart;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Validator;
+use App\ProductList;
 // use Gloudemans\ShoppingCart\Facades\Cart;
 
 class CartController extends Controller
@@ -14,10 +16,24 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
-        return view('cart.cart');
+
+        // $subtotal = ProductList::getNumbers1()->get();
+
+        // return view('cart.cart')->with(
+        //     // 'newSubtotal' => getNumbers1()->get('newSubtotal'),
+        //     'subtotal', $subtotal
+        // );    
+        return view('cart.cart')->with([
+            'newSubtotal' => getNumbers()->get('newSubtotal'),
+            'newTotal' => getNumbers()->get('newTotal'),
+        ]);
+        // return view('cart.cart');
     }
+
+   
 
     /**
      * Show the form for creating a new resource.
@@ -75,13 +91,18 @@ class CartController extends Controller
 
          // Validation on max quantity
          $validator = Validator::make($request->all(), [
-            'quantity' => 'required|numeric|between:1,5'
+            'quantity' => 'required|numeric|'
         ]);
 
          if ($validator->fails()) {
             session()->flash('error_message', 'Quantity must be between 1 and 5.');
             return response()->json(['success' => false]);
          }
+
+        if ($request->quantity > $request->productQuantity) {
+            session()->flash('errors', collect(['We currently do not have enough items in stock.']));
+            return response()->json(['success' => false], 400);
+        }
 
         Cart::update($id, $request->quantity);
         session()->flash('success_message', 'Quantity was updated successfully!');

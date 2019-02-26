@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="cart-section container">
-            <p><a href="{{ url('shop') }}">Home</a> / Cart</p>
+            <p><a href="{{ url('/product_lists/show_products') }}">Home</a> / Cart</p>
             <h1>Your Cart</h1>
     
             <hr>
@@ -28,35 +28,34 @@
                             <th>Product</th>
                             <th>Farmer Organization</th>
                             <th>Quantity</th>
-                            <th>Price</th>
+                            <th>Individual Price</th>
+                            <th>Total Price</th>
                             <th class="column-spacer"></th>
                             <th></th>
                         </tr>
                     </thead>
     
                     <tbody>
-                        {{-- @foreach(Cart::content() as $x)
-                            <td>{{ $x->model->curr_quantity }}</td>
-                        
-
-                        @endforeach --}}
 
                         @foreach (Cart::content() as $item)
                         <tr>
                             <td><a href="{{ url('/product_lists/show_products', [$item->model->products->type]) }}">{{ $item->model->products->type }}</a></td>
                             <td>{{ $item->model->rice_farmers->company }}</td>
                             <td>
-                                <select class="quantity" data-id="{{ $item->rowId }}" data-productQuantity="{{ $item->model->curr_quantity }}">
-                                    @for ($i = 1; $i < $item->model->curr_quantity + 1 ; $i++)
-                                        <option {{ $item->model->curr_quantity == $i ? 'selected' : '' }}>{{ $i }}</option>
-                                    @endfor                                
-                                </select>
+                                <div class="cart-table-row-right">
+                                    <select class="quantity" data-id="{{ $item->rowId }}" data-productQuantity="{{ $item->model->curr_quantity }}">
+                                        @for ($i = 1; $i < $item->model->curr_quantity + 1 ; $i++)
+                                            <option {{ $item->qty == $i ? 'selected' : '' }}>{{ $i }}</option>
+                                        @endfor                                
+                                    </select>
+                                </div>
                             </td>
-                            <td>₱{{ $item->model->price }}</td>
-                            <td class=""></td>
+                            <td>{{ $item->model->presentPrice() }}</td>
+                            <td>{{ presentPrice($item->subtotal) }}</td>
                             <td>
                                     {{-- <a href="/cart/{{$item->model->id}}/delete" class="btn btn-success"><i class="fas fa-delete"></i></a> --}}
-                                    
+                                    {{-- {{ $item->model->presentPrice() }} --}}
+
                                 <form action=" {{route ('cart.destroy',$item->rowId) }}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
@@ -77,7 +76,9 @@
                             <td></td>
                             <td class="small-caps table-bg" style="text-align: right">Total</td>
                             <td>₱{{ Cart::instance('default')->subtotal() }}</td>
-                            <td></td>
+                            {{-- <td>₱{{ Cart::instance('default')->subtotal() }}</td> --}}
+
+                            {{-- <td><span class="cart-totals-total">{{ $item->model->presentPrice($newTotal) }}</span></td> --}}
                             <td></td>
                         </tr>
 
@@ -107,34 +108,35 @@
             <div class="spacer"></div>
     
     </div>
+
 @endsection
 
-@section('extra-js')
-    <script>
-        (function(){
+    @section('extra-js')
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script>
+            (function(){
+                const classname = document.querySelectorAll('.quantity')
+    
+                Array.from(classname).forEach(function(element) {
+                    element.addEventListener('change', function() {
+                        const id = element.getAttribute('data-id')
+                        const productQuantity = element.getAttribute('data-productQuantity')
+                        // console.log('error 1');
 
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $('.quantity').on('change', function() {
-                var id = $(this).attr('data-id')
-                $.ajax({
-                  type: "PATCH",
-                  url: '{{ url("/cart") }}' + '/' + id,
-                  data: {
-                    'quantity': this.value,
-                  },
-                  success: function(data) {
-                    window.location.href = '{{ url('/cart') }}';
-                  }
-                });
-
-            });
-
-        })();
-
-    </script>
-@endsection
+                        axios.patch(`/cart/${id}`, {
+                            quantity: this.value,
+                            productQuantity: productQuantity
+                        })
+                        .then(function (response) {
+                            // console.log('error 2');
+                            window.location.href = '{{ route('cart.index') }}'
+                        })
+                        .catch(function (error) {
+                            // console.log('error 3');
+                            window.location.href = '{{ route('cart.index') }}'
+                        });
+                    })
+                })
+            })();
+        </script>
+     @endsection
