@@ -23,26 +23,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet"> --}}
 
-    {{-- <style>
-    .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-    }
-
-    @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-        }
-    }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('css/signin.css') }}" rel="stylesheet"> --}}
-
-
+    
 </head>
-<body class="bg-gradient-primary">
+<body class="bg-gradient-success">
     <div class="container">
         @yield('content')
     </div>
