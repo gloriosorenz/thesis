@@ -1,17 +1,4 @@
-@extends('layout')
-
-@section('title', 'Checkout')
-
-@section('extra-css')
-    <style>
-        .mt-32 {
-            margin-top: 32px;
-        }
-    </style>
-
-    <script src="https://js.stripe.com/v3/"></script>
-
-@endsection
+@extends('layouts.web')
 
 @section('content')
 
