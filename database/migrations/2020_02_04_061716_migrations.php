@@ -42,12 +42,12 @@ class Migrations extends Migration
         });
 
         // Cart
-         Schema::table('carts',function(Blueprint $table){
-            $table->foreign('product_lists_id')
-                ->references('id')->on('product_lists')->onDelete('cascade');
-            $table->foreign('customers_id')
-                ->references('id')->on('customers')->onDelete('cascade');
-        });
+        //  Schema::table('carts',function(Blueprint $table){
+        //     $table->foreign('product_lists_id')
+        //         ->references('id')->on('product_lists')->onDelete('cascade');
+        //     $table->foreign('customers_id')
+        //         ->references('id')->on('customers')->onDelete('cascade');
+        // });
 
         // Product List
         Schema::table('product_lists',function(Blueprint $table){
@@ -73,6 +73,22 @@ class Migrations extends Migration
                 ->references('id')->on('season_types')->onDelete('cascade');
             $table->foreign('season_statuses_id')
                 ->references('id')->on('season_statuses')->onDelete('cascade');
+        });
+
+        // Order Products
+        Schema::table('order_products',function(Blueprint $table){
+            $table->foreign('product_lists_id')
+                ->references('id')->on('product_lists')->onDelete('cascade');
+            $table->foreign('orders_id')
+                ->references('id')->on('orders')->onDelete('cascade');
+        });
+
+        // Orders
+        Schema::table('orders',function(Blueprint $table){
+            // $table->foreign('order_products_id')
+            //     ->references('id')->on('order_products')->onDelete('cascade');
+            $table->foreign('customers_id')
+                ->references('id')->on('customers')->onDelete('cascade');
         });
 
     }
