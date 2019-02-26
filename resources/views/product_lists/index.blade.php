@@ -15,65 +15,53 @@
 <br>
 <br>
 
-<!-- Seasons List Datatable -->
-{{-- <div class="card">
-    <div class="card-header">
-        <h2 class="title">Seasons (Products)</h2>
-    </div>
-    <div class="card-body">
-        <table id="seasons_table" class="table table-hover">
-            @if(count($seasons) > 0)
-            <thead>
-                <tr>
-                    <th width="">Season</th>
-                    <th width="">Type</th>
-                    <th width="">Date Start</th>
-                    <th width="">Date End</th>
-                    <th width="">Status</th>
-                    <th width="">Options</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($seasons as $season)
-                <tr class="tr">
-                    <td>{{ $season->id }}</td>
-                    <td>{{ $season->season_types->type }}</td>
-                    <td>{{ $season->season_start }}</td>
-                    <td>{{ $season->season_end }}</td>
-                    <td>{{ $season->season_statuses->status }}</td>
-                    <td>
-                        <a href="/product_lists/{{$season->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
-                        <a href="/seasons/{{$season->id}}/edit" class="btn btn-success"><i class="fas fa-edit"></i></a>
-                    </td>
-                </tr>
-                @endforeach
-            @else
-                <p>No seasons found</p>
-            @endif
-        </table>
-    </div>
-</div> --}}
 
-<br>
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Products</h1>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+</div>
 
 @if (count($seasons) > 0)
 <div class="row">
     @foreach ($seasons as $season)
-    <div class="col-md-4">
-        <div class="jumbotron">
-            <h1>Season {{$season->id}}</h1>
-            <p class="lead">Type: {{$season->season_types->type}}</p>
-            <p class="lead">Start: {{$season->season_start}}</p>
-            <p class="lead">End: {{$season->season_end}}</p>
-            <p class="lead">Status: {{ $season->season_statuses->status }}</p>
-            <a class="btn btn-lg btn-secondary" href="/product_lists/{{$season->id}}" role="button">Show</a>
+    @if ($season->season_statuses->id == 2)
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Status: {{ $season->season_statuses->status }}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Season {{$season->id}}</div>
+                    </div>
+                    <div class="col-auto">
+                        <a  href="/product_lists/{{$season->id}}" role="button"><i class="fas fa-calendar fa-2x text-gray-300"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    @elseif ($season->season_statuses->id == 1)
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Status: {{ $season->season_statuses->status }}</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">Season {{$season->id}}</div>
+                </div>
+                <div class="col-auto">
+                    <a  href="/product_lists/{{$season->id}}" role="button"><i class="fas fa-calendar fa-2x text-gray-300"></i></a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    @endif
     @endforeach
 </div>
 {{$seasons->links()}}
 @else
 <p>No seasons found</p>
 @endif
-
 @endsection

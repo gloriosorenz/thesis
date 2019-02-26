@@ -16,10 +16,16 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
+    <!-- Custom fonts for this template-->
+    {{-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> --}}
+    {{-- <link href="{{ asset('css/all.min.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"> --}}
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 </head>
-<body>
+{{-- <body>
     <div class="wrapper" id="app">
     @include('inc.sidenavbar')
         <div id="content">
@@ -31,6 +37,23 @@
         </div>
     </div>
 
+    @include('partials.javascripts')
+</body> --}}
+
+
+<body id="page-top">
+    <div id="wrapper">
+        @include('inc.sidenav')
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                @include('inc.topnav')
+                <div class="container-fluid">
+                @yield('content')
+                </div>
+            </div>
+        </div>
+    </div>
+    @include('inc.logout_modal')
     @include('partials.javascripts')
 </body>
 </html>
