@@ -21,11 +21,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-    
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
-    <style>
+    {{-- <style>
     .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -38,17 +38,14 @@
     }
     </style>
     <!-- Custom styles for this template -->
-    <link href="{{ asset('css/signin.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/signin.css') }}" rel="stylesheet"> --}}
 
 
 </head>
-<body class="text-center">
+<body class="bg-gradient-primary">
     <div class="container">
-        <br>
-        <br>
-        {{-- @include('inc.home_navbar') --}}
-        @include('inc.messages')
         @yield('content')
     </div>
+    @include('partials.javascripts')
 </body>
 </html>

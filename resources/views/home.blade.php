@@ -78,7 +78,6 @@
         </div>
     @endif --}}
 
-    <div class="content">
 
         {{-- JUMBOTRON --}}
         <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
@@ -106,5 +105,5 @@
 
 
 
-    </div>
+
 @endsection

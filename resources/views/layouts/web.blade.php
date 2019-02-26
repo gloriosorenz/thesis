@@ -19,20 +19,21 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
-    <div class="wrapper" id="app">
-        <div id="content">
-            <div class="container">
+<body id="page-top">
+    <div id="wrapper">
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content" class="container">
                 @include('inc.home_navbar')
                 @include('inc.messages')
+                <div class="container">
                 @yield('content')
                 @include('inc.footer')
+                </div>
             </div>
         </div>
     </div>
-
+    @include('inc.logout_modal')
     @include('partials.javascripts')
     @yield('extra-js')
-
 </body>
 </html>

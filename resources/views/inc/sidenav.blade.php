@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('home') }}">
@@ -12,6 +12,8 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
+    <!-- Admin Functionalities -->
+    @if(Auth::user()->roles_id == 1)
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         <a class="nav-link" href="{{ url('dashboard') }}">
@@ -19,35 +21,92 @@
         <span>Dashboard</span></a>
     </li>
 
+    <!-- Seasons -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('seasons.index') }}">
         <i class="fas fa-sun"></i>
         <span>Seasons</span></a>
     </li>
 
+    <!-- Products -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('product_lists.index') }}">
         <i class="fas fa-box"></i>
         <span>Products</span></a>
     </li>
 
+    <!-- Rice Farmers -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('rice_farmers.index') }}"">
         <i class="fas fa-leaf"></i>
         <span>Rice Farmers</span></a>
     </li>
 
+    <!-- Customers -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('customers.index') }}">
         <i class="fas fa-user-alt"></i>
         <span>Customers</span></a>
     </li>
 
+    <!-- Reports -->
     <li class="nav-item">
         <a class="nav-link" href="#">
         <i class="fas fa-chart-line"></i>
         <span>Reports</span></a>
     </li>
+
+    <!-- Nav Item - Users Management Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-users"></i>
+            <span>User Management</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Components:</h6>
+                <a class="collapse-item" href="{{ route('users.index') }}">Users</a>
+                <a class="collapse-item" href="{{ route('roles.index') }}">Roles</a>
+            </div>
+        </div>
+    </li>
+
+
+    <!-- Rice Farmer Functionalities -->
+    @elseif(Auth::user()->roles_id == 2)
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url('dashboard') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span></a>
+    </li>
+
+    <!-- Seasons -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('seasons.index') }}">
+        <i class="fas fa-sun"></i>
+        <span>Seasons</span></a>
+    </li>
+
+    <!-- Products -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('product_lists.index') }}">
+        <i class="fas fa-box"></i>
+        <span>Products</span></a>
+    </li>
+    @endif
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Divider -->
     <hr class="sidebar-divider">

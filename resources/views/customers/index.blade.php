@@ -16,8 +16,8 @@
 <br>
 
 <!-- Customer List Datatable -->
-<div class="card">
-    <div class="card-header">
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
         <h2 class="title">Customers</h2>
     </div>
     <div class="card-body">

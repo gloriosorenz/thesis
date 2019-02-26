@@ -13,17 +13,17 @@
 <a class="btn btn-md btn-secondary" href="{{URL::previous()}}">Back</a>
 <br>
 <br>
-{{-- Form --}}
+<!-- Form -->
 <form method="post" action="{{action('SeasonController@update', $season->id)}}">
 @method('PATCH')
 @csrf
 
-{{-- Update Season Info --}}
+<!-- Update Season Info -->
 <div class="row">
         <div class="offset-md-1 col-md-8 ">
-        <div class="card">
+        <div class="card shadow mb-4">
             <div class="card-header card-header-primary">
-                <h4 class="card-title">New Season</h4>
+                <h4 class="card-title">Season {{$season->id}}</h4>
                 <p class="card-category">Update season</p>
             </div>
             <div class="card-body">
@@ -61,7 +61,7 @@
 
 <br>
 
-{{-- Update Farmer --}}
+<!-- Update Farmer -->
 <div class="row">
     <div class="offset-md-1 col-md-10 offset-md-1">
         <h3>Update Farmer/s</h3>
@@ -73,7 +73,6 @@
                     <th>Actual Hectares</th>
                     <th>Actual Number of Farmers</th>
                     <th>Actual Quantity</th>
-                    <th style="text-align:center"><a href="#" class="addRow2"><i class="fas fa-plus"></i></a></th>
                 </tr>
             </thead>
             <tbody>
@@ -101,7 +100,7 @@
 </div>
 
 
-{{-- Add Products --}}
+<!-- Add Products -->
 <div class="row">
     <div class="offset-md-1 col-md-10 offset-md-1">
         <h3>Prducts</h3>
@@ -114,7 +113,6 @@
                     <th>Current Quantity</th>
                     <th>Price</th>
                     <th>Delete</th>
-                    <th style="text-align:center"><a href="#" class="addRow"><i class="fas fa-plus"></i></a></th>
                 </tr>
             </thead>
             <tbody class="resultbody3">
@@ -148,7 +146,7 @@
     </div>
 </div>
 
-{{-- SUBMIT BUTTON --}}
+<!-- Submit Button -->
 <div class="row">
     <div class="offset-md-1 col-md-10 offset-md-1">
         <button type="submit" class="btn btn-success">Update</button>

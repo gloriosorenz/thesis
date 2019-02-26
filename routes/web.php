@@ -28,9 +28,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Dashboard
-Route::get('/dashboard', function() {
-    return view('dashboard');
-});
+// Route::get('/dashboard', function() {
+//     return view('dashboard');
+// });
+
 
 // Cart 
 // Route::get('/cart', function () {
@@ -63,5 +64,7 @@ Route::resource('customers', 'CustomerController');
 Route::resource('products', 'ProductController');
 Route::resource('product_lists', 'ProductListController');
 Route::resource('seasons', 'SeasonController');
+Route::resource('dashboard', 'DashboardController');
+
 
 

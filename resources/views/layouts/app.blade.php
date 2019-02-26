@@ -25,21 +25,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 </head>
-{{-- <body>
-    <div class="wrapper" id="app">
-    @include('inc.sidenavbar')
-        <div id="content">
-            <div class="container-fluid">
-                @include('inc.navbar')
-                @include('inc.messages')
-                @yield('content')
-            </div>
-        </div>
-    </div>
-
-    @include('partials.javascripts')
-</body> --}}
-
 
 <body id="page-top">
     <div id="wrapper">
