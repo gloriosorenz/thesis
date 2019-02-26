@@ -17,7 +17,7 @@
                     <h4 class="my-0 font-weight-normal">{{ $product_list->products->type }}</h4>
                 </div>
                     <div class="card-body">
-                        <h1 class="card-title pricing-card-title">₱{{ $product_list->price }} <small class="text-muted">/ kaban</small></h1>
+                        <h1 class="card-title pricing-card-title">{{ $product_list->presentPrice() }} <small class="text-muted">/ kaban</small></h1>
                         <ul class="list-unstyled mt-3 mb-4">
                         <li>FOR TEST REASONS = Season {{ $product_list->seasons->id }}</li>
                         <li>Available: {{ $product_list->curr_quantity }}</li>

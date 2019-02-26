@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="cart-section container">
-            <p><a href="{{ url('/product_lists/show_products') }}">Home</a> / Cart</p>
+            <br>
             <h1>Your Cart</h1>
     
             <hr>
