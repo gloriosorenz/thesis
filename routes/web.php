@@ -38,8 +38,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 //     return view('cart');
 // });
 Route::get('/cart','CartController@index')->name('cart.index');
-// Route::post('/cart','CartController@store')->name('cart.index');
-Route::post('/cart', 'CartController@store')->name('cart.index');
+Route::post('/cart','CartController@store')->name('cart.index');
+// Route::post('/cart/{product}', 'CartController@store')->name('cart.store');
 Route::patch('/cart/{product}','CartController@update')->name('cart.update');
 // Route::patch('/cart/{product}', 'CartController@update')->name('cart.update');
 Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy');
@@ -52,6 +52,8 @@ Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy')
 Route::get('/checkout', 'CheckoutController@index')->name('checkout.index')->middleware('auth');
 Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
 
+//Confirmation 
+Route::get('/thankyou', 'ConfirmationController@index')->name('confirmation.index');
 
 //Products
 Route::get('/products', 'ProductController@products');

@@ -88,7 +88,7 @@
     
                 
                 <a href="{{ url('/product_lists/show_products') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
-                <a href="#" class="btn btn-success btn-lg">Proceed to Checkout</a>
+                <a href="{{ route('checkout.index') }}" class="btn btn-success btn-lg">Proceed to Checkout</a>
     
                 {{-- <div style="float:right">
                     <form action="{{route ('cart.emptycart') }}" method="POST">
