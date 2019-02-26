@@ -27,7 +27,7 @@
                         <tr>
                             <th>Product</th>
                             <th>Farmer Organization</th>
-                            <th>Quantity</th>
+                            <th>Quantity per Kaban</th>
                             <th>Individual Price</th>
                             <th>Total Price</th>
                             <th class="column-spacer"></th>
@@ -87,7 +87,7 @@
                 </table>
     
                 
-                <a href="{{ url('//product_lists/show_products') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
+                <a href="{{ url('/product_lists/show_products') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
                 <a href="#" class="btn btn-success btn-lg">Proceed to Checkout</a>
     
                 {{-- <div style="float:right">
