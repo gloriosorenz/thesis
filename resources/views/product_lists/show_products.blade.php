@@ -1,16 +1,24 @@
 @extends('layouts.web')
 @section('content')
 
-<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+{{-- <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
     <h1 class="display-4">Samahan ng Magsasaka Sta. Rosa Laguna Portal</h1>
     <p class="lead">All products are produced by the farmers of Laguna.</p>
+</div> --}}
+<br>
+{{-- JUMBOTRON --}}
+<div class="jumbotron p-3 p-md-5 text-white rounded bg-secondary text-center">
+    <div class="col-md-12 px-0">
+        <h1 class="display-4 font-bold">Samahan ng Magsasaka Sta. Rosa Laguna Portal</h1>
+        <p class="lead">All products are produced by the farmers of Laguna.</p>
+    </div>
 </div>
 
 <div class="container">
     <div class="row">
     @if(count($product_lists) > 0)
         @foreach($product_lists as $product_list)
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="card-deck mb-3 text-center"> 
                 <div class="card mb-4 shadow-sm">
                 <div class="card-header">
@@ -26,12 +34,12 @@
                         </ul>
 
                         <form method="post" action="{{action('CartController@store')}}">
-                             @csrf
+                                @csrf
                             <input type="hidden" name="id" value="{{ $product_list->id }}">
                             <input type="hidden" name="price" value="{{ $product_list->price }}">
                             <input type="hidden" name="quantity" value="{{ $product_list->curr_quantity }}">
 
-                            <button type="submit" class="button button-plain">Add to Cart</button>
+                            <button type="submit" class="btb btn-success btn-lg">Add to Cart</button>
                         </form>                    
                     
                     </div>
@@ -45,6 +53,8 @@
     </div>
     
 </div>
+
+
 
     
 

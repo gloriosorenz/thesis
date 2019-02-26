@@ -129,9 +129,17 @@ class ProductListController extends Controller
      */
     public function display_products()
     {
+        
         $product_lists = ProductList::where('products_id', '!=', 3)
                         ->get();
-      
-        return view('product_lists/show_products', compact('product_lists'));
+
+        $farmers = DB::table('product_lists')
+                        ->groupBy('rice_farmers_id', 'seasons_id', 'products_id');
+
+        
+        // dd($farmers);
+        return view('product_lists/show_products')
+                ->with('product_lists', $product_lists)
+                ->with('farmers', $farmers);
     }
 }
