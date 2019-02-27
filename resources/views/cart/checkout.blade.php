@@ -56,7 +56,7 @@
                 </div> <!-- end checkout-table -->
 
                     <hr>
-                    <span class="checkout-totals-total">Total Price: {{ presentPrice($item->subtotal) }}</span>
+                    <span class="checkout-totals-total">Total Price: ₱{{ Cart::instance('default')->subtotal() }}</span>
 
                 </div> <!-- end checkout-totals -->
             </div>

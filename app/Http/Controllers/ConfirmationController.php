@@ -17,7 +17,7 @@ class ConfirmationController extends Controller
             return redirect('/');
         }
 
-        return view('thankyou');
+        return view('cart.thankyou');
     }
 
 }

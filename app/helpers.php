@@ -4,7 +4,7 @@ use Carbon\Carbon;
 
 function presentPrice($price)
 {
-    return '₱'.number_format($price / 100 * 100, 2);
+    return '₱'.number_format($price, 2);
     // return $price;
 }
 

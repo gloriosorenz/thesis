@@ -12,6 +12,7 @@ use App\OrderProduct;
 // use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\CheckoutRequest;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Http\Controllers\Auth;
 // use Cartalyst\Stripe\Laravel\Facades\Stripe;
 // use Cartalyst\Stripe\Exception\CardErrorException;
 
@@ -68,7 +69,8 @@ class CheckoutController extends Controller
     {
         // Insert into orders table
         $order = Order::create([
-            'customers_id' => auth()->user() ? auth()->user()->id : null,
+            // 'users_id' => auth()->user() ? auth()->user()->id : null,
+            'users_id' => auth()->user()->id,
             'total_price' =>  getNumbers()->get('newTotal'),
             'delivered' => 0,
         ]);
@@ -78,7 +80,7 @@ class CheckoutController extends Controller
             OrderProduct::create([
                 'orders_id' => $order->id,
                 'product_lists_id' => $item->model->id,
-                'total_qty' => $item->qty,
+                'quantity' => $item->qty,
             ]);
         }
 
@@ -90,7 +92,13 @@ class CheckoutController extends Controller
         foreach (Cart::content() as $item) {
             $product = ProductList::find($item->model->id);
 
-            $product->update(['quantity' => $product->model->curr_quantity - $item->qty]);
+            $product->update(['curr_quantity' => $product->curr_quantity - $item->qty]);
+
+            /*
+            $product = ProductList::find($item->model->id);
+            $product = $product->curr_quantity - $item->qty;
+            $product->update($product->id, ['curr_quantity']);
+            */
         }
     }
 

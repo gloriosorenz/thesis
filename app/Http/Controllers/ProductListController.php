@@ -134,8 +134,10 @@ class ProductListController extends Controller
     public function display_products()
     {
         
-        $product_lists = ProductList::where('products_id', '!=', 3)
+        $product_lists = ProductList::where('products_id', '!=', 3) 
+                        ->where('curr_quantity', '>', 0)
                         ->get();
+                        
 
         $farmers = DB::table('product_lists')
                         ->groupBy('rice_farmers_id', 'seasons_id', 'products_id');
