@@ -22,7 +22,7 @@ class SeasonListTableSeeder extends Seeder
             */
             [
                 'id' => 1, 
-                'rice_farmers_id' => 1, 
+                'users_id' => 2, 
                 'seasons_id' => 1,
                 'planned_hectares'=> 8.9,
                 'actual_hectares'=> 8.5,
@@ -33,7 +33,7 @@ class SeasonListTableSeeder extends Seeder
             ],
             [
                 'id' => 2, 
-                'rice_farmers_id' => 2, 
+                'users_id' => 4, 
                 'seasons_id' => 1,
                 'planned_hectares'=> 10.4,
                 'actual_hectares'=> 9.8,
@@ -44,7 +44,7 @@ class SeasonListTableSeeder extends Seeder
             ],
             [
                 'id' => 3, 
-                'rice_farmers_id' => 3, 
+                'users_id' => 6, 
                 'seasons_id' => 1,
                 'planned_hectares'=> 2.3,
                 'actual_hectares'=> 2.1,
@@ -55,7 +55,7 @@ class SeasonListTableSeeder extends Seeder
             ],
             [
                 'id' => 4, 
-                'rice_farmers_id' => 1, 
+                'users_id' => 2, 
                 'seasons_id' => 2,
                 'planned_hectares'=> 10.4,
                 'actual_hectares'=> 10.2,
@@ -66,7 +66,7 @@ class SeasonListTableSeeder extends Seeder
             ],
             [
                 'id' => 5, 
-                'rice_farmers_id' => 2, 
+                'users_id' => 4, 
                 'seasons_id' => 2,
                 'planned_hectares'=> 6.7,
                 'actual_hectares'=> 6.2,
@@ -77,7 +77,7 @@ class SeasonListTableSeeder extends Seeder
             ],
             [
                 'id' => 6, 
-                'rice_farmers_id' => 3, 
+                'users_id' => 6, 
                 'seasons_id' => 2,
                 'planned_hectares'=> 25,
                 'actual_hectares'=> 22,
@@ -88,7 +88,7 @@ class SeasonListTableSeeder extends Seeder
             ],
             [
                 'id' => 7, 
-                'rice_farmers_id' => 1, 
+                'users_id' => 2, 
                 'seasons_id' => 3,
                 'planned_hectares'=> 8.8,
                 'actual_hectares'=> 8.4,
@@ -99,7 +99,7 @@ class SeasonListTableSeeder extends Seeder
             ],
             [
                 'id' => 8, 
-                'rice_farmers_id' => 2, 
+                'users_id' => 4, 
                 'seasons_id' => 3,
                 'planned_hectares'=> 8.5,
                 'actual_hectares'=> 8.1,
@@ -110,7 +110,7 @@ class SeasonListTableSeeder extends Seeder
             ],
             [
                 'id' => 9, 
-                'rice_farmers_id' => 3, 
+                'users_id' => 6, 
                 'seasons_id' => 3,
                 'planned_hectares'=> 26,
                 'actual_hectares'=> 24,
@@ -121,7 +121,7 @@ class SeasonListTableSeeder extends Seeder
             ],
             [
                 'id' => 10, 
-                'rice_farmers_id' => 1, 
+                'users_id' => 2, 
                 'seasons_id' => 4,
                 'planned_hectares'=> 8.9,
                 'planned_num_farmers'=> 10,
@@ -129,7 +129,7 @@ class SeasonListTableSeeder extends Seeder
             ],
             [
                 'id' => 11, 
-                'rice_farmers_id' => 2, 
+                'users_id' => 4, 
                 'seasons_id' => 4,
                 'planned_hectares'=> 10.4,
                 'planned_num_farmers'=> 15,
@@ -137,7 +137,7 @@ class SeasonListTableSeeder extends Seeder
             ],
             [
                 'id' => 12, 
-                'rice_farmers_id' => 3, 
+                'users_id' => 6, 
                 'seasons_id' => 4,
                 'planned_hectares'=> 19,
                 'planned_num_farmers'=> 16,

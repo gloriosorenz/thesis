@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->double('total_price');
 
             // $table->integer('order_products_id')->unsigned()->nullable();
-            $table->integer('customers_id')->unsigned()->nullable();
+            $table->integer('users_id')->unsigned()->nullable();
 
 
             $table->timestamps();

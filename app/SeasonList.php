@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class SeasonList extends Model
 {
     protected $fillable = [
-        'actual_hectares', 'actual_num_farmers', 'actual_qty', 'seasons_id', 'rice_farmers_id'
+        'actual_hectares', 'actual_num_farmers', 'actual_qty', 'seasons_id', 'users_id'
     ];
 
-    public function rice_farmers()
+    public function users()
     {
-        return $this->belongsTo(RiceFarmer::class, 'rice_farmers_id');
+        return $this->belongsTo(User::class, 'users_id');
     }
 
     public function seasons()

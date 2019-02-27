@@ -15,7 +15,7 @@
 
 
 <!-- Product List Datatable -->
-<div class="card">
+<div class="card shadow mb-4">
     <div class="card-header">
     <h2 class="title">Products for Season {{ $season->id }}</h2>
     </div>
@@ -38,13 +38,13 @@
                 <tr class="tr">
                     <td>{{ $list->id }}</td>
                     <td>{{ $list->products->type }}</td>
-                    <td>{{ $list->rice_farmers->users->first_name}} {{ $list->rice_farmers->users->last_name}}</td>
+                    <td>{{ $list->users->first_name}} {{ $list->users->last_name}}</td>
                     <td>{{ $list->orig_quantity }}</td>
                     <td>{{ $list->curr_quantity }}</td>
-                    <td>{{ $list->price }}</td>
+                    <td>{{ $list->presentPrice() }}</td>
                     <td>
                         @if(!Auth::guest())
-                            @if(Auth::user()->id == $list->rice_farmers->users->id)
+                            @if(Auth::user()->id == $list->users->id)
                                 <a href="/product_lists/{{$list->id}}" class="btn btn-secondary">Edit</a>
                             @elseif(Auth::user()->roles_id == 1)
                                 <a href="/product_lists/{{$list->id}}" class="btn btn-secondary">Edit</a>

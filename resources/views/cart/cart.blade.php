@@ -40,7 +40,7 @@
                         @foreach (Cart::content() as $item)
                         <tr>
                             <td><a href="{{ url('/product_lists/show_products', [$item->model->products->type]) }}">{{ $item->model->products->type }}</a></td>
-                            <td>{{ $item->model->rice_farmers->company }}</td>
+                            <td>{{ $item->model->users->company }}</td>
                             <td>
                                 <div class="cart-table-row-right">
                                     <select class="quantity" data-id="{{ $item->rowId }}" data-productQuantity="{{ $item->model->curr_quantity }}">

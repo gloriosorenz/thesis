@@ -17,7 +17,7 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-header card-header-primary">
-        <h4 class="card-title">{{ $customer->users->first_name }} {{ $customer->users->last_name }}'s' Profile</h4>
+        <h4 class="card-title">{{ $customer->first_name }} {{ $customer->last_name }}'s' Profile</h4>
         <p class="card-category">View your customer</p>
       </div>
       <div class="card-body">
@@ -25,13 +25,13 @@
             <div class="col-md-6">
               <div class="form-group">
                   <label for="first_name">First Name:</label>
-                  <input type="text" class="form-control" disabled placeholder="company" name="first_name" value="{{ $customer->users->first_name }}" />
+                  <input type="text" class="form-control" disabled placeholder="company" name="first_name" value="{{ $customer->first_name }}" />
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label for="last_name">Last Name:</label>
-                <input type="text" class="form-control" disabled placeholder="company" name="last_name" value="{{ $customer->users->last_name }}" />
+                <input type="text" class="form-control" disabled placeholder="company" name="last_name" value="{{ $customer->last_name }}" />
               </div>
             </div>
           </div>
@@ -39,13 +39,13 @@
             <div class="col-md-6">
               <div class="form-group">
                   <label for="email">Email:</label>
-                  <input type="text" class="form-control" disabled placeholder="company" name="email" value="{{ $customer->users->email }}" />
+                  <input type="text" class="form-control" disabled placeholder="company" name="email" value="{{ $customer->email }}" />
               </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="phone">Phone:</label>
-                    <input type="text" class="form-control" disabled placeholder="company" name="phone" value="{{ $customer->users->phone }}" />
+                    <input type="text" class="form-control" disabled placeholder="company" name="phone" value="{{ $customer->phone }}" />
                 </div>
             </div>
           </div>
@@ -53,7 +53,7 @@
             <div class="col-md-6">
               <div class="form-group">
                   <label for="address">Address:</label>
-                  <input type="text" class="form-control" disabled placeholder="" name="address" value="{{ $customer->users->barangay }}" />
+                  <input type="text" class="form-control" disabled placeholder="" name="address" value="{{ $customer->barangay }}" />
               </div>
             </div>
           </div>
@@ -62,14 +62,6 @@
                   <div class="form-group">
                       <label for="phone">Company:</label>
                       <input type="text" class="form-control" disabled placeholder="company" name="phone" value="{{ $customer->company }}" />
-                  </div>
-              </div>
-          </div>
-          <div class="row">
-              <div class="col-md-6">
-                  <div class="form-group">
-                      <label for="phone">Customer Type:</label>
-                      <input type="text" class="form-control" disabled placeholder="company" name="phone" value="{{ $customer->customer_types->type }}" />
                   </div>
               </div>
           </div>

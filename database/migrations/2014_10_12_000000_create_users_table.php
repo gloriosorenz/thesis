@@ -27,6 +27,10 @@ class CreateUsersTable extends Migration
             $table->boolean('active')->nullable();
             $table->rememberToken();
 
+            $table->string('company')->nullable();
+            $table->integer('no_farmers')->nullable();
+            $table->double('hectares')->nullable();
+
             $table->integer('roles_id')->unsigned()->nullable();
             $table->integer('barangays_id')->unsigned()->nullable();
 

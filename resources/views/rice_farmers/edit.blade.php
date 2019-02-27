@@ -29,13 +29,13 @@
             <div class="col-md-6">
               <div class="form-group">
                   <label for="first_name">First Name:</label>
-                  <input type="text" class="form-control" name="first_name" value="{{ $farmer->users->first_name }}" />
+                  <input type="text" class="form-control" name="first_name" value="{{ $farmer->first_name }}" />
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label for="last_name">Last Name:</label>
-                <input type="text" class="form-control" name="last_name" value="{{ $farmer->users->last_name }}" />
+                <input type="text" class="form-control" name="last_name" value="{{ $farmer->last_name }}" />
               </div>
             </div>
           </div>
@@ -43,13 +43,13 @@
             <div class="col-md-6">
               <div class="form-group">
                   <label for="email">Email:</label>
-                  <input type="text" class="form-control" name="email" value="{{ $farmer->users->email }}" />
+                  <input type="text" class="form-control" name="email" value="{{ $farmer->email }}" />
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label for="phone">Phone:</label>
-                <input type="text" class="form-control" name="phone" value="{{ $farmer->users->phone }}" />
+                <input type="text" class="form-control" name="phone" value="{{ $farmer->phone }}" />
               </div>
             </div>
           </div>
@@ -58,7 +58,7 @@
               <div class="form-group">
                   <label for="barangay">Farm Address:</label>
                   <select class="form-control" name="barangay" id="barangay">
-                      <option value="0" selected="true" disabled="True">{{ $farmer->users->barangay }}</option>
+                      <option value="0" selected="true" disabled="True">{{ $farmer->barangays->name }}</option>
                       @foreach ($barangays as $barangay)
                           <option value="{{ $barangay['name']}}">{{ $barangay['name']}}</option>
                       @endforeach

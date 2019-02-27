@@ -41,7 +41,7 @@
                             {{-- <img src="{{ productImage($item->model->image) }}" alt="item" class="checkout-table-img"> --}}
                             <div class="checkout-item-details">
                                 <div class="checkout-table-item">{{ $item->model->products->type }}</div>
-                                <div class="checkout-table-item">{{ $item->model->rice_farmers->company }}</div>
+                                <div class="checkout-table-item">{{ $item->model->users->company }}</div>
                                 <div class="checkout-table-price">{{ $item->model->presentPrice() }}</div>
                             </div>
                         </div> <!-- end checkout-table -->

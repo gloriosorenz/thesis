@@ -4,7 +4,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('home') }}">
         <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fab fa-pagelines"></i>
+            <i class="fas fa-leaf"></i>
         </div>
         <div class="sidebar-brand-text mx-3">SMSRL Portal</div>
     </a>
@@ -35,7 +35,7 @@
         <span>Products</span></a>
     </li>
 
-    <!-- Rice Farmers -->
+    {{-- <!-- Rice Farmers -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('rice_farmers.index') }}"">
         <i class="fas fa-leaf"></i>
@@ -47,14 +47,7 @@
         <a class="nav-link" href="{{ route('customers.index') }}">
         <i class="fas fa-user-alt"></i>
         <span>Customers</span></a>
-    </li>
-
-    <!-- Reports -->
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-        <i class="fas fa-chart-line"></i>
-        <span>Reports</span></a>
-    </li>
+    </li> --}}
 
     <!-- Nav Item - Users Management Collapse Menu -->
     <li class="nav-item">
@@ -66,9 +59,18 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Components:</h6>
                 <a class="collapse-item" href="{{ route('users.index') }}">Users</a>
+                <a class="collapse-item" href="{{ route('rice_farmers.index') }}">Rice Farmers</a>
+                <a class="collapse-item" href="{{ route('customers.index') }}">Customers</a>
                 <a class="collapse-item" href="{{ route('roles.index') }}">Roles</a>
             </div>
         </div>
+    </li>
+
+    <!-- Reports -->
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+        <i class="fas fa-chart-line"></i>
+        <span>Reports</span></a>
     </li>
 
 
@@ -94,6 +96,13 @@
         <i class="fas fa-box"></i>
         <span>Products</span></a>
     </li>
+
+    <!-- Reports -->
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+        <i class="fas fa-chart-line"></i>
+        <span>Reports</span></a>
+    </li>
     @endif
 
 
@@ -108,7 +117,7 @@
 
 
 
-    <!-- Divider -->
+    {{-- <!-- Divider -->
     <hr class="sidebar-divider">
 
     <!-- Heading -->
@@ -188,7 +197,7 @@
         <a class="nav-link" href="tables.html">
         <i class="fas fa-fw fa-table"></i>
         <span>Tables</span></a>
-    </li>
+    </li> --}}
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

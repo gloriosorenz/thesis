@@ -81,6 +81,10 @@ class ProductListController extends Controller
         $season = Season::find($id);
         $product_lists = ProductList::where('seasons_id', $season->id)->get();
 
+        $product = ProductList::where('created_at', '>=', Carbon::now()->subDays(7))
+            ->where('product_id', '=', 2)
+            ->get();
+
        
         return view('product_lists.show')
             ->with('season', $season)

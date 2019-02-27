@@ -37,9 +37,9 @@
                 @foreach($rice_farmers as $rice_farmer)
                 <tr class="tr">
                     <td>{{ $rice_farmer->id }}</td>
-                    <td>{{ $rice_farmer->users->first_name }} {{ $rice_farmer->users->last_name }}</td>
-                    <td>{{ $rice_farmer->users->email }}</td>
-                    <td>{{ $rice_farmer->users->phone }}</td>
+                    <td>{{ $rice_farmer->first_name }} {{ $rice_farmer->last_name }}</td>
+                    <td>{{ $rice_farmer->email }}</td>
+                    <td>{{ $rice_farmer->phone }}</td>
                     <td>{{ $rice_farmer->company }}</td>
                     <td>
                         <a href="/rice_farmers/{{$rice_farmer->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>

@@ -7,7 +7,7 @@ use App\Season;
 use App\SeasonList;
 use App\SeasonStatus;
 use App\SeasonType;
-use App\RiceFarmer;
+use App\User;
 use App\ProductList;
 use App\Product;
 use DB;
@@ -34,13 +34,14 @@ class SeasonController extends Controller
      */
     public function create()
     {
-        $types = \App\SeasonType::get()->pluck('type', 'id');
-        $rice_farmers = \App\RiceFarmer::get()->pluck('company', 'id');
+        $types = SeasonType::get()->pluck('type', 'id');
+        // Get Rice Farmers
+        $users = User::where('roles_id', '=', 2)->get()->pluck('company', 'id');
         $statuses = SeasonStatus::get()->pluck('status', 'id');
 
         return view('seasons.create')
             ->with('types', $types)
-            ->with('rice_farmers', $rice_farmers)
+            ->with('users', $users)
             ->with('statuses', $statuses);
     }
 
@@ -68,10 +69,10 @@ class SeasonController extends Controller
 
         if($season->save()){
             $id = $season->id;
-            foreach($request->rice_farmers_id as $key => $value) {
+            foreach($request->users_id as $key => $value) {
                 $data=array(
                             'seasons_id' => $id,
-                            'rice_farmers_id'=>$request->rice_farmers_id [$key],
+                            'users_id'=>$request->users_id [$key],
                             'planned_hectares'=>$request->planned_hectares [$key],
                             'planned_num_farmers'=>$request->planned_num_farmers [$key],
                             'planned_qty'=>$request->planned_qty [$key]);
@@ -110,7 +111,8 @@ class SeasonController extends Controller
     {
         $season = Season::findOrFail($id);
         $types = SeasonType::get()->pluck('type', 'id');
-        $rice_farmers = RiceFarmer::get()->pluck('company', 'id');
+        // Get Rice Farmers
+        $users = User::where('roles_id', '=', 2)->get()->pluck('company', 'id');
         $season_lists = SeasonList::where('seasons_id', $season->id)->get();
         $products = Product::get()->pluck('type', 'id');
         $product_lists = ProductList::where('seasons_id', $season->id)->get();
@@ -118,7 +120,7 @@ class SeasonController extends Controller
         return view('seasons.edit')
             ->with('season', $season)
             ->with('types', $types)
-            ->with('rice_farmers', $rice_farmers)
+            ->with('users', $users)
             ->with('season_lists', $season_lists)
             ->with('products', $products)
             ->with('product_lists', $product_lists);
@@ -151,10 +153,10 @@ class SeasonController extends Controller
             }
 
         
-            foreach($request->rice_farmers_id as $key => $value) {
+            foreach($request->users_id as $key => $value) {
                 $data=array(
                             'seasons_id' => $season->id,
-                            'rice_farmers_id'=>$request->rice_farmers_id [$key],
+                            'users_id'=>$request->users_id [$key],
                             'products_id'=>$request->products_id [$key],
                             'orig_quantity'=>$request->orig_quantity [$key],
                             'curr_quantity'=>$request->curr_quantity [$key],

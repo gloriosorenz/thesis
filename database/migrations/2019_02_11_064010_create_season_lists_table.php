@@ -16,7 +16,7 @@ class CreateSeasonListsTable extends Migration
         Schema::create('season_lists', function (Blueprint $table) {
             $table->increments('id');
             
-            $table->integer('rice_farmers_id')->unsigned()->nullable();
+            $table->integer('users_id')->unsigned()->nullable();
             $table->integer('seasons_id')->unsigned()->nullable();
             $table->double('planned_hectares')->nullable(); //not supposed to be nullable
             $table->double('actual_hectares')->nullable();

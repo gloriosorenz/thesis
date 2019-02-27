@@ -33,6 +33,7 @@
             <div id="content">
                 @include('inc.topnav')
                 <div class="container-fluid">
+                @include('inc.messages')
                 @yield('content')
                 </div>
             </div>

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProductList extends Model
 {
     protected $fillable = [
-        'products_id', 'seasons_id', 'rice_farmers_id', 'orig_quantity','price', 'orig_quantity'
+        'products_id', 'seasons_id', 'users_id', 'orig_quantity','price', 'orig_quantity'
     ];
 
     public function presentPrice()
@@ -25,9 +25,9 @@ class ProductList extends Model
         return $this->belongsTo(Season::class, 'seasons_id');
     }
 
-    public function rice_farmers()
+    public function users()
     {
-        return $this->belongsTo(RiceFarmer::class, 'rice_farmers_id');
+        return $this->belongsTo(User::class, 'users_id');
     }
 }
 

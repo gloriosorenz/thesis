@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- {{-- BREADCRUMB --}} -->
+<!-- Breadcrumb -->
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
@@ -21,18 +21,18 @@
             <p class="card-category">Complete your customer details</p>
         </div>
         <div class="card-body">
-        <!-- {{-- FORM --}} -->
+        <!--  Form  -->
         <form method="post" action="{{action('CustomerController@store')}}" enctype="multipart/form-data">
             @csrf
             <div class="row">
-                <!-- {{-- FIRST NAME --}} -->
+                <!-- First Name  -->
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="first_name">First Name:</label>
                         <input type="text" class="form-control" name="first_name" value="" />
                     </div>
                 </div>
-                <!-- {{-- LAST NAME --}} -->
+                <!-- Last Name -->
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="last_name">Last Name:</label>
@@ -42,14 +42,14 @@
             </div>
         
             <div class="row">
-                <!-- {{-- PHONE --}} -->
+                <!-- Phone -->
                 <div class="col-md-6">
                     <div class="form-group">
                     <label for="phone">Phone:</label>
                     <input type="text" class="form-control" name="phone" value=""/>
                     </div>
                 </div>
-                <!-- {{-- EMAIL --}} -->
+                <!-- Email -->
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="email">Email:</label>
@@ -59,7 +59,7 @@
             </div>
 
             <div class="row">
-            <!-- {{-- ADDRESS --}} -->
+            <!--  Address -->
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="barangay">Address (Barangay):</label>
@@ -75,7 +75,7 @@
 
             <div class="row">
                 <div class="col-lg-6">
-                    <!-- {{-- Company --}} -->
+                    <!-- Company  -->
                     <div class="form-group">
                         <label class="control-lable" for="company">Comapny:</label>
                         <input type="text" class="form-control" name="company" value="" />
@@ -85,23 +85,7 @@
 
             <div class="row">
                 <div class="col-lg-6">
-                    <!-- {{-- TYPE --}} -->
-                    <div class="form-group">
-                        {!! Form::label('customer_types_id', 'Customer Type:', ['class' => 'control-label']) !!}
-                        {!! Form::select('customer_types_id', $types, old('customer_types_id'), ['class' => 'form-control select2', 'required' => '']) !!}
-                        <p class="help-block"></p>
-                        @if($errors->has('roles_id'))
-                            <p class="help-block">
-                                {{ $errors->first('roles_id') }}
-                            </p>
-                        @endif
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-6">
-                    <!-- PASSWORD -->
+                    <!-- Password -->
                     <div class="form-group">
                         <label class="control-lable" for="password">Password:</label>
                         <input type="password" class="form-control" name="password" value="" />
@@ -110,7 +94,7 @@
             </div>
 
 
-            <!-- SUBMIT BUTTON -->
+            <!-- Submit Button -->
             <button type="submit" class="btn btn-success">Create</button>
             </form>
         </div>

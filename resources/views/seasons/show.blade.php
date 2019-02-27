@@ -15,7 +15,7 @@
 <br>
 
 <!-- Seasons List Datatable -->
-<div class="card">
+<div class="card shadow mb-4">
     <div class="card-header">
     <h2 class="title">Season {{ $season->id }}</h2>
     </div>
@@ -39,7 +39,7 @@
                 @foreach($lists as $list)
                 <tr class="tr">
                     <td>{{ $list->id }}</td>
-                    <td>{{ $list->rice_farmers->users->first_name }} {{ $list->rice_farmers->users->last_name }}</td>
+                    <td>{{ $list->users->first_name }} {{ $list->users->last_name }}</td>
                     <td>{{ $list->planned_hectares }}</td>
                     <td>{{ $list->planned_num_farmers }}</td>
                     <td>{{ $list->planned_qty }}</td>

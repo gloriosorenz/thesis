@@ -29,8 +29,8 @@
                         <ul class="list-unstyled mt-3 mb-4">
                         <li>FOR TEST REASONS = Season {{ $product_list->seasons->id }}</li>
                         <li>Available: {{ $product_list->curr_quantity }}</li>
-                        <li>Producer: {{ $product_list->rice_farmers->company }}</li>
-                        <li>Barangay Location: {{ $product_list->rice_farmers->users->barangays->name }}</li>
+                        <li>Producer: {{ $product_list->users->company }}</li>
+                        <li>Barangay Location: {{ $product_list->users->barangays->name }}</li>
                         </ul>
 
                         <form method="post" action="{{action('CartController@store')}}">

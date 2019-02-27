@@ -22,24 +22,24 @@ class Migrations extends Migration
         });
 
         // Farmers
-        Schema::table('rice_farmers',function(Blueprint $table){
-            $table->foreign('users_id')
-                ->references('id')->on('users')->onDelete('cascade');
-            // $table->foreign('planned_crops_id')
-            //     ->references('id')->on('planned_crops')->onDelete('cascade');
-            // $table->foreign('philippine_barangays_id')
-            //     ->references('id')->on('philippine_barangays')->onDelete('cascade');
-            // $table->foreign('barangays_id')
-            //     ->references('id')->on('barangays')->onDelete('cascade');
-        });
+        // Schema::table('rice_farmers',function(Blueprint $table){
+        //     $table->foreign('users_id')
+        //         ->references('id')->on('users')->onDelete('cascade');
+        //     $table->foreign('planned_crops_id')
+        //         ->references('id')->on('planned_crops')->onDelete('cascade');
+        //     $table->foreign('philippine_barangays_id')
+        //         ->references('id')->on('philippine_barangays')->onDelete('cascade');
+        //     $table->foreign('barangays_id')
+        //         ->references('id')->on('barangays')->onDelete('cascade');
+        // });
 
         // Customers
-        Schema::table('customers',function(Blueprint $table){
-            $table->foreign('customer_types_id')
-                ->references('id')->on('customer_types')->onDelete('cascade');
-            $table->foreign('users_id')
-                ->references('id')->on('users')->onDelete('cascade');
-        });
+        // Schema::table('customers',function(Blueprint $table){
+        //     $table->foreign('customer_types_id')
+        //         ->references('id')->on('customer_types')->onDelete('cascade');
+        //     $table->foreign('users_id')
+        //         ->references('id')->on('users')->onDelete('cascade');
+        // });
 
         // Cart
         //  Schema::table('carts',function(Blueprint $table){
@@ -55,14 +55,14 @@ class Migrations extends Migration
                 ->references('id')->on('seasons')->onDelete('cascade');
             $table->foreign('products_id')
                 ->references('id')->on('products')->onDelete('cascade');
-            $table->foreign('rice_farmers_id')
-                ->references('id')->on('rice_farmers')->onDelete('cascade');
+            $table->foreign('users_id')
+                ->references('id')->on('users')->onDelete('cascade');
         });
 
         // Season List
         Schema::table('season_lists',function(Blueprint $table){
-            $table->foreign('rice_farmers_id')
-                ->references('id')->on('rice_farmers')->onDelete('cascade');
+            $table->foreign('users_id')
+                ->references('id')->on('users')->onDelete('cascade');
             $table->foreign('seasons_id')
                 ->references('id')->on('seasons')->onDelete('cascade');
         });
@@ -87,8 +87,8 @@ class Migrations extends Migration
         Schema::table('orders',function(Blueprint $table){
             // $table->foreign('order_products_id')
             //     ->references('id')->on('order_products')->onDelete('cascade');
-            $table->foreign('customers_id')
-                ->references('id')->on('customers')->onDelete('cascade');
+            $table->foreign('users_id')
+                ->references('id')->on('users')->onDelete('cascade');
         });
 
     }

@@ -80,9 +80,9 @@
                 <tr>
                     <td><input readonly class="form-control" type="text" name="id[]" id="id" value="{{$list->id}}"/></td>
                     <td>
-                        <select class="form-control" name="rice_farmers_id[]">
-                            <option value="0" selected="true" disabled="True">{{ $list->rice_farmers->company }}</option>
-                            @foreach ($rice_farmers as $key=>$p)
+                        <select class="form-control" name="users_id[]">
+                            <option value="0" selected="true" disabled="True">{{ $list->users->company }}</option>
+                            @foreach ($users as $key=>$p)
                                 <option value="{{$key}}">{{$p}}</option>
                             @endforeach
                         </select>
@@ -118,9 +118,9 @@
             <tbody class="resultbody3">
                 <tr>
                     <td>
-                        <select class="form-control" name="rice_farmers_id[]" id="rice_farmers_id">
+                        <select class="form-control" name="users_id[]" id="users_id">
                             <option value="0" selected="true" disabled="True">Select Farmer</option>
-                            @foreach ($rice_farmers as $key=>$p)
+                            @foreach ($users as $key=>$p)
                                 <option value="{{$key}}">{{$p}}</option>
                             @endforeach
                         </select>

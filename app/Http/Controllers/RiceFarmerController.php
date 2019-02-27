@@ -17,8 +17,12 @@ class RiceFarmerController extends Controller
      */
     public function index()
     {
-        $rice_farmers = RiceFarmer::all();
-        return view('rice_farmers.index', compact('rice_farmers'));
+        // Get Rice Farmers
+        $rice_farmers = User::where('roles_id', '=', 2)->get();
+
+        // dd($rice_farmers);
+        return view('rice_farmers.index')
+                ->with('rice_farmers', $rice_farmers);
     }
 
     /**
@@ -58,16 +62,14 @@ class RiceFarmerController extends Controller
         $user->email = $request->input('email');
         $user->phone = $request->input('phone');
         $user->barangay = $request->input('barangay');
+        $user->company = $request->input('company');
         $user->password = Hash::make($request['password']);
         $user->roles_id = 2;
         
+        
         $user->save();
 
-        //Rice Farmer
-        $farmer = new RiceFarmer;
-        $farmer->company = $request->input('company');
-        $farmer->users_id= $user->id;
-        $farmer->save();
+        
 
 
         // $farmers = RiceFarmer::create($request->all());
@@ -84,7 +86,7 @@ class RiceFarmerController extends Controller
      */
     public function show($id)
     {
-        $farmer = RiceFarmer::find($id);
+        $farmer = User::find($id);
 
         return view('rice_farmers.show')
             ->with('farmer', $farmer);
@@ -98,7 +100,7 @@ class RiceFarmerController extends Controller
      */
     public function edit($id)
     {
-        $farmer = RiceFarmer::find($id);
+        $farmer = User::find($id);
         $barangays = Barangay::orderBy('name')->get();
 
         return view('rice_farmers.edit')
@@ -115,14 +117,13 @@ class RiceFarmerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $farmer = RiceFarmer::find($id);
+        $farmer = User::find($id);
         $farmer->company = $request->input('company');
-        $farmer->users()->first_name = $request->input('first_name');
-        $farmer->users()->last_name = $request->input('last_name');
-        $farmer->users()->email = $request->input('email');
-        $farmer->users()->phone = $request->input('phone');
-        $farmer->users()->barangay = $request->input('barangay');
-        // $farmer->users()->associate($farmer);
+        $farmer->first_name = $request->input('first_name');
+        $farmer->last_name = $request->input('last_name');
+        $farmer->email = $request->input('email');
+        $farmer->phone = $request->input('phone');
+        $farmer->barangay = $request->input('barangay');
         $farmer->save();
 
         // dd($farmer);

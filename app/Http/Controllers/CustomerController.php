@@ -18,8 +18,11 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::all();
-        return view('customers.index', compact('customers'));
+        // Get Customers
+        $customers = User::where('roles_id', '=', 3)->get();
+
+        return view('customers.index')
+                ->with('customers', $customers);
     }
 
     /**
@@ -29,10 +32,9 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        $types = \App\CustomerType::get()->pluck('type', 'id');
         $barangays = Barangay::orderBy('name')->get();
 
-        return view('customers.create', compact('types'))
+        return view('customers.create')
             ->with('barangays', $barangays);
     }
 
@@ -61,16 +63,11 @@ class CustomerController extends Controller
         $user->email = $request->input('email');
         $user->phone = $request->input('phone');
         $user->barangay = $request->input('barangay');
+        $user->company = $request->input('company');
         $user->password = Hash::make($request['password']);
         $user->roles_id = 3;
         $user->save();
 
-        // Customer
-        $customer = new Customer;
-        $customer->company = $request->input('company');
-        $customer->users_id = $user->id;
-        $customer->customer_types_id = $request->input('customer_types_id');
-        $customer->save();
 
         return redirect()->route('customers.index')->with('success','Customer Created ');
     }
@@ -83,7 +80,7 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        $customer = Customer::find($id);
+        $customer = User::find($id);
         return view('customers.show')
             ->with('customer', $customer);
     }
@@ -96,13 +93,11 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        $customer = Customer::find($id);
-        $types = \App\CustomerType::get()->pluck('type', 'id');
+        $customer = User::find($id);
         $barangays = Barangay::orderBy('name')->get();
 
         return view('customers.edit')
             ->with('customer', $customer)
-            ->with('types', $types)
             ->with('barangays', $barangays);
     }
 
@@ -115,14 +110,13 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $customer = Customer::find($id);
+        $customer = User::find($id);
         $customer->company = $request->input('company');
-        $customer->users->first_name = $request->input('first_name');
-        $customer->users->last_name = $request->input('last_name');
-        $customer->users->email = $request->input('email');
-        $customer->users->phone = $request->input('phone');
-        $customer->users->barangay = $request->input('barangay');
-        $customer->customer_types_id = $request->input('customer_types_id');
+        $customer->first_name = $request->input('first_name');
+        $customer->last_name = $request->input('last_name');
+        $customer->email = $request->input('email');
+        $customer->phone = $request->input('phone');
+        $customer->barangay = $request->input('barangay');
         $customer->save();
 
         // dd($customer);
