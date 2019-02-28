@@ -14,9 +14,13 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = auth()->user()->orders()->with('product_lists')->get(); // fix n + 1 issues
+        // $orders = auth()->user()->orders()->with('product_lists')->get(); // fix n + 1 issues
 
-        return view('my-orders')->with('orders', $orders);
+        $orders = Order::all();
+
+        // dd($orders);
+        return view('orders.index')
+            ->with('orders', $orders);
     }
 
     /**

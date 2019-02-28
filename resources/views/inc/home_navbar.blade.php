@@ -5,6 +5,9 @@
                 <ul class="navbar-nav mr-auto">
                     <!-- {{-- GUEST --}} -->
                     @guest
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
                     <li class="{{Request:: is('product_lists') ? 'active' : ''}}">
                         <a class="nav-link" href="{{ url('product_lists/show_products') }}">Products</a>
                     </li>
@@ -110,9 +113,18 @@
                     
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        {{-- <a class="dropdown-item" href="#">
+                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Profile
+                        </a> --}}
+                        <a class="dropdown-item" href="{{ route('orders.index') }}">
+                            <i class="fas fa-clipboard-list"></i>
+                            Order History
+                        </a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
+                            <i class="fas fa-sign-out-alt"></i>
                             {{ __('Logout') }}
                         </a>
 

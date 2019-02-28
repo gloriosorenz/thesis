@@ -77,6 +77,7 @@ Route::resource('products', 'ProductController');
 Route::resource('product_lists', 'ProductListController');
 Route::resource('seasons', 'SeasonController');
 Route::resource('dashboard', 'DashboardController');
+Route::resource('orders', 'OrderController');
 
 
 
