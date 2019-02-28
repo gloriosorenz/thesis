@@ -9,7 +9,7 @@
 {{-- JUMBOTRON --}}
 <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark text-center">
     <div class="col-md-12 px-0">
-        <h1 class="display-4 font-bold">Samahan ng Magsasaka Sta. Rosa Laguna Portal</h1>
+        <h1 class="display-4 font-bold">Samahan ng Magsasaka <br>Sta. Rosa Laguna Portal</h1>
         <p class="lead">All products are produced by the farmers of Laguna.</p>
     </div>
 </div>

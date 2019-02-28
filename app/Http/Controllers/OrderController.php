@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Order;
 use Illuminate\Http\Request;
+use App\Order;
+use App\OrderProduct;
 
 class OrderController extends Controller
 {
@@ -17,6 +18,8 @@ class OrderController extends Controller
         // $orders = auth()->user()->orders()->with('product_lists')->get(); // fix n + 1 issues
 
         $orders = Order::all();
+        // $products = OrderProduct::all();
+        
 
         // dd($orders);
         return view('orders.index')
@@ -52,7 +55,13 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = Order::find($id);
+        $products = OrderProduct::where('orders_id', $order->id)->get();
+        // $product_lists = ProductList::where('seasons_id', $season->id)->get();
+
+        return view('orders.show')
+            ->with('order', $order)
+            ->with('products', $products);
     }
 
     /**

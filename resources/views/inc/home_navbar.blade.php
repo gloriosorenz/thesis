@@ -121,16 +121,11 @@
                             <i class="fas fa-clipboard-list"></i>
                             Order History
                         </a>
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                            <i class="fas fa-sign-out-alt"></i>
-                            {{ __('Logout') }}
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Logout
                         </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
                     </div>
                 </li>
                 @endguest
