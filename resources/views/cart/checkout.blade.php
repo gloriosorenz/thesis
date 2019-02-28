@@ -21,43 +21,35 @@
 
 @section('content')
 
-    <div class="container">
+@if (session()->has('success_message'))
+    <div class="spacer"></div>
+    <div class="alert alert-success">
+        {{ session()->get('success_message') }}
+    </div>
+@endif
 
-        @if (session()->has('success_message'))
-            <div class="spacer"></div>
-            <div class="alert alert-success">
-                {{ session()->get('success_message') }}
-            </div>
-        @endif
+@if(count($errors) > 0)
+    <div class="spacer"></div>
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{!! $error !!}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
-        @if(count($errors) > 0)
-            <div class="spacer"></div>
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{!! $error !!}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <h1 class="checkout-heading stylish-heading">Checkout</h1>
-
-        <div class="checkout-section">
-            <div>
-                <form action="{{ route('checkout.store') }}" method="POST" id="payment-form">
-                    {{ csrf_field() }}
-
-                <button type="submit" id="complete-order" class="button-primary full-width">Complete Order</button>
-
+{{-- <div class="container">
+<h1 class="checkout-heading stylish-heading">Checkout</h1>
+    <div class="checkout-section">
+        <form action="{{ route('checkout.store') }}" method="POST" id="payment-form">
+        @csrf
             <div class="checkout-table-container">
-                <h2>Your Order/s</h2>
-
+            <h2>Your Order/s</h2>
                 <div class="checkout-table">
                     @foreach (Cart::content() as $item)
                     <div class="checkout-table-row">
                         <div class="checkout-table-row-left">
-                            {{-- <img src="{{ productImage($item->model->image) }}" alt="item" class="checkout-table-img"> --}}
                             <div class="checkout-item-details">
                                 <div class="checkout-table-item">{{ $item->model->products->type }}</div>
                                 <div class="checkout-table-item">{{ $item->model->users->company }}</div>
@@ -71,129 +63,127 @@
                     </div> <!-- end checkout-table-row -->
                     <br>
                     @endforeach
-
                 </div> <!-- end checkout-table -->
-
-                    <hr>
-                    <span class="checkout-totals-total">Total Price: ₱{{ Cart::instance('default')->subtotal() }}</span>
-
-                </div> <!-- end checkout-totals -->
-            </div>
-
-        </div> <!-- end checkout-section -->
-    </div>
-
-
-    <br>
-
-    <div class="container" id="invoice_container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="invoice-title">
-                    <h2>Invoice</h2><h3 class="pull-right">Order # 12345</h3>
-                </div>
                 <hr>
-                <div class="row">
-                    <div class="col-md-6">
-                        <address>
-                        <strong>Billed To:</strong><br>
-                            John Smith<br>
-                            1234 Main<br>
-                            Apt. 4B<br>
-                            Springfield, ST 54321
-                        </address>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <address>
-                        <strong>Shipped To:</strong><br>
-                            Jane Smith<br>
-                            1234 Main<br>
-                            Apt. 4B<br>
-                            Springfield, ST 54321
-                        </address>
-                    </div>
+                <span class="checkout-totals-total">Total Price: ₱{{ Cart::instance('default')->subtotal() }}</span>
+            </div> <!-- end checkout-totals -->
+            <hr>
+            <button type="submit" id="complete-order" class="btn btn-md btn-success">Complete Order</button>
+        </form> <!-- end from -->
+    </div> <!-- end checkout-section -->
+</div> <!-- end container --> --}}
+
+<div class="container" id="invoice_container">
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="invoice-title">
+                <h3>Order #</h3>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <address>
+                        <strong>Sold To:</strong><br>
+                        {{auth()->user()->first_name}} {{auth()->user()->last_name}}<br>
+                    </address>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <address>
-                            <strong>Payment Method:</strong><br>
-                            Visa ending **** 4242<br>
-                            jsmith@email.com
-                        </address>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <address>
-                            <strong>Order Date:</strong><br>
-                            March 7, 2014<br><br>
-                        </address>
-                    </div>
+                <div class="col-md-6 text-right">
+                    <address>
+                    <strong>Your Company:</strong><br>
+                        {{auth()->user()->company}}<br>
+                    </address>
                 </div>
             </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><strong>Order summary</strong></h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="table-responsive">
-                            <table class="table table-condensed">
-                                <thead>
-                                    <tr>
-                                        <td><strong>Item</strong></td>
-                                        <td class="text-center"><strong>Price</strong></td>
-                                        <td class="text-center"><strong>Quantity</strong></td>
-                                        <td class="text-right"><strong>Totals</strong></td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- foreach ($order->lineItems as $line) or some such thing here -->
-                                    <tr>
-                                        <td>BS-200</td>
-                                        <td class="text-center">$10.99</td>
-                                        <td class="text-center">1</td>
-                                        <td class="text-right">$10.99</td>
-                                    </tr>
-                                    <tr>
-                                        <td>BS-400</td>
-                                        <td class="text-center">$20.00</td>
-                                        <td class="text-center">3</td>
-                                        <td class="text-right">$60.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>BS-1000</td>
-                                        <td class="text-center">$600.00</td>
-                                        <td class="text-center">1</td>
-                                        <td class="text-right">$600.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="thick-line"></td>
-                                        <td class="thick-line"></td>
-                                        <td class="thick-line text-center"><strong>Subtotal</strong></td>
-                                        <td class="thick-line text-right">$670.99</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="no-line"></td>
-                                        <td class="no-line"></td>
-                                        <td class="no-line text-center"><strong>Shipping</strong></td>
-                                        <td class="no-line text-right">$15</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="no-line"></td>
-                                        <td class="no-line"></td>
-                                        <td class="no-line text-center"><strong>Total</strong></td>
-                                        <td class="no-line text-right">$685.99</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+            <!-- End Row -->
+            <div class="row">
+                <div class="col-md-6">
+                    <address>
+                        <strong>Payment Method:</strong><br>
+                        Cash<br>
+                        {{auth()->user()->email}}
+                    </address>
+                </div>
+                <div class="col-md-6 text-right">
+                    <address>
+                        <strong>Order Date:</strong><br>
+                        {{$order_date->toFormattedDateString()}}<br><br>
+                    </address>
                 </div>
             </div>
+            <!-- End Row -->
         </div>
+        <!-- End Col-md-12 -->
     </div>
+    <!-- End Row -->
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>Order summary</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <form action="{{ route('checkout.store') }}" method="POST" id="payment-form">
+                    @csrf
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td><strong>Item</strong></td>
+                                    <td class="text-center"><strong>Seller</strong></td>
+                                    <td class="text-center"><strong>Price</strong></td>
+                                    <td class="text-center"><strong>Quantity</strong></td>
+                                    <td class="text-right"><strong>Totals</strong></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (Cart::content() as $item)
+                                <tr>
+                                    <td>{{ $item->model->products->type }}</td>
+                                    <td>{{ $item->model->users->company }}</td>
+                                    <td class="text-center">{{ $item->model->presentPrice() }}</td>
+                                    <td class="text-center">{{ $item->qty }} kaban/s</td>
+                                    <td class="text-right">{{ presentPrice($item->subtotal) }}</td>
+                                </tr>
+                                @endforeach
+                                {{-- <tr>
+                                    <td class="thick-line"></td>
+                                    <td class="thick-line"></td>
+                                    <td class="thick-line text-center"><strong>Subtotal</strong></td>
+                                    <td class="thick-line text-right">$670.99</td>
+                                </tr>
+                                <tr>
+                                    <td class="no-line"></td>
+                                    <td class="no-line"></td>
+                                    <td class="no-line text-center"><strong>Shipping</strong></td>
+                                    <td class="no-line text-right">$15</td>
+                                </tr> --}}
+                                <tr>
+                                    <td class="thick-line"></td>
+                                    <td class="thick-line"></td>
+                                    <td class="thick-line"></td>
+                                    <td class="thick-line text-center"><strong>Total</strong></td>
+                                    <td class="thick-line text-right">₱{{ Cart::instance('default')->subtotal() }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> 
+                    <!-- End Table -->
+                    <a href="{{ url('/product_lists/show_products') }}" class="btn btn-lg btn-primary">Back to Shopping</a> &nbsp;
+                    <button type="submit" id="complete-order" class="btn btn-lg btn-success">Complete Order</button>
+                    </form> 
+                    <!-- End From -->
+                </div> 
+                <!-- End Panel Body -->
+            </div>
+            <!-- End Pane -->
+        </div>
+        <!-- End Col-md-12 -->
+    </div>
+    <!-- End Row -->
+</div>
+<!-- End Container -->
 
 @endsection
 

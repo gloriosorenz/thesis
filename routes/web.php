@@ -19,13 +19,15 @@
 //    });
 // });
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'LandingPageController@index')->name('landing-page');
+
+// Route::get('/home', 'HomeController@index')->name('home');
 
 // Dashboard
 // Route::get('/dashboard', function() {

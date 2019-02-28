@@ -13,6 +13,7 @@ use App\OrderProduct;
 use App\Http\Requests\CheckoutRequest;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Controllers\Auth;
+use Carbon\Carbon;
 // use Cartalyst\Stripe\Laravel\Facades\Stripe;
 // use Cartalyst\Stripe\Exception\CardErrorException;
 
@@ -29,10 +30,14 @@ class CheckoutController extends Controller
             return redirect()->route('product_lists.show_products');
         }
 
-        return view('cart.checkout')->with([
+        $order_date = Carbon::now();
+
+        return view('cart.checkout')
+            ->with([
             'newSubtotal' => getNumbers()->get('newSubtotal'),
             'newTotal' => getNumbers()->get('newTotal'),
-        ]);
+            ])
+            ->with('order_date', $order_date);
     }
 
 
