@@ -18,13 +18,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
 </head>
 <body id="page-top">
     <div id="wrapper">
         <div id="content-wrapper" class="d-flex flex-column">
-            <div id="content" class="container">
-                @include('inc.home_navbar')
+            @include('inc.home_navbar')
+            <div id="content" class="container"> 
                 @include('inc.messages')
                 <div class="container">
                 @yield('content')
