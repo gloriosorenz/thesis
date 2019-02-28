@@ -60,7 +60,7 @@
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
     
-                                    <button type="submit" class="cart-options">Remove</button>
+                                    <button type="submit" class="btn btn-danger btn-md">Remove</button>
                                 </form>
                                 {{-- <form action="{{ url('cart', [$item->rowId]) }}" method="POST" class="side-by-side">
                                     {!! csrf_field() !!}

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\ProductList;
+use App\Product;
 use DB;
 
 class LandingPageController extends Controller
@@ -15,9 +15,11 @@ class LandingPageController extends Controller
      */
     public function index()
     {
-        $product_lists = ProductList::where('products_id', '!=', 3) 
-                        ->where('curr_quantity', '>', 0)
-                        ->get();
+        $products = Product::where('id', '!=', 3)->get();
+
+        // $product_lists = Product::where('products_id', '!=', 3) 
+        //                 ->where('curr_quantity', '>', 0)
+        //                 ->get();
                         
 
         $farmers = DB::table('product_lists')
@@ -25,7 +27,7 @@ class LandingPageController extends Controller
 
         
         return view('landing-page')
-                ->with('product_lists', $product_lists)
+                ->with('products', $products)
                 ->with('farmers', $farmers);
     }
 

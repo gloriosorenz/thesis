@@ -170,7 +170,7 @@
                         </table>
                     </div> 
                     <!-- End Table -->
-                    <a href="{{ url('/product_lists/show_products') }}" class="btn btn-lg btn-primary">Back to Shopping</a> &nbsp;
+                    <a href="{{ route('cart.index') }}" class="btn btn-lg btn-primary">Back to Cart</a> &nbsp;
                     <button type="submit" id="complete-order" class="btn btn-lg btn-success">Complete Order</button>
                     </form> 
                     <!-- End From -->

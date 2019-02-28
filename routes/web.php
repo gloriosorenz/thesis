@@ -61,7 +61,7 @@ Route::get('/thankyou', 'ConfirmationController@index')->name('confirmation.inde
 Route::get('/products', 'ProductController@products');
 
 //Product Lists
-Route::get('/product_lists/show_products', 'ProductListController@display_products');
+Route::get('/product_lists/show_products', 'ProductListController@display_products')->name('show_products');
 
 // Season
 Route::get('/seasons/add_farmer/{id}', 'SeasonController@add_farmer');

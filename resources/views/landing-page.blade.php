@@ -7,14 +7,14 @@
 </div> --}}
 <br>
 {{-- JUMBOTRON --}}
-<div class="jumbotron p-3 p-md-5 text-dark rounded bg-dark text-center">
+{{-- <div class="jumbotron p-3 p-md-5 text-dark rounded bg-dark text-center">
     <div class="col-md-12 px-0">
         <h1 class="display-4 font-bold">Samahan ng Magsasaka Sta. Rosa Laguna Portal</h1>
         <p class="lead">All products are produced by the farmers of Laguna.</p>
     </div>
-</div>
+</div> --}}
 
-<div class="container">
+{{-- <div class="container">
     <div class="row">
     @if(count($product_lists) > 0)
         @foreach($product_lists as $product_list)
@@ -52,7 +52,7 @@
     @endif
     </div>
     
-</div>
+</div> --}}
 
 
 <div class="text-center">
@@ -64,53 +64,64 @@
 
     <div class="row">
         <div class="col-md-8 mb-5">
-        <h2>What We Do</h2>
-        <hr>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde debitis aliquam laboriosam. Repellat explicabo, maiores!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.</p>
-        <a class="btn btn-primary btn-lg" href="#">Call to Action &raquo;</a>
+            <h2>What We Do</h2>
+            <hr>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde debitis aliquam shitinum fukunum laboriosam. Repellat explicabo, maiores!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.</p>
+            <a class="btn btn-primary btn-lg" href="#">Call to Action &raquo;</a>
         </div>
         <div class="col-md-4 mb-5">
-        <h2>Contact Us</h2>
-        <hr>
-        <address>
-            <strong>Start Bootstrap</strong>
-            <br>3481 Melrose Place
-            <br>Beverly Hills, CA 90210
-            <br>
-        </address>
-        <address>
-            <abbr title="Phone">P:</abbr>
-            (123) 456-7890
-            <br>
-            <abbr title="Email">E:</abbr>
-            <a href="mailto:#">name@example.com</a>
-        </address>
+            <h2>Contact Us</h2>
+            <hr>
+            <address>
+                <strong>City Agriculture Office</strong>
+                <br>2F Cityhall B, City Government Center
+                <br>Santa Rosa, Laguna
+                <br>
+            </address>
+            <address>
+                <abbr title="Phone">Phone:</abbr>
+                049 530 0015
+                <br>
+                <abbr title="Email">Email:</abbr>
+                <a href="mailto:#">cityagricultureoffice_csrl@yahoo.com</a>
+            </address>
         </div>
     </div>
     <!-- /.row -->
 
+
+    <h2>Featured Products</h2>
+    <hr>
     <div class="row">
-        <div class="col-md-4 mb-5">
-            <div class="card h-100">
-                <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-                <div class="card-body">
-                <h4 class="card-title">Card title</h4>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
+        @if(count($products) > 0)
+            @foreach($products as $product)
+            {{-- <div class="col-lg-6 mb-4">
+                <div class="card bg-primary text-white shadow">
+                    <div class="card-body">
+                    {{$product->type}}
+                    <div class="text-white-50 small">#4e73df</div>
+                    </div>
                 </div>
-                <div class="card-footer">
-                <a href="#" class="btn btn-primary">Find Out More!</a>
+            </div> --}}
+
+            <div class="col-md-6 mb-5">
+                <div class="card h-100">
+                    <img class="card-img-top" src="http://placehold.it/300x200" alt="">
+                    <div class="card-body">
+                    <h4 class="card-title">{{$product->type}}</h4>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
+                    </div>
+                    <div class="card-footer">
+                    <a href="#" class="btn btn-primary">Find Out More!</a>
+                    </div>
                 </div>
-            </div>
-        </div>
+                  </div>
+            @endforeach
+        @endif
     </div>
     <!-- /.row -->
-
 </div>
 <!-- /.container -->
-
-
-
-    
 
 @endsection

@@ -11,7 +11,7 @@
                     <!-- {{-- CUSTOMER --}} -->
                     @elseif(Auth::user()->roles_id == 3)
                         <li class="nav-item active">
-                            <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="{{Request:: is('product_lists') ? 'active' : ''}}">
                             <a class="nav-link" href="{{ url('product_lists/show_products') }}">Products</a>
@@ -19,14 +19,20 @@
                         
                     <!-- {{-- ADMIN --}} -->
                     @elseif(Auth::user()->roles_id == 1)
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
                         <li class="{{Request:: is('product_lists') ? 'active' : ''}}">
                             <a class="nav-link" href="{{ url('product_lists/show_products') }}">Products</a>
                         </li>
                     <!-- {{-- FARMER --}} -->
                     @elseif(Auth::user()->roles_id == 2)
-                    <li class="{{Request:: is('product_lists') ? 'active' : ''}}">
-                        <a class="nav-link" href="{{ url('product_lists/show_products') }}">Products</a>
-                    </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="{{Request:: is('product_lists') ? 'active' : ''}}">
+                            <a class="nav-link" href="{{ url('product_lists/show_products') }}">Products</a>
+                        </li>
                     @endguest
                 </ul>
             </div>
@@ -91,10 +97,11 @@
                 <!-- {{-- CUSTOMER --}} -->
                 @elseif(Auth::user()->roles_id == 3)
                 <li class="nav-item">
-                            <a class="nav-link" href="{{ url('cart') }}">Cart ({{ Cart::instance('default')->count(false) }})</a>
-                            {{-- <li class="{{ set_active('cart') }}"><a href="{{ url('/cart') }}">Cart ({{ Cart::instance('default')->count(false) }})</a></li> --}}
+                    {{-- <a class="nav-link" href="{{ url('cart') }}">Cart ({{ Cart::instance('default')->count(false) }})</a> --}}
+                    <a class="nav-link" href="{{ url('cart') }}">Cart ({{ Cart::content()->count() }})</a>
+                    {{-- <li class="{{ set_active('cart') }}"><a href="{{ url('/cart') }}">Cart ({{ Cart::instance('default')->count(false) }})</a></li> --}}
 
-                        </li>
+                </li>
                 <li class="nav-item dropdown">
                 
                     <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
