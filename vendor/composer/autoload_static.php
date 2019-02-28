@@ -128,6 +128,7 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
+            'Gmopx\\LaravelOWM\\' => 17,
             'Gloudemans\\Shoppingcart\\' => 24,
         ),
         'F' => 
@@ -150,6 +151,7 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         array (
             'Cron\\' => 5,
             'Collective\\Html\\' => 16,
+            'Cmfcmf\\' => 7,
         ),
         'B' => 
         array (
@@ -349,6 +351,10 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
+        'Gmopx\\LaravelOWM\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/gmopx/laravel-owm/src',
+        ),
         'Gloudemans\\Shoppingcart\\' => 
         array (
             0 => __DIR__ . '/..' . '/gloudemans/shoppingcart/src',
@@ -388,6 +394,10 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'Collective\\Html\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravelcollective/html/src',
+        ),
+        'Cmfcmf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf',
         ),
         'BeyondCode\\DumpServer\\' => 
         array (
@@ -436,8 +446,6 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'App\\Cart' => __DIR__ . '/../..' . '/app/Cart.php',
         'App\\City' => __DIR__ . '/../..' . '/app/City.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
-        'App\\Customer' => __DIR__ . '/../..' . '/app/Customer.php',
-        'App\\CustomerType' => __DIR__ . '/../..' . '/app/CustomerType.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -446,11 +454,14 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/CartController.php',
         'App\\Http\\Controllers\\CheckoutController' => __DIR__ . '/../..' . '/app/Http/Controllers/CheckoutController.php',
+        'App\\Http\\Controllers\\ConfirmationController' => __DIR__ . '/../..' . '/app/Http/Controllers/ConfirmationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CustomerController' => __DIR__ . '/../..' . '/app/Http/Controllers/CustomerController.php',
         'App\\Http\\Controllers\\CustomerTypeController' => __DIR__ . '/../..' . '/app/Http/Controllers/CustomerTypeController.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\LandingPageController' => __DIR__ . '/../..' . '/app/Http/Controllers/LandingPageController.php',
+        'App\\Http\\Controllers\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/OrderController.php',
         'App\\Http\\Controllers\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductController.php',
         'App\\Http\\Controllers\\ProductListController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductListController.php',
         'App\\Http\\Controllers\\RiceFarmerController' => __DIR__ . '/../..' . '/app/Http/Controllers/RiceFarmerController.php',
@@ -467,8 +478,8 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\CheckoutRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CheckoutRequest.php',
         'App\\Order' => __DIR__ . '/../..' . '/app/Order.php',
-        'App\\OrderController' => __DIR__ . '/../..' . '/app/OrderController.php',
         'App\\OrderProduct' => __DIR__ . '/../..' . '/app/OrderProduct.php',
         'App\\Product' => __DIR__ . '/../..' . '/app/Product.php',
         'App\\ProductList' => __DIR__ . '/../..' . '/app/ProductList.php',
@@ -479,7 +490,6 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Province' => __DIR__ . '/../..' . '/app/Province.php',
-        'App\\RiceFarmer' => __DIR__ . '/../..' . '/app/RiceFarmer.php',
         'App\\RiceType' => __DIR__ . '/../..' . '/app/RiceType.php',
         'App\\Role' => __DIR__ . '/../..' . '/app/Role.php',
         'App\\Season' => __DIR__ . '/../..' . '/app/Season.php',
@@ -500,6 +510,27 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'Carbon\\Laravel\\ServiceProvider' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Laravel/ServiceProvider.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
         'CitiesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CitiesTableSeeder.php',
+        'Cmfcmf\\OpenWeatherMap' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap.php',
+        'Cmfcmf\\OpenWeatherMap\\AbstractCache' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap/AbstractCache.php',
+        'Cmfcmf\\OpenWeatherMap\\CurrentWeather' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap/CurrentWeather.php',
+        'Cmfcmf\\OpenWeatherMap\\CurrentWeatherGroup' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap/CurrentWeatherGroup.php',
+        'Cmfcmf\\OpenWeatherMap\\Exception' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap/Exception.php',
+        'Cmfcmf\\OpenWeatherMap\\Fetcher\\CurlFetcher' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap/Fetcher/CurlFetcher.php',
+        'Cmfcmf\\OpenWeatherMap\\Fetcher\\FetcherInterface' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap/Fetcher/FetcherInterface.php',
+        'Cmfcmf\\OpenWeatherMap\\Fetcher\\FileGetContentsFetcher' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap/Fetcher/FileGetContentsFetcher.php',
+        'Cmfcmf\\OpenWeatherMap\\Forecast' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap/Forecast.php',
+        'Cmfcmf\\OpenWeatherMap\\History' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap/History.php',
+        'Cmfcmf\\OpenWeatherMap\\UVIndex' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap/UVIndex.php',
+        'Cmfcmf\\OpenWeatherMap\\Util\\City' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap/Util/City.php',
+        'Cmfcmf\\OpenWeatherMap\\Util\\Location' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap/Util/Location.php',
+        'Cmfcmf\\OpenWeatherMap\\Util\\Sun' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap/Util/Sun.php',
+        'Cmfcmf\\OpenWeatherMap\\Util\\Temperature' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap/Util/Temperature.php',
+        'Cmfcmf\\OpenWeatherMap\\Util\\Time' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap/Util/Time.php',
+        'Cmfcmf\\OpenWeatherMap\\Util\\Unit' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap/Util/Unit.php',
+        'Cmfcmf\\OpenWeatherMap\\Util\\Weather' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap/Util/Weather.php',
+        'Cmfcmf\\OpenWeatherMap\\Util\\Wind' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap/Util/Wind.php',
+        'Cmfcmf\\OpenWeatherMap\\WeatherForecast' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap/WeatherForecast.php',
+        'Cmfcmf\\OpenWeatherMap\\WeatherHistory' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap/WeatherHistory.php',
         'Collective\\Html\\Componentable' => __DIR__ . '/..' . '/laravelcollective/html/src/Componentable.php',
         'Collective\\Html\\Eloquent\\FormAccessible' => __DIR__ . '/..' . '/laravelcollective/html/src/Eloquent/FormAccessible.php',
         'Collective\\Html\\FormBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/FormBuilder.php',
@@ -1078,6 +1109,10 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'Gloudemans\\Shoppingcart\\Exceptions\\UnknownModelException' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/Exceptions/UnknownModelException.php',
         'Gloudemans\\Shoppingcart\\Facades\\Cart' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/Facades/Cart.php',
         'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/ShoppingcartServiceProvider.php',
+        'Gmopx\\LaravelOWM\\Cache' => __DIR__ . '/..' . '/gmopx/laravel-owm/src/Cache.php',
+        'Gmopx\\LaravelOWM\\Http\\Controllers\\LaravelOWMController' => __DIR__ . '/..' . '/gmopx/laravel-owm/src/Http/Controllers/LaravelOWMController.php',
+        'Gmopx\\LaravelOWM\\LaravelOWM' => __DIR__ . '/..' . '/gmopx/laravel-owm/src/LaravelOWM.php',
+        'Gmopx\\LaravelOWM\\LaravelOWMServiceProvider' => __DIR__ . '/..' . '/gmopx/laravel-owm/src/LaravelOWMServiceProvider.php',
         'GuzzleHttp\\Client' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Client.php',
         'GuzzleHttp\\ClientInterface' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/ClientInterface.php',
         'GuzzleHttp\\Cookie\\CookieJar' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Cookie/CookieJar.php',

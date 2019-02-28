@@ -63,6 +63,58 @@
         ]
     },
     {
+        "name": "cmfcmf/openweathermap-php-api",
+        "version": "v2.4.0",
+        "version_normalized": "2.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/cmfcmf/OpenWeatherMap-PHP-Api.git",
+            "reference": "37f2e1178948a07c8d50d5063a15ca84b5b51f6a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/cmfcmf/OpenWeatherMap-PHP-Api/zipball/37f2e1178948a07c8d50d5063a15ca84b5b51f6a",
+            "reference": "37f2e1178948a07c8d50d5063a15ca84b5b51f6a",
+            "shasum": ""
+        },
+        "require": {
+            "ext-xml": "*",
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^4.8 || ^5.0.5"
+        },
+        "time": "2018-08-30T07:35:48+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Cmfcmf\\": "Cmfcmf"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Christian Flach (cmfcmf)",
+                "email": "cmfcmf.flach@gmail.com",
+                "homepage": "http://cmfcmf.github.io",
+                "role": "Developer"
+            }
+        ],
+        "description": "A php api to parse weather data from OpenWeatherMap.org. This api tries to normalise and abstract the data and remove inconsistencies.",
+        "homepage": "https://github.com/cmfcmf/OpenWeatherMap-PHP-Api",
+        "keywords": [
+            "OpenWeatherMap",
+            "api",
+            "free",
+            "owm",
+            "weather"
+        ]
+    },
+    {
         "name": "dnoegel/php-xdg-base-dir",
         "version": "0.1",
         "version_normalized": "0.1.0.0",
@@ -667,6 +719,58 @@
         "keywords": [
             "laravel",
             "shoppingcart"
+        ]
+    },
+    {
+        "name": "gmopx/laravel-owm",
+        "version": "v0.1.3",
+        "version_normalized": "0.1.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/gitllermopalafox/Laravel-OWM.git",
+            "reference": "dae518c92d0c64218c696ec03778ef7ac831e61b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/gitllermopalafox/Laravel-OWM/zipball/dae518c92d0c64218c696ec03778ef7ac831e61b",
+            "reference": "dae518c92d0c64218c696ec03778ef7ac831e61b",
+            "shasum": ""
+        },
+        "require": {
+            "cmfcmf/openweathermap-php-api": "^2.1",
+            "php": ">=5.4.0"
+        },
+        "time": "2018-09-04T05:12:39+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "Gmopx\\LaravelOWM\\LaravelOWMServiceProvider"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Gmopx\\LaravelOWM\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Guillermo Palafox",
+                "email": "palafox.87@gmail.com"
+            }
+        ],
+        "description": "Wrapper for cmfcmf/openweathermap-php-api",
+        "keywords": [
+            "clima",
+            "laravel",
+            "open weather map",
+            "weather"
         ]
     },
     {
