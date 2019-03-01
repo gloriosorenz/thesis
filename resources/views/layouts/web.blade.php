@@ -19,6 +19,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/Content/css/weather-icons/css/weather-icons.min.css" />
+    
 </head>
 <body id="page-top">
     <div id="wrapper">
@@ -36,5 +38,7 @@
     @include('inc.logout_modal')
     @include('partials.javascripts')
     @yield('extra-js')
+    @yield('weather-js')
+
 </body>
 </html>

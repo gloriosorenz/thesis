@@ -8,6 +8,8 @@ use DB;
 use Cache;
 use Log;
 use Gmopx\LaravelOWM\LaravelOWM;
+use Cmfcmf\OpenWeatherMap;
+use Cmfcmf\OpenWeatherMap\Exception as OWMException;
 
 class LandingPageController extends Controller
 {
@@ -25,7 +27,9 @@ class LandingPageController extends Controller
         //                 ->get();
                         
         $lowm = new LaravelOWM();
-        $forecast = $lowm->getWeatherForecast(array('lat' => 14.2936, 'lon' => 121.1067),null,null,5);
+
+        // $forecast = $lowm->getWeatherForecast(array('lat' => 14.2936, 'lon' => 121.1067),null,null,5);
+        $current_weather = $lowm->getCurrentWeather(array('lat' => 14.2936, 'lon' => 121.1067));
         // $forecast = $lowm->getWeatherForecast($query, $lang = 'en', $units = 'metric', $days = 5, $cache = false, $time = 600);
         // dd($forecast);
 
@@ -52,13 +56,15 @@ class LandingPageController extends Controller
             // });
 
             // dd($forecast);
+            // dd($current_weather);
         // return view('welcome', ["forecast" => $forecast]);
 
 
         return view('landing-page')
                 ->with('products', $products)
                 ->with('farmers', $farmers)
-                ->with('forecast',$forecast);
+                // ->with('forecast',$forecast)
+                ->with('current_weather',$current_weather);
     }
 
     /**
