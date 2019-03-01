@@ -192,11 +192,11 @@
                         <div class="info">
                             <div>&nbsp;</div>
                             <div class="city"><small><small>CITY:</small></small> {{ $current_weather->city->name}}</div>
-                            <div class="weather"><small><small>Weather:</small></small> {{$current_weather->weather}}</div>
+                            <div class="city"><small><small>Weather:</small></small> {{$current_weather->weather}}</div>
 
-                            <div class="temp"> <small><small>{{$current_weather->temperature}}</small></div>
+                            <div class="wind"><small><small> Temperature: </small></small>{{$current_weather->temperature->now}}</div>
                             <div class="wind"><small><small>WIND:</small></small> {{$current_weather->wind->speed}}</div>
-                            <div class="cloud"><small><small>CLOUD:</small></small> {{$current_weather->clouds}}</div>
+                            <div class="cloud"><small><small>CLOUD:</small></small> {{$current_weather->clouds}}%</div>
 
                             <div>&nbsp;</div>
                         </div>
