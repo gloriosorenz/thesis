@@ -18,9 +18,9 @@ class CreateUsersTable extends Migration
             $table->string('first_name')->nullable(); //not nullable
             $table->string('last_name')->nullable(); //not nullable
             $table->string('phone')->nullable(); //not nullable
-            $table->string('barangay')->nullable(); //not nullable
-            $table->string('province')->nullable(); //not nullable
-            $table->string('city')->nullable(); //not nullable
+            $table->string('street')->nullable(); //not nullable
+            // $table->string('province')->nullable(); //not nullable
+            // $table->string('city')->nullable(); //not nullable
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password'); 
@@ -33,6 +33,8 @@ class CreateUsersTable extends Migration
 
             $table->integer('roles_id')->unsigned()->nullable();
             $table->integer('barangays_id')->unsigned()->nullable();
+            $table->integer('cities_id')->unsigned()->nullable();
+            $table->integer('provinces_id')->unsigned()->nullable();
 
             $table->timestamps();
         });

@@ -18,6 +18,7 @@ class CreateProductListsTable extends Migration
             $table->integer('seasons_id')->unsigned()->nullable();
             $table->integer('users_id')->unsigned()->nullable();
             $table->integer('products_id')->unsigned()->nullable();
+            $table->date('harvest_date')->nullable();
             $table->integer('orig_quantity');
             $table->integer('curr_quantity');
             $table->double('price');

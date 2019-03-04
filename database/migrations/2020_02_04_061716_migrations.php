@@ -13,41 +13,17 @@ class Migrations extends Migration
      */
     public function up()
     {
-        // Foreign keys of Users to have Roles
+        // Foreign keys of Users
         Schema::table('users',function(Blueprint $table){
             $table->foreign('roles_id')
                 ->references('id')->on('roles')->onDelete('cascade');
             $table->foreign('barangays_id')
                 ->references('id')->on('barangays')->onDelete('cascade');
+            $table->foreign('cities_id')
+                ->references('id')->on('cities')->onDelete('cascade');
+            $table->foreign('provinces_id')
+                ->references('id')->on('provinces')->onDelete('cascade');
         });
-
-        // Farmers
-        // Schema::table('rice_farmers',function(Blueprint $table){
-        //     $table->foreign('users_id')
-        //         ->references('id')->on('users')->onDelete('cascade');
-        //     $table->foreign('planned_crops_id')
-        //         ->references('id')->on('planned_crops')->onDelete('cascade');
-        //     $table->foreign('philippine_barangays_id')
-        //         ->references('id')->on('philippine_barangays')->onDelete('cascade');
-        //     $table->foreign('barangays_id')
-        //         ->references('id')->on('barangays')->onDelete('cascade');
-        // });
-
-        // Customers
-        // Schema::table('customers',function(Blueprint $table){
-        //     $table->foreign('customer_types_id')
-        //         ->references('id')->on('customer_types')->onDelete('cascade');
-        //     $table->foreign('users_id')
-        //         ->references('id')->on('users')->onDelete('cascade');
-        // });
-
-        // Cart
-        //  Schema::table('carts',function(Blueprint $table){
-        //     $table->foreign('product_lists_id')
-        //         ->references('id')->on('product_lists')->onDelete('cascade');
-        //     $table->foreign('customers_id')
-        //         ->references('id')->on('customers')->onDelete('cascade');
-        // });
 
         // Product List
         Schema::table('product_lists',function(Blueprint $table){
