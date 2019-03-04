@@ -26,6 +26,7 @@
     <div id="wrapper">
         <div id="content-wrapper" class="d-flex flex-column">
             @include('inc.home_navbar')
+            <a class="weatherwidget-io" href="https://forecast7.com/en/14d28121d09/santa-rosa/" data-label_1="SANTA ROSA" data-label_2="WEATHER" data-icons="Climacons Animated" data-days="5" data-theme="gray" >SANTA ROSA WEATHER</a>
             <div id="content" class="container"> 
                 @include('inc.messages')
                 <div class="container">
@@ -37,6 +38,7 @@
     </div>
     @include('inc.logout_modal')
     @include('partials.javascripts')
+    @include('partials.weather_javascript')
     @yield('extra-js')
     @yield('weather-js')
 

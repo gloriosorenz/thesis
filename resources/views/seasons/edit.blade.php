@@ -103,7 +103,7 @@
 <!-- Add Products -->
 <div class="row">
     <div class="offset-md-1 col-md-10 offset-md-1">
-        <h3>Prducts</h3>
+        <h3>Products</h3>
         <table class="table table-bordered" id="table_id">
             <thead>
                 <tr>
