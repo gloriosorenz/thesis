@@ -7,6 +7,8 @@ use App\Order;
 use App\Product;
 use App\ProductList;
 use App\OrderProduct;
+use App\ReserveProduct;
+
 // use App\Mail\OrderPlaced;
 // use Illuminate\Http\Request;
 // use Illuminate\Support\Facades\Mail;
@@ -77,7 +79,7 @@ class CheckoutController extends Controller
             // 'users_id' => auth()->user() ? auth()->user()->id : null,
             'users_id' => auth()->user()->id,
             'total_price' =>  getNumbers()->get('newTotal'),
-            'delivered' => 0,
+            'order_statuses_id' => 1,
         ]);
 
         // Insert into order_product table
@@ -89,6 +91,16 @@ class CheckoutController extends Controller
             ]);
         }
 
+        // Insert into reserve_product table
+        foreach (Cart::content() as $item) {
+            ReserveProduct::create([
+                'orders_id' => $order->id,
+                'product_lists_id' => $item->model->id,
+                'quantity' => $item->qty,
+            ]);
+        }
+
+
         return $order;
     }
 
@@ -98,6 +110,23 @@ class CheckoutController extends Controller
             $product = ProductList::find($item->model->id);
 
             $product->update(['curr_quantity' => $product->curr_quantity - $item->qty]);
+
+
+            /*
+            $product = ProductList::find($item->model->id);
+            $product = $product->curr_quantity - $item->qty;
+            $product->update($product->id, ['curr_quantity']);
+            */
+        }
+    }
+
+    protected function increaseQuantities()
+    {
+        foreach (Cart::content() as $item) {
+            $product = ProductList::find($item->model->id);
+
+            $product->update(['curr_quantity' => $product->curr_quantity + $item->qty]);
+
 
             /*
             $product = ProductList::find($item->model->id);
@@ -117,5 +146,10 @@ class CheckoutController extends Controller
         }
 
         return false;
+    }
+
+    protected function confirmPurchase()
+    {
+
     }
 }

@@ -59,12 +59,24 @@ class Migrations extends Migration
                 ->references('id')->on('orders')->onDelete('cascade');
         });
 
+        // Reserve Products
+        Schema::table('reserve_products',function(Blueprint $table){
+            $table->foreign('product_lists_id')
+                ->references('id')->on('product_lists')->onDelete('cascade');
+            $table->foreign('orders_id')
+                ->references('id')->on('orders')->onDelete('cascade');
+        });
+
         // Orders
         Schema::table('orders',function(Blueprint $table){
             // $table->foreign('order_products_id')
             //     ->references('id')->on('order_products')->onDelete('cascade');
             $table->foreign('users_id')
                 ->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('order_statuses_id')
+                ->references('id')->on('order_statuses')->onDelete('cascade');
+            // $table->foreign('reserve_products_id')
+            //     ->references('id')->on('reserve_products')->onDelete('cascade');
         });
 
     }

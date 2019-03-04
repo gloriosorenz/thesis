@@ -15,9 +15,9 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('first_name')->nullable(); //not nullable
-            $table->string('last_name')->nullable(); //not nullable
-            $table->string('phone')->nullable(); //not nullable
+            $table->string('first_name'); //not nullable
+            $table->string('last_name'); //not nullable
+            $table->string('phone'); //not nullable
             $table->string('street')->nullable(); //not nullable
             // $table->string('province')->nullable(); //not nullable
             // $table->string('city')->nullable(); //not nullable
@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->integer('no_farmers')->nullable();
             $table->double('hectares')->nullable();
 
-            $table->integer('roles_id')->unsigned()->nullable();
+            $table->integer('roles_id')->unsigned();
             $table->integer('barangays_id')->unsigned()->nullable();
             $table->integer('cities_id')->unsigned()->nullable();
             $table->integer('provinces_id')->unsigned()->nullable();
