@@ -111,12 +111,20 @@
         <span>Products</span></a>
     </li>
 
+    <!-- Orders -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('orders.index') }}">
+        <i class="fas fa-shopping-basket"></i>
+        <span>Orders</span></a>
+    </li>
+
     <!-- Reports -->
     <li class="nav-item">
         <a class="nav-link" href="#">
         <i class="fas fa-chart-line"></i>
         <span>Reports</span></a>
     </li>
+
     @endif
 
 

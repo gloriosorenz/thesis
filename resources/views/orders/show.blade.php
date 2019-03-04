@@ -1,4 +1,4 @@
-@extends('layouts.web')
+@extends('layouts.app')
 
 @section('content')
 
@@ -8,7 +8,7 @@
     <h2 class="title">Order {{ $order->id }}</h2>
     </div>
     <div class="card-body">
-        <table id="seasons_table" class="table table-bordered">
+        <table id="orders_table" class="table table-bordered">
             @if(count($order) > 0)
             <thead>
                 <tr>
