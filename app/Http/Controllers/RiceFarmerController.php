@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use App\RiceFarmer;
 use App\User;
 use App\Barangay;
+use App\City;
+use App\Province;
 
 class RiceFarmerController extends Controller
 {
@@ -33,9 +35,13 @@ class RiceFarmerController extends Controller
     public function create()
     {
         $barangays = Barangay::orderBy('name')->get();
+        $cities = City::orderBy('name')->get();
+        $provinces = Province::orderBy('name')->get();
       
         return view('rice_farmers.create')
-            ->with('barangays', $barangays);
+            ->with('barangays', $barangays)
+            ->with('cities', $cities)
+            ->with('provinces', $provinces);
     }
 
     /**
@@ -52,7 +58,10 @@ class RiceFarmerController extends Controller
             'last_name' => 'required|string|max:255',
             'email' => 'string|email|max:255',
             'phone' => 'required|string|max:255',
-            'barangay' => 'required|string|max:255',
+            'street' => 'required|string|max:255',
+            'barangay' => 'required',
+            'city' => 'required',
+            'province' => 'required',
             'password' => 'required|string|min:6',
         ]);
         
@@ -61,17 +70,16 @@ class RiceFarmerController extends Controller
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
         $user->phone = $request->input('phone');
-        $user->barangay = $request->input('barangay');
+        $user->street = $request->input('street');
+        $user->barangays_id = $request->input('barangay');
+        $user->cities_id = $request->input('city');
+        $user->provinces_id = $request->input('province');
         $user->company = $request->input('company');
         $user->password = Hash::make($request['password']);
         $user->roles_id = 2;
-        
-        
         $user->save();
 
-        
-
-
+    
         // $farmers = RiceFarmer::create($request->all());
         // $users = User::create($request->all());
 
@@ -102,10 +110,14 @@ class RiceFarmerController extends Controller
     {
         $farmer = User::find($id);
         $barangays = Barangay::orderBy('name')->get();
+        $cities = City::orderBy('name')->get();
+        $provinces = Province::orderBy('name')->get();
 
         return view('rice_farmers.edit')
             ->with('farmer', $farmer)
-            ->with('barangays', $barangays);
+            ->with('barangays', $barangays)
+            ->with('cities', $cities)
+            ->with('provinces', $provinces);
     }
 
     /**
@@ -123,7 +135,10 @@ class RiceFarmerController extends Controller
         $farmer->last_name = $request->input('last_name');
         $farmer->email = $request->input('email');
         $farmer->phone = $request->input('phone');
-        $farmer->barangay = $request->input('barangay');
+        $farmer->street = $request->input('street');
+        $farmer->barangays_id = $request->input('barangay');
+        $farmer->cities_id = $request->input('city');
+        $farmer->provinces_id = $request->input('province');
         $farmer->save();
 
         // dd($farmer);

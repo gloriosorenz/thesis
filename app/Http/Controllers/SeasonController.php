@@ -22,9 +22,11 @@ class SeasonController extends Controller
     public function index()
     {
         $seasons = Season::orderBy('id', 'desc')->get();
+        $statuses = Season::where('season_statuses_id', '=', 2)->get();
 
-        // dd($seasons);
-        return view('seasons.index', compact('seasons'));
+        // dd($seasons, $statuses);
+        return view('seasons.index', compact('seasons'))
+            ->with('statuses', $statuses);
     }
 
     /**

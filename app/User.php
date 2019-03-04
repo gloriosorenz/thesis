@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'phone', 'address', 'password', 'roles_id', 'active', 'isAdmin'
+        'first_name', 'last_name', 'email', 'phone', 'password', 'roles_id', 'active', 'isAdmin', 'barangays_id', 'cities_id', 'provinces_id', 'street'
     ];
 
     /**
@@ -34,9 +34,19 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'roles_id');
     }
 
-    public function barangayS()
+    public function barangays()
     {
         return $this->belongsTo(Barangay::class, 'barangays_id');
+    }
+
+    public function cities()
+    {
+        return $this->belongsTo(City::class, 'cities_id');
+    }
+
+    public function provinces()
+    {
+        return $this->belongsTo(Province::class, 'provinces_id');
     }
 
     public function rice_farmers()

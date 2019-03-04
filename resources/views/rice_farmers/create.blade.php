@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- BREADCRUMB -->
+<!-- Breadcrumb -->
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Dashboard</a></li>
@@ -15,24 +15,24 @@
 <br>
 <div class="row">
     <div class="col-md-8">
-        <div class="card">
+        <div class="card shadow mb-4">
         <div class="card-header card-header-primary">
             <h4 class="card-title">Create a Farmer Account</h4>
             <p class="card-category">Complete your profile</p>
         </div>
         <div class="card-body">
-        <!-- FORM -->
+        <!-- Form -->
         <form method="post" action="{{action('RiceFarmerController@store')}}" enctype="multipart/form-data">
             @csrf
             <div class="row">
-                <!-- FIRST NAME -->
+                <!-- First Name -->
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="first_name">First Name:</label>
                         <input type="text" class="form-control" name="first_name" value="" />
                     </div>
                 </div>
-                <!-- LAST NAME -->
+                <!-- Last Name -->
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="last_name">Last Name:</label>
@@ -42,14 +42,14 @@
             </div>
         
             <div class="row">
-                <!-- PHONE -->
+                <!-- Phone -->
                 <div class="col-md-6">
                     <div class="form-group">
                     <label for="phone">Phone:</label>
                     <input type="text" class="form-control" name="phone" value=""/>
                     </div>
                 </div>
-                <!-- EMAIL -->
+                <!-- Email -->
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="email">Email (Optional):</label>
@@ -58,16 +58,50 @@
                 </div>
             </div>
 
+            <label><strong>Farm Address</strong></label>
             <div class="row">
-            <!-- ADDRESS -->
-                <div class="col-md-6">
+                <!-- Street -->
+                <div class="col-md-8">
+                    <div class="form-group">
+                    <label for="phone">Street:</label>
+                    <input type="text" class="form-control" name="street" value=""/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+            <!-- Address -->
+                <div class="col-md-4">
                     <!-- Barangay -->
                     <div class="form-group">
-                        <label for="barangay">Farm Address (Barangay):</label>
+                        <label for="barangay">Barangay:</label>
                         <select class="form-control" name="barangay" id="barangay">
                             <option value="0" selected="true" disabled="True">Select Barangay</option>
                             @foreach ($barangays as $barangay)
-                                <option value="{{ $barangay['name']}}">{{ $barangay['name']}}</option>
+                                <option value="{{ $barangay['id']}}">{{ $barangay['name']}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <!-- City -->
+                    <div class="form-group">
+                        <label for="city">City:</label>
+                        <select class="form-control" name="city" id="city">
+                            <option value="0" selected="true" disabled="True">Select City</option>
+                            @foreach ($cities as $city)
+                                <option value="{{ $city['id']}}">{{ $city['name']}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <!-- City -->
+                    <div class="form-group">
+                        <label for="province">Province:</label>
+                        <select class="form-control" name="province" id="province">
+                            <option value="0" selected="true" disabled="True">Select Province</option>
+                            @foreach ($provinces as $province)
+                                <option value="{{ $province['id']}}">{{ $province['name']}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -75,7 +109,7 @@
             </div>
 
             <div class="row">
-                <!-- COMAPNY -->
+                <!-- Company -->
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label class="control-lable" for="company">Company:</label>
@@ -86,7 +120,7 @@
 
             <div class="row">
                 <div class="col-lg-6">
-                    <!-- PASSWORD -->
+                    <!-- Password -->
                     <div class="form-group">
                         <label class="control-lable" for="password">Password (TEST PURPOSES)</label>
                         <input type="password" class="form-control" name="password" value="" />
@@ -94,7 +128,7 @@
                 </div>
             </div>
 
-            <!-- SUBMIT BUTTON -->
+            <!-- Submit Button -->
             <button type="submit" class="btn btn-success">Create</button>
             </form>
         </div>

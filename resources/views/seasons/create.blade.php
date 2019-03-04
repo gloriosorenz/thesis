@@ -5,7 +5,7 @@
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Dashboard</a></li>
-    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('users.index') }}">Users</a></li>
+    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('seasons.index') }}">Seasons</a></li>
     <li class="breadcrumb-item active" aria-current="page">Create</li>
 </ol>
 </nav>
@@ -77,9 +77,9 @@
                     <td>
                         <select class="form-control" name="users_id[]" id="users_id">
                             <option value="0" selected="true" disabled="True">Select Farmer</option>
-                            @foreach ($users as $key=>$p)
-                            <option value="{{$key}}">{{$p}}</option>
-                            @endforeach
+                                @foreach ($users as $key=>$p)
+                                    <option value="{{$key}}">{{$p}}</option>
+                                @endforeach
                         </select>
                     </td>
                     <td><input type="text" class="form-control" name="planned_hectares[]" value="" /></td>

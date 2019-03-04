@@ -15,7 +15,7 @@
 <br>
 <div class="row">
   <div class="col-md-8">
-    <div class="card">
+    <div class="card shadow mb-4">
       <div class="card-header card-header-primary">
         <h4 class="card-title">{{ $farmer->first_name }} {{ $farmer->last_name }}'s' Profile</h4>
         <p class="card-category">View your profile</p>
@@ -50,18 +50,39 @@
             </div>
           </div>
           <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="phone">Company:</label>
+                <input type="text" class="form-control" readonly name="company" value="{{ $farmer->company }}" />
+              </div>
+            </div>
+          </div>
+          <label><strong>Farm Address</strong></label>
+          <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                  <label for="address">Farm Address:</label>
-                  <input type="text" class="form-control" readonly name="barangay" value="{{ $farmer->barangays->name }}" />
+                <label for="street">Street:</label>
+                <input type="text" class="form-control" readonly name="street" value="{{ $farmer->street }}" />
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
-                <label for="phone">Company:</label>
-                <input type="text" class="form-control" readonly name="company" value="{{ $farmer->company }}" />
+                  <label for="address">Barangay:</label>
+                  <input type="text" class="form-control" readonly name="barangay" value="{{ $farmer->barangays->name }}" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                  <label for="address">City:</label>
+                  <input type="text" class="form-control" readonly name="city" value="{{ $farmer->cities->name }}" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                  <label for="address">Province:</label>
+                  <input type="text" class="form-control" readonly name="province" value="{{ $farmer->provinces->name }}" />
               </div>
             </div>
           </div>

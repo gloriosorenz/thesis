@@ -77,7 +77,7 @@
             <i class="fas fa-chart-line"></i>
             <span>Reports</span>
         </a>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Components:</h6>
                 <a class="collapse-item" href="#">Sales Report</a>

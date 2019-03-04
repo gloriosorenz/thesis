@@ -15,7 +15,7 @@
 <br>
 <div class="row">
   <div class="col-md-8">
-    <div class="card">
+    <div class="card shadow mb-4">
       <div class="card-header card-header-primary">
         <h4 class="card-title">Edit Profile</h4>
         <p class="card-category">Complete your profile</p>
@@ -53,21 +53,58 @@
               </div>
             </div>
           </div>
+
+          <label><strong>Farm Address</strong></label>
           <div class="row">
-            <div class="col-md-6">
+            <!-- Street -->
+            <div class="col-md-8">
+                <div class="form-group">
+                <label for="phone">Street:</label>
+                <input type="text" class="form-control" name="street" value="{{ $farmer->street }}"/>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <!-- Barangay -->
+            <div class="col-md-4">
               <div class="form-group">
-                  <label for="barangay">Farm Address:</label>
+                  <label for="barangay">Barangay:</label>
                   <select class="form-control" name="barangay" id="barangay">
-                      <option value="0" selected="true" disabled="True">{{ $farmer->barangays->name }}</option>
-                      @foreach ($barangays as $barangay)
-                          <option value="{{ $barangay['name']}}">{{ $barangay['name']}}</option>
+                      <option value="{{ $farmer->barangays->id }}" selected="true" disabled="True">{{ $farmer->barangays->id }}</option>
+                      @foreach ($barangays as $key=>$p)
+                          <option value="{{ $key['id']}}">{{ $p['name']}}</option>
                       @endforeach
                   </select>
               </div>
             </div>
+            <div class="col-md-4">
+                <!-- City -->
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <select class="form-control" name="city" id="city">
+                        <option value="0" selected="true" disabled="True">{{ $farmer->cities->name }}</option>
+                        @foreach ($cities as $key=>$p)
+                            <option value="{{ $key['id']}}">{{ $p['name']}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <!-- City -->
+                <div class="form-group">
+                    <label for="province">Province:</label>
+                    <select class="form-control" name="province" id="province">
+                        <option value="0" selected="true" disabled="True">{{ $farmer->provinces->name }}</option>
+                        @foreach ($provinces as $key=>$p)
+                            <option value="{{ $key['id']}}">{{ $p['name']}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
           </div>
+
+
           <div class="row">
-            
             <div class="col-md-4">
               <div class="form-group">
                 <label for="company">Company:</label>
