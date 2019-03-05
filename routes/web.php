@@ -64,8 +64,14 @@ Route::get('/products', 'ProductController@products');
 Route::get('/product_lists/show_products', 'ProductListController@display_products')->name('show_products');
 
 // Season
-Route::get('/seasons/add_farmer/{id}', 'SeasonController@add_farmer');
-Route::get('/seasons/farmer_seasons', 'SeasonController@farmer_seasons');
+// Route::get('/seasons/add_farmer/{id}', 'SeasonController@add_farmer');
+// Route::get('/seasons/farmer_seasons', 'SeasonController@farmer_seasons');
+
+// Orders
+Route::get('/orders/web_orders', 'OrderController@orders')->name('web_orders');
+Route::get('/orders/confirm_order/{$id}', 'OrderController@confirm_order');
+Route::get('/orders/cancel_order/{$id}', 'OrderController@cancel_order');
+
 
 
 

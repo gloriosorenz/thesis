@@ -14,45 +14,7 @@
     </div>
 </div> --}}
 
-{{-- <div class="container">
-    <div class="row">
-    @if(count($product_lists) > 0)
-        @foreach($product_lists as $product_list)
-        <div class="col-md-6">
-            <div class="card-deck mb-3 text-center"> 
-                <div class="card mb-4 shadow-sm">
-                <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">{{ $product_list->products->type }}</h4>
-                </div>
-                    <div class="card-body">
-                        <h1 class="card-title pricing-card-title">{{ $product_list->presentPrice() }} <small class="text-muted">/ kaban</small></h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                        <li>FOR TEST REASONS = Season {{ $product_list->seasons->id }}</li>
-                        <li>Available: {{ $product_list->curr_quantity }}</li>
-                        <li>Producer: {{ $product_list->users->company }}</li>
-                        <li>Barangay Location: {{ $product_list->users->barangays->name }}</li>
-                        </ul>
 
-                        <form method="post" action="{{action('CartController@store')}}">
-                                @csrf
-                            <input type="hidden" name="id" value="{{ $product_list->id }}">
-                            <input type="hidden" name="price" value="{{ $product_list->price }}">
-                            <input type="hidden" name="quantity" value="{{ $product_list->curr_quantity }}">
-
-                            <button type="submit" class="btb btn-success btn-lg">Add to Cart</button>
-                        </form>                    
-                    
-                    </div>
-                </div>
-            </div>
-        </div> 
-        @endforeach
-    @else
-        <p>No products found</p>
-    @endif
-    </div>
-    
-</div> --}}
 {{-- <a class="weatherwidget-io" href="https://forecast7.com/en/14d28121d09/santa-rosa/" data-label_1="SANTA ROSA" data-label_2="WEATHER" data-icons="Climacons Animated" data-days="5" data-theme="gray" >SANTA ROSA WEATHER</a> --}}
 
 <div class="text-center">
@@ -225,11 +187,11 @@
 
 </div> --}}
 
-@include('partials.weather_javascript')
+{{-- @include('partials.weather_javascript') --}}
 
 @endsection
 
-@section('weather-js')
+{{-- @section('weather-js')
         <style>
         .weather
     {
@@ -310,4 +272,4 @@
                     font-size: 28px;
                 }
         </style>
-     @endsection
+     @endsection --}}
