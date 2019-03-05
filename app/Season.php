@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Season extends Model
 {
-    // protected $fillable = [
-    //     'company', 'no_farmers', 'hectares', 'planned_crops_id', 'users_id'
-    // ];
+    protected $fillable = [
+        'season_start', 'season_end', 'season_types_id', 'seasons_statuses_id'
+    ];
 
     public function users()
     {

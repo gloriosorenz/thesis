@@ -38,7 +38,7 @@
     <!-- Orders -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('orders.index') }}">
-        <i class="fas fa-shopping-basket"></i>
+        <i class="fas fa-clipboard-list"></i>
         <span>Orders</span></a>
     </li>
 
@@ -111,7 +111,7 @@
     <!-- Orders -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('orders.index') }}">
-        <i class="fas fa-shopping-basket"></i>
+        <i class="fas fa-clipboard-list"></i>
         <span>Orders</span></a>
     </li>
 

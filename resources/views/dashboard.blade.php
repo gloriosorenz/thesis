@@ -254,7 +254,7 @@
               <div class="col-lg-6 mb-4">
   
                 <!-- Illustrations -->
-                <div class="card shadow mb-4">
+                {{-- <div class="card shadow mb-4">
                   <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
                   </div>
@@ -265,7 +265,7 @@
                     <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
                     <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a>
                   </div>
-                </div>
+                </div> --}}
   
                 <!-- Approach -->
                 <div class="card shadow mb-4">

@@ -21,7 +21,7 @@ class SeasonController extends Controller
      */
     public function index()
     {
-        $seasons = Season::orderBy('id', 'desc')->get();
+        $seasons = Season::orderBy('id', 'desc')->paginate(10);
         $statuses = Season::where('season_statuses_id', '=', 2)->get();
 
         // dd($seasons, $statuses);
