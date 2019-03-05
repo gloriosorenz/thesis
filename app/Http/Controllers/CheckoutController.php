@@ -32,6 +32,28 @@ class CheckoutController extends Controller
             return redirect()->route('product_lists.show_products');
         }
 
+        // $cancel_order = Order::where('created_at', '>=', Carbon::now()->subDays(3))
+        //     ->where('order_statuses_id', '=', 3)
+        //     ->increaseQuantities()
+        //     ->get();
+
+        // $order_product = Order
+        // $cancel_order = Order::where()
+
+        // $product_lists = ProductList::where('products_id', '!=', 3) 
+        // ->where('curr_quantity', '>', 0)
+        // ->get();
+
+        /*
+            $reminders = Inquiry::where('created_at', '>=', Carbon::now()->subDays(3))
+                ->where('inquiry_statuses_id', '=', 1)
+                ->get();
+
+            $reminders2 = Inquiry::where('created_at', '<=', Carbon::now()->subDays(5))
+                ->where('inquiry_statuses_id', '=', 1)
+                ->get();
+        */
+
         $order_date = Carbon::now();
 
         return view('cart.checkout')
@@ -40,6 +62,7 @@ class CheckoutController extends Controller
             'newTotal' => getNumbers()->get('newTotal'),
             ])
             ->with('order_date', $order_date);
+            // ->with('cancel_order', $cancel_order);
     }
 
 
@@ -92,13 +115,13 @@ class CheckoutController extends Controller
         }
 
         // Insert into reserve_product table
-        foreach (Cart::content() as $item) {
-            ReserveProduct::create([
-                'orders_id' => $order->id,
-                'product_lists_id' => $item->model->id,
-                'quantity' => $item->qty,
-            ]);
-        }
+        // foreach (Cart::content() as $item) {
+        //     ReserveProduct::create([
+        //         'orders_id' => $order->id,
+        //         'product_lists_id' => $item->model->id,
+        //         'quantity' => $item->qty,
+        //     ]);
+        // }
 
 
         return $order;

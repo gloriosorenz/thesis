@@ -13,17 +13,17 @@ class CreateReserveProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reserve_products', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('quantity');
-            // $table->integer('total_price');
+        // Schema::create('reserve_products', function (Blueprint $table) {
+            // $table->increments('id');
+            // $table->integer('quantity');
+            // // $table->integer('total_price');
 
-            $table->integer('product_lists_id')->unsigned()->nullable();
-            $table->integer('orders_id')->unsigned()->nullable();
+            // $table->integer('product_lists_id')->unsigned()->nullable();
+            // $table->integer('orders_id')->unsigned()->nullable();
 
 
-            $table->timestamps();
-        });
+            // $table->timestamps();
+        // });
     }
 
     /**

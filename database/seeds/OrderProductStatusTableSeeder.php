@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class OrderStatusTableSeeder extends Seeder
+class OrderProductStatusTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -33,7 +33,7 @@ class OrderStatusTableSeeder extends Seeder
         ];
 
         foreach ($items as $item) {
-            \App\OrderStatus::create($item);
+            \App\OrderProductStatus::create($item);
         }
     }
 }

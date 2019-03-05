@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Order;
 use App\OrderProduct;
+use App\ProductList;
 use DB;
 
 class OrderController extends Controller
@@ -160,8 +161,37 @@ class OrderController extends Controller
     public function cancel_order(Request $request, $id){
         $order = Order::findOrFail($id);
         $order->order_statuses_id = 3;
-        $order->save();
 
-        return redirect('/orders')->with('success', 'Order Cancelled');
+        // $curr_qty = OrderProduct::where('product_lists_id',$id )->get();
+        // $op = OrderProduct::findOrFail($id);
+
+        // $order_products = OrderProduct::where('orders_id', $id)->get();
+        // $curr = $op->quantity;
+        // $order_products = $order->quantity + $op->curr_quantity;
+
+        // // $quantity = $order_products->quantity;
+        // $order_products->quantity = 
+        
+        // $orderproducts->increaseQuantities();
+        // $order_products->update(['curr_quantity' => $product->curr_quantity + $item->qty]);
+        
+        
+        
+        
+        
+        
+        foreach (OrderProduct::findorFail($id) as $id ){
+            // $orderproduct = OrderProduct::findorFail($id);
+            $product = ProductList::find($id);
+
+            $product->update(['curr_quantity' => $product->curr_quantity + $orderproduct->quantity]);
+        }
+        
+        
+        $order->save();
+        // $order_products->save();
+
+        return redirect('/orders')->with('success', 'Order Confirmed');
+        // return back()->with('success_message', 'Item has been removed!');
     }
 }
