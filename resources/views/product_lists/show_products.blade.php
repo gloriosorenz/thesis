@@ -9,7 +9,7 @@
 {{-- JUMBOTRON --}}
 <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark text-center">
     <div class="col-md-12 px-0">
-        <h1 class="display-4 font-bold">Samahan ng Magsasaka <br>Sta. Rosa Laguna Portal</h1>
+        <h1 class="display-4 font-bold">Samahan ng Magsasaka <br>Sta. Rosa Laguna RicE-Commerce</h1>
         <p class="lead">All products are produced by the farmers of Laguna.</p>
     </div>
 </div>
@@ -29,8 +29,9 @@
                         <ul class="list-unstyled mt-3 mb-4">
                         <li>FOR TEST REASONS = Season {{ $product_list->seasons->id }}</li>
                         <li>Available: {{ $product_list->curr_quantity }}</li>
+                        <hr>
                         <li>Producer: {{ $product_list->users->company }}</li>
-                        <li>Barangay Location: {{ $product_list->users->barangays->name }}</li>
+                        <li>Farm Address: {{ $product_list->users->street }}, {{ $product_list->users->barangays->name }}, {{ $product_list->users->cities->name }}, {{ $product_list->users->provinces->name }}</li>
                         </ul>
 
                         <form method="post" action="{{action('CartController@store')}}">

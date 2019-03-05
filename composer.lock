@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cd82ed53984746ff8a2e97aea44e5e27",
+    "content-hash": "09fd6e93c99425452b7d6aefea7da329",
     "packages": [
         {
             "name": "cmfcmf/openweathermap-php-api",
@@ -3335,6 +3335,70 @@
                 "environment"
             ],
             "time": "2019-01-29T11:11:52+00:00"
+        },
+        {
+            "name": "yajra/laravel-address",
+            "version": "v0.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yajra/laravel-address.git",
+                "reference": "dc767e029cbaffe787bf8d3e0164451631c2b67e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yajra/laravel-address/zipball/dc767e029cbaffe787bf8d3e0164451631c2b67e",
+                "reference": "dc767e029cbaffe787bf8d3e0164451631c2b67e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^5.5.0",
+                "illuminate/routing": "^5.5.0",
+                "illuminate/support": "^5.5.0",
+                "laravelcollective/html": "^5.5.0",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "7.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Yajra\\Address\\AddressServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "database"
+                ],
+                "psr-4": {
+                    "Yajra\\Address\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arjay Angeles",
+                    "email": "aqangeles@gmail.com",
+                    "homepage": "http://yajrabox.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Philippines Address Lookup API for Laravel.",
+            "homepage": "https://github.com/yajra/laravel-address",
+            "keywords": [
+                "address",
+                "laravel",
+                "yajra"
+            ],
+            "time": "2018-06-07T16:13:44+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",

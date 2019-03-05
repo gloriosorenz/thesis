@@ -27,10 +27,10 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
+        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '0d8253363903f0ac7b0978dcde4e28a0' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/helpers.php',
-        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         'b4e3f29b106af37a2bb239f73cdf68c7' => __DIR__ . '/../..' . '/app/helpers.php',
     );
 
@@ -42,6 +42,10 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'Z' => 
         array (
             'Zend\\Diactoros\\' => 15,
+        ),
+        'Y' => 
+        array (
+            'Yajra\\Address\\' => 14,
         ),
         'X' => 
         array (
@@ -173,6 +177,10 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'Zend\\Diactoros\\' => 
         array (
             0 => __DIR__ . '/..' . '/zendframework/zend-diactoros/src',
+        ),
+        'Yajra\\Address\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yajra/laravel-address/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -442,6 +450,7 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
     );
 
     public static $classMap = array (
+        'AddressSeeder' => __DIR__ . '/../..' . '/database/seeds/AddressSeeder.php',
         'App\\Barangay' => __DIR__ . '/../..' . '/app/Barangay.php',
         'App\\Cart' => __DIR__ . '/../..' . '/app/Cart.php',
         'App\\City' => __DIR__ . '/../..' . '/app/City.php',
@@ -501,6 +510,7 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'App\\Seed' => __DIR__ . '/../..' . '/app/Seed.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'BarangayTableSeeder' => __DIR__ . '/../..' . '/database/seeds/BarangayTableSeeder.php',
+        'BarangaysSeeder' => __DIR__ . '/..' . '/yajra/laravel-address/database/seeds/BarangaysSeeder.php',
         'BeyondCode\\DumpServer\\DumpServerCommand' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
         'BeyondCode\\DumpServer\\Dumper' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/Dumper.php',
@@ -511,6 +521,7 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
         'Carbon\\Laravel\\ServiceProvider' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Laravel/ServiceProvider.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
+        'CitiesSeeder' => __DIR__ . '/..' . '/yajra/laravel-address/database/seeds/CitiesSeeder.php',
         'CitiesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CitiesTableSeeder.php',
         'Cmfcmf\\OpenWeatherMap' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap.php',
         'Cmfcmf\\OpenWeatherMap\\AbstractCache' => __DIR__ . '/..' . '/cmfcmf/openweathermap-php-api/Cmfcmf/OpenWeatherMap/AbstractCache.php',
@@ -541,6 +552,7 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
         'CountriesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/CountriesTableSeeder.php',
+        'CreatePhAddressTables' => __DIR__ . '/..' . '/yajra/laravel-address/database/migrations/2018_01_01_100000_create_ph_address_tables.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',
@@ -3234,6 +3246,7 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'Prophecy\\Prophet' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Prophet.php',
         'Prophecy\\Util\\ExportUtil' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Util/ExportUtil.php',
         'Prophecy\\Util\\StringUtil' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Util/StringUtil.php',
+        'ProvincesSeeder' => __DIR__ . '/..' . '/yajra/laravel-address/database/seeds/ProvincesSeeder.php',
         'ProvincesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ProvincesTableSeeder.php',
         'Psr\\Container\\ContainerExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerExceptionInterface.php',
         'Psr\\Container\\ContainerInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerInterface.php',
@@ -3443,6 +3456,7 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'Ramsey\\Uuid\\UuidFactory' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidFactory.php',
         'Ramsey\\Uuid\\UuidFactoryInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidFactoryInterface.php',
         'Ramsey\\Uuid\\UuidInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidInterface.php',
+        'RegionsSeeder' => __DIR__ . '/../..' . '/database/seeds/RegionsSeeder.php',
         'RiceFarmerTableSeeder' => __DIR__ . '/../..' . '/database/seeds/RiceFarmerTableSeeder.php',
         'RolesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/RolesTableSeeder.php',
         'SeasonListTableSeeder' => __DIR__ . '/../..' . '/database/seeds/SeasonListTableSeeder.php',
@@ -4190,6 +4204,31 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
+        'Yajra\\Address\\AddressServiceProvider' => __DIR__ . '/..' . '/yajra/laravel-address/src/AddressServiceProvider.php',
+        'Yajra\\Address\\Controllers\\BarangaysController' => __DIR__ . '/..' . '/yajra/laravel-address/src/Controllers/BarangaysController.php',
+        'Yajra\\Address\\Controllers\\CitiesController' => __DIR__ . '/..' . '/yajra/laravel-address/src/Controllers/CitiesController.php',
+        'Yajra\\Address\\Controllers\\ProvincesController' => __DIR__ . '/..' . '/yajra/laravel-address/src/Controllers/ProvincesController.php',
+        'Yajra\\Address\\Controllers\\RegionsController' => __DIR__ . '/..' . '/yajra/laravel-address/src/Controllers/RegionsController.php',
+        'Yajra\\Address\\Entities\\Barangay' => __DIR__ . '/..' . '/yajra/laravel-address/src/Entities/Barangay.php',
+        'Yajra\\Address\\Entities\\City' => __DIR__ . '/..' . '/yajra/laravel-address/src/Entities/City.php',
+        'Yajra\\Address\\Entities\\Province' => __DIR__ . '/..' . '/yajra/laravel-address/src/Entities/Province.php',
+        'Yajra\\Address\\Entities\\Region' => __DIR__ . '/..' . '/yajra/laravel-address/src/Entities/Region.php',
+        'Yajra\\Address\\HasAddress' => __DIR__ . '/..' . '/yajra/laravel-address/src/HasAddress.php',
+        'Yajra\\Address\\Repositories\\Barangays\\BarangaysRepository' => __DIR__ . '/..' . '/yajra/laravel-address/src/Repositories/Barangays/BarangaysRepository.php',
+        'Yajra\\Address\\Repositories\\Barangays\\BarangaysRepositoryEloquent' => __DIR__ . '/..' . '/yajra/laravel-address/src/Repositories/Barangays/BarangaysRepositoryEloquent.php',
+        'Yajra\\Address\\Repositories\\Barangays\\CachingBarangaysRepository' => __DIR__ . '/..' . '/yajra/laravel-address/src/Repositories/Barangays/CachingBarangaysRepository.php',
+        'Yajra\\Address\\Repositories\\Cities\\CachingCitiesRepository' => __DIR__ . '/..' . '/yajra/laravel-address/src/Repositories/Cities/CachingCitiesRepository.php',
+        'Yajra\\Address\\Repositories\\Cities\\CitiesRepository' => __DIR__ . '/..' . '/yajra/laravel-address/src/Repositories/Cities/CitiesRepository.php',
+        'Yajra\\Address\\Repositories\\Cities\\CitiesRepositoryEloquent' => __DIR__ . '/..' . '/yajra/laravel-address/src/Repositories/Cities/CitiesRepositoryEloquent.php',
+        'Yajra\\Address\\Repositories\\EloquentBaseRepository' => __DIR__ . '/..' . '/yajra/laravel-address/src/Repositories/EloquentBaseRepository.php',
+        'Yajra\\Address\\Repositories\\EloquentRepositoryInterface' => __DIR__ . '/..' . '/yajra/laravel-address/src/Repositories/EloquentRepositoryInterface.php',
+        'Yajra\\Address\\Repositories\\Provinces\\CachingProvincesRepository' => __DIR__ . '/..' . '/yajra/laravel-address/src/Repositories/Provinces/CachingProvincesRepository.php',
+        'Yajra\\Address\\Repositories\\Provinces\\ProvincesRepository' => __DIR__ . '/..' . '/yajra/laravel-address/src/Repositories/Provinces/ProvincesRepository.php',
+        'Yajra\\Address\\Repositories\\Provinces\\ProvincesRepositoryEloquent' => __DIR__ . '/..' . '/yajra/laravel-address/src/Repositories/Provinces/ProvincesRepositoryEloquent.php',
+        'Yajra\\Address\\Repositories\\Regions\\CachingRegionsRepository' => __DIR__ . '/..' . '/yajra/laravel-address/src/Repositories/Regions/CachingRegionsRepository.php',
+        'Yajra\\Address\\Repositories\\Regions\\RegionsRepository' => __DIR__ . '/..' . '/yajra/laravel-address/src/Repositories/Regions/RegionsRepository.php',
+        'Yajra\\Address\\Repositories\\Regions\\RegionsRepositoryEloquent' => __DIR__ . '/..' . '/yajra/laravel-address/src/Repositories/Regions/RegionsRepositoryEloquent.php',
+        'Yajra\\Address\\Repositories\\RepositoryAbstract' => __DIR__ . '/..' . '/yajra/laravel-address/src/Repositories/RepositoryAbstract.php',
         'Zend\\Diactoros\\AbstractSerializer' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/AbstractSerializer.php',
         'Zend\\Diactoros\\CallbackStream' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/CallbackStream.php',
         'Zend\\Diactoros\\Exception\\DeprecatedMethodException' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/Exception/DeprecatedMethodException.php',

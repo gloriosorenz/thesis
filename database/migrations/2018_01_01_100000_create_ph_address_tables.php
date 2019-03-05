@@ -41,15 +41,14 @@ class CreatePhAddressTables extends Migration
 
         Schema::create('barangays', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code')->nullable();
+            $table->string('code');
             $table->string('name');
-            $table->string('region_id', 10)->index()->nullable();
-            $table->string('province_id', 10)->index()->nullable();
-            $table->string('city_id', 10)->index()->nullable();
-            $table->timestamps();
-
-            $table->index(['province_id', 'region_id'], 'barangay_idx_1')->nullable();
-            $table->index(['city_id', 'province_id', 'region_id'], 'barangay_idx_2')->nullable();
+            $table->string('region_id', 10)->index();
+            $table->string('province_id', 10)->index();
+            $table->string('city_id', 10)->index();
+            
+            $table->index(['province_id', 'region_id'], 'barangay_idx_1');
+            $table->index(['city_id', 'province_id', 'region_id'], 'barangay_idx_2');
         });
     }
 

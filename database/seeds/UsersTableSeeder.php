@@ -31,6 +31,7 @@ class UsersTableSeeder extends Seeder
                 'phone' => '09175446351',
                 'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
                 'company' => 'RK Farmer Corp.',
+                'street'=> '52 Cataduaan St.',
                 'no_farmers' => 30,
                 'hectares' => 40.50,
                 'roles_id' => 2, 
