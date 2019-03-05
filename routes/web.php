@@ -68,9 +68,9 @@ Route::get('/product_lists/show_products', 'ProductListController@display_produc
 // Route::get('/seasons/farmer_seasons', 'SeasonController@farmer_seasons');
 
 // Orders
-Route::get('/orders/web_orders', 'OrderController@orders')->name('web_orders');
-Route::get('/orders/confirm_order/{$id}', 'OrderController@confirm_order');
-Route::get('/orders/cancel_order/{$id}', 'OrderController@cancel_order');
+Route::get('/orders/my_orders', 'OrderController@orders')->name('my_orders');
+Route::get('/orders/confirm_order/{id}', 'OrderController@confirm_order');
+Route::get('/orders/cancel_order/{id}', 'OrderController@cancel_order');
 
 
 
@@ -84,6 +84,7 @@ Route::resource('product_lists', 'ProductListController');
 Route::resource('seasons', 'SeasonController');
 Route::resource('dashboard', 'DashboardController');
 Route::resource('orders', 'OrderController');
+Route::resource('damage', 'DamageReportController');
 
 
 

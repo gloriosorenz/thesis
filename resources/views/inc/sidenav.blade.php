@@ -35,19 +35,12 @@
         <span>Products</span></a>
     </li>
 
-    {{-- <!-- Rice Farmers -->
+    <!-- Orders -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('rice_farmers.index') }}"">
-        <i class="fas fa-leaf"></i>
-        <span>Rice Farmers</span></a>
+        <a class="nav-link" href="{{ route('orders.index') }}">
+        <i class="fas fa-shopping-basket"></i>
+        <span>Orders</span></a>
     </li>
-
-    <!-- Customers -->
-    <li class="nav-item">
-        <a class="nav-link" href="{{ route('customers.index') }}">
-        <i class="fas fa-user-alt"></i>
-        <span>Customers</span></a>
-    </li> --}}
 
     <!-- Nav Item - Users Management Collapse Menu -->
     <li class="nav-item">
@@ -88,6 +81,10 @@
     </li>
 
 
+
+
+
+
     <!-- Rice Farmer Functionalities -->
     @elseif(Auth::user()->roles_id == 2)
     <!-- Nav Item - Dashboard -->
@@ -120,9 +117,18 @@
 
     <!-- Reports -->
     <li class="nav-item">
-        <a class="nav-link" href="#">
-        <i class="fas fa-chart-line"></i>
-        <span>Reports</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+            <i class="fas fa-chart-line"></i>
+            <span>Reports</span>
+        </a>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Components:</h6>
+                <a class="collapse-item" href="#">Sales Report</a>
+                <a class="collapse-item" href="#">Season Reports</a>
+                <a class="collapse-item" href="{{ url('reports.index') }}">Damaged Report</a>
+            </div>
+        </div>
     </li>
 
     @endif

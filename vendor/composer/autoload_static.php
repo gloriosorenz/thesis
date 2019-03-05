@@ -467,6 +467,7 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CustomerController' => __DIR__ . '/../..' . '/app/Http/Controllers/CustomerController.php',
         'App\\Http\\Controllers\\CustomerTypeController' => __DIR__ . '/../..' . '/app/Http/Controllers/CustomerTypeController.php',
+        'App\\Http\\Controllers\\DamageReportController' => __DIR__ . '/../..' . '/app/Http/Controllers/DamageReportController.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\LandingPageController' => __DIR__ . '/../..' . '/app/Http/Controllers/LandingPageController.php',

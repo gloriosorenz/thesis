@@ -11,6 +11,12 @@ class Order extends Model
     ];
 
     public function order_products(){
-        return $this->hasMany('App\Order_Product');
+        return $this->hasMany('App\OrderProduct');
     }
+
+    public function order_statuses()
+    {
+        return $this->belongsTo(OrderStatus::class, 'order_statuses_id');
+    }
+
 }

@@ -18,6 +18,28 @@ class OrderController extends Controller
     {
         // $orders = auth()->user()->orders()->with('product_lists')->get(); // fix n + 1 issues
         $orders = Order::all();
+
+
+
+        // $order_products = OrderProduct::all();
+
+        // $pending = DB::table('orders')
+        //     ->join('order_products', 'orders.id', '=', 'order_products.orders_id')
+        //     ->join('product_lists', 'order_products.product_lists_id', '=', 'product_lists.id')
+        //     ->select('orders.*', 'order_products.quantity', 'product_lists.users_id')
+        //     ->get();
+
+
+        // $orders1 = App\Order::with('order_products')->get();
+        // $product_lists1 = App\Order::with('users')->get();
+
+        $order_products = DB::table('order_products')
+            // ->select('articles.id as articles_id', ..... )
+            ->join('orders', 'order_products.orders_id', '=', 'orders.id')
+            ->join('product_lists', 'order_products.product_lists_id', '=', 'product_lists.id')
+
+            ->get();
+
         $pending = Order::where('order_statuses_id', 1)->get();
         $done = Order::where('order_statuses_id', 2)->get();
         $cancelled = Order::where('order_statuses_id', 3)->get();
@@ -29,7 +51,10 @@ class OrderController extends Controller
             ->with('orders', $orders)
             ->with('pending', $pending)
             ->with('done', $done)
-            ->with('cancelled', $cancelled);
+            ->with('cancelled', $cancelled)
+            ->with('order_products', $order_products);
+            // ->with('orders1',$orders1)
+            // ->with('order_products1'->$order_products1);
     }
 
     /**
@@ -112,30 +137,31 @@ class OrderController extends Controller
         // $orders = auth()->user()->orders()->with('product_lists')->get(); // fix n + 1 issues
         // $orders = Order::where('users_id', '=', auth()->user()->id);
         $orders = Order::all();
-        // $products = OrderProduct::all();
+        $pending = Order::where('order_statuses_id', 1)->get();
+        $done = Order::where('order_statuses_id', 2)->get();
+        $cancelled = Order::where('order_statuses_id', 3)->get();
         
         // dd($orders);
-        return view('orders.web_orders')
-            ->with('orders', $orders);
+        return view('orders/my_orders')
+            ->with('orders', $orders)
+            ->with('pending', $pending)
+            ->with('done', $done)
+            ->with('cancelled', $cancelled);
     }
 
     public function confirm_order(Request $request, $id){
-
         $order = Order::findOrFail($id);
         $order->order_statuses_id = 2;
-        $order->save;
+        $order->save();
 
         return redirect('/orders')->with('success', 'Order Confirmed');
-        // return back()->with('success_message', 'Item has been removed!');
     }
 
     public function cancel_order(Request $request, $id){
-
         $order = Order::findOrFail($id);
         $order->order_statuses_id = 3;
-        $order->save;
+        $order->save();
 
-        return redirect('/orders')->with('success', 'Order Confirmed');
-        // return back()->with('success_message', 'Item has been removed!');
+        return redirect('/orders')->with('success', 'Order Cancelled');
     }
 }

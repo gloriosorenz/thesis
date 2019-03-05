@@ -35,25 +35,19 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($pending as $order)
-                <tr class="active">
-                    <td>{{$order->id}}</td>
-                    <td>{{$order->created_at->toFormattedDateString()}}</td>
-                    <td>{{$order->total_price}}</td>
-                    <td>
-                        <a href="/orders/{{$order->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
-                        <a href="/orders/confirm_order/{{$order->id}}" class="btn btn-success"><i class="fas fa-check"></i></a>
-
-                        <a href="/orders/cancel_order/{{$order->id}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                        
-
-                        {{-- <form action=" {{route ('orders.destroy',$order->id) }}" method="POST">
-                            {{ csrf_field() }}
-                            {{ method_field('DELETE') }}
-                            <button type="submit" class="btn btn-danger btn-md"><i class="fas fa-trash"></i></button>
-                        </form> --}}
-                    </td>
-                </tr>
+                @foreach ($pending as $p)
+                    {{-- @if ($p->order_products->product_lists->users_id == auth()->user()->id) --}}
+                    <tr class="active">
+                        <td>{{$p->id}}</td>
+                        {{-- <td>{{$p->created_at->toFormattedDateString()}}</td> --}}
+                        <td>{{$p->total_price}}</td>
+                        <td>
+                            <a href="/orders/{{$p->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
+                            <a href="/orders/confirm_order/{{$p->id}}" class="btn btn-success"><i class="fas fa-check"></i></a>
+                            <a href="/orders/cancel_order/{{$p->id}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    {{-- @endif --}}
                 @endforeach
             </tbody>
         </table>
@@ -86,8 +80,6 @@
                     <td>{{$order->total_price}}</td>
                     <td>
                         <a href="/orders/{{$order->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
-                        <a href="#" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
-                        <a href="/orders/{{$id}}/confirmOrder" class="btn btn-success"><i class="fas fa-check"></i></a>
                     </td>
                 </tr>
                 @endforeach
@@ -122,7 +114,6 @@
                     <td>{{$order->total_price}}</td>
                     <td>
                         <a href="/orders/{{$order->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
-                        <a href="#" class="btn btn-success"><i class="fas fa-edit"></i></a>
                     </td>
                 </tr>
                 @endforeach
