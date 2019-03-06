@@ -75,7 +75,7 @@
                 <h6 class="collapse-header">Components:</h6>
                 <a class="collapse-item" href="#">Sales Report</a>
                 <a class="collapse-item" href="#">Season Reports</a>
-                <a class="collapse-item" href="#">Damaged Report</a>
+                <a class="collapse-item" href="{{ route('damage_reports.index') }}">Damaged Report</a>
             </div>
         </div>
     </li>
@@ -126,7 +126,7 @@
                 <h6 class="collapse-header">Components:</h6>
                 <a class="collapse-item" href="#">Sales Report</a>
                 <a class="collapse-item" href="#">Season Reports</a>
-                <a class="collapse-item" href="{{ url('reports.index') }}">Damaged Report</a>
+                <a class="collapse-item" href="{{ route('damage_reports.index') }}">Damage Report</a>
             </div>
         </div>
     </li>

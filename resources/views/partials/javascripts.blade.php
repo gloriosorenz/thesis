@@ -36,7 +36,7 @@
 
 <script type="text/javascript">
     jQuery(document).ready( function ($) {
-        // $('#table_id').DataTable();
+        $('#table_id').DataTable();
         $('#users_table').DataTable();
         $('#roles_table').DataTable();
         $('#farmers_table').DataTable();

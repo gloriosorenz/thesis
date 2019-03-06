@@ -17,6 +17,8 @@ class CreateReportsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('damage_reports_id')->unsigned()->nullable();
+
+            $table->integer('users_id')->unsigned()->nullable(); //prepared by
             $table->timestamps();
         });
     }

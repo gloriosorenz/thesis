@@ -62,6 +62,7 @@ Route::get('/products', 'ProductController@products');
 
 //Product Lists
 Route::get('/product_lists/show_products', 'ProductListController@display_products')->name('show_products');
+Route::get('/product_lists/view_product/{id}', 'ProductListController@view_product')->name('view_product');
 
 // Season
 // Route::get('/seasons/add_farmer/{id}', 'SeasonController@add_farmer');
@@ -84,7 +85,7 @@ Route::resource('product_lists', 'ProductListController');
 Route::resource('seasons', 'SeasonController');
 Route::resource('dashboard', 'DashboardController');
 Route::resource('orders', 'OrderController');
-Route::resource('damage', 'DamageReportController');
+Route::resource('damage_reports', 'DamageReportController');
 
 
 

@@ -162,6 +162,7 @@ class SeasonController extends Controller
                             'products_id'=>$request->products_id [$key],
                             'orig_quantity'=>$request->orig_quantity [$key],
                             'curr_quantity'=>$request->curr_quantity [$key],
+                            'harvest_date'=>$request->harvest_date [$key],
                             'price'=>$request->price [$key]);
  
                 ProductList::insert($data);

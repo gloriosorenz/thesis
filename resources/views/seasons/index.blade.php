@@ -81,7 +81,7 @@
       
 <!-- Add Planned Crop -->
 @if (count($seasons) == count($statuses))
-<a class="btn btn-secondary btn-md" href="{{ route('seasons.create') }}">+Add</a>
+<a class="btn btn-secondary btn-md mb-2" href="{{ route('seasons.create') }}">+Add</a>
 @else
 @endif
       

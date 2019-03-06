@@ -18,7 +18,7 @@
 {{-- <a class="weatherwidget-io" href="https://forecast7.com/en/14d28121d09/santa-rosa/" data-label_1="SANTA ROSA" data-label_2="WEATHER" data-icons="Climacons Animated" data-days="5" data-theme="gray" >SANTA ROSA WEATHER</a> --}}
 
 <div class="text-center">
-    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 100rem;" src="https://images.unsplash.com/photo-1473960716392-f07749249b58?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="">
+    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 100rem;" src="https://images.unsplash.com/photo-1519846270463-e778b6624baf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80" alt="">
 </div>
 
 <!-- Page Content -->

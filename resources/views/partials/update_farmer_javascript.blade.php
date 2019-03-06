@@ -14,6 +14,7 @@ $(document).ready(function () {
                     '<td><input type="text" class="form-control" name="orig_quantity[]" value="" /></td>' +
                     '<td><input type="text" class="form-control" name="curr_quantity[]" value="" /></td>' +
                     '<td><input type="text" class="form-control" name="price[]" value="" /></td>' +
+                    '<td>{{ Form::date('harvest_date[]', \Carbon\Carbon::now(), ['class' => 'datepicker form-control','id'=>'harvest_date[]'])}}</td>' +
                     '<td><input type="button" class="btn btn-danger remove" value="x"></td></tr>';
         $('.resultbody3').append(addRow);
     }

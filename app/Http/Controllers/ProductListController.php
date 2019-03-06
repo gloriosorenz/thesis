@@ -149,4 +149,29 @@ class ProductListController extends Controller
                 ->with('product_lists', $product_lists)
                 ->with('farmers', $farmers);
     }
+
+
+
+    public function view_product($id)
+    {
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+
+        
+        $season = Season::find($id);
+        $product_lists = ProductList::where('seasons_id', $season->id)->get();
+
+
+
+        
+
+        // $product = ProductList::where('created_at', '>=', Carbon::now()->subDays(7))
+        //     ->where('product_id', '=', 2)
+        //     ->get();
+
+       
+        return view('product_lists.view_product')
+            ->with('season', $season)
+            ->with('product_lists', $product_lists);
+    }
 }
