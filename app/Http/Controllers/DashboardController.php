@@ -21,8 +21,16 @@ class DashboardController extends Controller
         $users = User::count();
         $seasons = Season::count();
 
+        // $product_lists = ProductList::where('products_id', '!=', 3) 
+        //                 ->where('curr_quantity', '>', 0)
+        //                 ->get();
+
+        $farmers = User::where('roles_id','=',2)
+            ->count();
+
         // dd($users);
         return view('dashboard')
+            ->with('farmers',$farmers)
             ->with('users', $users)
             ->with('seasons', $seasons);
     }
