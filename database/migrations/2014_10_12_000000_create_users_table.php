@@ -36,6 +36,7 @@ class CreateUsersTable extends Migration
             $table->integer('cities_id')->unsigned()->nullable();
             $table->integer('provinces_id')->unsigned()->nullable();
 
+            
             $table->timestamps();
         });
     }

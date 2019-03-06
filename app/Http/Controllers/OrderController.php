@@ -43,7 +43,7 @@ class OrderController extends Controller
 
         $pending = Order::where('order_statuses_id', 1)->get();
         $done = Order::where('order_statuses_id', 2)->get();
-        $cancelled = Order::where('order_statuses_id', 3)->get();
+        $cancelled = Order::where('order_statuses_id', 4)->get();
         // $products = OrderProduct::all();
         
 
@@ -159,8 +159,11 @@ class OrderController extends Controller
     }
 
     public function cancel_order(Request $request, $id){
-        $order = Order::findOrFail($id);
-        $order->order_statuses_id = 3;
+        // $order = Order::findOrFail($id);
+        // $order->order_statuses_id = 3;
+
+        $order_product = OrderProduct::findOrFail($id);
+        $order_product->order_product_statuses_id = 4;
 
         // $curr_qty = OrderProduct::where('product_lists_id',$id )->get();
         // $op = OrderProduct::findOrFail($id);
@@ -175,20 +178,58 @@ class OrderController extends Controller
         // $orderproducts->increaseQuantities();
         // $order_products->update(['curr_quantity' => $product->curr_quantity + $item->qty]);
         
-        
-        
-        
-        
-        
-        foreach (OrderProduct::findorFail($id) as $id ){
+        // foreach (OrderProduct::findorFail($id) as $id ){
             // $orderproduct = OrderProduct::findorFail($id);
-            $product = ProductList::find($id);
+            $op = OrderProduct::all();
 
-            $product->update(['curr_quantity' => $product->curr_quantity + $orderproduct->quantity]);
-        }
+            foreach($op as $p){
+                $p = OrderProduct::findorFail($id);
+                $product = OrderProduct::where('product_lists_id', $id);
+
+                $p->product_lists->update(['curr_quantity' => $product->curr_quantity + $p->quantity]);
+            }
+            // $orderproduct = OrderProduct::findorFail($id);
+
+           
+        // }
+        
+        // $orderproduct = OrderProduct::findOrFail($id);
+        //     foreach($request->product_lists_id as $key => $value) {
+        //         $data=array(
+        //                     'seasons_id' => $id,
+        //                     'users_id'=>$request->users_id [$key],
+        //                     'planned_hectares'=>$request->planned_hectares [$key],
+        //                     'planned_num_farmers'=>$request->planned_num_farmers [$key],
+        //                     'planned_qty'=>$request->planned_qty [$key]);
+
+        //         SeasonList::insert($data);
+        //     }  
         
         
-        $order->save();
+        // $orderproduct = OrderProduct::findOrFail($id);
+        //     $plist = $request->all();
+        //     $plist = ProductList::where('order_products_id', $orderproduct->id)->get();
+        //     foreach($request->id as $i => $id) { 
+        //         $list = SeasonList::findOrFail($id);
+        //         $list->update([
+        //             'curr_quantity' => $product->curr_quantity + $orderproduct->quantity
+        //             ]);
+        //     }
+
+        // if($season->save()){
+        //     $id = $season->id;
+        //     $plist = $request->all();
+        //     $plist = ProductList::where('seasons_id', $season->id)->get();
+        //     foreach($request->id as $i => $id) { 
+        //         $list = SeasonList::findOrFail($id);
+        //         $list->update([
+        //             'actual_hectares' => $request->actual_hectares[$i],
+        //             'actual_num_farmers' => $request->actual_num_farmers[$i],
+        //             'actual_qty' => $request->actual_qty[$i],
+        //             ]);
+        //     }
+
+        $order_product->save();
         // $order_products->save();
 
         return redirect('/orders')->with('success', 'Order Confirmed');

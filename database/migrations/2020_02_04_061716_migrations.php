@@ -81,6 +81,24 @@ class Migrations extends Migration
             //     ->references('id')->on('reserve_products')->onDelete('cascade');
         });
 
+        // Reports
+        Schema::table('reports',function(Blueprint $table){
+            $table->foreign('damage_reports_id')
+                ->references('id')->on('damage_reports')->onDelete('cascade');
+        });
+
+        // Damage Report
+        Schema::table('damage_reports',function(Blueprint $table){
+            $table->foreign('users_id')
+                ->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('barangays_id')
+                ->references('id')->on('barangays')->onDelete('cascade');
+            $table->foreign('provinces_id')
+                ->references('id')->on('provinces')->onDelete('cascade');
+        });
+
+
+
     }
 
     /**
