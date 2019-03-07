@@ -28,7 +28,7 @@
                 <!-- Calamity -->
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="calamity">Calamaity:</label>
+                        <label for="calamity">Calamity:</label>
                         <input type="text" class="form-control" name="calamity" value="" />
                     </div>
                 </div>
