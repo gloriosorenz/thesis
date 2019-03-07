@@ -232,7 +232,7 @@ class OrderController extends Controller
         $order_product->save();
         // $order_products->save();
 
-        return redirect('/orders')->with('success', 'Order Confirmed');
+        return redirect('/orders')->with('success', 'Order has been removed!');
         // return back()->with('success_message', 'Item has been removed!');
     }
 }

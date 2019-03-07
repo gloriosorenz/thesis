@@ -35,14 +35,14 @@
             </div>
 
             <div class="row">
-                <!-- Barangay -->
+                <!-- Region -->
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="barangay">Region:</label>
+                        <label for="region">Region:</label>
                         <select class="form-control" name="region" id="region">
                             <option value="0" selected="true" disabled="True">Select Region</option>
                             @foreach ($regions as $region)
-                                <option value="{{ $region['name']}}">{{ $region['name']}}</option>
+                                <option value="{{ $region['id']}}">{{ $region['name']}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -55,7 +55,7 @@
                         <select class="form-control" name="province" id="province">
                             <option value="0" selected="true" disabled="True">Select Province</option>
                             @foreach ($provinces as $province)
-                                <option value="{{ $province['name']}}">{{ $province['name']}}</option>
+                                <option value="{{ $province['id']}}">{{ $province['name']}}</option>
                             @endforeach
                         </select>
                     </div>
