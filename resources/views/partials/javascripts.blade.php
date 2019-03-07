@@ -14,7 +14,7 @@
 <script type="text/javascript" src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/chart-area-demo.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/chart-bar-demo.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/chart-pie-demo.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/chart-pie-revenue.js') }}"></script>
 {{-- <script type="text/javascript" src="{{ asset('js/datables-demo.js') }}"></script> --}}
 
 

@@ -8,6 +8,9 @@ use App\RiceFarmer;
 use App\Customer;
 use App\Season;
 use App\SeasonList;
+use Khill\Lavacharts\Lavacharts;
+
+
 
 class DashboardController extends Controller
 {
@@ -29,9 +32,72 @@ class DashboardController extends Controller
             ->count();
 
         // dd($users);
+
+        /*
+        $lava = new Lavacharts; // See note below for Laravel
+
+        $datatable = $lava->DataTable();
+        $datatable->addStringColumn('Name');
+        $datatable->addNumberColumn('Donuts Eaten');
+        $datatable->addRows([
+            ['Michael',   5],
+            ['Elisa',     7],
+            ['Robert',    3],
+            ['John',      2],
+            ['Jessica',   6],
+            ['Aaron',     1],
+            ['Margareth', 8]
+        ]);
+        $pieChart = $lava->PieChart('Donuts', $datatable, [
+            'width' => 400,
+            'pieSliceText' => 'value'
+        ]);
+        $filter  = $lava->NumberRangeFilter(1, [
+            'ui' => [
+                'labelStacking' => 'vertical'
+            ]
+        ]);
+
+        $control = $lava->ControlWrapper($filter,'control');
+        $chart = $lava->ChartWrapper($pieChart,'chart');
+
+        $lava->Dashboard('Donuts')->bind($control,$chart);
+        
+        ->with('users', $users)
+        ->with('lava',$lava)
+        ->with('control',$control)
+        */
+        $lava = new Lavacharts;
+
+        $data = $lava->DataTable();
+
+        $data->addDateColumn('Day of Month')
+            ->addNumberColumn('Projected')
+            ->addNumberColumn('Official');
+
+        // Random Data For Example
+        for ($a = 1; $a < 30; $a++) {
+            $rowData = [
+            "2017-4-$a", rand(800,1000), rand(800,1000)
+            ];
+
+            $data->addRow($rowData);
+}
+
+        $lava->LineChart('Stocks', $data, [
+            'title' => 'Product Sale',
+            'animation' => [
+                'startup' => true,
+                'easing' => 'inAndOut'
+            ],
+            'colors' => ['blue', '#F4C1D8']
+        ]);
+
         return view('dashboard')
             ->with('farmers',$farmers)
-            ->with('users', $users)
+            ->with('lava',$lava)
+            ->with('data',$data)
+
             ->with('seasons', $seasons);
     }
 
