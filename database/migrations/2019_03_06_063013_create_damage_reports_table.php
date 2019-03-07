@@ -18,16 +18,6 @@ class CreateDamageReportsTable extends Migration
             $table->string('calamity');
             $table->text('narrative');
 
-            $table->string('crop')->nullable();
-            $table->string('crop_stage')->nullable();
-            $table->double('production')->nullable(); //in metric ton
-
-            $table->string('animal')->nullable();
-            $table->integer('animal_head')->nullable();
-
-            $table->string('fish')->nullable();
-            $table->double('area')->nullable();
-            $table->integer('fish_pieces')->nullable();
 
             // $table->integer('users_id')->unsigned()->nullable(); //prepared by
             $table->integer('regions_id')->unsigned()->nullable();

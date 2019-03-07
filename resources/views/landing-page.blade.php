@@ -14,6 +14,48 @@
     </div>
 </div> --}}
 
+<div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="weather">
+                    <div class="current">
+                        <div class="info">
+                            <div>&nbsp;</div>
+                            <div class="city"><small><small>CITY:</small></small> {{ $current_weather->city->name}}</div>
+                            <div class="city"><small><small>Weather:</small></small> {{$current_weather->weather}}</div>
+
+                            <div class="wind"><small><small> Temperature: </small></small>{{$current_weather->temperature->now}}</div>
+                            <div class="wind"><small><small>WIND:</small></small> {{$current_weather->wind->speed}}</div>
+                            <div class="cloud"><small><small>CLOUD:</small></small> {{$current_weather->clouds}}%</div>
+                            <div class="cloud"><small><small>Humidity:</small></small> {{$current_weather->humidity}}</div>
+
+                            <div>&nbsp;</div>
+                        </div>
+                        <div class="icon">
+                            <span class="wi-day-sunny"></span>
+                        </div>
+                    </div>
+                    <div class="future">
+                        <div class="day">
+                            <h3>Mon</h3>
+                            <p><span class="wi-day-cloudy"></span></p>
+                        </div>
+                        <div class="day">
+                            <h3>Tue</h3>
+                            <p><span class="wi-showers"></span></p>
+                        </div>
+                        <div class="day">
+                            <h3>Wed</h3>
+                            <p><span class="wi-rain"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 
 {{-- <a class="weatherwidget-io" href="https://forecast7.com/en/14d28121d09/santa-rosa/" data-label_1="SANTA ROSA" data-label_2="WEATHER" data-icons="Climacons Animated" data-days="5" data-theme="gray" >SANTA ROSA WEATHER</a> --}}
 
@@ -146,52 +188,13 @@
 
     @endforeach --}}
 
-{{-- <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="weather">
-                    <div class="current">
-                        <div class="info">
-                            <div>&nbsp;</div>
-                            <div class="city"><small><small>CITY:</small></small> {{ $current_weather->city->name}}</div>
-                            <div class="city"><small><small>Weather:</small></small> {{$current_weather->weather}}</div>
 
-                            <div class="wind"><small><small> Temperature: </small></small>{{$current_weather->temperature->now}}</div>
-                            <div class="wind"><small><small>WIND:</small></small> {{$current_weather->wind->speed}}</div>
-                            <div class="cloud"><small><small>CLOUD:</small></small> {{$current_weather->clouds}}%</div>
-
-                            <div>&nbsp;</div>
-                        </div>
-                        <div class="icon">
-                            <span class="wi-day-sunny"></span>
-                        </div>
-                    </div>
-                    <div class="future">
-                        <div class="day">
-                            <h3>Mon</h3>
-                            <p><span class="wi-day-cloudy"></span></p>
-                        </div>
-                        <div class="day">
-                            <h3>Tue</h3>
-                            <p><span class="wi-showers"></span></p>
-                        </div>
-                        <div class="day">
-                            <h3>Wed</h3>
-                            <p><span class="wi-rain"></span></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div> --}}
 
 {{-- @include('partials.weather_javascript') --}}
 
 @endsection
 
-{{-- @section('weather-js')
+@section('weather-js')
         <style>
         .weather
     {
@@ -272,4 +275,4 @@
                     font-size: 28px;
                 }
         </style>
-     @endsection --}}
+     @endsection

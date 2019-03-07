@@ -11,6 +11,7 @@ return array(
     'App\\Cart' => $baseDir . '/app/Cart.php',
     'App\\City' => $baseDir . '/app/City.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
+    'App\\DamageList' => $baseDir . '/app/DamageList.php',
     'App\\DamageReport' => $baseDir . '/app/DamageReport.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',

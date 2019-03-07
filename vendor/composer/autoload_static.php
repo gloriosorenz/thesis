@@ -489,6 +489,7 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'App\\Cart' => __DIR__ . '/../..' . '/app/Cart.php',
         'App\\City' => __DIR__ . '/../..' . '/app/City.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\DamageList' => __DIR__ . '/../..' . '/app/DamageList.php',
         'App\\DamageReport' => __DIR__ . '/../..' . '/app/DamageReport.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
