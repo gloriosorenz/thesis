@@ -16,7 +16,7 @@
 <br>
 
 <!-- User List Datatable -->
-<div class="card">
+<div class="card shadow mb-4">
     <div class="card-header">
         <h2 class="title">Damage Reports</h2>
     </div>
@@ -27,6 +27,7 @@
                 <tr>
                     <th width="">ID</th>
                     <th width="">Calamity</th>
+                    <th width="">Province</th>
                     <th width="">Date Created</th>
                     <th width="">Options</th>
                 </tr>
@@ -35,11 +36,13 @@
                 @foreach($dreports as $dr)
                 <tr class="tr">
                     <td>{{$dr->id}}</td>
-                    <td></td>
-                    <td></td>
+                    <td>{{$dr->calamity}}</td>
+                    <td>{{$dr->provinces->name}}</th>
+                    <td>{{$dr->created_at->toFormattedDateString()}}</td>
                     <td>
-                        <a href="#"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
-                        <a href="#" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                        <a href="/damage_reports/{{$dr->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
+                        <a href="/damage_reports/{{$dr->id}}/edit" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                        <a href="/pdf/damage_report/{{$dr->id}}" class="btn btn-primary"><i class="fas fa-download fa-sm text-white"></i></a>
                     </td>
                 </tr>
                 @endforeach

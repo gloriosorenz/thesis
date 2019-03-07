@@ -184,7 +184,7 @@ class AmqpCaster
             $prefix.'message_id' => $c->getMessageId(),
             $prefix.'timestamp' => $c->getTimeStamp(),
             $prefix.'type' => $c->getType(),
-            $prefix.'users_id' => $c->getUserId(),
+            $prefix.'user_id' => $c->getUserId(),
             $prefix.'app_id' => $c->getAppId(),
         ];
 

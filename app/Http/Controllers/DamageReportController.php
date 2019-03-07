@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\DamageReport;
 use App\Region;
 use App\Province;
+use PDF;
 
 class DamageReportController extends Controller
 {
@@ -49,10 +50,6 @@ class DamageReportController extends Controller
         $request->validate([
             'calamity' => 'required|string|max:255',
             'narrative' => 'required|string|max:255',
-            // 'email' => 'required|string|email|max:255',
-            // 'phone' => 'required|string|max:255',
-            // 'barangay' => 'required|string|max:255',
-            // 'password' => 'required|string|min:6',
         ]);
 
         $dreport = new DamageReport;
@@ -66,11 +63,10 @@ class DamageReportController extends Controller
         $dreport->fish = $request->input('fish');
         $dreport->area = $request->input('area');
         $dreport->fish_pieces = $request->input('fish_pieces');
-        $dreport->regions_id = $request->input('regions_id');
-        $dreport->provinces_id = $request->input('provinces_id');
+        $dreport->regions_id = $request->input('region');
+        $dreport->provinces_id = $request->input('province');
         $dreport->save();
 
-        // $dreport = DamageReport::create($request->all());
 
         return redirect()->route('damage_reports.index')->with('success','Damage Report Created ');
     }
@@ -83,7 +79,9 @@ class DamageReportController extends Controller
      */
     public function show($id)
     {
-        //
+        $dreport = DamageReport::findOrFail($id);
+        return view('damage_reports.show')
+            ->with('dreport', $dreport);;
     }
 
     /**
@@ -94,7 +92,14 @@ class DamageReportController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dreport = DamageReport::findOrFail($id);
+        $regions = Region::orderBy('name')->get();
+        $provinces = Province::orderBy('name')->get();
+
+        return view('damage_reports.edit')
+            ->with('dreport', $dreport)
+            ->with('regions', $regions)
+            ->with('provinces', $provinces);
     }
 
     /**
@@ -106,7 +111,23 @@ class DamageReportController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dreport = DamageReport::findOrFail($id);
+        $dreport->calamity = $request->input('calamity');
+        $dreport->narrative = $request->input('narrative');
+        $dreport->crop = $request->input('crop');
+        $dreport->crop_stage = $request->input('crop_stage');
+        $dreport->production = $request->input('production');
+        $dreport->animal = $request->input('animal');
+        $dreport->animal_head = $request->input('animal_head');
+        $dreport->fish = $request->input('fish');
+        $dreport->area = $request->input('area');
+        $dreport->fish_pieces = $request->input('fish_pieces');
+        $dreport->regions_id = $request->input('region');
+        $dreport->provinces_id = $request->input('province');
+        $dreport->save();
+
+        return redirect('damage_reports')->with('success','Damage Report Updated ');
+
     }
 
     /**
@@ -118,5 +139,25 @@ class DamageReportController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function generatePDF($id)
+    {
+        $dreport = DamageReport::findOrFail($id);
+
+
+        $data = ['title' => 'Welcome to HDTuto.com'];
+        $pdf = PDF::loadView('pdf.damage_report', compact('dreport'));
+
+        // $pdf = PDF::loadView('pdf.invoice', $data);
+        // return $pdf->download('invoice.pdf');
+  
+        return $pdf->stream('damage_report.pdf');
     }
 }

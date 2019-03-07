@@ -73,6 +73,9 @@ Route::get('/orders/my_orders', 'OrderController@orders')->name('my_orders');
 Route::get('/orders/confirm_order/{id}', 'OrderController@confirm_order');
 Route::get('/orders/cancel_order/{id}', 'OrderController@cancel_order');
 
+// Damage Report
+Route::get('pdf/damage_report/{id}','DamageReportController@generatePDF');
+
 
 
 
