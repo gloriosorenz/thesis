@@ -133,4 +133,9 @@ class LandingPageController extends Controller
     {
         //
     }
+
+    public function weather_statistics(){
+
+        return view('weather/weather_statistics');
+    }
 }
