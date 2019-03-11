@@ -16,6 +16,8 @@ use App\Http\Requests\CheckoutRequest;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Controllers\Auth;
 use Carbon\Carbon;
+use App\Mail\OrderCreated;
+use Mail;
 // use Cartalyst\Stripe\Laravel\Facades\Stripe;
 // use Cartalyst\Stripe\Exception\CardErrorException;
 
@@ -90,6 +92,13 @@ class CheckoutController extends Controller
             $this->decreaseQuantities();
 
             Cart::instance('default')->destroy();
+
+
+            // Mail to User
+            Mail::to(auth()->user()->email)->send(
+
+                new OrderCreated()
+            );
 
             return redirect()->route('confirmation.index')->with('success_message', 'Thank you! Your payment has been successfully accepted!');
         

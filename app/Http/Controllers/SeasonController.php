@@ -11,6 +11,8 @@ use App\User;
 use App\ProductList;
 use App\Product;
 use DB;
+use App\Mail\SeasonCreated;
+use Mail;
 
 class SeasonController extends Controller
 {
@@ -84,6 +86,13 @@ class SeasonController extends Controller
                 SeasonList::insert($data);
             }  
         }
+
+
+        // Mail::to('renz_glorioso@dlsu.edu.ph')->send(
+
+        //     new SeasonCreated()
+        // );
+
         return redirect()->route('seasons.index')->with('success','Season Created ');
     }
 
