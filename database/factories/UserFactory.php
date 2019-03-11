@@ -45,11 +45,20 @@ $factory->define(App\User::class, function (Faker $faker) {
     ];
 });
 
+$factory->define(App\OrderProduct::class, function (Faker $faker) {
+    return [
+        'quantity' => $faker->numberBetween($min = 1, $max = 10),
+        'order_product_statuses_id' => $faker->numberBetween($min = 1, $max = 4),
+        'product_lists_id' => $faker->numberBetween($min = 1, $max = 9),
+        'orders_id' => $faker->numberBetween($min = 1, $max = 9)
+    ];
+});
+
 $factory->define(App\Order::class, function (Faker $faker) {
     return [
         'order_statuses_id' => $faker->numberBetween($min = 1, $max = 4),
         'total_price' => $faker->numberBetween($min = 16, $max = 3500),
         'users_id' => $faker->unique()->numberBetween($min = 11, $max = 19),
-        'created_at' => $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = null)
+        'created_at' => $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = null),
     ];
 });

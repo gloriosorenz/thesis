@@ -3954,6 +3954,8 @@ return array(
     'Symfony\\Contracts\\Translation\\TranslatorInterface' => $vendorDir . '/symfony/contracts/Translation/TranslatorInterface.php',
     'Symfony\\Contracts\\Translation\\TranslatorTrait' => $vendorDir . '/symfony/contracts/Translation/TranslatorTrait.php',
     'Symfony\\Polyfill\\Ctype\\Ctype' => $vendorDir . '/symfony/polyfill-ctype/Ctype.php',
+    'Symfony\\Polyfill\\Iconv\\Iconv' => $vendorDir . '/symfony/polyfill-iconv/Iconv.php',
+    'Symfony\\Polyfill\\Intl\\Idn\\Idn' => $vendorDir . '/symfony/polyfill-intl-idn/Idn.php',
     'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
     'Symfony\\Polyfill\\Php72\\Php72' => $vendorDir . '/symfony/polyfill-php72/Php72.php',
     'Tests\\CreatesApplication' => $baseDir . '/tests/CreatesApplication.php',
