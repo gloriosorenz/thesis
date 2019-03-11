@@ -1,6 +1,9 @@
 @extends('layouts.web')
 @section('content')
+<iframe id="forecast_embed" frameborder="0" height="200" width="100%" src="//forecast.io/embed/#lat=14.3144&lon=121.1121&name=Santa Rosa, Laguna&units=ca&font=Sans-Serif"></iframe>
+{{-- <div class="text-center"><a class="nav-link" href="{{ url('weather/weather_statistics') }}">More data found here!</a></div> --}}
 
+{{-- &font=Georgia --}}
 <header>
     <div class="container">
         <div class="slider-container">

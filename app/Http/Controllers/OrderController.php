@@ -163,8 +163,13 @@ class OrderController extends Controller
         // $order = Order::findOrFail($id);
         // $order->order_statuses_id = 3;
 
-        $order_product = OrderProduct::findOrFail($id);
-        $order_product->order_product_statuses_id = 4;
+        $order = Order::findOrFail($id);
+        $order->order_statuses_id = 4;
+        $order->save();
+
+        // $order_product = OrderProduct::findOrFail($id);
+        // $order_product->order_product_statuses_id = 4;
+        // $order_product->save();
 
         // $curr_qty = OrderProduct::where('product_lists_id',$id )->get();
         // $op = OrderProduct::findOrFail($id);
@@ -181,14 +186,13 @@ class OrderController extends Controller
         
         // foreach (OrderProduct::findorFail($id) as $id ){
             // $orderproduct = OrderProduct::findorFail($id);
-            $op = OrderProduct::all();
+            // $op = OrderProduct::all();
 
-            foreach($op as $p){
-                $p = OrderProduct::findorFail($id);
-                $product = OrderProduct::where('product_lists_id', $id);
+            // foreach($op as $p){
+            //     $product = OrderProduct::where('product_lists_id', $id);
 
-                $p->product_lists->update(['curr_quantity' => $product->curr_quantity + $p->quantity]);
-            }
+            //     $order_product->product_lists->update(['curr_quantity' => $product->curr_quantity + $p->quantity]);
+            // }
             // $orderproduct = OrderProduct::findorFail($id);
 
            
@@ -230,11 +234,7 @@ class OrderController extends Controller
         //             ]);
         //     }
 
-        $order_product->save();
-        // $order_products->save();
-
-        return redirect('/orders')->with('success', 'Order has been removed!');
-        // return back()->with('success_message', 'Item has been removed!');
+        return redirect('/orders')->with('success', 'Order has been cancelled!');
     }
 
 

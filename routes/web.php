@@ -85,13 +85,13 @@ Route::get('pdf/invoice/{id}', 'OrderController@pdfview');
 Route::get('/weather/weather_statistics', 'LandingPageController@weather_statistics')->name('weather_statistics');
 
 // Notifications
-Route::get('/', function() {
-    $user = App\User::first();
+// Route::get('/', function() {
+//     $user = App\User::first();
 
-    $user->notify(new NewOrder);
+//     $user->notify(new NewOrder);
 
-    return view('/')->with('success','User Notified');
-});
+//     return view('/')->with('success','User Notified');
+// });
 
 
 Route::resource('users', 'UsersController');
