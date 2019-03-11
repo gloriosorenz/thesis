@@ -3,6 +3,8 @@
 @section('content')
 
 
+<div class="container">
+
 <!-- Pending Orders Datatable -->
 <div class="card shadow mt-5 mb-4 ">
     <div class="card-header py-3 bg-warning text-white">
@@ -27,7 +29,7 @@
                         <td>{{$p->created_at->toFormattedDateString()}}</td>
                         <td>{{$p->total_price}}</td>
                         <td>
-                            
+                            <a href="/pdf/invoice/{{$p->id}}" class="btn btn-primary"><i class="fas fa-download fa-sm text-white"></i></a>
                         </td>
                     </tr>
                     @endif
@@ -120,6 +122,6 @@
     </div>
 </div>
     
-
+</div>
 
 @endsection

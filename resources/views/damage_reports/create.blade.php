@@ -72,72 +72,6 @@
                         </div>
                     </div>
                 </div>
-            
-                {{-- <div class="row">
-                    <!-- Crop -->
-                    <div class="col-md-4">
-                        <div class="form-group">
-                        <label for="crop">Crop:</label>
-                        <input type="text" class="form-control" name="crop" value=""/>
-                        </div>
-                    </div>
-                    <!-- Crop Stage -->
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="crop_stage">Crop Stage:</label>
-                            <input type="text" class="form-control" name="crop_stage" value="" />
-                        </div>
-                    </div>
-                    <!-- Production -->
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="production">Production:</label>
-                            <input type="text" class="form-control" name="production" value="" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <!-- Animal -->
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                            <label class="control-lable" for="animal">Animal:</label>
-                            <input type="text" class="form-control" name="animal" value="" />
-                        </div>
-                    </div>
-                    <!-- Animal Head -->
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                            <label class="control-lable" for="animal_head">Animal Head:</label>
-                            <input type="text" class="form-control" name="animal_head" value="" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <!-- Fish -->
-                    <div class="col-md-4">
-                        <div class="form-group">
-                        <label for="fish">Fish:</label>
-                        <input type="text" class="form-control" name="fish" value=""/>
-                        </div>
-                    </div>
-                    <!-- Area -->
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="area">Area:</label>
-                            <input type="text" class="form-control" name="area" value="" />
-                        </div>
-                    </div>
-                    <!-- Fish Pieces -->
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="fish_pieces">Fish Pieces:</label>
-                            <input type="text" class="form-control" name="fish_pieces" value="" />
-                        </div>
-                    </div>
-                </div> --}}
-
             </div>
         </div>
     </div>
@@ -159,8 +93,10 @@
                             <th>Crop</th>
                             <th>Crop Stage</th>
                             <th>Production</th>
+                            <th></th>
                             <th>Animal</th>
                             <th>Animal Head</th>
+                            <th></th>
                             <th>Fish</th>
                             <th>Area</th>
                             <th>Fish Pieces</th>
@@ -172,8 +108,10 @@
                             <td><input type="text" class="form-control" name="crop[]" value=""/></td>
                             <td><input type="text" class="form-control" name="crop_stage[]" value=""/></td>
                             <td><input type="text" class="form-control" name="production[]" value=""/></td>
+                            <td></td>
                             <td><input type="text" class="form-control" name="animal[]" value=""/></td>
                             <td><input type="text" class="form-control" name="animal_head[]" value=""/></td>
+                            <td></td>
                             <td><input type="text" class="form-control" name="fish[]" value=""/></td>
                             <td><input type="text" class="form-control" name="area[]" value=""/></td>
                             <td><input type="text" class="form-control" name="fish_pieces[]" value=""/></td>

@@ -7,6 +7,7 @@ use App\Order;
 use App\OrderProduct;
 use App\ProductList;
 use DB;
+use PDF;
 
 class OrderController extends Controller
 {
@@ -234,5 +235,24 @@ class OrderController extends Controller
 
         return redirect('/orders')->with('success', 'Order has been removed!');
         // return back()->with('success_message', 'Item has been removed!');
+    }
+
+
+
+
+    public function pdfview(Request $request, $id)
+    {
+
+        $order = Order::findOrFail($id);
+        $orders = OrderProduct::where('orders_id', $order->id)->get();
+
+        // $users = DB::table('users')->get();
+        // view()->share('users',$users);
+
+
+        // pass view file
+        $pdf = PDF::loadView('pdf.invoice', compact('order'), compact('orders'))->setPaper('a4', 'landscape');
+        // download pdf
+        return $pdf->stream('invoice.pdf');
     }
 }

@@ -8,6 +8,7 @@ use App\DamageList;
 use App\Region;
 use App\Province;
 use PDF;
+use DB;
 
 class DamageReportController extends Controller
 {
@@ -171,11 +172,34 @@ class DamageReportController extends Controller
         $dreport = DamageReport::findOrFail($id);
         $dlists = DamageList::where('damage_reports_id', $dreport->id)->get();
 
+        PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
+
         $pdf = PDF::loadView('pdf.damage_report', compact('dreport'), compact('dlists'))->setPaper('a4', 'landscape');
 
         // $pdf = PDF::loadView('pdf.invoice', $data);
         // return $pdf->download('invoice.pdf');
+
   
+        return $pdf->stream('damage_report.pdf');
+
+
+   
+    }
+
+
+    public function pdfview(Request $request, $id)
+    {
+
+        $dreport = DamageReport::findOrFail($id);
+        $dlists = DamageList::where('damage_reports_id', $dreport->id)->get();
+
+        $users = DB::table('users')->get();
+        view()->share('users',$users);
+
+
+        // pass view file
+        $pdf = PDF::loadView('pdf.damage_report', compact('dreport'), compact('dlists'))->setPaper('a4', 'landscape');
+        // download pdf
         return $pdf->stream('damage_report.pdf');
     }
 }

@@ -11,8 +11,10 @@ $(document).ready(function () {
         var addRow='<tr><td><input type="text" class="form-control" name="crop[]" value=""/></td>' +
                     '<td><input type="text" class="form-control" name="crop_stage[]" value=""/></td>' +
                     '<td><input type="text" class="form-control" name="production[]" value=""/></td>' +
+                    '<td></td>' +
                     '<td><input type="text" class="form-control" name="animal[]" value=""/></td>' +
                     '<td><input type="text" class="form-control" name="animal_head[]" value=""/></td>' +
+                    '<td></td>' +
                     '<td><input type="text" class="form-control" name="fish[]" value=""/></td>' +
                     '<td><input type="text" class="form-control" name="area[]" value=""/></td>' +
                     '<td><input type="text" class="form-control" name="fish_pieces[]" value=""/></td>' +

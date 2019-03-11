@@ -74,9 +74,12 @@ Route::get('/orders/confirm_order/{id}', 'OrderController@confirm_order');
 Route::get('/orders/cancel_order/{id}', 'OrderController@cancel_order');
 
 // Damage Report
-Route::get('pdf/damage_report/{id}','DamageReportController@generatePDF');
+// Route::get('pdf/damage_report/{id}','DamageReportController@generatePDF');
 
 
+// PDF
+Route::get('pdf/damage_report/{id}', 'DamageReportController@pdfview');
+Route::get('pdf/invoice/{id}', 'OrderController@pdfview');
 
 
 Route::resource('users', 'UsersController');

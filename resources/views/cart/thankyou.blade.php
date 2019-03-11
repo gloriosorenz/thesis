@@ -2,6 +2,7 @@
 
 @section('content')
 
+<div class="container">
    <div class="thank-you-section">
        <br>
        <h1>Thank you for <br> Your Order!</h1>
@@ -13,6 +14,7 @@
            <a class="btn btn-lg btn-primary" href="{{ url('/') }}">Home Page</a>
        </div>
    </div>
+</div>
 
 
 

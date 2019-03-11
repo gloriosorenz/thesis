@@ -2,7 +2,7 @@
         <div class="container-fluid">
         <a class="navbar-brand" href="/">SMSRL Portal</a>
             <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav">
                     <!-- {{-- GUEST --}} -->
                     @guest
                     <li class="nav-item active">

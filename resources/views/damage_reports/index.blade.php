@@ -12,6 +12,7 @@
 
 <!-- Add User -->
 <a class="btn btn-secondary btn-md" href="{{ route('damage_reports.create') }}">+Add</a>
+{{-- <a href="{{ route('generate-pdf',['download'=>'pdf']) }}">Download PDF</a> --}}
 <br>
 <br>
 
