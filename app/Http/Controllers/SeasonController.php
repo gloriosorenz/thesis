@@ -36,12 +36,14 @@ class SeasonController extends Controller
      */
     public function create()
     {
+        $seasons = Season::all();
         $types = SeasonType::get()->pluck('type', 'id');
         // Get Rice Farmers
         $users = User::where('roles_id', '=', 2)->get()->pluck('company', 'id');
         $statuses = SeasonStatus::get()->pluck('status', 'id');
 
         return view('seasons.create')
+            ->with('seasons', $seasons)
             ->with('types', $types)
             ->with('users', $users)
             ->with('statuses', $statuses);
@@ -57,7 +59,7 @@ class SeasonController extends Controller
     {
         // Validation
         $request->validate([
-            // 'season_start' => 'required|date|',
+            'season_start' => 'required|date|',
             // 'season_types_id' => 'required|int',
             // 'planned_hectares' => 'required|int',
             // 'planned_num_farmers' => 'required|string|max:255',

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @include('partials.add_farmer_javascript')
 @section('content')
-{{-- BREADCRUMB --}}
+<!-- Breadcrumb -->
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Dashboard</a></li>
@@ -13,20 +13,21 @@
 <a class="btn btn-md btn-secondary" href="{{URL::previous()}}">Back</a>
 <br>
 <br>
-{{-- FORM --}}
+<!-- Form -->
 <form method="post" action="{{action('SeasonController@store')}}" enctype="multipart/form-data">
 @csrf
 
+
+<!-- New Season -->
 <div class="row">
     <div class="offset-md-1 col-md-8 ">
         <div class="card shadow mb-4">
         <div class="card-header card-header-primary">
             <h4 class="card-title">New Season</h4>
-            {{-- <p class="card-category">Complete your profile</p> --}}
         </div>
         <div class="card-body">
             <div class="row">
-                {{-- SEASON TYPE--}}
+                <!-- Season Type -->
                 <div class="col-md-6">
                     <div class="form-group">
                         {!! Form::label('season_types_id', 'Type:', ['class' => 'control-label']) !!}
@@ -41,7 +42,7 @@
                 </div>
             </div> 
             <div class="row">
-                {{-- START DATE --}}
+                <!-- Start Date -->
                 <div class="col-md-6">
                     <div class="form-group row">
                             {{ Form::label('season_start', 'Season Start:') }}
@@ -57,8 +58,7 @@
 </div>
 
 
-
-
+<!-- Add Farmer -->
 <div class="row">
     <div class="offset-md-1 col-md-10 offset-md-1">
         <div class="card shadow mb-4">
@@ -67,7 +67,7 @@
             </div>
             <div class="card-body">
             <h3>Add Farmer</h3>
-            <table class="table table-bordered" id="table_id">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>Rice Farmer</th>
@@ -104,14 +104,14 @@
 
 
 
-{{-- SUBMIT BUTTON --}}
+
+
+
+<!-- Submit Button -->
 <div class="row">
     <div class="offset-md-1 col-md-10 offset-md-1">
         <button type="submit" class="btn btn-success">Create</button>
     </div>
 </div>
-
-
-
 </form>
 @endsection

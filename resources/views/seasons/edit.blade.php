@@ -69,7 +69,7 @@
                 <h4 class="card-title">Update Farmer/s</h4>
             </div>
             <div class="card-body">
-                <table class="table table-bordered" id="table_id">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -107,7 +107,7 @@
                 <h4 class="card-title">Products</h4>
             </div>
             <div class="card-body">
-                <table class="table table-bordered" id="table_id">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Rice Farmer</th>

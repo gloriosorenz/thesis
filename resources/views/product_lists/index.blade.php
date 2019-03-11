@@ -19,7 +19,7 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Products</h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+    {{-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
 </div>
 
 @if (count($seasons) > 0)
@@ -33,28 +33,38 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Status: {{ $season->season_statuses->status }}</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">Season {{$season->id}}</div>
+                        <div class="text-xs font-weight-bold text-gray text-uppercase mb-1">Start: {{ Carbon\Carbon::parse($season->season_start)->format('m-d-Y') }}</div>
+                        <div class="text-xs font-weight-bold text-gray text-uppercase mb-1">End: {{ Carbon\Carbon::parse($season->season_end)->format('m-d-Y') }}</div>
                     </div>
                     <div class="col-auto">
-                        <a  href="/product_lists/{{$season->id}}" role="button"><i class="fas fa-calendar fa-2x text-gray-300"></i></a>
+                        <a  href="/seasons/{{$season->id}}" role="button"><i class="fas fa-calendar fa-2x text-gray-300"></i></a>
                     </div>
                 </div>
             </div>
+            {{-- <div class="card-footer text-muted">
+                <a href="/seasons/{{$season->id}}/edit" class="btn btn-success"><!-- <i class="fas fa-edit"></i> -->Update</a>
+            </div> --}}
         </div>
     </div>
     @elseif ($season->season_statuses->id == 1)
     <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-left-warning shadow h-100 py-2">
             <div class="card-body">
-            <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Status: {{ $season->season_statuses->status }}</div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">Season {{$season->id}}</div>
-                </div>
-                <div class="col-auto">
-                    <a  href="/product_lists/{{$season->id}}" role="button"><i class="fas fa-calendar fa-2x text-gray-300"></i></a>
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Status: {{ $season->season_statuses->status }}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Season {{$season->id}}</div>
+                        <div class="text-xs font-weight-bold text-gray text-uppercase mb-1">Start: {{ Carbon\Carbon::parse($season->season_start)->format('m-d-Y') }}</div>
+                        <div class="text-xs font-weight-bold text-gray text-uppercase mb-1">End: {{ Carbon\Carbon::parse($season->season_end)->format('m-d-Y') }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <a  href="/seasons/{{$season->id}}" role="button"><i class="fas fa-calendar fa-2x text-gray-300"></i></a>
+                    </div>
                 </div>
             </div>
-            </div>
+            {{-- <div class="card-footer">
+                <a href="/seasons/{{$season->id}}/edit" class="btn btn-success"><!-- <i class="fas fa-edit"></i> -->Update</a>
+            </div> --}}
         </div>
     </div>
     @endif

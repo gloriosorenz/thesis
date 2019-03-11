@@ -46,13 +46,15 @@ class ProductListController extends Controller
      */
     public function create()
     {
+        $season = Season::latest()->first();
         $types = SeasonType::get()->pluck('type', 'id');
-        $rice_farmers = RiceFarmer::get()->pluck('company', 'id');
         $statuses = SeasonStatus::get()->pluck('status', 'id');
+        $products = Product::all();
 
         return view('product_lists.create')
+            ->with('season', $season)
+            ->with('products', $products)
             ->with('types', $types)
-            ->with('rice_farmers', $rice_farmers)
             ->with('statuses', $statuses);
     }
 
@@ -64,7 +66,34 @@ class ProductListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       // Validation
+       $request->validate([
+            // 'season_start' => 'required|date|',
+            // 'season_types_id' => 'required|int',
+            // 'planned_hectares' => 'required|int',
+            // 'planned_num_farmers' => 'required|string|max:255',
+            // 'planned_qty' => 'required|string|max:255',
+        ]);
+
+        $seasons_id = $request->input('seasons_id');
+        
+        foreach($request->products_id as $key => $value) {
+            $data=array(
+                        'users_id'=> auth()->user()->id,
+                        'seasons_id' => $seasons_id,
+                        'products_id'=>$request->products_id [$key],
+                        'orig_quantity'=>$request->orig_quantity [$key],
+                        'curr_quantity'=>$request->orig_quantity [$key],
+                        'harvest_date'=>$request->harvest_date [$key],
+                        'price'=>$request->price [$key]);
+
+            ProductList::insert($data);
+            // dd($data);
+        }  
+
+
+
+        return redirect()->route('product_lists.index')->with('success','Products Updated ');
     }
 
     /**
