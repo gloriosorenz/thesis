@@ -17,38 +17,38 @@ class CreatePhAddressTables extends Migration
             $table->increments('id');
             $table->string('code');
             $table->string('name');
-            $table->string('region_id', 10)->index();
+            $table->string('regions_id', 10)->index();
         });
 
         Schema::create('provinces', function (Blueprint $table) {
             $table->increments('id');
             $table->string('code');
             $table->string('name');
-            $table->string('region_id', 10)->index();
-            $table->string('province_id', 10)->index();
+            $table->string('regions_id', 10)->index();
+            $table->string('provinces_id', 10)->index();
         });
 
         Schema::create('cities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('code');
             $table->string('name');
-            $table->string('region_id', 10)->index();
-            $table->string('province_id', 10)->index();
-            $table->string('city_id', 10)->index();
+            $table->string('regions_id', 10)->index();
+            $table->string('provinces_id', 10)->index();
+            $table->string('cities_id', 10)->index();
 
-            $table->index(['province_id', 'region_id'], 'cities_province_regions');
+            $table->index(['provinces_id', 'regions_id'], 'cities_provinces_regions');
         });
 
         Schema::create('barangays', function (Blueprint $table) {
             $table->increments('id');
             $table->string('code');
             $table->string('name');
-            $table->string('region_id', 10)->index();
-            $table->string('province_id', 10)->index();
-            $table->string('city_id', 10)->index();
+            $table->string('regions_id', 10)->index();
+            $table->string('provinces_id', 10)->index();
+            $table->string('cities_id', 10)->index();
             
-            $table->index(['province_id', 'region_id'], 'barangay_idx_1');
-            $table->index(['city_id', 'province_id', 'region_id'], 'barangay_idx_2');
+            $table->index(['provinces_id', 'regions_id'], 'barangays_idx_1');
+            $table->index(['cities_id', 'provinces_id', 'regions_id'], 'barangays_idx_2');
         });
     }
 
