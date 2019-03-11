@@ -5,36 +5,48 @@
                 <ul class="navbar-nav">
                     <!-- {{-- GUEST --}} -->
                     @guest
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="{{Request:: is('product_lists') ? 'active' : ''}}">
-                        <a class="nav-link" href="{{ url('product_lists/show_products') }}">Products</a>
-                    </li>
-                    <!-- {{-- CUSTOMER --}} -->
-                    @elseif(Auth::user()->roles_id == 3)
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="{{Request:: is('product_lists') ? 'active' : ''}}">
                             <a class="nav-link" href="{{ url('product_lists/show_products') }}">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('weather/weather_statistics') }}">Weather Statistics</a>
+                        </li>
+                    <!-- {{-- CUSTOMER --}} -->
+                    @elseif(Auth::user()->roles_id == 3)
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="{{Request:: is('product_lists') ? 'active' : ''}}">
+                            <a class="nav-link" href="{{ url('product_lists/show_products') }}">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('weather/weather_statistics') }}">Weather Statistics</a>
                         </li>
                         
                     <!-- {{-- ADMIN --}} -->
                     @elseif(Auth::user()->roles_id == 1)
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="{{Request:: is('product_lists') ? 'active' : ''}}">
                             <a class="nav-link" href="{{ url('product_lists/show_products') }}">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('weather/weather_statistics') }}">Weather Statistics</a>
                         </li>
                     <!-- {{-- FARMER --}} -->
                     @elseif(Auth::user()->roles_id == 2)
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="{{Request:: is('product_lists') ? 'active' : ''}}">
                             <a class="nav-link" href="{{ url('product_lists/show_products') }}">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('weather/weather_statistics') }}">Weather Statistics</a>
                         </li>
                     @endguest
                 </ul>

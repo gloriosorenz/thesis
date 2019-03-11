@@ -81,6 +81,9 @@ Route::get('/orders/cancel_order/{id}', 'OrderController@cancel_order');
 Route::get('pdf/damage_report/{id}', 'DamageReportController@pdfview');
 Route::get('pdf/invoice/{id}', 'OrderController@pdfview');
 
+// Weather
+Route::get('/weather/weather_statistics', 'LandingPageController@weather_statistics')->name('weather_statistics');
+
 
 Route::resource('users', 'UsersController');
 Route::resource('roles', 'RolesController');
