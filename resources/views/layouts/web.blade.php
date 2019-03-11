@@ -26,7 +26,9 @@
     <div id="wrapper">
         <div id="content-wrapper" class="d-flex flex-column">
             @include('inc.home_navbar')
-            <a class="weatherwidget-io mb-4" href="https://forecast7.com/en/14d28121d09/santa-rosa/" data-label_1="SANTA ROSA" data-label_2="WEATHER" data-icons="Climacons Animated" data-days="5" data-theme="weather_one" >SANTA ROSA WEATHER</a>
+            {{-- <a class="weatherwidget-io mb-4" href="https://forecast7.com/en/14d28121d09/santa-rosa/" data-label_1="SANTA ROSA" data-label_2="WEATHER" data-icons="Climacons Animated" data-days="5" data-theme="weather_one" >SANTA ROSA WEATHER</a> --}}
+            <iframe id="forecast_embed" frameborder="0" height="245" width="100%" src="//forecast.io/embed/#lat=14.3144&lon=121.1121&name=Santa Rosa, Laguna&units=ca"></iframe>
+
             <div id="content" class="container"> 
                 @include('inc.messages')
                 {{-- <div class="container"> --}}

@@ -39,7 +39,7 @@
                     {{-- @if ($p->order_products->product_lists->users_id == auth()->user()->id) --}}
                     <tr class="active">
                         <td>{{$p->id}}</td>
-                        <td>{{$p->created_at}}</td>
+                        <td>{{$p->created_at->toFormattedDateString()}}</td>
                         <td>{{$p->total_price}}</td>
                         <td>
                             <a href="/orders/{{$p->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>

@@ -131,7 +131,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'j@b.c', 
                 'phone' => '09178484154',
                 'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
-                'company' => 'Benehingco Rice Plantation',
+                'company' => 'Benechingco Rice Plantation',
                 'no_farmers' => 18,
                 'hectares' => 19.10,
                 'roles_id' => 2, 
@@ -148,6 +148,9 @@ class UsersTableSeeder extends Seeder
             \App\User::create($item);
         }
 
+        // factory(App\User::class, 10)->create()->each(function($u) {
+        //     $u->issues()->save(factory(App\User::class)->make());
+        //   });
         
     }
 }

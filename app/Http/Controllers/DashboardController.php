@@ -33,53 +33,24 @@ class DashboardController extends Controller
 
         // dd($users);
 
-        /*
-        $lava = new Lavacharts; // See note below for Laravel
-
-        $datatable = $lava->DataTable();
-        $datatable->addStringColumn('Name');
-        $datatable->addNumberColumn('Donuts Eaten');
-        $datatable->addRows([
-            ['Michael',   5],
-            ['Elisa',     7],
-            ['Robert',    3],
-            ['John',      2],
-            ['Jessica',   6],
-            ['Aaron',     1],
-            ['Margareth', 8]
-        ]);
-        $pieChart = $lava->PieChart('Donuts', $datatable, [
-            'width' => 400,
-            'pieSliceText' => 'value'
-        ]);
-        $filter  = $lava->NumberRangeFilter(1, [
-            'ui' => [
-                'labelStacking' => 'vertical'
-            ]
-        ]);
-
-        $control = $lava->ControlWrapper($filter,'control');
-        $chart = $lava->ChartWrapper($pieChart,'chart');
-
-        $lava->Dashboard('Donuts')->bind($control,$chart);
-        
-        ->with('users', $users)
-        ->with('lava',$lava)
-        ->with('control',$control)
-        */
         $lava = new Lavacharts;
+        $season_start = Season::count();
 
         $data = $lava->DataTable();
 
         $data->addDateColumn('Day of Month')
-            ->addNumberColumn('Projected')
-            ->addNumberColumn('Official');
+            ->addNumberColumn('Rice')
+            ->addNumberColumn('Withered');
 
-        // Random Data For Example
         for ($a = 1; $a < 30; $a++) {
-            $rowData = [
-            "2017-4-$a", rand(800,1000), rand(800,1000)
-            ];
+                $rowData = [
+                "2017-4-$a", rand(200,500), rand(200,500)
+                ];
+        // Random Data For Example
+        // for ($a = 1; $a < 30; $a++) {
+        //     $rowData = [
+        //     "2017-4-$a", rand(800,1000), rand(800,1000)
+        //     ];
 
             $data->addRow($rowData);
 }
@@ -90,7 +61,7 @@ class DashboardController extends Controller
                 'startup' => true,
                 'easing' => 'inAndOut'
             ],
-            'colors' => ['blue', '#F4C1D8']
+            'colors' => ['#3CB371', '#FFD700']
         ]);
 
         return view('dashboard')

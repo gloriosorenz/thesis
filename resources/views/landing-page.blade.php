@@ -13,8 +13,11 @@
         <p class="lead">All products are produced by the farmers of Laguna.</p>
     </div>
 </div> --}}
+{{-- <script type='text/javascript' src='https://darksky.net/widget/small/14.3144,121.1121/us12/en.js?width=100%&height=100&title=Santa Rosa Laguna&textColor=333333&bgColor=transparent&transparency=true&skyColor=undefined&fontFamily=Default&customFont=&units=us'></script>
+<script type='text/javascript' src='https://darksky.net/widget/graph-bar/14.3144,121.1121/ca12/en.js?width=100%&height=290&title=Full Forecast&textColor=333333&bgColor=transparent&transparency=true&skyColor=undefined&fontFamily=Default&customFont=Santa Rosa Laguna&units=ca&timeColor=333333&tempColor=333333&currentDetailsOption=true'></script> --}}
 
-<div class="container">
+
+{{-- <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <div class="weather">
@@ -54,7 +57,7 @@
         </div>
     </div>
 
-</div>
+</div> --}}
 
 
 {{-- <a class="weatherwidget-io" href="https://forecast7.com/en/14d28121d09/santa-rosa/" data-label_1="SANTA ROSA" data-label_2="WEATHER" data-icons="Climacons Animated" data-days="5" data-theme="gray" >SANTA ROSA WEATHER</a> --}}
