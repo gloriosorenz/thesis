@@ -56,9 +56,9 @@ $factory->define(App\OrderProduct::class, function (Faker $faker) {
 
 $factory->define(App\Order::class, function (Faker $faker) {
     return [
-        'order_statuses_id' => $faker->numberBetween($min = 1, $max = 4),
+        'order_statuses_id' => 1,
         'total_price' => $faker->numberBetween($min = 16, $max = 3500),
-        'users_id' => $faker->unique()->numberBetween($min = 11, $max = 19),
+        'users_id' => $faker->unique(true)->numberBetween($min = 10, $max = 19),
         'created_at' => $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = null),
     ];
 });
