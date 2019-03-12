@@ -178,15 +178,27 @@ class OrderController extends Controller
         //     }
         // }
 
-        foreach (OrderProduct::findorFail($id) as $id ){
-            $orderproduct = OrderProduct::findorFail($id);
+        // foreach (OrderProduct::findorFail($id) as $id ){
+            $orderproducts = OrderProduct::all();
 
-            foreach ($order as $o){
-                if ($orderproduct->orders_id==$o)
-                    $orderproduct->product_lists->update(['curr_quantity' => $orderproduct->product_lists->curr_quantity + $orderproduct->quantity]);
-                
+            foreach($orderproducts as $op){
+                // $orderproduct = OrderProduct::findorFail($id);
+
+                if($order->id == $op->orders_id){
+                    $op->product_lists->update(['curr_quantity' => $op->product_lists->curr_quantity + $op->quantity]);
+                }
             }
-        }
+
+           
+
+            // foreach ($order as $o){
+            //     if ($orderproduct->orders_id==$o)
+            //         $orderproduct->product_lists->update(['curr_quantity' => $orderproduct->product_lists->curr_quantity + $orderproduct->quantity]);
+                
+            // }
+        // }
+
+        
 
         // foreach (OrderProduct::findorFail($id) as $id ){
         //     $orderproduct = OrderProduct::findorFail($id);

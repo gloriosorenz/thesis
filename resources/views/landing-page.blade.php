@@ -1,13 +1,13 @@
 @extends('layouts.web')
 @section('content')
-<iframe id="forecast_embed" frameborder="0" height="200" width="100%" src="//forecast.io/embed/#lat=14.3144&lon=121.1121&name=Santa Rosa, Laguna&units=ca&font=Sans-Serif"></iframe>
+
 {{-- <div class="text-center"><a class="nav-link" href="{{ url('weather/weather_statistics') }}">More data found here!</a></div> --}}
 
 {{-- &font=Georgia --}}
 <header>
     <div class="container">
         <div class="slider-container">
-            <div class="intro-text">
+            <div class="intro-text mb-5">
                 {{-- <div class="intro-lead-in">Samahan ng Magsasaka Sta. Rosa Laguna RicE-Commerce!</div> --}}
                 <div class="intro-heading">Samahan ng Magsasaka Sta. Rosa Laguna RicE-Commerce</div>
                 <a href="{{ url('product_lists/show_products') }}" class="page-scroll btn btn-success btn-xl">Shop Now</a>
@@ -15,6 +15,7 @@
         </div>
     </div>
 </header>
+<iframe id="forecast_embed" frameborder="0" height="250" width="100%" src="//forecast.io/embed/#lat=14.3144&lon=121.1121&name=Santa Rosa, Laguna&units=ca&font=Sans-Serif"></iframe>
 <section id="about" class="light-bg">
     <div class="container">
         <div class="row">
@@ -263,6 +264,7 @@
     </div>
     </div><!-- end container -->
 </section> --}}
+
 
 <section id="team" class="light-bg">
     <div class="container">

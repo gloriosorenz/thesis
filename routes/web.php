@@ -1,5 +1,7 @@
 <?php
 
+use App\Notifications\SeasonCreated;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +28,17 @@
 Auth::routes();
 
 Route::get('/', 'LandingPageController@index')->name('landing-page');
+
+
+// Notifications
+// Route::get('/', function() {
+
+//     $user = App\User::first();
+
+//     $user->notify(new SeasonCreated());
+
+//     return 'Done';
+// });
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
@@ -84,14 +97,7 @@ Route::get('pdf/invoice/{id}', 'OrderController@pdfview');
 // Weather
 Route::get('/weather/weather_statistics', 'LandingPageController@weather_statistics')->name('weather_statistics');
 
-// Notifications
-// Route::get('/', function() {
-//     $user = App\User::first();
 
-//     $user->notify(new NewOrder);
-
-//     return view('/')->with('success','User Notified');
-// });
 
 
 Route::resource('users', 'UsersController');

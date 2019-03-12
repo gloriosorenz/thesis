@@ -8,6 +8,7 @@ use App\Product;
 use App\ProductList;
 use App\OrderProduct;
 use App\ReserveProduct;
+use App\User;
 
 // use App\Mail\OrderPlaced;
 // use Illuminate\Http\Request;
@@ -18,6 +19,8 @@ use App\Http\Controllers\Auth;
 use Carbon\Carbon;
 use App\Mail\OrderCreated;
 use Mail;
+use App\Notifications\NewOrder;
+use Notification;
 // use Cartalyst\Stripe\Laravel\Facades\Stripe;
 // use Cartalyst\Stripe\Exception\CardErrorException;
 
@@ -96,9 +99,16 @@ class CheckoutController extends Controller
 
             // Mail to User
             Mail::to(auth()->user()->email)->send(
-
                 new OrderCreated()
             );
+
+            $id = auth()->user()->id;
+
+            // Notification
+            $user = User::findOrFail($id);
+            // $user->notify(new NewOrder());
+            Notification::send($user, new NewOrder());
+
 
             return redirect()->route('confirmation.index')->with('success_message', 'Thank you! Your payment has been successfully accepted!');
         
