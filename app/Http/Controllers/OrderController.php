@@ -158,100 +158,26 @@ class OrderController extends Controller
     }
 
     public function cancel_order(Request $request, $id){
-        // $order = Order::findOrFail($id);
-        // $order->order_statuses_id = 3;
-
         $order = Order::findOrFail($id);
         $order->order_statuses_id = 4;
         $order->save();
 
+        $orderproducts = OrderProduct::all();
 
-        //Adds all quantities of all IDs (in OrderProduct) and multiplies by 2
-        // foreach (OrderProduct::findorFail($id) as $id ){
-        //     $orderproduct = OrderProduct::findorFail($id);
-        //     $op = OrderProduct::all();
-
-        //     foreach($op as $p){
-        //         $product = OrderProduct::where('product_lists_id', $id);
-
-        //         $orderproduct->product_lists->update(['curr_quantity' => $orderproduct->product_lists->curr_quantity + $p->quantity]);
-        //     }
-        // }
-
-        // foreach (OrderProduct::findorFail($id) as $id ){
-            $orderproducts = OrderProduct::all();
-
-            foreach($orderproducts as $op){
-                // $orderproduct = OrderProduct::findorFail($id);
-
-                if($order->id == $op->orders_id){
-                    $op->product_lists->update(['curr_quantity' => $op->product_lists->curr_quantity + $op->quantity]);
-                }
+        foreach($orderproducts as $op){
+            if($order->id == $op->orders_id){
+                $op->product_lists->update(['curr_quantity' => $op->product_lists->curr_quantity + $op->quantity]);
             }
-
-           
-
-            // foreach ($order as $o){
-            //     if ($orderproduct->orders_id==$o)
-            //         $orderproduct->product_lists->update(['curr_quantity' => $orderproduct->product_lists->curr_quantity + $orderproduct->quantity]);
-                
-            // }
-        // }
-
-        
-
-        // foreach (OrderProduct::findorFail($id) as $id ){
-        //     $orderproduct = OrderProduct::findorFail($id);
-        //         if ($id==$order)
-        //             $orderproduct->product_lists->update(['curr_quantity' => $orderproduct->product_lists->curr_quantity + $orderproduct->quantity]);
-        // }
-
-        // $order_product = OrderProduct::findOrFail($id);
-        // $order_product->order_product_statuses_id = 4;
-        // $order_product->save();
-
-        // $order_product = OrderProduct::findOrFail($id);
-        // $order_product->order_product_statuses_id = 4;
-        // $order_product->save();
-
-        // $curr_qty = OrderProduct::where('product_lists_id',$id )->get();
-        // $op = OrderProduct::findOrFail($id);
-
-        // $order_products = OrderProduct::where('orders_id', $id)->get();
-        // $curr = $op->quantity;
-        // $order_products = $order->quantity + $op->curr_quantity;
-
-        // // $quantity = $order_products->quantity;
-        // $order_products->quantity = 
-        
-        // $orderproducts->increaseQuantities();
-        // $order_products->update(['curr_quantity' => $product->curr_quantity + $item->qty]);
-      
-        // $orderproduct = OrderProduct::findOrFail($id);
-        //     $plist = $request->all();
-        //     $plist = ProductList::where('order_products_id', $orderproduct->id)->get();
-        //     foreach($request->id as $i => $id) { 
-        //         $list = SeasonList::findOrFail($id);
-        //         $list->update([
-        //             'curr_quantity' => $product->curr_quantity + $orderproduct->quantity
-        //             ]);
-        //     }
-
+        }
+     
         return redirect('/orders')->with('success', 'Order has been cancelled!');
     }
-
-
-
 
     public function pdfview(Request $request, $id)
     {
 
         $order = Order::findOrFail($id);
         $orders = OrderProduct::where('orders_id', $order->id)->get();
-
-        // $users = DB::table('users')->get();
-        // view()->share('users',$users);
-
 
         // pass view file
         $pdf = PDF::loadView('pdf.invoice', compact('order'), compact('orders'))->setPaper('a4', 'landscape');
