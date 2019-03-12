@@ -180,8 +180,12 @@ class OrderController extends Controller
 
         foreach (OrderProduct::findorFail($id) as $id ){
             $orderproduct = OrderProduct::findorFail($id);
-                if ($id==$orderproduct->orders)
+
+            foreach ($order as $o){
+                if ($orderproduct->orders_id==$o)
                     $orderproduct->product_lists->update(['curr_quantity' => $orderproduct->product_lists->curr_quantity + $orderproduct->quantity]);
+                
+            }
         }
 
         // foreach (OrderProduct::findorFail($id) as $id ){
