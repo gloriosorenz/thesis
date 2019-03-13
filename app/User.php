@@ -28,6 +28,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    // public function setpasswordAttribute($value)
+    // {
+    //     $this->attributes['password'] = bcrypt($value ?: str_random(10));
+    // }
     
     public function roles()
     {

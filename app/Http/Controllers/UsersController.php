@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Role;
 use App\Barangay;
-// use App\Province;
-// use App\City;
+use App\City;
+use App\Province;
 
 class UsersController extends Controller
 {
@@ -32,13 +32,15 @@ class UsersController extends Controller
     {
         $roles = \App\Role::get()->pluck('title', 'id');
         $barangays = Barangay::orderBy('name')->get();
-        // $provinces = Province::orderBy('name')->get();
-        // $cities = City::orderBy('name')->get();
+        $provinces = Province::orderBy('name')->get();
+        $cities = City::orderBy('name')->get();
 
         return view('users.create', compact('roles'))
-            ->with('barangays', $barangays);
-            // ->with('provinces', $provinces)
-            // ->with('cities', $cities);
+            ->with('barangays', $barangays)
+            ->with('provinces', $provinces)
+            ->with('cities', $cities);
+
+        
     }
 
     /**
@@ -49,25 +51,36 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+        $random = str_shuffle('abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890!$%^&!$%^&');
+        $password = substr($random, 0, 6);
+
         // Validation
         $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'phone' => 'required|string|max:255',
-            'barangay' => 'required|string|max:255',
-            'password' => 'required|string|min:6',
+            'street' => 'required|string|max:255',
+            'barangay' => 'required',
+            'city' => 'required',
+            'province' => 'required',
         ]);
+
         $user = new User;
         $user->first_name = $request->input('first_name');
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
         $user->phone = $request->input('phone');
-        $user->barangay = $request->input('barangay');
+        $user->street = $request->input('street');
+        $user->barangays_id = $request->input('barangay');
+        $user->cities_id = $request->input('city');
+        $user->provinces_id = $request->input('province');
+        $user->company = $request->input('company');
         $user->roles_id = $request->input('roles_id');
-        $user->password = Hash::make($request['password']);
+        // $user->password = Hash::make($request['password']);
+        $user->password = Hash::make($password);
         $user->save();
-
+        
         // $users = User::create($request->all());
 
         return redirect()->route('users.index')->with('success','User Created ');

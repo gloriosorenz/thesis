@@ -52,6 +52,9 @@ class RiceFarmerController extends Controller
      */
     public function store(Request $request)
     {
+        $random = str_shuffle('abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890!$%^&!$%^&');
+        $password = substr($random, 0, 6);
+        
         // Validation
         $request->validate([
             'first_name' => 'required|string|max:255',
@@ -62,7 +65,7 @@ class RiceFarmerController extends Controller
             'barangay' => 'required',
             'city' => 'required',
             'province' => 'required',
-            'password' => 'required|string|min:6',
+            'company' => 'required|string|max:255',
         ]);
         
         $user = new User;
@@ -75,7 +78,7 @@ class RiceFarmerController extends Controller
         $user->cities_id = $request->input('city');
         $user->provinces_id = $request->input('province');
         $user->company = $request->input('company');
-        $user->password = Hash::make($request['password']);
+        $user->password = Hash::make($password);
         $user->roles_id = 2;
         $user->save();
 

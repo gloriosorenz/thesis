@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\DamageReport;
-use App\DamageList;
+use App\DamageData;
 use App\Region;
 use App\Province;
 use PDF;
@@ -80,7 +80,7 @@ class DamageReportController extends Controller
                         'updated_at' => \Carbon\Carbon::now(),  # \Datetime()
                     );
 
-            DamageList::insert($data);
+            DamageData::insert($data);
         }  
 
 
@@ -111,13 +111,13 @@ class DamageReportController extends Controller
     public function edit($id)
     {
         $dreport = DamageReport::findOrFail($id);
-        $dlists = DamageList::where('damage_reports_id', $dreport->id)->get();
+        $ddatas = DamageData::where('damage_reports_id', $dreport->id)->get();
         $regions = Region::orderBy('name')->get();
         $provinces = Province::orderBy('name')->get();
 
         return view('damage_reports.edit')
             ->with('dreport', $dreport)
-            ->with('dlists', $dlists)
+            ->with('ddatas', $ddatas)
             ->with('regions', $regions)
             ->with('provinces', $provinces);
     }
@@ -170,11 +170,11 @@ class DamageReportController extends Controller
     public function generatePDF($id)
     {
         $dreport = DamageReport::findOrFail($id);
-        $dlists = DamageList::where('damage_reports_id', $dreport->id)->get();
+        $ddatas = DamageData::where('damage_reports_id', $dreport->id)->get();
 
         PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
 
-        $pdf = PDF::loadView('pdf.damage_report', compact('dreport'), compact('dlists'))->setPaper('a4', 'landscape');
+        $pdf = PDF::loadView('pdf.damage_report', compact('dreport'), compact('ddatas'))->setPaper('a4', 'landscape');
 
         // $pdf = PDF::loadView('pdf.invoice', $data);
         // return $pdf->download('invoice.pdf');
@@ -191,14 +191,14 @@ class DamageReportController extends Controller
     {
 
         $dreport = DamageReport::findOrFail($id);
-        $dlists = DamageList::where('damage_reports_id', $dreport->id)->get();
+        $ddatas = DamageData::where('damage_reports_id', $dreport->id)->get();
 
         $users = DB::table('users')->get();
         view()->share('users',$users);
 
 
         // pass view file
-        $pdf = PDF::loadView('pdf.damage_report', compact('dreport'), compact('dlists'))->setPaper('a4', 'landscape');
+        $pdf = PDF::loadView('pdf.damage_report', compact('dreport'), compact('ddatas'))->setPaper('a4', 'landscape');
         // download pdf
         return $pdf->stream('damage_report.pdf');
     }

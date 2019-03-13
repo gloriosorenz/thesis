@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDamageListsTable extends Migration
+class CreateDamageDatasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateDamageListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('damage_lists', function (Blueprint $table) {
+        Schema::create('damage_datas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('crop')->nullable();
             $table->string('crop_stage')->nullable();
@@ -38,6 +38,6 @@ class CreateDamageListsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('damage_lists');
+        Schema::dropIfExists('damage_datas');
     }
 }

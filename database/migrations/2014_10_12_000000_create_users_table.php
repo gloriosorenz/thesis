@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password'); 
+            
             $table->boolean('active')->nullable();
             $table->rememberToken();
 
@@ -35,7 +36,6 @@ class CreateUsersTable extends Migration
             $table->integer('barangays_id')->unsigned()->nullable();
             $table->integer('cities_id')->unsigned()->nullable();
             $table->integer('provinces_id')->unsigned()->nullable();
-
             
             $table->timestamps();
         });
