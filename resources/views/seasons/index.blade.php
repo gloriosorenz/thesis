@@ -111,9 +111,6 @@
                     </div>
                 </div>
             </div>
-            <div class="card-footer text-muted">
-                <a href="/seasons/{{$season->id}}/edit" class="btn btn-success"><!-- <i class="fas fa-edit"></i> -->Update</a>
-            </div>
         </div>
     </div>
     @elseif ($season->season_statuses->id == 1)
@@ -131,9 +128,10 @@
                         <a  href="/seasons/{{$season->id}}" role="button"><i class="fas fa-calendar fa-2x text-gray-300"></i></a>
                     </div>
                 </div>
-            </div>
-            <div class="card-footer">
-                <a href="/seasons/{{$season->id}}/edit" class="btn btn-success"><!-- <i class="fas fa-edit"></i> -->Update</a>
+                @if ($season->season_statuses->id == 1)
+                <a href="/seasons/{{$season->id}}/edit" class="btn btn-success">Update</a>
+                @endif
+                
             </div>
         </div>
     </div>

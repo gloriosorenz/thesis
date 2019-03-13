@@ -542,6 +542,7 @@ class ComposerStaticInitc648c1ebe08b97ed40d45f25c23bb372
         'App\\Mail\\OrderCreated' => __DIR__ . '/../..' . '/app/Mail/OrderCreated.php',
         'App\\Mail\\SeasonCreated' => __DIR__ . '/../..' . '/app/Mail/SeasonCreated.php',
         'App\\Notifications\\NewOrder' => __DIR__ . '/../..' . '/app/Notifications/NewOrder.php',
+        'App\\Notifications\\SeasonCreated' => __DIR__ . '/../..' . '/app/Notifications/SeasonCreated.php',
         'App\\Order' => __DIR__ . '/../..' . '/app/Order.php',
         'App\\OrderProduct' => __DIR__ . '/../..' . '/app/OrderProduct.php',
         'App\\OrderProductStatus' => __DIR__ . '/../..' . '/app/OrderProductStatus.php',

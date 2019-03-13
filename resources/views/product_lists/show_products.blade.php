@@ -13,7 +13,6 @@
         <p class="lead">All products are produced by the farmers of Laguna.</p>
     </div>
 </div>
-
 <div class="container">
     <div class="row">
     @if(count($product_lists) > 0)

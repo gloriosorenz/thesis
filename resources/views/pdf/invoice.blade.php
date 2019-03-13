@@ -32,7 +32,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="invoice-title">
-                            <h3>Order #</h3>
+                            <h3>Order #{{$order->id}}</h3>
                         </div>
                         <hr>
                         <div class="row">
@@ -116,7 +116,7 @@
                                                 <td class="thick-line"></td>
                                                 <td class="thick-line"></td>
                                                 <td class="thick-line text-center"><strong>Total</strong></td>
-                                                <td class="thick-line text-right">₱{{ Cart::instance('default')->subtotal() }}</td>
+                                                <td class="thick-line text-right">₱{{$order->total_price}}</td>
                                             </tr>
                                         </tbody>
                                     </table>

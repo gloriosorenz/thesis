@@ -50,6 +50,7 @@ return array(
     'App\\Mail\\OrderCreated' => $baseDir . '/app/Mail/OrderCreated.php',
     'App\\Mail\\SeasonCreated' => $baseDir . '/app/Mail/SeasonCreated.php',
     'App\\Notifications\\NewOrder' => $baseDir . '/app/Notifications/NewOrder.php',
+    'App\\Notifications\\SeasonCreated' => $baseDir . '/app/Notifications/SeasonCreated.php',
     'App\\Order' => $baseDir . '/app/Order.php',
     'App\\OrderProduct' => $baseDir . '/app/OrderProduct.php',
     'App\\OrderProductStatus' => $baseDir . '/app/OrderProductStatus.php',

@@ -97,9 +97,9 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'id' => 7, 
-                'first_name' => 'Ren', 
-                'last_name' => 'Glory', 
-                'email' => 'r@j.c', 
+                'first_name' => 'Renz', 
+                'last_name' => 'Glorioso', 
+                'email' => 'renzgloriosooo@gmail.com', 
                 'phone' => '09178416388',
                 'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
                 'company' => 'Sta. Rosa Animal Farmers',

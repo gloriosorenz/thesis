@@ -98,12 +98,12 @@ class CheckoutController extends Controller
 
 
             // Mail to User
-            Mail::to(auth()->user()->email)->send(
+            Mail::to('renzgloriosooo@gmail.com')->send(
                 new OrderCreated()
             );
 
-            $id = auth()->user()->id;
 
+            $id = auth()->user()->id;
             // Notification
             $user = User::findOrFail($id);
             // $user->notify(new NewOrder());

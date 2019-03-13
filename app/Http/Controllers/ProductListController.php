@@ -32,7 +32,7 @@ class ProductListController extends Controller
         $product_lists = SeasonList::all();
 
 
-         // Date Automation
+        // Date Automation
         //  $productlist = ProductList::where('harvest_date', '>', Carbon::now()->subdays(3))
         //  ->get();
  
