@@ -25,8 +25,8 @@
                     <!-- Calamity -->
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="calamity">Calamaity:</label>
-                         <input readonly type="text" class="form-control" name="calamity" value="{{$dreport->calamity}}"/>
+                            <label for="calamity">Calamity:</label>
+                         <input readonly type="text" class="form-control" name="calamity" value="{{$dreport->calamities->type}}"/>
                         </div>
                     </div>
                 </div>
@@ -36,7 +36,9 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="region">Region:</label>
-                            <input readonly type="text" class="form-control" name="barangay" value="{{$dreport->regions->name}}"/>
+                            @foreach($calabarzon as $c)
+                                <input readonly type="text" class="form-control"  value="{{$c->name}}"/>
+                            @endforeach
                         </div>
                     </div>
 
@@ -44,7 +46,9 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="province">Province:</label>
-                            <input readonly type="text" class="form-control" name="province" value="{{$dreport->provinces->name}}"/>
+                            @foreach($laguna as $l)
+                                <input readonly type="text" class="form-control"  value="{{$l->name}}"/>
+                            @endforeach
                         </div>
                     </div>
                 </div>

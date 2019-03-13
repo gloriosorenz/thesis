@@ -22,7 +22,7 @@ class DamageReportController extends Controller
     {
         $dreports = DamageReport::all();
 
-        return view('damage_reports.index')
+        return view('reports.damage_reports.index')
             ->with('dreports', $dreports);
     }
 
@@ -40,7 +40,7 @@ class DamageReportController extends Controller
         $calabarzon = Region::where('id','=', 4)->get();
         $laguna = Province::where('id','=',19)->get();
 
-        return view('damage_reports.create')
+        return view('reports.damage_reports.create')
             ->with('calabarzon', $calabarzon)
             ->with('calamities',$calamities)
             ->with('laguna',$laguna)
@@ -94,7 +94,7 @@ class DamageReportController extends Controller
 
 
 
-        return redirect()->route('damage_reports.index')->with('success','Damage Report Created ');
+        return redirect()->route('reports.damage_reports.index')->with('success','Damage Report Created ');
     }
 
     /**
@@ -106,13 +106,21 @@ class DamageReportController extends Controller
     public function show($id)
     {
         $dreport = DamageReport::findOrFail($id);
-        return view('damage_reports.show')
-            ->with('dreport', $dreport);;
+        $calamities = Calamity::orderBy('type')->get();
+        $calabarzon = Region::where('id','=', 4)->get();
+        $laguna = Province::where('id','=',19)->get();
+
+        return view('reports.damage_reports.show')
+            ->with('calabarzon', $calabarzon)
+            ->with('calamities',$calamities)
+            ->with('laguna',$laguna)
+            ->with('dreport', $dreport);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
+     * 
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -121,15 +129,15 @@ class DamageReportController extends Controller
         $dreport = DamageReport::findOrFail($id);
         $ddatas = DamageData::where('damage_reports_id', $dreport->id)->get();
         $calamities = Calamity::orderBy('type')->get();
-        $regions = Region::orderBy('name')->get();
-        $provinces = Province::orderBy('name')->get();
+        $calabarzon = Region::where('id','=', 4)->get();
+        $laguna = Province::where('id','=',19)->get();
 
-        return view('damage_reports.edit')
+        return view('reports.damage_reports.edit')
             ->with('dreport', $dreport)
             ->with('ddatas', $ddatas)
-            ->with('regions', $regions)
+            ->with('calabarzon', $calabarzon)
             ->with('calamities',$calamities)
-            ->with('provinces', $provinces);
+            ->with('laguna',$laguna);
     }
 
     /**

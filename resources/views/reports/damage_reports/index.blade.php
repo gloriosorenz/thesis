@@ -36,7 +36,7 @@
                 @foreach($dreports as $dr)
                 <tr class="tr">
                     <td>{{$dr->id}}</td>
-                    <td>{{$dr->calamity}}</td>
+                    <td>{{$dr->calamities->type}}</td>
                     <td>{{$dr->created_at->toFormattedDateString()}}</td>
                     <td>
                         <a href="/damage_reports/{{$dr->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>

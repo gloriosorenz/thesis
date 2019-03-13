@@ -9,8 +9,13 @@ class DamageReport extends Model
     protected $table = 'damage_reports'; 
 
     protected $fillable = [
-        'calamity', 'narrative', 'crop', 'crop_stage', 'production', 'animal', 'animal_head', 'fish', 'area', 'fish_pieces', 'regions_id', 'provinces_id'
+        'calamities_id', 'narrative', 'crop', 'crop_stage', 'production', 'animal', 'animal_head', 'fish', 'area', 'fish_pieces', 'regions_id', 'provinces_id'
     ];
+
+    public function calamities()
+    {
+        return $this->belongsTo(Calamity::class, 'calamities_id');
+    }
 
     public function regions()
     {

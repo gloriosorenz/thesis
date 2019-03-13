@@ -44,9 +44,15 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="region">Region:</label>
-                            @foreach($calabarzon as $c)
+                            {{-- @foreach($calabarzon as $c)
                                 <input readonly type="text" class="form-control" value="{{$c->name}}"/>
-                            @endforeach
+                            @endforeach --}}
+
+                            <select class="form-control" name="region" id="region" readonly>
+                                @foreach ($calabarzon as $c)
+                                    <option value="{{ $c['id']}}">{{ $c['name']}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
 
@@ -54,9 +60,15 @@
                     <div class="col-md-6">
                             <div class="form-group">
                                 <label for="province">Province:</label>
-                                @foreach($laguna as $l)
+                                {{-- @foreach($laguna as $l)
                                     <input readonly type="text" class="form-control"  value="{{$l->name}}"/>
-                                @endforeach
+                                @endforeach --}}
+
+                                <select class="form-control" name="province" id="province" readonly>
+                                    @foreach ($laguna as $l)
+                                        <option value="{{ $l['id']}}">{{ $l['name']}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 

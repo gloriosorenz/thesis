@@ -24,7 +24,7 @@ class OrderController extends Controller
         $orders = Order::all();
 
         // Auto Cancel Order after 3 days
-        $order = Order::where('created_at', '>', Carbon::now()->addDays(3))
+        $order = Order::where('created_at', '<', Carbon::now()->subDays(3))
             ->get();
 
             foreach($order as $o){
