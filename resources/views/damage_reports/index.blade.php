@@ -6,7 +6,7 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Users</li>
+    <li class="breadcrumb-item active" aria-current="page">Damage Reports</li>
   </ol>
 </nav>
 
@@ -28,7 +28,6 @@
                 <tr>
                     <th width="">ID</th>
                     <th width="">Calamity</th>
-                    <th width="">Province</th>
                     <th width="">Date Created</th>
                     <th width="">Options</th>
                 </tr>
@@ -38,7 +37,6 @@
                 <tr class="tr">
                     <td>{{$dr->id}}</td>
                     <td>{{$dr->calamity}}</td>
-                    <td>{{$dr->provinces->name}}</th>
                     <td>{{$dr->created_at->toFormattedDateString()}}</td>
                     <td>
                         <a href="/damage_reports/{{$dr->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>

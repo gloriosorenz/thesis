@@ -5,8 +5,8 @@
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Dashboard</a></li>
-    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('damage_reports.index') }}">Damage Report</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Eitd</li>
+    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('damage_reports.index') }}">Damage Reports</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit</li>
 </ol>
 </nav>
 
@@ -26,13 +26,15 @@
                 <p class="card-category">Complete your report</p>
             </div>
             <div class="card-body">
-                <div class="row">
-                    <!-- Calamity -->
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="calamity">Calamity:</label>
-                            <input type="text" class="form-control" name="calamity" value="" />
-                        </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="calamity">Calamity:</label>
+                        <select class="form-control" name="region" id="region">
+                            <option value="0" selected="true" disabled="True">Calamity:</option>
+                            @foreach ($calamities as $calamity)
+                                <option value="{{ $calamity['id']}}">{{ $calamity['name']}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 

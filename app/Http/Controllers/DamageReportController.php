@@ -7,6 +7,7 @@ use App\DamageReport;
 use App\DamageData;
 use App\Region;
 use App\Province;
+use App\Calamity;
 use PDF;
 use DB;
 
@@ -32,12 +33,19 @@ class DamageReportController extends Controller
      */
     public function create()
     {
-        $regions = Region::orderBy('name')->get();
-        $provinces = Province::orderBy('name')->get();
+        $calamities = Calamity::orderBy('type')->get();
+        // $regions = Region::orderBy('name')->get();
+        // $provinces = Province::orderBy('name')->get();
+        // $calabarzon = Region::where('id','=', 4)->get()->pluck('name');
+        $calabarzon = Region::where('id','=', 4)->get();
+        $laguna = Province::where('id','=',19)->get();
 
         return view('damage_reports.create')
-            ->with('regions', $regions)
-            ->with('provinces', $provinces);
+            ->with('calabarzon', $calabarzon)
+            ->with('calamities',$calamities)
+            ->with('laguna',$laguna)
+            // ->with('provinces', $provinces)
+            ;
     }
 
     /**
@@ -50,13 +58,13 @@ class DamageReportController extends Controller
     {
         // Validation
         $request->validate([
-            'calamity' => 'required|string|max:255',
+            'calamity' => 'required',
             'narrative' => 'required|string|max:255',
         ]);
         
 
         $dreport = new DamageReport;
-        $dreport->calamity = $request->get('calamity');
+        $dreport->calamities_id = $request->get('calamity');
         $dreport->narrative = $request->get('narrative');
         $dreport->regions_id = $request->get('region');
         $dreport->provinces_id = $request->get('province');
@@ -112,6 +120,7 @@ class DamageReportController extends Controller
     {
         $dreport = DamageReport::findOrFail($id);
         $ddatas = DamageData::where('damage_reports_id', $dreport->id)->get();
+        $calamities = Calamity::orderBy('type')->get();
         $regions = Region::orderBy('name')->get();
         $provinces = Province::orderBy('name')->get();
 
@@ -119,6 +128,7 @@ class DamageReportController extends Controller
             ->with('dreport', $dreport)
             ->with('ddatas', $ddatas)
             ->with('regions', $regions)
+            ->with('calamities',$calamities)
             ->with('provinces', $provinces);
     }
 
@@ -132,7 +142,7 @@ class DamageReportController extends Controller
     public function update(Request $request, $id)
     {
         $dreport = DamageReport::findOrFail($id);
-        $dreport->calamity = $request->input('calamity');
+        $dreport->calamities_id = $request->input('calamity');
         $dreport->narrative = $request->input('narrative');
         $dreport->crop = $request->input('crop');
         $dreport->crop_stage = $request->input('crop_stage');
