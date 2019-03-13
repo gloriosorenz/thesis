@@ -19,7 +19,8 @@ class ProductListTableSeeder extends Seeder
                 'users_id' => 2,
                 'price' => 16.0,
                 'orig_quantity' => 70,
-                'curr_quantity' => 70,            
+                'curr_quantity' => 70, 
+                'harvest_date' => '2019-03-13',           
             ],
             [
                 'id' => 2, 
@@ -28,7 +29,8 @@ class ProductListTableSeeder extends Seeder
                 'users_id' => 2,
                 'price' => 11.0,
                 'orig_quantity' => 20,
-                'curr_quantity' => 20,            
+                'curr_quantity' => 20,
+                'harvest_date' => '2019-03-13',             
             ],
             [
                 'id' => 3, 
@@ -37,7 +39,8 @@ class ProductListTableSeeder extends Seeder
                 'users_id' => 2,
                 'price' => 0.0,
                 'orig_quantity' => 10,
-                'curr_quantity' => 10,            
+                'curr_quantity' => 10, 
+                'harvest_date' => '2019-03-13',            
             ],
             [
                 'id' => 4, 
@@ -47,6 +50,7 @@ class ProductListTableSeeder extends Seeder
                 'price' => 16.0,
                 'orig_quantity' => 70,
                 'curr_quantity' => 70,
+                'harvest_date' => '2019-03-13', 
             ],
             [
                 'id' => 5, 
@@ -55,7 +59,8 @@ class ProductListTableSeeder extends Seeder
                 'users_id' => 4,
                 'price' => 11.0,
                 'orig_quantity' => 20,
-                'curr_quantity' => 20,            
+                'curr_quantity' => 20, 
+                'harvest_date' => '2019-03-13',            
             ],
             [
                 'id' => 6, 
@@ -64,7 +69,8 @@ class ProductListTableSeeder extends Seeder
                 'users_id' => 4,
                 'price' => 0.0,
                 'orig_quantity' => 10,
-                'curr_quantity' => 10,            
+                'curr_quantity' => 10, 
+                'harvest_date' => '2019-03-13',            
             ],
             [
                 'id' => 7, 
@@ -73,7 +79,8 @@ class ProductListTableSeeder extends Seeder
                 'users_id' => 4,
                 'price' => 19.0,
                 'orig_quantity' => 200,
-                'curr_quantity' => 200,           
+                'curr_quantity' => 200,  
+                'harvest_date' => '2019-03-13',          
             ],
             [
                 'id' => 8, 
@@ -82,7 +89,9 @@ class ProductListTableSeeder extends Seeder
                 'users_id' => 4,
                 'price' => 14.0,
                 'orig_quantity' => 50,
-                'curr_quantity' => 50,            ],
+                'curr_quantity' => 50,      
+                'harvest_date' => '2019-03-13',       
+            ],
             [
                 'id' => 9, 
                 'products_id' => 3, 
@@ -90,7 +99,9 @@ class ProductListTableSeeder extends Seeder
                 'users_id' => 4,
                 'price' => 0.0,
                 'orig_quantity' => 50,
-                'curr_quantity' => 50,            ],
+                'curr_quantity' => 50,          
+                'harvest_date' => '2019-03-13',   
+            ],
 
         ];
 

@@ -31,6 +31,33 @@ class ProductListController extends Controller
         // $lists = SeasonList::where('rice_farmers_id', '=', Auth::user()->id)->get();
         $product_lists = SeasonList::all();
 
+
+         // Date Automation
+        //  $productlist = ProductList::where('harvest_date', '>', Carbon::now()->subdays(3))
+        //  ->get();
+ 
+        //  foreach($productlist as $pl){
+        //      if($pl->products_id == 1){
+        //          $pl->products_id = 2;
+        //          $x = $pl->curr_quantity;
+        //          $pl->update([
+        //              'curr_quantity' => $pl->curr_quantity - $x
+        //              ]);
+                 
+        //      }
+ 
+        //      elseif($pl->products_id == 2){
+        //          $pl->products_id = 3;
+        //          $x = $pl->curr_quantity;
+        //          $pl->update([
+        //              'curr_quantity' => $pl->curr_quantity - $x
+        //              ]);
+        //      }
+        //  }
+
+        //  dd($productlist);
+       
+
         
         return view('product_lists.index')
             ->with('seasons', $seasons)
@@ -114,6 +141,9 @@ class ProductListController extends Controller
         // $product = ProductList::where('created_at', '>=', Carbon::now()->subDays(7))
         //     ->where('product_id', '=', 2)
         //     ->get();
+
+
+        
 
        
         return view('product_lists.show')

@@ -29,7 +29,7 @@ class LandingPageController extends Controller
         $lowm = new LaravelOWM();
 
         // $forecast = $lowm->getWeatherForecast(array('lat' => 14.2936, 'lon' => 121.1067),null,null,5);
-        $current_weather = $lowm->getCurrentWeather(array('lat' => 14.2936, 'lon' => 121.1067));
+        // $current_weather = $lowm->getCurrentWeather(array('lat' => 14.2936, 'lon' => 121.1067));
         // $current_weather = $lowm->getCurrentWeather(array('lat' => 14.2471, 'lon' => 121.1367));
         // $forecast = $lowm->getWeatherForecast($query, $lang = 'en', $units = 'metric', $days = 5, $cache = false, $time = 600);
         // dd($forecast);
@@ -65,7 +65,8 @@ class LandingPageController extends Controller
                 ->with('products', $products)
                 ->with('farmers', $farmers)
                 // ->with('forecast',$forecast)
-                ->with('current_weather',$current_weather);
+                // ->with('current_weather',$current_weather)
+                ;
     }
 
     /**
