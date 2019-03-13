@@ -15,7 +15,7 @@ class CreateDamageReportsTable extends Migration
     {
         Schema::create('damage_reports', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('calamity');
+            $table->integer('calamities_id')->unsigned()->nullable();
             $table->text('narrative');
 
 

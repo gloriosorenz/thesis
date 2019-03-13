@@ -31,6 +31,60 @@ class OrderController extends Controller
         //     ->select('orders.*', 'order_products.quantity', 'product_lists.users_id')
         //     ->get();
 
+        /*
+            $orderproducts = OrderProduct::all();
+
+            foreach($orderproducts as $op){
+                if($order->id == $op->orders_id){
+                    $op->product_lists->update(['curr_quantity' => $op->product_lists->curr_quantity + $op->quantity]);
+                }
+            }
+
+        $today = Inquiry::get()->pluck('created_at'); // "2015-07-10 00:00:00"
+
+        
+        $reminders = Inquiry::where('created_at', '>=', Carbon::now()->subDays(3))
+            ->where('inquiry_statuses_id', '=', 1)
+            ->get();
+
+        $reminders2 = Inquiry::where('created_at', '<=', Carbon::now()->subDays(5))
+            ->where('inquiry_statuses_id', '=', 1)
+            ->get();
+
+        $booked_now = Inquiry::where('inquiry_statuses_id', 7)
+            ->where('date_start', '=', Carbon::today())
+            ->get();
+
+        $booked_inquiries = Inquiry::where('inquiry_statuses_id', 7)
+            ->get();
+
+
+
+        $canceled = Inquiry::where('inquiry_statuses_id', 
+            // ->where('updated_at', '=', Carbon::today())
+            ->count();
+
+        $initial = Inquiry::where('inquiry_statuses_id', 1)
+            ->count();
+
+        $confirmed = Inquiry::where('inquiry_statuses_id', 2)
+            ->count();
+
+        $approved = Inquiry::where('inquiry_statuses_id', 3)
+            ->count();
+            
+        $booked = Inquiry::where('inquiry_statuses_id', 7)
+            ->count();
+
+        $paid = Inquiry::where('inquiry_statuses_id', 4)
+            ->count();
+        
+        */
+        $today = Order::get()->pluck('created_at'); // "2015-07-10 00:00:00"
+        
+        $order = Order::where('created_at', '>', Carbon::now()->subDays(3))
+            ->where('order_statuses_id', '=', 4)
+            ->get();
 
         // $orders1 = App\Order::with('order_products')->get();
         // $product_lists1 = App\Order::with('users')->get();
@@ -52,6 +106,7 @@ class OrderController extends Controller
             ->with('pending', $pending)
             ->with('done', $done)
             ->with('cancelled', $cancelled)
+            ->with('order',$order)
             ->with('order_products', $order_products);
             // ->with('orders1',$orders1)
             // ->with('order_products1'->$order_products1);

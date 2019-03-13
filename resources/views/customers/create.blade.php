@@ -58,41 +58,65 @@
                 </div>
             </div>
 
+            <label><strong>Farm Address</strong></label>
             <div class="row">
-            <!--  Address -->
-                <div class="col-md-6">
+                <!-- Street -->
+                <div class="col-md-8">
                     <div class="form-group">
-                        <label for="barangay">Address (Barangay):</label>
-                        <select class="form-control" name="barangay" id="barangay">
-                            <option value="0" selected="true" disabled="True">Select Barangay</option>
-                            @foreach ($barangays as $barangay)
-                                <option value="{{ $barangay['name']}}">{{ $barangay['name']}}</option>
-                            @endforeach
-                        </select>
+                    <label for="phone">Street:</label>
+                    <input type="text" class="form-control" name="street" value=""/>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <!-- Address -->
+                    <div class="col-md-4">
+                        <!-- Barangay -->
+                        <div class="form-group">
+                            <label for="barangay">Barangay:</label>
+                            <select class="form-control" name="barangay" id="barangay">
+                                <option value="0" selected="true" disabled="True">Select Barangay</option>
+                                @foreach ($barangays as $barangay)
+                                    <option value="{{ $barangay['id']}}">{{ $barangay['name']}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <!-- City -->
+                        <div class="form-group">
+                            <label for="city">City:</label>
+                            <select class="form-control" name="city" id="city">
+                                <option value="0" selected="true" disabled="True">Select City</option>
+                                @foreach ($cities as $city)
+                                    <option value="{{ $city['id']}}">{{ $city['name']}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <!-- City -->
+                        <div class="form-group">
+                            <label for="province">Province:</label>
+                            <select class="form-control" name="province" id="province">
+                                <option value="0" selected="true" disabled="True">Select Province</option>
+                                @foreach ($provinces as $province)
+                                    <option value="{{ $province['id']}}">{{ $province['name']}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
 
             <div class="row">
                 <div class="col-lg-6">
                     <!-- Company  -->
                     <div class="form-group">
-                        <label class="control-lable" for="company">Comapny:</label>
+                        <label class="control-lable" for="company">Company:</label>
                         <input type="text" class="form-control" name="company" value="" />
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-lg-6">
-                    <!-- Password -->
-                    <div class="form-group">
-                        <label class="control-lable" for="password">Password:</label>
-                        <input type="password" class="form-control" name="password" value="" />
-                    </div>
-                </div>
-            </div>
-
 
             <!-- Submit Button -->
             <button type="submit" class="btn btn-success">Create</button>

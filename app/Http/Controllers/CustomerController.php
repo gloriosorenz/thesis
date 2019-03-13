@@ -8,6 +8,8 @@ use App\Customer;
 use App\CustomerType;
 use App\User;
 use App\Barangay;
+use App\City;
+use App\Province;
 
 class CustomerController extends Controller
 {
@@ -33,9 +35,13 @@ class CustomerController extends Controller
     public function create()
     {
         $barangays = Barangay::orderBy('name')->get();
+        $provinces = Province::orderBy('name')->get();
+        $cities = City::orderBy('name')->get();
 
         return view('customers.create')
-            ->with('barangays', $barangays);
+            ->with('barangays', $barangays)
+            ->with('provinces', $provinces)
+            ->with('cities', $cities);    
     }
 
     /**
@@ -46,14 +52,19 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+        $random = str_shuffle('abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890!$%^&!$%^&');
+        $password = substr($random, 0, 6);
+        
          // Validation
          $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'phone' => 'required|string|max:255',
-            'barangay' => 'required|string|max:255',
-            'password' => 'required|string|min:6',
+            'street' => 'required|string|max:255',
+            'barangay' => 'required',
+            'city' => 'required',
+            'province' => 'required',
             'company' => 'required|string|max:255',
         ]);
         
@@ -62,9 +73,12 @@ class CustomerController extends Controller
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
         $user->phone = $request->input('phone');
-        $user->barangay = $request->input('barangay');
+        $user->street = $request->input('street');
+        $user->barangays_id = $request->input('barangay');
+        $user->cities_id = $request->input('city');
+        $user->provinces_id = $request->input('province');
         $user->company = $request->input('company');
-        $user->password = Hash::make($request['password']);
+        $user->password = Hash::make($password);
         $user->roles_id = 3;
         $user->save();
 

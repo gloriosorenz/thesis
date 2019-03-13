@@ -95,10 +95,12 @@ class Migrations extends Migration
                 ->references('id')->on('regions')->onDelete('cascade');
             $table->foreign('provinces_id')
                 ->references('id')->on('provinces')->onDelete('cascade');
+            $table->foreign('calamities_id')
+                ->references('id')->on('calamities')->onDelete('cascade');
         });
 
-        // Damage List
-        Schema::table('damage_lists',function(Blueprint $table){
+        // Damage Data
+        Schema::table('damage_datas',function(Blueprint $table){
             $table->foreign('damage_reports_id')
                 ->references('id')->on('damage_reports')->onDelete('cascade');
         });

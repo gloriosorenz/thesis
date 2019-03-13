@@ -118,16 +118,6 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-lg-6">
-                    <!-- Password -->
-                    <div class="form-group">
-                        <label class="control-lable" for="password">Password (TEST PURPOSES)</label>
-                        <input type="password" class="form-control" name="password" value="" />
-                    </div>
-                </div>
-            </div>
-
             <!-- Submit Button -->
             <button type="submit" class="btn btn-success">Create</button>
             </form>
