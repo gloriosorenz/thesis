@@ -27,7 +27,6 @@
                     <ul class="list-unstyled mt-3 mb-4">
                         <li>FOR TEST REASONS = Season {{ $product_list->seasons->id }}</li>
                         <li>Available: {{ $product_list->curr_quantity }}</li>
-                        <li>Harvest Date: {{ $product_list->harvest_date }}</li>
                         <hr>
                         <li>Producer: {{ $product_list->users->company }}</li>
                         <li>Farm Address: {{ $product_list->users->street }}, {{ $product_list->users->barangays->name }}, {{ $product_list->users->cities->name }}, {{ $product_list->users->provinces->name }}</li>

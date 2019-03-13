@@ -29,7 +29,6 @@
                     <th width="">Rice Farmer</th>
                     <th width="">Original Quantity</th>
                     <th width="">Current Quantity</th>
-                    <th width="">Harvest Date</th>
                     <th width="">Price</th>
                     <th width="">Options</th>
                 </tr>
@@ -42,7 +41,6 @@
                     <td>{{ $list->users->first_name}} {{ $list->users->last_name}}</td>
                     <td>{{ $list->orig_quantity }}</td>
                     <td>{{ $list->curr_quantity }}</td>
-                    <td>{{ $list->harvest_date }}</td>
                     <td>{{ $list->presentPrice() }}</td>
                     <td>
                         @if(!Auth::guest())
