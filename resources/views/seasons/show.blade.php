@@ -21,7 +21,7 @@
     </div>
     <div class="card-body">
         <table id="seasons_table" class="table table-bordered">
-            @if(count($season) > 0)
+            {{-- @if(count($season) > 0) --}}
             <thead>
                 <tr>
                     <th width="">ID</th>
@@ -51,9 +51,9 @@
                     </td>
                 </tr>
                 @endforeach
-            @else
+            {{-- @else
                 <p>No seasons found</p>
-            @endif
+            @endif --}}
         </table>
     </div>
 </div>
