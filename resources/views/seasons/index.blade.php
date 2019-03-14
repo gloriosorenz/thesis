@@ -82,14 +82,13 @@
 <!-- Add Planned Crop -->
 @if (count($seasons) == count($statuses))
 <a class="btn btn-secondary btn-md mb-2" href="{{ route('seasons.create') }}">+Add</a>
-@else
 @endif
       
       
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Seasons</h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+    {{-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
 </div>
 
 @if (count($seasons) > 0)
@@ -107,7 +106,7 @@
                         <div class="text-xs font-weight-bold text-gray text-uppercase mb-1">End: {{ Carbon\Carbon::parse($season->season_end)->format('m-d-Y') }}</div>
                     </div>
                     <div class="col-auto">
-                        <a  href="/seasons/{{$season->id}}" role="button"><i class="fas fa-calendar fa-2x text-gray-300"></i></a>
+                        <a  href="/seasons/{{$season->id}}" role="button"><i class="fas fa-eye fa-2x text-gray-500"></i></a>
                     </div>
                 </div>
             </div>
@@ -125,13 +124,10 @@
                         <div class="text-xs font-weight-bold text-gray text-uppercase mb-1">End: {{ Carbon\Carbon::parse($season->season_end)->format('m-d-Y') }}</div>
                     </div>
                     <div class="col-auto">
-                        <a  href="/seasons/{{$season->id}}" role="button"><i class="fas fa-calendar fa-2x text-gray-300"></i></a>
+                        <a  href="/seasons/{{$season->id}}" role="button"><i class="fas fa-eye fa-2x text-gray-500"></i></a>
                     </div>
                 </div>
-                @if ($season->season_statuses->id == 1)
                 <a href="/seasons/{{$season->id}}/edit" class="btn btn-success">Update</a>
-                @endif
-                
             </div>
         </div>
     </div>

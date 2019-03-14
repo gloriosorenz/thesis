@@ -104,9 +104,7 @@ class Migrations extends Migration
             $table->foreign('damage_reports_id')
                 ->references('id')->on('damage_reports')->onDelete('cascade');
         });
-
-
-
+        
     }
 
     /**

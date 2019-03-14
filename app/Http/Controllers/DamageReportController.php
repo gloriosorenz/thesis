@@ -94,7 +94,7 @@ class DamageReportController extends Controller
 
 
 
-        return redirect()->route('reports.damage_reports.index')->with('success','Damage Report Created ');
+        return redirect()->route('damage_reports.index')->with('success','Damage Report Created ');
     }
 
     /**
@@ -106,6 +106,7 @@ class DamageReportController extends Controller
     public function show($id)
     {
         $dreport = DamageReport::findOrFail($id);
+        $ddatas = DamageData::where('damage_reports_id', $dreport->id)->get();
         $calamities = Calamity::orderBy('type')->get();
         $calabarzon = Region::where('id','=', 4)->get();
         $laguna = Province::where('id','=',19)->get();
@@ -114,7 +115,8 @@ class DamageReportController extends Controller
             ->with('calabarzon', $calabarzon)
             ->with('calamities',$calamities)
             ->with('laguna',$laguna)
-            ->with('dreport', $dreport);
+            ->with('dreport', $dreport)
+            ->with('ddatas', $ddatas);
     }
 
     /**
@@ -150,19 +152,30 @@ class DamageReportController extends Controller
     public function update(Request $request, $id)
     {
         $dreport = DamageReport::findOrFail($id);
-        $dreport->calamities_id = $request->input('calamity');
-        $dreport->narrative = $request->input('narrative');
-        $dreport->crop = $request->input('crop');
-        $dreport->crop_stage = $request->input('crop_stage');
-        $dreport->production = $request->input('production');
-        $dreport->animal = $request->input('animal');
-        $dreport->animal_head = $request->input('animal_head');
-        $dreport->fish = $request->input('fish');
-        $dreport->area = $request->input('area');
-        $dreport->fish_pieces = $request->input('fish_pieces');
-        $dreport->regions_id = $request->input('region');
-        $dreport->provinces_id = $request->input('province');
+        $dreport->calamities_id = $request->get('calamity');
+        $dreport->narrative = $request->get('narrative');
         $dreport->save();
+
+
+        $id = $dreport->id;
+
+        foreach($request['crop'] as $key => $value) {
+
+            DB::table('damage_datas')
+                ->where('damage_reports_id', '=', $id)
+                ->update([
+                    'damage_reports_id' => $dreport->id,
+                    'crop'=>$request->crop [$key],
+                    'crop_stage'=>$request->crop_stage [$key],
+                    'production'=>$request->production [$key],
+                    'animal'=>$request->animal [$key],
+                    'animal_head'=>$request->animal_head [$key],
+                    'fish'=>$request->fish [$key],
+                    'area'=>$request->area [$key],
+                    'fish_pieces'=>$request->fish_pieces [$key],
+                    'updated_at' => \Carbon\Carbon::now(),  # \Datetime()
+                    ]);
+        }
 
         return redirect('damage_reports')->with('success','Damage Report Updated ');
 

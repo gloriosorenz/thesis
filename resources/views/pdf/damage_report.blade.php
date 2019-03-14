@@ -63,7 +63,7 @@
                         <th width="11.25">Fish Pieces</th>
                     </thead>
                     <tbody>
-                        @foreach ($dlists as $d)
+                        @foreach ($ddatas as $d)
                         <tr>
                             <td>{{ $d->id }}</td>
                             <td>{{ $d->crop }}</td>

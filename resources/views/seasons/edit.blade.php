@@ -24,7 +24,6 @@
         <div class="card shadow mb-4">
             <div class="card-header card-header-primary">
                 <h4 class="card-title">Season {{$season->id}}</h4>
-                <p class="card-category">Update season</p>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -72,7 +71,6 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Rice Farmer</th>
                             <th>Actual Hectares</th>
                             <th>Actual Number of Farmers</th>
@@ -82,8 +80,8 @@
                     <tbody>
                         @foreach ($season_lists as $list)
                         <tr>
-                            <td><input readonly class="form-control" type="text" name="id[]" id="id" value="{{$list->id}}"/></td>
                             <td>
+                                <input name="id[]" id="id" type="hidden" value="{{$list->id}}">
                                 <input readonly type="text" class="form-control"  value="{{ $list->users->company }}" />
                             </td>
                             <td><input type="text" class="form-control" name="actual_hectares[]" value="{{ $list->actual_hectares }}" /></td>
@@ -107,47 +105,51 @@
                 <h4 class="card-title">Products</h4>
             </div>
             <div class="card-body">
+
+                @foreach ($season_lists as $list)
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Rice Farmer</span>
+                            </div>
+                            <input type="text" class="form-control" aria-label="RiceFarmer" aria-describedby="basic-addon1" value="{{$list->users->company}}" readonly>
+                        </div>
+                    </div>
+                </div>
+                <br>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Rice Farmer</th>
                             <th>Product</th>
                             <th>Original Quantity</th>
-                            <th>Current Quantity</th>
+                            {{-- <th>Current Quantity</th> --}}
                             <th>Price</th>
                             <th>Harvest Date</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody class="resultbody3">
+                        @foreach ($products as $product)
                         <tr>
                             <td>
-                                <select class="form-control" name="users_id[]" id="users_id">
-                                    <option value="0" selected="true" disabled="True">Select Farmer</option>
-                                    @foreach ($users as $key=>$p)
-                                        <option value="{{$key}}">{{$p}}</option>
-                                    @endforeach
-                                </select>
-                            </td>
-                            <td>
-                                <select class="form-control" name="products_id[]" id="products_id">
-                                    <option value="0" selected="true" disabled="True">Select Product</option>
-                                    @foreach ($products as $key=>$p)
-                                        <option value="{{$key}}">{{$p}}</option>
-                                    @endforeach
-                                </select>
+                                <input name="users_id[]" type="hidden" value="{{$list->users_id}}">
+                                <input name="products_id[]" type="hidden" value="{{$product->id}}">
+                                <input type="text" class="form-control" name="product_type" value="{{$product->type}}" disabled/>
                             </td>
                             <td><input type="text" class="form-control" name="orig_quantity[]" value="" /></td>
-                            <td><input type="text" class="form-control" name="curr_quantity[]" value="" /></td>
+                            {{-- <td><input type="text" class="form-control" name="curr_quantity[]" value="" /></td> --}}
                             <td><input type="text" class="form-control" name="price[]" value="" /></td>
                             <td>
                                 {{ Form::date('harvest_date[]', \Carbon\Carbon::now(), ['class' => 'datepicker form-control','id'=>'harvest_date[]'])}}
                             </td>
                             <td><input type="button" class="btn btn-danger remove" value="x"></td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
-                <center><input type="button" class="btn btn-lg btn-warning addRow3" value="+"></center>
+                @endforeach
+                {{-- <center><input type="button" class="btn btn-lg btn-warning addRow3" value="+"></center> --}}
             </div>
         </div>
     </div>

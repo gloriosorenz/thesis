@@ -23,7 +23,7 @@ class SeasonController extends Controller
      */
     public function index()
     {
-        $seasons = Season::orderBy('id', 'desc')->paginate(10);
+        $seasons = Season::orderBy('id', 'desc')->paginate(12);
         $statuses = Season::where('season_statuses_id', '=', 2)->get();
 
         // dd($seasons, $statuses);
@@ -40,6 +40,7 @@ class SeasonController extends Controller
     {
         $seasons = Season::all();
         $types = SeasonType::get()->pluck('type', 'id');
+
         // Get Rice Farmers
         $users = User::where('roles_id', '=', 2)->get()->pluck('company', 'id');
         $statuses = SeasonStatus::get()->pluck('status', 'id');
@@ -63,9 +64,9 @@ class SeasonController extends Controller
         $request->validate([
             'season_start' => 'required|date|',
             // 'season_types_id' => 'required|int',
-            // 'planned_hectares' => 'required|int',
-            // 'planned_num_farmers' => 'required|string|max:255',
-            // 'planned_qty' => 'required|string|max:255',
+            'planned_hectares' => 'required',
+            'planned_num_farmers' => 'required',
+            'planned_qty' => 'required',
         ]);
 
         $season = new Season;
@@ -81,7 +82,10 @@ class SeasonController extends Controller
                             'users_id'=>$request->users_id [$key],
                             'planned_hectares'=>$request->planned_hectares [$key],
                             'planned_num_farmers'=>$request->planned_num_farmers [$key],
-                            'planned_qty'=>$request->planned_qty [$key]);
+                            'planned_qty'=>$request->planned_qty [$key],
+                            'created_at' =>  \Carbon\Carbon::now(), # \Datetime()
+                            'updated_at' => \Carbon\Carbon::now(),  # \Datetime()
+                        );
 
                 SeasonList::insert($data);
             }  
@@ -127,7 +131,7 @@ class SeasonController extends Controller
         // Get Rice Farmers
         $users = User::where('roles_id', '=', 2)->get()->pluck('company', 'id');
         $season_lists = SeasonList::where('seasons_id', $season->id)->get();
-        $products = Product::get()->pluck('type', 'id');
+        $products = Product::all();
         $product_lists = ProductList::where('seasons_id', $season->id)->get();
 
         return view('seasons.edit')
@@ -148,6 +152,14 @@ class SeasonController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // Validation
+        $request->validate([
+            'season_end' => 'required|date',
+            'actual_hectares' => 'required',
+            'actual_num_farmers' => 'required',
+            'actual_qty' => 'required',
+        ]);
+
         $season = Season::findOrFail($id);
         $season->season_end = $request->input('season_end');
         $season->season_statuses_id =2;
@@ -166,15 +178,18 @@ class SeasonController extends Controller
             }
 
         
-            foreach($request->users_id as $key => $value) {
+            foreach($request->products_id as $key => $value) {
                 $data=array(
                             'seasons_id' => $season->id,
                             'users_id'=>$request->users_id [$key],
                             'products_id'=>$request->products_id [$key],
                             'orig_quantity'=>$request->orig_quantity [$key],
-                            'curr_quantity'=>$request->curr_quantity [$key],
+                            'curr_quantity'=>$request->orig_quantity [$key],
                             'harvest_date'=>$request->harvest_date [$key],
-                            'price'=>$request->price [$key]);
+                            'price'=>$request->price [$key],
+                            'created_at' =>  \Carbon\Carbon::now(), # \Datetime()
+                            'updated_at' => \Carbon\Carbon::now(),  # \Datetime()
+                        );
  
                 ProductList::insert($data);
             }  

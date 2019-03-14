@@ -5,7 +5,7 @@
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Dashboard</a></li>
-    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('reports.damage_reports.index') }}">Damage Reports</a></li>
+    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('damage_reports.index') }}">Damage Reports</a></li>
     <li class="breadcrumb-item active" aria-current="page">Edit</li>
 </ol>
 </nav>
@@ -15,7 +15,7 @@
 <br>
 
 <!-- Form -->
-<form method="post" action="{{action('DamageReport@update', $dreport->id)}}">
+<form method="post" action="{{action('DamageReportController@update', $dreport->id)}}">
 @method('PATCH')
 @csrf
 <div class="row">
@@ -29,10 +29,11 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="calamity">Calamity:</label>
+                        
                         <select class="form-control" name="region" id="region">
-                            <option value="0" selected="true" disabled="True">Calamity:</option>
+                                <option value="0">{{$dreport->calamities->type}}</option>
                             @foreach ($calamities as $calamity)
-                                <option value="{{ $calamity['id']}}">{{ $calamity['name']}}</option>
+                                <option value="{{ $calamity['id']}}">{{ $calamity['type']}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -42,11 +43,10 @@
                     <!-- Region -->
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="region">Region:</label>
-                            <select class="form-control" name="region" id="region">
-                                <option value="0" selected="true" disabled="True">Select Region</option>
-                                @foreach ($regions as $region)
-                                    <option value="{{ $region['id']}}">{{ $region['name']}}</option>
+                            <label for="calabarzon">Region:</label>
+                            <select class="form-control" name="calabarzon" id="calabarzon" readonly>
+                                @foreach ($calabarzon as $c)
+                                    <option value="{{ $c['id']}}">{{ $c['name']}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -55,11 +55,10 @@
                     <!-- Provice -->
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="barangay">Province:</label>
-                            <select class="form-control" name="province" id="province">
-                                <option value="0" selected="true" disabled="True">Select Province</option>
-                                @foreach ($provinces as $province)
-                                    <option value="{{ $province['id']}}">{{ $province['name']}}</option>
+                            <label for="laguna">Province:</label>
+                            <select class="form-control" name="laguna" id="laguna" readonly>
+=                                @foreach ($laguna as $l)
+                                    <option value="{{ $l['id']}}">{{ $l['name']}}</option>
                                 @endforeach
                             </select>
                         </div>

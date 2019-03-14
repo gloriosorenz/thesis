@@ -32,33 +32,29 @@ class ProductListController extends Controller
         $product_lists = SeasonList::all();
 
 
-        // Date Automation
-        //  $productlist = ProductList::where('harvest_date', '>', Carbon::now()->subdays(3))
-        //  ->get();
- 
-        //  foreach($productlist as $pl){
-        //      if($pl->products_id == 1){
-        //          $pl->products_id = 2;
-        //          $x = $pl->curr_quantity;
-        //          $pl->update([
-        //              'curr_quantity' => $pl->curr_quantity - $x
-        //              ]);
-                 
-        //      }
- 
-        //      elseif($pl->products_id == 2){
-        //          $pl->products_id = 3;
-        //          $x = $pl->curr_quantity;
-        //          $pl->update([
-        //              'curr_quantity' => $pl->curr_quantity - $x
-        //              ]);
-        //      }
-        //  }
+       // Date Automation
+       $productlist = ProductList::where('harvest_date', '<', Carbon::now()->subDays(7))
+       ->get();
 
-        //  dd($productlist);
-       
+       foreach($productlist as $pl){
+        $x = $pl->curr_quantity;
+           if($pl->products_id == 1){
+            //    $pl->products_id = 2;
+               $pl->update([
+                   'curr_quantity' => $pl->curr_quantity - $x
+                    ]);
+           }
 
-        
+
+           if($pl->products_id == 2){
+            //    $pl->products_id = 3;
+               $pl->update([
+                   'curr_quantity' => $pl->curr_quantity - $x
+                   ]);
+           }
+       }
+
+      //  dd($productlist);
         return view('product_lists.index')
             ->with('seasons', $seasons)
             ->with('product_lists', $product_lists);
@@ -143,7 +139,6 @@ class ProductListController extends Controller
         //     ->get();
 
 
-        
 
        
         return view('product_lists.show')

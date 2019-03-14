@@ -18,6 +18,7 @@
 @csrf
 
 
+@if (auth()->user()->roles_id == 1)
 <!-- New Season -->
 <div class="row">
     <div class="offset-md-1 col-md-8 ">
@@ -56,7 +57,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- Add Farmer -->
 <div class="row">
@@ -101,7 +101,9 @@
     </div>
 </div>
 
-
+@elseif(auth()->user()->roles_id == 2)
+    
+@endif
 
 
 

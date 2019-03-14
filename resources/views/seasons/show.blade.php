@@ -48,12 +48,6 @@
                     <td>{{ $list->actual_qty }}</td>
                     <td>
                         <a href="/product_lists/{{$list->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
-                        {{-- <a href="/season_lists/{{$list->id}}/edit" class="btn btn-success"><i class="fas fa-edit"></i></a> --}}
-                        {{-- <form action="{{ route('season_lists.destroy', $list->id)}}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger" type="submit"><i class="fas fa-trash-alt"></i></button>
-                        </form> --}}
                     </td>
                 </tr>
                 @endforeach
