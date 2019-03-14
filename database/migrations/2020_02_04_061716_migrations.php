@@ -41,6 +41,8 @@ class Migrations extends Migration
                 ->references('id')->on('users')->onDelete('cascade');
             $table->foreign('seasons_id')
                 ->references('id')->on('seasons')->onDelete('cascade');
+            $table->foreign('season_list_statuses_id')
+                ->references('id')->on('season_list_statuses')->onDelete('cascade');
         });
 
         // Seasons

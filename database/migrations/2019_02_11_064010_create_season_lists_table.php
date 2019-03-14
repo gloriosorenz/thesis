@@ -25,6 +25,8 @@ class CreateSeasonListsTable extends Migration
             $table->integer('planned_qty')->nullable(); //not supposed to be nullable
             $table->integer('actual_qty')->nullable();
 
+            $table->integer('season_list_statuses_id')->unsigned()->nullable();
+
             $table->timestamps();
         });
     }

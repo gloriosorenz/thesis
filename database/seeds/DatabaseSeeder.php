@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
         // $this->call(PhilippineBarangaysTableSeeder::class);
         // $this->call(BarangayTableSeeder::class);
         $this->call(SeasonStatusTableSeeder::class);
+        $this->call(SeasonListStatusTableSeeder::class);
+
 
         $this->call(CountriesTableSeeder::class);
         // $this->call(CitiesTableSeeder::class);
