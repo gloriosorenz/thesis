@@ -29,9 +29,9 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="calamity">Calamity:</label>
-                        
-                        <select class="form-control" name="region" id="region">
-                                <option value="0">{{$dreport->calamities->type}}</option>
+                        <select class="form-control" name="calamity" id="calamity">
+                            <option value="">{{$dreport->calamities->type}}</option>
+                            {{-- <option value="{{ $dreport->calamities->id }}" selected="true" disabled="True">{{ $dreport->calamaities->type }}</option> --}}
                             @foreach ($calamities as $calamity)
                                 <option value="{{ $calamity['id']}}">{{ $calamity['type']}}</option>
                             @endforeach
@@ -70,7 +70,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="narrative">Narrative:</label>
-                            <textarea type="text" class="form-control" name="narrative" value=""></textarea>
+                            <textarea type="text" class="form-control" name="narrative" value="">{{$dreport->narrative}}</textarea>
                         </div>
                     </div>
                 </div>

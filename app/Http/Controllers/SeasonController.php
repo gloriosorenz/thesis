@@ -157,7 +157,7 @@ class SeasonController extends Controller
             'season_end' => 'required|date',
             'actual_hectares' => 'required',
             'actual_num_farmers' => 'required',
-            'actual_qty' => 'required',
+            // 'actual_qty' => 'required',
         ]);
 
         $season = Season::findOrFail($id);
@@ -173,7 +173,7 @@ class SeasonController extends Controller
                 $list->update([
                     'actual_hectares' => $request->actual_hectares[$i],
                     'actual_num_farmers' => $request->actual_num_farmers[$i],
-                    'actual_qty' => $request->actual_qty[$i],
+                    // 'actual_qty' => $request->actual_qty[$i],
                     ]);
             }
 

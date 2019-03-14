@@ -31,7 +31,7 @@
                     <th width="">Planned Quantity</th>
                     <th width="">Actual Hectares</th>
                     <th width="">Actual No. Of Farmers</th>
-                    <th width="">Actual Quantity</th>
+                    {{-- <th width="">Actual Quantity</th> --}}
                     <th width="">Options</th>
                 </tr>
             </thead>
@@ -45,7 +45,7 @@
                     <td>{{ $list->planned_qty }}</td>
                     <td>{{ $list->actual_hectares }}</td>
                     <td>{{ $list->actual_num_farmers }}</td>
-                    <td>{{ $list->actual_qty }}</td>
+                    {{-- <td>{{ $list->actual_qty }}</td> --}}
                     <td>
                         <a href="/product_lists/{{$list->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
                     </td>

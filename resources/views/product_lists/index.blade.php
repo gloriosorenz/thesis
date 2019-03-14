@@ -37,7 +37,7 @@
                         <div class="text-xs font-weight-bold text-gray text-uppercase mb-1">End: {{ Carbon\Carbon::parse($season->season_end)->format('m-d-Y') }}</div>
                     </div>
                     <div class="col-auto">
-                        <a  href="/seasons/{{$season->id}}" role="button"><i class="fas fa-calendar fa-2x text-gray-300"></i></a>
+                        <a  href="/product_lists/{{$season->id}}" role="button"><i class="fas fa-calendar fa-2x text-gray-300"></i></a>
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                         <div class="text-xs font-weight-bold text-gray text-uppercase mb-1">End: {{ Carbon\Carbon::parse($season->season_end)->format('m-d-Y') }}</div>
                     </div>
                     <div class="col-auto">
-                        <a  href="/seasons/{{$season->id}}" role="button"><i class="fas fa-calendar fa-2x text-gray-300"></i></a>
+                        <a  href="/product_lists/{{$season->id}}" role="button"><i class="fas fa-calendar fa-2x text-gray-300"></i></a>
                     </div>
                 </div>
             </div>

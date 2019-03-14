@@ -74,7 +74,7 @@
                             <th>Rice Farmer</th>
                             <th>Actual Hectares</th>
                             <th>Actual Number of Farmers</th>
-                            <th>Actual Quantity</th>
+                            {{-- <th>Actual Quantity</th> --}}
                         </tr>
                     </thead>
                     <tbody>
@@ -86,7 +86,7 @@
                             </td>
                             <td><input type="text" class="form-control" name="actual_hectares[]" value="{{ $list->actual_hectares }}" /></td>
                             <td><input type="text" class="form-control" name="actual_num_farmers[]" value="{{ $list->actual_num_farmers }}" /></td>
-                            <td><input type="text" class="form-control" name="actual_qty[]" value="{{ $list->actual_qty }}" /></td>
+                            {{-- <td><input type="text" class="form-control" name="actual_qty[]" value="{{ $list->actual_qty }}" /></td> --}}
                         </tr>
                         @endforeach
                     </tbody>
@@ -126,7 +126,7 @@
                             {{-- <th>Current Quantity</th> --}}
                             <th>Price</th>
                             <th>Harvest Date</th>
-                            <th>Delete</th>
+                            {{-- <th>Delete</th> --}}
                         </tr>
                     </thead>
                     <tbody class="resultbody3">
@@ -143,7 +143,7 @@
                             <td>
                                 {{ Form::date('harvest_date[]', \Carbon\Carbon::now(), ['class' => 'datepicker form-control','id'=>'harvest_date[]'])}}
                             </td>
-                            <td><input type="button" class="btn btn-danger remove" value="x"></td>
+                            {{-- <td><input type="button" class="btn btn-danger remove" value="x"></td> --}}
                         </tr>
                         @endforeach
                     </tbody>
