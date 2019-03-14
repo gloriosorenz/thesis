@@ -26,18 +26,23 @@ class OrderController extends Controller
         // Auto Cancel Order after 3 days
         $order = Order::where('created_at', '<', Carbon::now()->subDays(3))
             ->get();
-
             foreach($order as $o){
                     $o->update([
                         'order_statuses_id' => 4
                     ]);                    
+            }
+            
+        // Auto add canceled order quantity
+        $orderproducts = OrderProduct::where('created_at', '<', Carbon::now()->subDays(3))
+            ->get();
+            foreach($orderproducts as $op){
+                    $op->product_lists->update(['curr_quantity' => $op->product_lists->curr_quantity + $op->quantity]);
             }
 
         // $orders1 = App\Order::with('order_products')->get();
         // $product_lists1 = App\Order::with('users')->get();
 
         $order_products = DB::table('order_products')
-            // ->select('articles.id as articles_id', ..... )
             ->join('orders', 'order_products.orders_id', '=', 'orders.id')
             ->join('product_lists', 'order_products.product_lists_id', '=', 'product_lists.id')
             ->get();
@@ -54,7 +59,9 @@ class OrderController extends Controller
             ->with('done', $done)
             ->with('cancelled', $cancelled)
             ->with('order',$order)
-            ->with('order_products', $order_products);
+            ->with('order_products', $order_products)
+            ->with('orderproducts',$orderproducts)
+            ;
             // ->with('orders1',$orders1)
             // ->with('order_products1'->$order_products1);
     }

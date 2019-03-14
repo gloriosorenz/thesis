@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\DamageReport;
+use App\Order;
 
 
 class SaleReportController extends Controller
@@ -20,6 +21,7 @@ class SaleReportController extends Controller
 
         return view('reports.sales_reports.index')
             ->with('orders', $orders)
+            ->with('dreports',$dreports)
             ;
     }
 
