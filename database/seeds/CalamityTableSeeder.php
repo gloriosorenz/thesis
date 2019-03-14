@@ -31,10 +31,14 @@ class CalamityTableSeeder extends Seeder
             ],
             [
                 'id' => 5, 
-                'type' => "Earthquake", 
+                'type' => "Landslide", 
             ],
             [
                 'id' => 6, 
+                'type' => "Earthquake", 
+            ],
+            [
+                'id' => 7, 
                 'type' => "Volcanic Eruption", 
             ],
 

@@ -90,6 +90,7 @@ Route::get('/orders/cancel_order/{id}', 'OrderController@cancel_order');
 // Route::get('pdf/damage_report/{id}','DamageReportController@generatePDF');
 
 
+
 // PDF
 Route::get('pdf/damage_report/{id}', 'DamageReportController@pdfview');
 Route::get('pdf/invoice/{id}', 'OrderController@pdfview');
@@ -110,6 +111,7 @@ Route::resource('seasons', 'SeasonController');
 Route::resource('dashboard', 'DashboardController');
 Route::resource('orders', 'OrderController');
 Route::resource('damage_reports', 'DamageReportController');
+Route::resource('sales_reports', 'SaleReportController');
 
 
 

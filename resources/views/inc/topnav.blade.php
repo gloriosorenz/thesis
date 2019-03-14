@@ -149,7 +149,7 @@
     <div class="topbar-divider d-none d-sm-block"></div>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('/') }}"><span class="mr-2 d-none d-lg-inline text-gray-600 small">View Site</span></a>
+        <a class="nav-link" href="{{ url('/') }}"><span class="mr-2 d-none d-lg-inline text-gray-600 small">Main Site</span></a>
     </li>
     <!-- Nav Item - User Information -->
     <li class="nav-item dropdown no-arrow">

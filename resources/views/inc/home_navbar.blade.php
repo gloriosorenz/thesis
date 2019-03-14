@@ -68,7 +68,7 @@
                 <!-- {{-- ADMIN --}} -->
                 @elseif(Auth::user()->roles_id == 1)
                     <li class="{{Request:: is('dashboard') ? 'active' : ''}}">
-                        <a class="nav-link" href="{{ url('dashboard') }}">View Admin Site</a>
+                        <a class="nav-link" href="{{ url('dashboard') }}">Admin Panel</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

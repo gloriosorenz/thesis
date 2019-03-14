@@ -46,8 +46,8 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Number of Finished Sales (Current Season)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">42</div>
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Number of Sales (Season {{$last_com_season->id}} )</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{$complete_orders}}</div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -56,6 +56,23 @@
                   </div>
                 </div>
               </div>
+
+               <!-- Earnings (Monthly) Card Example -->
+               <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-danger shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Number of Damaged Products (Season {{$last_com_season->id}} )</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">{{$complete_orders}}</div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
   
               <!-- Earnings (Monthly) Card Example -->
               <div class="col-xl-3 col-md-6 mb-4">
@@ -90,7 +107,7 @@
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Orders</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$pending_orders}}</div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-comments fa-2x text-gray-300"></i>

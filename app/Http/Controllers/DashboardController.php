@@ -8,6 +8,9 @@ use App\RiceFarmer;
 use App\Customer;
 use App\Season;
 use App\SeasonList;
+use App\Order;
+use App\OrderProduct;
+use Carbon\Carbon;
 use Khill\Lavacharts\Lavacharts;
 
 
@@ -23,13 +26,16 @@ class DashboardController extends Controller
     {
         $users = User::count();
         $seasons = Season::count();
-
-        // $product_lists = ProductList::where('products_id', '!=', 3) 
-        //                 ->where('curr_quantity', '>', 0)
-        //                 ->get();
-
+        $pending_orders = Order::where('order_statuses_id','=',1)
+            ->count();
+        $complete_orders = Order::where('order_statuses_id','=',2)
+            ->count();
         $farmers = User::where('roles_id','=',2)
             ->count();
+        $last_com_season = Season::where('season_statuses_id','=', 2)->latest('id')->first();
+
+        $dmg_prod_ls = Season::where('season_statuses_id','=', 2)->latest('id')->first();
+
 
         // dd($users);
 
@@ -44,7 +50,7 @@ class DashboardController extends Controller
 
         for ($a = 1; $a < 30; $a++) {
                 $rowData = [
-                "2017-4-$a", rand(200,500), rand(200,500)
+                "2019-4-$a", rand(200,500), rand(200,500)
                 ];
         // Random Data For Example
         // for ($a = 1; $a < 30; $a++) {
@@ -68,8 +74,12 @@ class DashboardController extends Controller
             ->with('farmers',$farmers)
             ->with('lava',$lava)
             ->with('data',$data)
-
-            ->with('seasons', $seasons);
+            ->with('last_com_season',$last_com_season)
+            ->with('complete_orders',$complete_orders)
+            ->with('pending_orders',$pending_orders)
+            ->with('seasons', $seasons)
+            ->with('dmg_prod_ls',$dmg_prod_ls)
+            ;
     }
 
     /**
