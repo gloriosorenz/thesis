@@ -30,6 +30,7 @@ class SeasonListTableSeeder extends Seeder
                 'actual_num_farmers'=> 10,
                 'planned_qty'=> 100,
                 'actual_qty'=> 100,
+                'season_list_statuses_id' => 2,
             ],
             [
                 'id' => 2, 
@@ -41,6 +42,7 @@ class SeasonListTableSeeder extends Seeder
                 'actual_num_farmers'=> 14,
                 'planned_qty'=> 100,
                 'actual_qty'=> 100,
+                'season_list_statuses_id' => 2,
             ],
             [
                 'id' => 3, 
@@ -52,6 +54,7 @@ class SeasonListTableSeeder extends Seeder
                 'actual_num_farmers'=> 5,
                 'planned_qty'=> 70,
                 'actual_qty'=> 68,
+                'season_list_statuses_id' => 2,
             ],
             [
                 'id' => 4, 
@@ -63,6 +66,7 @@ class SeasonListTableSeeder extends Seeder
                 'actual_num_farmers'=> 11,
                 'planned_qty'=> 150,
                 'actual_qty'=> 145,
+                'season_list_statuses_id' => 2,
             ],
             [
                 'id' => 5, 
@@ -74,6 +78,7 @@ class SeasonListTableSeeder extends Seeder
                 'actual_num_farmers'=> 6,
                 'planned_qty'=> 120,
                 'actual_qty'=> 115,
+                'season_list_statuses_id' => 2,
             ],
             [
                 'id' => 6, 
@@ -85,6 +90,7 @@ class SeasonListTableSeeder extends Seeder
                 'actual_num_farmers'=> 19,
                 'planned_qty'=> 340,
                 'actual_qty'=> 320,
+                'season_list_statuses_id' => 2,
             ],
             [
                 'id' => 7, 
@@ -96,6 +102,7 @@ class SeasonListTableSeeder extends Seeder
                 'actual_num_farmers'=> 12,
                 'planned_qty'=> 130,
                 'actual_qty'=> 125,
+                'season_list_statuses_id' => 2,
             ],
             [
                 'id' => 8, 
@@ -107,6 +114,7 @@ class SeasonListTableSeeder extends Seeder
                 'actual_num_farmers'=> 9,
                 'planned_qty'=> 120,
                 'actual_qty'=> 110,
+                'season_list_statuses_id' => 2,
             ],
             [
                 'id' => 9, 
@@ -118,6 +126,7 @@ class SeasonListTableSeeder extends Seeder
                 'actual_num_farmers'=> 17,
                 'planned_qty'=> 350,
                 'actual_qty'=> 300,
+                'season_list_statuses_id' => 2,
             ],
             [
                 'id' => 10, 
@@ -126,6 +135,7 @@ class SeasonListTableSeeder extends Seeder
                 'planned_hectares'=> 8.9,
                 'planned_num_farmers'=> 10,
                 'planned_qty'=> 120,
+                'season_list_statuses_id' => 1,
             ],
             [
                 'id' => 11, 
@@ -134,6 +144,7 @@ class SeasonListTableSeeder extends Seeder
                 'planned_hectares'=> 10.4,
                 'planned_num_farmers'=> 15,
                 'planned_qty'=> 140,
+                'season_list_statuses_id' => 1,
             ],
             [
                 'id' => 12, 
@@ -142,6 +153,7 @@ class SeasonListTableSeeder extends Seeder
                 'planned_hectares'=> 19,
                 'planned_num_farmers'=> 16,
                 'planned_qty'=> 290,
+                'season_list_statuses_id' => 1,
             ],
 
         ];

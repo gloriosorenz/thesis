@@ -109,10 +109,14 @@ class CustomerController extends Controller
     {
         $customer = User::find($id);
         $barangays = Barangay::orderBy('name')->get();
+        $provinces = Province::orderBy('name')->get();
+        $cities = City::orderBy('name')->get();
 
         return view('customers.edit')
             ->with('customer', $customer)
-            ->with('barangays', $barangays);
+            ->with('barangays', $barangays)
+            ->with('provinces', $provinces)
+            ->with('cities', $cities);    
     }
 
     /**
@@ -124,13 +128,17 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $customer = User::find($id);
-        $customer->company = $request->input('company');
         $customer->first_name = $request->input('first_name');
         $customer->last_name = $request->input('last_name');
         $customer->email = $request->input('email');
         $customer->phone = $request->input('phone');
-        $customer->barangay = $request->input('barangay');
+        $customer->street = $request->input('street');
+        $customer->barangays_id = $request->input('barangay');
+        $customer->cities_id = $request->input('city');
+        $customer->provinces_id = $request->input('province');
+        $customer->company = $request->input('company');
         $customer->save();
 
         // dd($customer);

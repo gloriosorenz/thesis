@@ -35,7 +35,8 @@ class UsersController extends Controller
         $provinces = Province::orderBy('name')->get();
         $cities = City::orderBy('name')->get();
 
-        return view('users.create', compact('roles'))
+        return view('users.create')
+            ->with('roles', $roles)
             ->with('barangays', $barangays)
             ->with('provinces', $provinces)
             ->with('cities', $cities);
@@ -96,7 +97,7 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         return view('users.show')
-            ->with('user', $user);;
+            ->with('user', $user);
     }
 
     /**
@@ -108,9 +109,17 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
+        $roles = \App\Role::get()->pluck('title', 'id');
+        $barangays = Barangay::orderBy('name')->get();
+        $provinces = Province::orderBy('name')->get();
+        $cities = City::orderBy('name')->get();
 
         return view('users.edit')
-            ->with('user', $user);
+            ->with('user', $user)
+            ->with('barangays', $barangays)
+            ->with('provinces', $provinces)
+            ->with('cities', $cities)
+            ->with('roles', $roles);
     }
 
     /**
@@ -122,12 +131,28 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // $user = User::find($id);
+        // $user->first_name = $request->input('first_name');
+        // $user->last_name = $request->input('last_name');
+        // $user->email = $request->input('email');
+        // $user->phone = $request->input('phone');
+        // $user->address = $request->input('address');
+        // $user->save();
+
+
         $user = User::find($id);
         $user->first_name = $request->input('first_name');
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
         $user->phone = $request->input('phone');
-        $user->address = $request->input('address');
+        $user->street = $request->input('street');
+        $user->barangays_id = $request->input('barangay');
+        $user->cities_id = $request->input('city');
+        $user->provinces_id = $request->input('province');
+        $user->company = $request->input('company');
+        $user->roles_id = $request->input('roles_id');
+        // $user->password = Hash::make($request['password']);
+        // $user->password = Hash::make($password);
         $user->save();
 
         return redirect('users')->with('success','User Updated ');

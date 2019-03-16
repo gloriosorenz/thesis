@@ -28,6 +28,13 @@
         <span>Seasons</span></a>
     </li>
 
+    <!-- Statuses -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('season_statuses.index') }}">
+        <i class="fas fa-check-circle"></i>
+        <span>Season Statuses</span></a>
+    </li>
+
     <!-- Products -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('product_lists.index') }}">

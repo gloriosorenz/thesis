@@ -81,6 +81,7 @@ Route::get('/product_lists/view_product/{id}', 'ProductListController@view_produ
 // Route::get('/seasons/add_farmer/{id}', 'SeasonController@add_farmer');
 // Route::get('/seasons/farmer_seasons', 'SeasonController@farmer_seasons');
 
+
 // Orders
 Route::get('/orders/my_orders', 'OrderController@orders')->name('my_orders');
 Route::get('/orders/confirm_order/{id}', 'OrderController@confirm_order');
@@ -89,7 +90,10 @@ Route::get('/orders/cancel_order/{id}', 'OrderController@cancel_order');
 // Damage Report
 // Route::get('pdf/damage_report/{id}','DamageReportController@generatePDF');
 
-
+// Season List
+Route::get('/season_statuses/complete_season_farmer/{id}', 'SeasonStatusController@complete_season_farmer');
+Route::get('/season_statuses/cancel/{id}', 'SeasonStatusController@cancel');
+Route::get('/season_statuses/complete_season/{id}', 'SeasonStatusController@complete_season');
 
 // PDF
 Route::get('pdf/damage_report/{id}', 'DamageReportController@pdfview');
@@ -112,6 +116,7 @@ Route::resource('dashboard', 'DashboardController');
 Route::resource('orders', 'OrderController');
 Route::resource('damage_reports', 'DamageReportController');
 Route::resource('sales_reports', 'SaleReportController');
+Route::resource('season_statuses', 'SeasonStatusController');
 
 
 

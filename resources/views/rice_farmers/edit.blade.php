@@ -70,7 +70,7 @@
               <div class="form-group">
                   <label for="barangay">Barangay:</label>
                   <select class="form-control" name="barangay" id="barangay">
-                      <option value="{{ $farmer->barangays->id }}" selected="true" disabled="True">{{ $farmer->barangays->id }}</option>
+                      <option value="{{ $farmer->barangays->id }}" selected="true" disabled="True">Select Barangay</option>
                       @foreach ($barangays as $key=>$p)
                           <option value="{{ $key['id']}}">{{ $p['name']}}</option>
                       @endforeach
@@ -82,7 +82,7 @@
                 <div class="form-group">
                     <label for="city">City:</label>
                     <select class="form-control" name="city" id="city">
-                        <option value="0" selected="true" disabled="True">{{ $farmer->cities->name }}</option>
+                        <option value="0" selected="true" disabled="True">Select City</option>
                         @foreach ($cities as $key=>$p)
                             <option value="{{ $key['id']}}">{{ $p['name']}}</option>
                         @endforeach
@@ -94,7 +94,7 @@
                 <div class="form-group">
                     <label for="province">Province:</label>
                     <select class="form-control" name="province" id="province">
-                        <option value="0" selected="true" disabled="True">{{ $farmer->provinces->name }}</option>
+                        <option value="0" selected="true" disabled="True">Select Province</option>
                         @foreach ($provinces as $key=>$p)
                             <option value="{{ $key['id']}}">{{ $p['name']}}</option>
                         @endforeach

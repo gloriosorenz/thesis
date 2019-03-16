@@ -26,6 +26,9 @@ class SeasonController extends Controller
         $seasons = Season::orderBy('id', 'desc')->paginate(12);
         $statuses = Season::where('season_statuses_id', '=', 2)->get();
 
+        
+
+    
         // dd($seasons, $statuses);
         return view('seasons.index', compact('seasons'))
             ->with('statuses', $statuses);
@@ -62,17 +65,21 @@ class SeasonController extends Controller
     {
         // Validation
         $request->validate([
-            'season_start' => 'required|date|',
-            // 'season_types_id' => 'required|int',
-            'planned_hectares' => 'required',
-            'planned_num_farmers' => 'required',
-            'planned_qty' => 'required',
+            // "name"    => "required|array|min:3",
+            // "name.*"  => "required|string|distinct|min:3",
+            "planned_hectares.*"  => "required",
+            "planned_num_farmers.*"  => "required|integer",
+            "planned_qty.*"  => "required|integer",
+            "users_id.*"  => "required|distinct",
         ]);
+        
 
         $season = new Season;
         $season->season_start = $request->input('season_start');
         $season->season_types_id = $request->input('season_types_id');
         $season->season_statuses_id =1;
+
+        
 
         if($season->save()){
             $id = $season->id;
@@ -83,9 +90,12 @@ class SeasonController extends Controller
                             'planned_hectares'=>$request->planned_hectares [$key],
                             'planned_num_farmers'=>$request->planned_num_farmers [$key],
                             'planned_qty'=>$request->planned_qty [$key],
+                            'season_list_statuses_id' => 1,
                             'created_at' =>  \Carbon\Carbon::now(), # \Datetime()
                             'updated_at' => \Carbon\Carbon::now(),  # \Datetime()
                         );
+
+                
 
                 SeasonList::insert($data);
             }  
@@ -154,15 +164,29 @@ class SeasonController extends Controller
     {
         // Validation
         $request->validate([
-            'season_end' => 'required|date',
-            'actual_hectares' => 'required',
-            'actual_num_farmers' => 'required',
-            // 'actual_qty' => 'required',
+            // "name"    => "required|array|min:3",
+            // "name.*"  => "required|string|distinct|min:3",
+            "actual_hectares.*"  => "required",
+            "actual_num_farmers.*"  => "required",
+            "actual_qty.*"  => "required",
+            "orig_quantity.*"  => "required",
+            "harvest_date.*"  => "required",
+            "price.*"  => "required",
         ]);
 
         $season = Season::findOrFail($id);
         $season->season_end = $request->input('season_end');
-        $season->season_statuses_id =2;
+        // $season->season_statuses_id =2;
+
+        // $list = SeasonList::count();
+        // $done = SeasonList::where('seasons_id', $id)
+        //     ->where('season_list_statuses_id', 2)->count();
+        
+        // if($list == $done)
+        //     $season->season_statuses_id =2;
+        // else
+        //     $season->season_statuses_id =1;
+
 
         if($season->save()){
             $id = $season->id;
@@ -170,11 +194,10 @@ class SeasonController extends Controller
             $plist = ProductList::where('seasons_id', $season->id)->get();
             foreach($request->id as $i => $id) { 
                 $list = SeasonList::findOrFail($id);
-                $list->update([
-                    'actual_hectares' => $request->actual_hectares[$i],
-                    'actual_num_farmers' => $request->actual_num_farmers[$i],
-                    // 'actual_qty' => $request->actual_qty[$i],
-                    ]);
+                $list->actual_hectares = $request->actual_hectares[$i];
+                $list->actual_num_farmers = $request->actual_num_farmers[$i];
+                // $list->season_list_statuses_id = 2;
+                $list->save();
             }
 
         

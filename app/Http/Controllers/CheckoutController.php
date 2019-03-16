@@ -116,12 +116,17 @@ class CheckoutController extends Controller
 
     protected function addToOrdersTables($request, $error)
     {
+
+        $random = str_shuffle('1234567890');
+        $order_id = substr($random, 0, 6);
+
         // Insert into orders table
         $order = Order::create([
             // 'users_id' => auth()->user() ? auth()->user()->id : null,
             'users_id' => auth()->user()->id,
             'total_price' =>  getNumbers()->get('newTotal'),
             'order_statuses_id' => 1,
+            'order_id' => $order_id,
         ]);
 
         // Insert into order_product table

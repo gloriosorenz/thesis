@@ -20,7 +20,7 @@
 
 <!-- Update Season Info -->
 <div class="row">
-        <div class="offset-md-1 col-md-8 ">
+    <div class="offset-md-2 col-md-8 offset-md-2">
         <div class="card shadow mb-4">
             <div class="card-header card-header-primary">
                 <h4 class="card-title">Season {{$season->id}}</h4>
@@ -62,7 +62,7 @@
 
 <!-- Update Farmer -->
 <div class="row">
-    <div class="offset-md-1 col-md-10 offset-md-1">
+    <div class="offset-md-2 col-md-8 offset-md-2">
         <div class="card shadow mb-4">
             <div class="card-header card-header-primary">
                 <h4 class="card-title">Update Farmer/s</h4>
@@ -82,7 +82,8 @@
                         <tr>
                             <td>
                                 <input name="id[]" id="id" type="hidden" value="{{$list->id}}">
-                                <input readonly type="text" class="form-control"  value="{{ $list->users->company }}" />
+                                {{-- <input readonly type="text" class="form-control"  value="{{ $list->users->company }}" /> --}}
+                                {{ $list->users->company }}
                             </td>
                             <td><input type="text" class="form-control" name="actual_hectares[]" value="{{ $list->actual_hectares }}" /></td>
                             <td><input type="text" class="form-control" name="actual_num_farmers[]" value="{{ $list->actual_num_farmers }}" /></td>
@@ -99,13 +100,12 @@
 
 <!-- Add Products -->
 <div class="row">
-    <div class="offset-md-1 col-md-10 offset-md-1">
+    <div class="offset-md-2 col-md-8 offset-md-2">
         <div class="card shadow mb-4">
             <div class="card-header card-header-primary">
                 <h4 class="card-title">Products</h4>
             </div>
             <div class="card-body">
-
                 @foreach ($season_lists as $list)
                 <div class="row">
                     <div class="col-md-4">
@@ -123,10 +123,8 @@
                         <tr>
                             <th>Product</th>
                             <th>Original Quantity</th>
-                            {{-- <th>Current Quantity</th> --}}
                             <th>Price</th>
                             <th>Harvest Date</th>
-                            {{-- <th>Delete</th> --}}
                         </tr>
                     </thead>
                     <tbody class="resultbody3">
@@ -135,31 +133,32 @@
                             <td>
                                 <input name="users_id[]" type="hidden" value="{{$list->users_id}}">
                                 <input name="products_id[]" type="hidden" value="{{$product->id}}">
-                                <input type="text" class="form-control" name="product_type" value="{{$product->type}}" disabled/>
+                                {{-- <input type="text" class="form-control" name="product_type" value="{{$product->type}}" disabled/> --}}
+                                {{$product->type}}
                             </td>
                             <td><input type="text" class="form-control" name="orig_quantity[]" value="" /></td>
-                            {{-- <td><input type="text" class="form-control" name="curr_quantity[]" value="" /></td> --}}
                             <td><input type="text" class="form-control" name="price[]" value="" /></td>
                             <td>
                                 {{ Form::date('harvest_date[]', \Carbon\Carbon::now(), ['class' => 'datepicker form-control','id'=>'harvest_date[]'])}}
                             </td>
-                            {{-- <td><input type="button" class="btn btn-danger remove" value="x"></td> --}}
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
                 @endforeach
-                {{-- <center><input type="button" class="btn btn-lg btn-warning addRow3" value="+"></center> --}}
+                <button type="submit" class="btn btn-lg btn-success">Update</button>
+            </form>
+            <!-- End Form -->
             </div>
         </div>
     </div>
 </div>
 
 <!-- Submit Button -->
-<div class="row">
-    <div class="offset-md-1 col-md-10 offset-md-1">
-        <button type="submit" class="btn btn-success">Update</button>
+{{-- <div class="row">
+    <div class="offset-md-2 col-md-8 offset-md-2">
+        <button type="submit" class="btn btn-lg btn-success">Update</button>
     </div>
 </div>
-</form>
+</form> --}}
 @endsection

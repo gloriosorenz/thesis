@@ -25,7 +25,7 @@
                 @foreach ($pending as $p)
                     @if ($p->users_id == auth()->user()->id)
                     <tr class="active">
-                        <td>{{$p->id}}</td>
+                        <td>{{$p->order_id}}</td>
                         <td>{{$p->created_at->toFormattedDateString()}}</td>
                         <td>{{$p->total_price}}</td>
                         <td>
