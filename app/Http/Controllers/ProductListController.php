@@ -29,14 +29,15 @@ class ProductListController extends Controller
     {
         $seasons = Season::orderBy('id', 'desc')->paginate(10);
         // $lists = SeasonList::where('rice_farmers_id', '=', Auth::user()->id)->get();
-        $product_lists = SeasonList::all();
-
+        $season_lists = SeasonList::all();
 
        // Date Automation
-       $productlist = ProductList::where('harvest_date', '<', Carbon::now()->subDays(7))
-       ->get();
+       $product_list = ProductList::where('harvest_date', '<', Carbon::now()->subDays(7))
+            ->where('products_id', '!=', 3) 
+            ->where('curr_quantity', '>', 0)
+            ->get();
 
-       foreach($productlist as $pl){
+       foreach($product_list as $pl){
         $x = $pl->curr_quantity;
            if($pl->products_id == 1){
             //    $pl->products_id = 2;
@@ -57,7 +58,9 @@ class ProductListController extends Controller
       //  dd($productlist);
         return view('product_lists.index')
             ->with('seasons', $seasons)
-            ->with('product_lists', $product_lists);
+            ->with('season_lists', $season_lists)
+            ->with('product_list',$product_list)
+            ;
     }
 
      
@@ -190,7 +193,7 @@ class ProductListController extends Controller
      */
     public function display_products()
     {
-        
+        //Show All Products Page
         $product_lists = ProductList::where('products_id', '!=', 3) 
                         ->where('curr_quantity', '>', 0)
                         ->get();
@@ -216,10 +219,6 @@ class ProductListController extends Controller
         
         $season = Season::find($id);
         $product_lists = ProductList::where('seasons_id', $season->id)->get();
-
-
-
-        
 
         // $product = ProductList::where('created_at', '>=', Carbon::now()->subDays(7))
         //     ->where('product_id', '=', 2)
