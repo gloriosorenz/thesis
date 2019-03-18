@@ -29,8 +29,7 @@
                         <li>Harvest Date: {{ $product_list->harvest_date }}</li>
                         <hr>
                         <li>Producer: {{ $product_list->users->company }}</li>
-                        <li>Farm Address: {{ $product_list->users->cities->name }}</li>
-                        {{-- {{ $product_list->users->barangays->name }}, {{ $product_list->users->cities->name }},  --}}
+                        <li>Farm Address: {{ $product_list->users->street }}, {{ $product_list->users->barangays->name }}, {{ $product_list->users->cities->name }}, {{ $product_list->users->provinces->name }}</li>
                     </ul>
                     <div class="row">
                         <div class="col">
