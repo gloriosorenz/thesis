@@ -80,9 +80,9 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'id' => 6, 
-                'first_name' => 'Ka', 
-                'last_name' => 'Larry', 
-                'email' => 'k@y.c', 
+                'first_name' => 'Carlo', 
+                'last_name' => 'Ortega', 
+                'email' => 'c@o.c', 
                 'phone' => '09178484154',
                 'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
                 'company' => 'Ka Larry Foundation',
@@ -141,6 +141,59 @@ class UsersTableSeeder extends Seeder
                 'provinces_id'=> 19,
                 'remember_token' => '',
             ],
+            [
+                'id' => 10, 
+                'first_name' => 'Larry', 
+                'last_name' => 'Aristorenas', 
+                'email' => 'larryaristorenas@yahoo.com',  //temp
+                'phone' => '09178484154', //temp
+                'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
+                'company' => 'Samahan ng Magsasaka', //temp
+                'no_farmers' => 18, //temp
+                'hectares' => 19.10, //temp
+                'roles_id' => 2, 
+                'street'=> '42 Barcelona St.', //temp
+                'barangays_id'=> 7,
+                'cities_id'=> 282,
+                'provinces_id'=> 19,
+                'remember_token' => '',
+            ],
+            [
+                'id' => 11, 
+                'first_name' => 'Greg', 
+                'last_name' => 'Trinidad', 
+                'email' => 'gregtrinidad@yahoo.com',  //temp
+                'phone' => '09178484154', //temp
+                'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
+                'company' => 'Irrigators', //temp
+                'no_farmers' => 18, //temp
+                'hectares' => 19.10, //temp
+                'roles_id' => 2,
+                'street'=> '42 Barcelona St.', //temp
+                'barangays_id'=> 7,
+                'cities_id'=> 282,
+                'provinces_id'=> 19,
+                'remember_token' => '',
+            ],
+            [
+                'id' => 12, 
+                'first_name' => 'Eduardo', 
+                'last_name' => 'Umali', 
+                'email' => 'eduardoumali@yahoo.com',  //temp
+                'phone' => '09178484154', //temp
+                'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
+                'company' => 'Irrigators', //temp
+                'no_farmers' => 18, //temp
+                'hectares' => 19.10, //temp
+                'roles_id' => 2, 
+                'street'=> '42 Barcelona St.', //temp
+                'barangays_id'=> 7,
+                'cities_id'=> 282,
+                'provinces_id'=> 19,
+                'remember_token' => '',
+            ],
+
+            
 
         ];
 

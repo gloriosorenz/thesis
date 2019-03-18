@@ -197,6 +197,8 @@ class ProductListController extends Controller
         $product_lists = ProductList::where('products_id', '!=', 3) 
                         ->where('curr_quantity', '>', 0)
                         ->get();
+
+        // $product_lists = ProductList::all();
                         
 
         $farmers = DB::table('product_lists')
@@ -206,7 +208,8 @@ class ProductListController extends Controller
         // dd($farmers);
         return view('product_lists/show_products')
                 ->with('product_lists', $product_lists)
-                ->with('farmers', $farmers);
+                ->with('farmers', $farmers)
+                ;
     }
 
 

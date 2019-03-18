@@ -162,7 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
-        Yajra\Address\AddressServiceProvider::class,
+        // Yajra\Address\AddressServiceProvider::class,
         Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
 
         Collective\Html\HtmlServiceProvider::class,
