@@ -13,6 +13,7 @@ use App\Product;
 use DB;
 use App\Mail\SeasonCreated;
 use Mail;
+use PDF;
 
 class SeasonController extends Controller
 {
@@ -26,12 +27,15 @@ class SeasonController extends Controller
         $seasons = Season::orderBy('id', 'desc')->paginate(12);
         $statuses = Season::where('season_statuses_id', '=', 2)->get();
 
-        
+        // Get latest season
+        $latest_season = DB::table('seasons')->orderBy('id', 'desc')->first();
 
     
         // dd($seasons, $statuses);
-        return view('seasons.index', compact('seasons'))
-            ->with('statuses', $statuses);
+        return view('seasons.index')
+            ->with('seasons', $seasons)
+            ->with('statuses', $statuses)
+            ->with('latest_season', $latest_season);
     }
 
     /**
@@ -249,6 +253,45 @@ class SeasonController extends Controller
         // dd($seasons);
         return view('seasons.farmer_seasons')
             ->with('seasons', $seasons);
+    }
+
+
+
+
+    // Complete Season
+    public function complete_season($id){
+
+        // Get latest season
+        $latest_season = DB::table('seasons')->orderBy('id', 'desc')->first();
+
+        $list = Season::findOrFail($latest_season->id);
+        $list->season_statuses_id = 2;
+        $list->save();
+
+        return redirect('/seasons')->with('success', 'Season Complete');
+    }
+
+    // Generate PDF
+    public function pdfview(Request $request, $id)
+    {
+        $season = Season::find($id);
+        $lists = SeasonList::where('seasons_id', $season->id)->get();
+
+        $product_lists = ProductList::where('seasons_id', $season->id)->get();
+
+
+
+        // $dreport = DamageReport::findOrFail($id);
+        // $ddatas = DamageData::where('damage_reports_id', $dreport->id)->get();
+
+        // $users = DB::table('users')->get();
+        // view()->share('users',$users);
+
+
+        // pass view file
+        $pdf = PDF::loadView('pdf.season_report', compact('season'), compact('lists'))->setPaper('a4', 'landscape');
+        // download pdf
+        return $pdf->stream('season_report.pdf');
     }
 
 

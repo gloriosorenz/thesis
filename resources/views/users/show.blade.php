@@ -91,16 +91,25 @@
                   </div>
       
 
+            <div class="row">
+                <!-- Company -->
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="company">Company:</label>
+                        <input type="text" class="form-control" name="company" value="{{$user->company}}" readonly/>
+                    </div>
+                </div>
+            </div>
 
-              <div class="row">
-                  <!-- Roles -->
-                  <div class="col-lg-6">
-                      <div class="form-group">
-                          <label for="roles_id">Role:</label>
-                          <input type="text" class="form-control" name="roles_id" value="{{$user->roles->title}}" readonly/>
-                      </div>
-                  </div>
-              </div>
+            <div class="row">
+                <!-- Roles -->
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="roles_id">Role:</label>
+                        <input type="text" class="form-control" name="roles_id" value="{{$user->roles->title}}" readonly/>
+                    </div>
+                </div>
+            </div>
           </div>
         </div>
     </div>

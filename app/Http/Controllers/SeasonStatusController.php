@@ -47,7 +47,7 @@ class SeasonStatusController extends Controller
         $list->season_list_statuses_id = 1;
         $list->save();
 
-        return redirect('/season_statuses')->with('success', 'Farmer Done');
+        return redirect('/season_statuses')->with('success', 'Cancelled');
     }
 
     public function complete_season($id){

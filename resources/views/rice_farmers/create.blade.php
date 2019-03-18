@@ -118,6 +118,25 @@
                 </div>
             </div>
 
+
+            <label><strong>Additional Information</strong></label>
+            <div class="row">
+                <!-- Number of Farmers -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="no_farmers">Number of farmers:</label>
+                        <input type="text" class="form-control" name="no_farmers" value="" />
+                    </div>
+                </div>
+                <!-- Hectares -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="hectares">Hectares:</label>
+                        <input type="text" class="form-control" name="hectares" value="" />
+                    </div>
+                </div>
+            </div>
+
             <!-- Submit Button -->
             <button type="submit" class="btn btn-success">Create</button>
             </form>

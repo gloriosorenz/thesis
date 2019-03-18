@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- BREADCRUMB --}}
+<!-- Breadcrumb -->
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Dashboard</a></li>
@@ -21,18 +21,18 @@
             <p class="card-category">Complete your profile</p>
         </div>
         <div class="card-body">
-        {{-- FORM --}}
+        <!-- Form -->
         <form method="post" action="{{action('UsersController@store')}}" enctype="multipart/form-data">
             @csrf
             <div class="row">
-                {{-- FIRST NAME --}}
+                <!-- First Name -->
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="first_name">First Name:</label>
                         <input type="text" class="form-control" name="first_name" value="" />
                     </div>
                 </div>
-                {{-- LAST NAME --}}
+                <!-- Last Name -->
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="last_name">Last Name:</label>
@@ -42,14 +42,14 @@
             </div>
         
             <div class="row">
-                {{-- PHONE --}}
+                <!-- Phone -->
                 <div class="col-md-6">
                     <div class="form-group">
                     <label for="phone">Phone:</label>
                     <input type="text" class="form-control" name="phone" value=""/>
                     </div>
                 </div>
-                {{-- EMAIL --}}
+                <!-- Email -->
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="email">Email:</label>
@@ -107,11 +107,21 @@
                         </div>
                     </div>
                 </div>
+
+            <div class="row">
+                <!-- Company -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                    <label for="company">Company:</label>
+                    <input type="text" class="form-control" name="company" value=""/>
+                    </div>
+                </div>
+            </div>
     
 
 
             <div class="row">
-                {{-- ROLES --}}
+                <!-- Roles -->
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label for="roles_id">Role:</label>
@@ -125,7 +135,9 @@
                 </div>
             </div>
 
-            {{-- SUBMIT BUTTON --}}
+            
+
+            <!-- Submit Button -->
             <button type="submit" class="btn btn-success">Create</button>
             </form>
         </div>

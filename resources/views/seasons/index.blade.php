@@ -83,6 +83,11 @@
 @if (count($seasons) == count($statuses))
 <a class="btn btn-secondary btn-md mb-2" href="{{ route('seasons.create') }}">+Add</a>
 @endif
+
+<!-- Complete Season-->
+@if ($latest_season->season_statuses_id == 1)
+<a class="btn btn-secondary btn-md mb-2" href="/seasons/complete_season/{{$latest_season->id}}">Complete Season <i class="fas fa-check"></i></a>
+@endif
       
       
 <!-- Page Heading -->
@@ -109,6 +114,7 @@
                             <a  href="/seasons/{{$season->id}}" role="button"><i class="fas fa-eye fa-2x text-gray-500"></i></a>
                         </div>
                     </div>
+                    <a href="pdf/season_report/{{$season->id}}" class="btn btn-sm btn-primary">Generate Report <i class="fas fa-download fa-sm text-white"></i></a>
                 </div>
             </div>
         </div>
@@ -127,7 +133,7 @@
                             <a  href="/seasons/{{$season->id}}" role="button"><i class="fas fa-eye fa-2x text-gray-500"></i></a>
                         </div>
                     </div>
-                    <a href="/seasons/{{$season->id}}/edit" class="btn btn-success">Update</a>
+                    <a href="/seasons/{{$season->id}}/edit" class="btn btn-sm btn-success">Update</a>
                 </div>
             </div>
         </div>

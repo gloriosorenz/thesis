@@ -136,8 +136,8 @@
                                 {{-- <input type="text" class="form-control" name="product_type" value="{{$product->type}}" disabled/> --}}
                                 {{$product->type}}
                             </td>
-                            <td><input type="text" class="form-control" name="orig_quantity[]" value="" /></td>
-                            <td><input type="text" class="form-control" name="price[]" value="" /></td>
+                            <td><input type="text" class="form-control" name="orig_quantity[]" value="{{$product->orig_quantity}}" /></td>
+                            <td><input type="text" class="form-control" name="price[]" value="{{$product->price}}" /></td>
                             <td>
                                 {{ Form::date('harvest_date[]', \Carbon\Carbon::now(), ['class' => 'datepicker form-control','id'=>'harvest_date[]'])}}
                             </td>

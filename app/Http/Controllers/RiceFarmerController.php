@@ -78,6 +78,8 @@ class RiceFarmerController extends Controller
         $user->cities_id = $request->input('city');
         $user->provinces_id = $request->input('province');
         $user->company = $request->input('company');
+        $user->no_farmers = $request->input('no_farmers');
+        $user->hectares = $request->input('hectares');
         $user->password = Hash::make($password);
         $user->roles_id = 2;
         $user->save();

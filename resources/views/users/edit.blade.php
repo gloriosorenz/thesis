@@ -64,7 +64,7 @@
                   <!-- Street -->
                   <div class="col-md-8">
                       <div class="form-group">
-                        <label for="phone">Street:</label>
+                        <label for="company">Street:</label>
                         <input type="text" class="form-control" name="street" value="{{$user->street}}"/>
                       </div>
                   </div>
@@ -110,21 +110,30 @@
                   </div>
       
 
+            <div class="row">
+                <!-- Company -->
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="company">Company:</label>
+                        <input type="text" class="form-control" name="company" value="{{$user->company}}"/>
+                    </div>
+                </div>
+            </div>
 
-              <div class="row">
-                  <!-- Roles -->
-                  <div class="col-lg-6">
-                      <div class="form-group">
-                          <label for="roles_id">Role:</label>
-                          <select class="form-control" name="roles_id" id="roles_id">
-                              <option value="0" selected="true" disabled="True">Select Role</option>
-                              @foreach ($roles as $key=>$p)
-                              <option value="{{$key}}">{{$p}}</option>
-                              @endforeach
-                          </select>
-                      </div>
-                  </div>
-              </div>
+            <div class="row">
+                <!-- Roles -->
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="roles_id">Role:</label>
+                        <select class="form-control" name="roles_id" id="roles_id">
+                            <option value="0" selected="true" disabled="True">Select Role</option>
+                            @foreach ($roles as $key=>$p)
+                            <option value="{{$key}}">{{$p}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
 
           <!-- Submit Button -->
           <button type="submit" class="btn btn-lg btn-success">Update</button>

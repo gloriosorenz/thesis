@@ -80,6 +80,7 @@ Route::get('/product_lists/view_product/{id}', 'ProductListController@view_produ
 // Season
 // Route::get('/seasons/add_farmer/{id}', 'SeasonController@add_farmer');
 // Route::get('/seasons/farmer_seasons', 'SeasonController@farmer_seasons');
+Route::get('/seasons/complete_season/{id}', 'SeasonController@complete_season');
 
 
 // Orders
@@ -98,6 +99,7 @@ Route::get('/season_statuses/complete_season/{id}', 'SeasonStatusController@comp
 // PDF
 Route::get('pdf/damage_report/{id}', 'DamageReportController@pdfview');
 Route::get('pdf/invoice/{id}', 'OrderController@pdfview');
+Route::get('pdf/season_report/{id}', 'SeasonController@pdfview');
 
 // Weather
 Route::get('/weather/weather_statistics', 'LandingPageController@weather_statistics')->name('weather_statistics');

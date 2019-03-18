@@ -29,14 +29,14 @@
                 <h2 class="title">Ongoing (Season {{ $latest_season->id }})</h2>
             </div>
             <div class="card-body">
-                <table id="table_id" class="table table-hover track_tbl">
+                <table class="table table-hover track_tbl">
                     <thead>
                         <tr>
-                            <th width="10%">ID</th>
+                            <th width="5%">ID</th>
                             <th width="30%">Farmer</th>
                             <th width="25%">Season</th>
                             <th width="25%">Status</th>
-                            <th width="10%">Options</th>
+                            <th width="15%">Options</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -68,14 +68,14 @@
                 <h2 class="title">Done Farmers (Season {{ $latest_season->id }})</h2>
             </div>
             <div class="card-body">
-                <table id="table_id2" class="table table-hover track_tbl">
+                <table class="table table-hover track_tbl">
                     <thead>
                         <tr>
-                            <th width="10%">ID</th>
-                            <th width="30%">Farmer</th>
-                            <th width="25%">Season</th>
-                            <th width="25%">Status</th>
-                            <th width="10%">Options</th>
+                            <th width="5%">ID</th>
+                            <th width="35%">Farmer</th>
+                            <th width="20%">Season</th>
+                            <th width="20%">Status</th>
+                            <th width="20%">Options</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -111,10 +111,10 @@
             <thead>
                 <tr>
                     <th width="10%">ID</th>
-                    <th width="30%">Farmer</th>
+                    <th width="25%">Farmer</th>
                     <th width="25%">Season</th>
-                    <th width="25%">Status</th>
-                    <th width="10%">Options</th>
+                    <th width="10%">Status</th>
+                    {{-- <th width="10%">Options</th> --}}
                 </tr>
             </thead>
             <tbody>
@@ -123,11 +123,17 @@
                     <td>{{$s->id}}</td>
                     <td>{{$s->users->company}}</td>
                     <td>Season {{$s->seasons->id}}</td>
-                    <td>{{$s->season_list_statuses->status}}</td>
                     <td>
-                        <a href="#"><button class="btn btn-info btn-md btn-fill" id="btn_view" name="btn_view">View <i class="fas fa-eye"></i></button></a>
-                        {{-- <a href="/season_statuses/cancel/{{$s->id}}" class="btn btn-danger">Cancel <i class="fas fa-trash"></i></a> --}}
+                        @if ($s->season_list_statuses->id == 2)
+                            <button type="button" class="btn btn-sm btn-success" disabled>{{$s->season_list_statuses->status}}</button>
+                        @else
+                            <button type="button" class="btn btn-sm btn-warning" disabled>{{$s->season_list_statuses->status}}</button>
+                        @endif
+                        
                     </td>
+                    {{-- <td>
+                        <a href="/seasons/{{$s->id}}"><button class="btn btn-info btn-md btn-fill" id="btn_view" name="btn_view">View <i class="fas fa-eye"></i></button></a>
+                    </td> --}}
                 </tr>
                 @endforeach
             </tbody>
