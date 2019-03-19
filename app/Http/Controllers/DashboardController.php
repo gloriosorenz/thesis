@@ -69,12 +69,23 @@ class DashboardController extends Controller
             ->pluck('sum','products_id');
         */
 
-        $chart = Charts::create('pie', 'highcharts')
+        $piechart = Charts::create('pie', 'highcharts')
                 ->title('Total Production Percentage')
                 ->labels($prodjoin)
                 ->values($prodlist)
+                ->colors(['#2196F3', '#FFC107','#F44336'])
                 ->dimensions(700,450)
-                ->responsive(false);
+                ->responsive(true);
+        
+        $areachart = Charts::database(Order::all(),'line', 'highcharts')
+                ->title('Total Production Percentage')
+                ->elementLabel("Orders")
+                // ->values($prodlist)
+                ->dimensions(700,450)
+                ->responsive(true)
+                ->groupByMonth();
+                ;
+
         /*
             $chart = new OrderChart;
             $chart = Charts::database(ProductList::all(),'bar','material')
@@ -83,6 +94,7 @@ class DashboardController extends Controller
             ->groupBy('products_id');
         */
         
+
         // //Lava Charts
         // $lava = new Lavacharts;
         // $season_start = Season::count();
@@ -117,7 +129,9 @@ class DashboardController extends Controller
             ->with('pending_orders',$pending_orders)
             ->with('seasons', $seasons)
             ->with('dmg_prod_ls',$dmg_prod_ls)
-            ->with('chart',$chart)
+            ->with('piechart',$piechart)
+            ->with('areachart',$areachart)
+
             ;
     }
 

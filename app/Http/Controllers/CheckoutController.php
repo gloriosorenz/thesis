@@ -121,7 +121,7 @@ class CheckoutController extends Controller
     {
 
         $random = str_shuffle('1234567890');
-        $order_id = substr($random, 0, 6);
+        $tracking_id = substr($random, 0, 6);
 
         // Insert into orders table
         $order = Order::create([
@@ -129,7 +129,7 @@ class CheckoutController extends Controller
             'users_id' => auth()->user()->id,
             'total_price' =>  getNumbers()->get('newTotal'),
             'order_statuses_id' => 1,
-            'order_id' => $order_id,
+            'tracking_id' => $tracking_id,
         ]);
 
         // Insert into order_product table

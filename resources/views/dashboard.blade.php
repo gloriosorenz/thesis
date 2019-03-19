@@ -148,9 +148,17 @@
                   </div>
                   <!-- Card Body -->
                   <div class="card-body">
-                    <div class="chart-area">
-                      <canvas id="myAreaChart"></canvas>
-                    </div>
+                      {!! Charts::styles() !!}
+                      <div class="container">
+                        <div class="app">
+                            <center>
+                                {!! $areachart->html() !!}
+                            </center>
+                        </div>
+                      </div>
+                        <!-- End Of Main Application -->
+                        {!! Charts::scripts() !!}
+                        {!! $areachart->script() !!}
                   </div>
                 </div>
               </div>
@@ -177,14 +185,17 @@
                   <!-- Card Body -->
                   <div class="card-body">
                       {!! Charts::styles() !!}
+                    <div class="container">
                       <div class="app">
                           <center>
-                              {!! $chart->html() !!}
+                              {!! $piechart->html() !!}
                           </center>
                       </div>
+                    </div>
                       <!-- End Of Main Application -->
                       {!! Charts::scripts() !!}
-                      {!! $chart->script() !!}
+                      {!! $piechart->script() !!}
+                      
                     </div>
                   </div>
                 </div>
