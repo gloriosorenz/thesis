@@ -73,7 +73,7 @@ class DashboardController extends Controller
                 ->title('Total Production Percentage')
                 ->labels($prodjoin)
                 ->values($prodlist)
-                ->dimensions(500,250)
+                ->dimensions(700,450)
                 ->responsive(false);
         /*
             $chart = new OrderChart;

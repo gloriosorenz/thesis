@@ -33,7 +33,7 @@
                     </ul>
                     <div class="row">
                         <div class="col">
-                            <button type="button" class="btn btn-lg btn-secondary btn-block" aria-disabled="true">{{ $product_list->presentPrice() }} <small class="text-white">/ kaban</small></button>
+                            <button type="button" class="btn btn-lg btn-secondary btn-block"  disabled>{{ $product_list->presentPrice() }} <small class="text-white">/ kaban</small></button>
                         </div>
                         <div class="col">
                                 <form method="post" action="{{action('CartController@store')}}">

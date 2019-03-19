@@ -15,8 +15,9 @@
 <br>
 
 <!-- Form -->
-<form method="post" action="{{action('ProductListController@store')}}" enctype="multipart/form-data">
- @csrf
+<form method="post" action="{{action('ProductListController@update', $season->id)}}">
+@method('PATCH')
+@csrf
 
 <!-- Add Products -->
 <div class="row">
@@ -47,20 +48,20 @@
                 <thead>
                     <tr>
                         <th>Product</th>
-                        <th>Original Quantity</th>
+                        <th>Current Quantity</th>
                         <th>Price</th>
                         <th>Harvest Date</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($products as $product)
+                    @foreach ($product_lists as $product)
                     <tr>
                         <td>
-                            <input type="text" class="form-control" name="product_type" value="{{$product->type}}" disabled/>
+                            <input type="text" class="form-control" name="product_type" value="{{$product->products->type}}" disabled/>
                             <input name="products_id[]" type="hidden" value="{{$product->id}}">
                         </td>
-                        <td><input type="text" class="form-control" name="orig_quantity[]" value=""/></td>
-                        <td><input type="text" class="form-control" name="price[]" value=""/></td>
+                        <td><input type="text" class="form-control" name="curr_quantity[]" value="{{$product->curr_quantity}}"/></td>
+                        <td><input type="text" class="form-control" name="price[]" value="{{$product->price}}"/></td>
                         <td>
                             {{ Form::date('harvest_date[]', \Carbon\Carbon::now(), ['class' => 'datepicker form-control','id'=>'harvest_date[]'])}}
                         </td>
@@ -76,7 +77,7 @@
 <!-- Submit Button -->
 <div class="row">
     <div class="offset-md-1 col-md-10 offset-md-1">
-        <button type="submit" class="btn btn-success">Create</button>
+        <button type="submit" class="btn btn-success">Update</button>
     </div>
 </div>
 </form>

@@ -59,6 +59,17 @@ class SeasonStatusController extends Controller
         $list->season_statuses_id = 2;
         $list->save();
 
+        $season_list = SeasonList::all();
+
+        foreach($season_list as $list){
+            if($list->seasons_id == $latest_season->id){
+                $list->season_list_statuses_id = 2;
+                $list->save();
+            }
+        }
+
+        // dd($list);
+
         return redirect('/season_statuses')->with('success', 'Season Complete');
     }
 

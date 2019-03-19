@@ -105,7 +105,7 @@ class ProductListTableSeeder extends Seeder
             [
                 'id' => 10, 
                 'products_id' => 1, 
-                'seasons_id' => 1, 
+                'seasons_id' => 3, 
                 'users_id' => 2,
                 'price' => 16.0,
                 'orig_quantity' => 70,

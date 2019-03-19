@@ -21,7 +21,7 @@
 @if (auth()->user()->roles_id == 1)
 <!-- New Season -->
 <div class="row">
-    <div class="offset-md-1 col-md-8 ">
+    <div class="offset-md-2 col-md-8 ">
         <div class="card shadow mb-4">
         <div class="card-header card-header-primary">
             <h4 class="card-title">New Season</h4>
@@ -60,7 +60,7 @@
 
 <!-- Add Farmer -->
 <div class="row">
-    <div class="offset-md-1 col-md-10 offset-md-1">
+    <div class="offset-md-2 col-md-8">
         <div class="card shadow mb-4">
             <div class="card-header card-header-primary">
                 <h4 class="card-title">Add Farmer</h4>
@@ -101,17 +101,48 @@
     </div>
 </div>
 
+
 @elseif(auth()->user()->roles_id == 2)
-    
+<!-- Add Farmer -->
+<div class="row">
+    <div class="offset-md-2 col-md-8">
+        <div class="card shadow mb-4">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">Add Farmer</h4>
+            </div>
+            <div class="card-body">
+            <h3>Add Farmer</h3>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Rice Farmer</th>
+                        <th>Planned Hectares</th>
+                        <th>Planned Number of Farmers</th>
+                        <th>Planned Quantity</th>
+                    </tr>
+                </thead>
+                <tbody class="resultbody1">
+                    <tr>
+                        <td>
+                            <input name="users_id[]" type="hidden" value="{{auth()->user()->id}}">
+                            {{auth()->user()->first_name}}   {{auth()->user()->last_name}}
+                        </td>
+                        <td><input type="text" class="form-control" name="planned_hectares[]" value="" /></td>
+                        <td><input type="text" class="form-control" name="planned_num_farmers[]" value="" /></td>
+                        <td><input type="text" class="form-control" name="planned_qty[]" value="" /></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
 @endif
-
-
-
 
 
 <!-- Submit Button -->
 <div class="row">
-    <div class="offset-md-1 col-md-10 offset-md-1">
+    <div class="offset-md-2 col-md-8">
         <button type="submit" class="btn btn-success">Create</button>
     </div>
 </div>

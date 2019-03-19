@@ -1,5 +1,5 @@
 @component('mail::message')
-# Someone Oredered From You! :)
+# Your order has been confirmed!
 
 The body of your message.
 

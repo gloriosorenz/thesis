@@ -17,7 +17,7 @@
 <!-- Product List Datatable -->
 <div class="card shadow mb-4">
     <div class="card-header">
-    <h2 class="title">Products for Season</h2>
+    <h2 class="title">Products for Season {{$season->id}}</h2>
     </div>
     <div class="card-body">
         <table id="product_lists_table" class="table table-bordered">

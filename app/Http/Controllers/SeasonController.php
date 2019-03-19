@@ -11,9 +11,12 @@ use App\User;
 use App\ProductList;
 use App\Product;
 use DB;
-use App\Mail\SeasonCreated;
+// use App\Mail\SeasonCreated;
 use Mail;
 use PDF;
+use App\Notifications\SeasonCreated;
+use App\Notifications\SeasonComplete;
+use Notification;
 
 class SeasonController extends Controller
 {
@@ -99,17 +102,17 @@ class SeasonController extends Controller
                             'updated_at' => \Carbon\Carbon::now(),  # \Datetime()
                         );
 
-                
-
                 SeasonList::insert($data);
             }  
         }
 
+       
 
-        // Mail::to('renz_glorioso@dlsu.edu.ph')->send(
+        // Notification
+        $recipients = User::where('roles_id', 3)->get();
+        Notification::send($recipients, new SeasonCreated());
 
-        //     new SeasonCreated()
-        // );
+
 
         return redirect()->route('seasons.index')->with('success','Season Created ');
     }
@@ -142,11 +145,27 @@ class SeasonController extends Controller
     {
         $season = Season::findOrFail($id);
         $types = SeasonType::get()->pluck('type', 'id');
+        $products = Product::all();
+
+        //  FOR ADMIN
         // Get Rice Farmers
         $users = User::where('roles_id', '=', 2)->get()->pluck('company', 'id');
+
+        // dd($farmer);
         $season_lists = SeasonList::where('seasons_id', $season->id)->get();
-        $products = Product::all();
         $product_lists = ProductList::where('seasons_id', $season->id)->get();
+
+
+
+        // FOR RICE FARMER
+        // Get Rice Farmer
+         $farmer = SeasonList::where('users_id', auth()->user()->id)
+         ->where('seasons_id', $season->id)
+         ->get();
+
+         $farmer_product = ProductList::where('seasons_id', $season->id)
+            ->where('users_id', auth()->user()->id)
+            ->get();
 
         return view('seasons.edit')
             ->with('season', $season)
@@ -154,7 +173,9 @@ class SeasonController extends Controller
             ->with('users', $users)
             ->with('season_lists', $season_lists)
             ->with('products', $products)
-            ->with('product_lists', $product_lists);
+            ->with('product_lists', $product_lists)
+            ->with('farmer', $farmer)
+            ->with('farmer_product', $farmer_product);
     }
 
     /**
@@ -224,9 +245,21 @@ class SeasonController extends Controller
 
         
 
+        // Notification
+        $recipients = User::where('roles_id', 3)->get();
+        Notification::send($recipients, new SeasonComplete());
+
 
      
         return redirect()->route('seasons.index')->with('success','Season Updated ');
+    }
+
+
+    // Update Single Farmer
+    public function update_farmer(Request $request, $id){
+        $season = Season::findOrFail($id);
+
+        $season_list = SeasonList::where('seasons_id', $season->id)->get();
     }
 
     /**
@@ -264,9 +297,18 @@ class SeasonController extends Controller
         // Get latest season
         $latest_season = DB::table('seasons')->orderBy('id', 'desc')->first();
 
-        $list = Season::findOrFail($latest_season->id);
-        $list->season_statuses_id = 2;
-        $list->save();
+        $season = Season::findOrFail($latest_season->id);
+        $season->season_statuses_id = 2;
+        $season->save();
+
+        $season_list = SeasonList::all();
+
+        foreach($season_list as $list){
+            if($list->seasons_id == $latest_season->id){
+                $list->season_list_statuses_id == 2;
+                $list->save();
+            }
+        }
 
         return redirect('/seasons')->with('success', 'Season Complete');
     }

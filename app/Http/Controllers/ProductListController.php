@@ -31,37 +31,42 @@ class ProductListController extends Controller
         // $lists = SeasonList::where('rice_farmers_id', '=', Auth::user()->id)->get();
         $season_lists = SeasonList::all();
 
-       // Date Automation
-       $product_list = ProductList::where('harvest_date', '<', Carbon::now()->subDays(7))
-            ->where('products_id', '!=', 3) 
-            ->where('curr_quantity', '>', 0)
-            ->get();
 
-       foreach($product_list as $pl){
-        $x = $pl->curr_quantity;
-           if($pl->products_id == 1){
-            //    $pl->products_id = 2;
-               $pl->update([
-                   'curr_quantity' => $pl->curr_quantity - $x
-                    ]);
-           }
+        
+            // Date Automation
+            $decrease1 = ProductList::where('harvest_date', '<', Carbon::now()->subDays(7))
+                // ->where('products_id', '!=', 3) 
+                ->where('curr_quantity', '>', 0)
+                ->get();
+ 
+            foreach($decrease1 as $pl){
+            $sub = $pl->curr_quantity;
+                if($pl->products_id == 1){
+                    $pl->update([
+                        'curr_quantity' => $pl->curr_quantity - $sub
+                        ]);
+                }
+                if($pl->products_id == 2){
+                    $pl->update([
+                        'curr_quantity' => $pl->curr_quantity - $sub,
+                        ]);
+                }
+                // if($pl->products_id == 3){
+                //     $pl->update([
+                //         'curr_quantity' => $pl->curr_quantity + $sub,
+                //         ]);
+                // }
+            }
 
+    //    dd($decrease2);
 
-           if($pl->products_id == 2){
-            //    $pl->products_id = 3;
-               $pl->update([
-                   'curr_quantity' => $pl->curr_quantity - $x
-                   ]);
-           }
-       }
-
-      //  dd($productlist);
         return view('product_lists.index')
             ->with('seasons', $seasons)
             ->with('season_lists', $season_lists)
-            ->with('product_list',$product_list)
+            // ->with('product_list',$product_list)
             ;
     }
+
 
      
 
@@ -73,15 +78,11 @@ class ProductListController extends Controller
     public function create()
     {
         $season = Season::latest()->first();
-        $types = SeasonType::get()->pluck('type', 'id');
-        $statuses = SeasonStatus::get()->pluck('status', 'id');
         $products = Product::all();
 
         return view('product_lists.create')
             ->with('season', $season)
-            ->with('products', $products)
-            ->with('types', $types)
-            ->with('statuses', $statuses);
+            ->with('products', $products);
     }
 
     /**
@@ -133,19 +134,12 @@ class ProductListController extends Controller
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
 
-        
         $season = Season::find($id);
         $product_lists = ProductList::where('users_id', '=', auth()->user()->id)
                 ->where('seasons_id', $season->id)
                 ->get();
 
-        // $product = ProductList::where('created_at', '>=', Carbon::now()->subDays(7))
-        //     ->where('product_id', '=', 2)
-        //     ->get();
 
-
-
-       
         return view('product_lists.show')
             ->with('season', $season)
             ->with('product_lists', $product_lists);
@@ -159,7 +153,19 @@ class ProductListController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+
+        $season = Season::find($id);
+        $product_lists = ProductList::where('users_id', '=', auth()->user()->id)
+                ->where('seasons_id', $season->id)
+                ->get();
+
+        // dd($product_lists);
+
+        return view('product_lists.edit')
+            ->with('season', $season)
+            ->with('product_lists', $product_lists);
     }
 
     /**
@@ -171,7 +177,23 @@ class ProductListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $season = Season::findOrFail($id);
+
+      
+
+        foreach($request['products_id'] as $key => $value) {
+            DB::table('product_lists')
+                ->where('seasons_id', '=', $season->id)
+                ->where('users_id', auth()->user()->id)
+                ->update([
+                    'curr_quantity' => $request->curr_quantity [$key],
+                    'price'=>$request->price [$key],
+                    'harvest_date'=>$request->harvest_date [$key],
+                    'updated_at' => \Carbon\Carbon::now(),  # \Datetime()
+                    ]);
+        }
+        
+        return redirect()->route('product_lists.index')->with('success','Season Updated ');
     }
 
     /**

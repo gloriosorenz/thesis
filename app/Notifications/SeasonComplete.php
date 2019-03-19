@@ -6,13 +6,10 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use App\Order;
 
-class NewOrder extends Notification
+class SeasonComplete extends Notification
 {
     use Queueable;
-
-    // public $order;
 
     /**
      * Create a new notification instance.
@@ -32,7 +29,7 @@ class NewOrder extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail', 'database'];
+        return ['mail'];
     }
 
     /**
@@ -44,7 +41,7 @@ class NewOrder extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Your order has been confirmed')
+                    ->subject('Season Completed')
                     ->line('The introduction to the notification.')
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');

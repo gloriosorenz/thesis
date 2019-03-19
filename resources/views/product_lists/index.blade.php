@@ -40,6 +40,7 @@
                         <a  href="/product_lists/{{$season->id}}" role="button"><i class="fas fa-eye fa-2x text-gray-300"></i></a>
                     </div>
                 </div>
+                <a href="/product_lists/{{$season->id}}/edit" class="btn btn-sm btn-success">Update</a>
             </div>
             {{-- <div class="card-footer text-muted">
                 <a href="/seasons/{{$season->id}}/edit" class="btn btn-success"><!-- <i class="fas fa-edit"></i> -->Update</a>

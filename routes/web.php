@@ -81,6 +81,7 @@ Route::get('/product_lists/view_product/{id}', 'ProductListController@view_produ
 // Route::get('/seasons/add_farmer/{id}', 'SeasonController@add_farmer');
 // Route::get('/seasons/farmer_seasons', 'SeasonController@farmer_seasons');
 Route::get('/seasons/complete_season/{id}', 'SeasonController@complete_season');
+Route::get('/seasons', 'SeasonController@update_farmer');
 
 
 // Orders

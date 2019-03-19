@@ -97,17 +97,20 @@ class CheckoutController extends Controller
             Cart::instance('default')->destroy();
 
 
+            // User Email
+            $email = auth()->user()->email;
+
             // Mail to User
-            Mail::to('renzgloriosooo@gmail.com')->send(
-                new OrderCreated()
-            );
+            // Mail::to($email)->send(
+            //     new OrderCreated()
+            // );
 
 
+            // Notify Customer
             $id = auth()->user()->id;
-            // Notification
             $user = User::findOrFail($id);
-            // $user->notify(new NewOrder());
-            Notification::send($user, new NewOrder());
+            $user->notify(new NewOrder());
+            // Notification::send($user, new NewOrder());
 
 
             return redirect()->route('confirmation.index')->with('success_message', 'Thank you! Your payment has been successfully accepted!');
