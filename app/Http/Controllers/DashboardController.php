@@ -77,7 +77,7 @@ class DashboardController extends Controller
                 ->dimensions(700,450)
                 ->responsive(true);
         
-        $areachart = Charts::database(Order::all(),'line', 'highcharts')
+        $areachart = Charts::database(Order::where('order_statuses_id','=',2)->get(),'line', 'highcharts')
                 ->title('Total Production Percentage')
                 ->elementLabel("Orders")
                 // ->values($prodlist)
