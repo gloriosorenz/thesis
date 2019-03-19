@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.1.3",
         "barryvdh/laravel-snappy": "^0.4.4",
+        "consoletvs/charts": "5.*",
         "fideloper/proxy": "^4.0",
         "gloudemans/shoppingcart": "^2.6",
         "gmopx/laravel-owm": "^0.1.3",

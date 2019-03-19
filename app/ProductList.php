@@ -10,6 +10,14 @@ class ProductList extends Model
         'products_id', 'seasons_id', 'users_id', 'orig_quantity','price', 'curr_quantity'
     ];
 
+
+    public function totalVisits()
+    {
+        return DB::table('product_lists')
+                        ->where('products_id', '=', $this->id)
+                        ->sum('curr_quantity');
+    }
+
     public function presentPrice()
     {
         return '₱'.number_format($this->price / 100 * 100, 2);

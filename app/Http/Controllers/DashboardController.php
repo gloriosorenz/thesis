@@ -8,12 +8,14 @@ use App\RiceFarmer;
 use App\Customer;
 use App\Season;
 use App\SeasonList;
+use App\ProductList;
 use App\Order;
 use App\OrderProduct;
 use Carbon\Carbon;
+use DB;
 use Khill\Lavacharts\Lavacharts;
-
-
+use App\Charts\OrderChart;
+use Charts;
 
 class DashboardController extends Controller
 {
@@ -33,52 +35,114 @@ class DashboardController extends Controller
         $farmers = User::where('roles_id','=',2)
             ->count();
         $last_com_season = Season::where('season_statuses_id','=', 2)->latest('id')->first();
+        // dd($last_com_season);
 
-        $dmg_prod_ls = Season::where('season_statuses_id','=', 2)->latest('id')->first();
+        $dmg_prod_ls = ProductList::where('seasons_id', $last_com_season->id)
+            ->where('products_id',3)
+            ->sum('curr_quantity');
 
+        // Chart
+        $allseasonid = Season::orderBy('id')->pluck( 'id');
+        $product_lists_id = ProductList::pluck('id');
+        $prodid = ProductList::pluck('products_id');
+        $rprodct = ProductList::where('products_id','=',1);
+        $quantity = ProductList::pluck('curr_quantity');
 
-        // dd($users);
+        // $dmg_prod_ls = ProductList::where('seasons_id', $last_com_season->id);
+        $prodlistid = ProductList::groupBy('products_id')->pluck('products_id');
+        $prodjoin = DB::table('products')
+            ->join('product_lists', 'products.id', '=', 'product_lists.products_id')
+            ->groupBy('products_id')
+            ->pluck('type');
+        // dd($prodjoin);
 
-        $lava = new Lavacharts;
-        $season_start = Season::count();
+        $prodlist = ProductList::groupBy('products_id')
+            ->selectRaw('*,sum(curr_quantity) as sum')
+            ->where('seasons_id',$last_com_season->id)
+            ->pluck('sum');
+        // dd($prodlistid);
 
-        $data = $lava->DataTable();
+        /*
 
-        $data->addDateColumn('Day of Month')
-            ->addNumberColumn('Rice')
-            ->addNumberColumn('Withered');
+        $prodlist = ProductList::groupBy('products_id')
+            ->selectRaw('*,sum(curr_quantity) as sum, products_id')
+            ->pluck('sum','products_id');
+        */
 
-        for ($a = 1; $a < 30; $a++) {
-                $rowData = [
-                "2019-4-$a", rand(200,500), rand(200,500)
-                ];
-        // Random Data For Example
+        // $char
+        // $data = ProductList::all();
+        // $chart = Charts::create('bar', 'highcharts')
+        //      ->title('My nice chart')
+        //      ->elementLabel('My nice label')
+        //      ->labels($data->pluck('products_id'))
+        //      ->values($data->pluck('curr_quantity'))
+        //      ->responsive(true);
+
+        $chart = Charts::create('pie', 'highcharts')
+                ->title('Total Production Percentage')
+                ->labels($prodjoin)
+                ->values($prodlist)
+                ->dimensions(500,250)
+                ->responsive(false);
+
+        // $chart= Charts::database(ProductList::all(),'bar', 'material')
+        // ->responsive(false);
+        // ->setWidth(0)
+
+        // $countrice = DB::table('product_lists')
+        // ->select(DB::raw("SUM(curr_quantity) as count"))
+        // ->where('products_id',$prodid)
+        // ->get();
+        // $totalVisits = ProductList::pluck('id')->totalVisits();
+        
+        /*
+            $chart = new OrderChart;
+            $chart = Charts::database(ProductList::all(),'bar','material')
+            ->setResponsive(false)
+            ->setWidth(0)
+            ->groupBy('products_id');
+        */
+
+        // $chart = new OrderChart;
+        // $chart->labels($prodid);
+        // $chart->dataset('My dataset', 'bar', $countrice);
+        // $chart->dataset('My dataset 2', 'bar', $countrice);
+
+        // //Lava Charts
+        // $lava = new Lavacharts;
+        // $season_start = Season::count();
+
+        // $data = $lava->DataTable();
+
+        // $data->addDateColumn('Day of Month')
+        //     ->addNumberColumn('Rice')
+        //     ->addNumberColumn('Withered');
+
         // for ($a = 1; $a < 30; $a++) {
-        //     $rowData = [
-        //     "2017-4-$a", rand(800,1000), rand(800,1000)
-        //     ];
-
-            $data->addRow($rowData);
-}
-
-        $lava->LineChart('Stocks', $data, [
-            'title' => 'Product Sale',
-            'animation' => [
-                'startup' => true,
-                'easing' => 'inAndOut'
-            ],
-            'colors' => ['#3CB371', '#FFD700']
-        ]);
+        //         $rowData = [
+        //         "2019-4-$a", rand(200,500), rand(200,500)
+        //         ];
+        //     $data->addRow($rowData);
+        // }
+        // $lava->LineChart('Stocks', $data, [
+        //     'title' => 'Product Sale',
+        //     'animation' => [
+        //         'startup' => true,
+        //         'easing' => 'inAndOut'
+        //     ],
+        //     'colors' => ['#3CB371', '#FFD700']
+        // ]);
 
         return view('dashboard')
             ->with('farmers',$farmers)
-            ->with('lava',$lava)
-            ->with('data',$data)
+            // ->with('lava',$lava)
+            // ->with('data',$data)
             ->with('last_com_season',$last_com_season)
             ->with('complete_orders',$complete_orders)
             ->with('pending_orders',$pending_orders)
             ->with('seasons', $seasons)
             ->with('dmg_prod_ls',$dmg_prod_ls)
+            ->with('chart',$chart)
             ;
     }
 
@@ -147,4 +211,6 @@ class DashboardController extends Controller
     {
         //
     }
+
+
 }

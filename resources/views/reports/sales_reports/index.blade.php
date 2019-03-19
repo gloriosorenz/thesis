@@ -22,33 +22,48 @@
         <h2 class="title">Sales Reports</h2>
     </div>
     <div class="card-body">
-        <table id="table_id" class="table table-hover">
-            @if(count($dreports) > 0)
+
+            <select class="seasons" name="seasons" id="seasons">
+                {{-- <option value="0" selected="true" disabled="True">Select Season</option> --}}
+                @foreach ($seasons as $season)
+                    <option value="{{ $season['id']}}">{{ $season['id']}}</option>
+                @endforeach
+            </select>
+
+            <br>
+
+        <table id="table_id" class="table table-hover" name="salestable">
+            @if(count($seasons) > 0)
             <thead>
                 <tr>
-                    <th width="">ID</th>
-                    <th width="">Calamity</th>
-                    <th width="">Date Created</th>
-                    <th width="">Options</th>
+                    <th width="">Seller</th>
+                    <th width="">Date of Purchase</th>
+                    {{-- <th width="">Total Quantity</th>
+                    <th width="">Total Price</th> --}}
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach($dreports as $dr)
+                @foreach($seasons as $season)
                 <tr class="tr">
-                    <td>{{$dr->id}}</td>
-                    <td>{{$dr->calamities->type}}</td>
-                    <td>{{$dr->created_at->toFormattedDateString()}}</td>
-                    <td>
-                        <a href="/damage_reports/{{$dr->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
-                        <a href="/damage_reports/{{$dr->id}}/edit" class="btn btn-success"><i class="fas fa-edit"></i></a>
-                        <a href="/pdf/damage_report/{{$dr->id}}" class="btn btn-primary"><i class="fas fa-download fa-sm text-white"></i></a>
-                    </td>
+                    <td>{{$season->id}}</td>
+                    <td>{{$season->created_at->toFormattedDateString()}}</td>
+
                 </tr>
-                @endforeach --}}
+                @endforeach
             @else
-                <p>No reports found</p>
+                <p>No seasons found</p>
             @endif
+            </tbody>
         </table>
     </div>
 </div>
+@endsection
+
+@section('sales-js')
+    <script src="/lib/jquery.plugin.js"></script>
+    <script src="/lib/jquery.min.js"></script>
+    <script src="ddtf.js"></script>
+    <script>
+        
+    </script>
 @endsection

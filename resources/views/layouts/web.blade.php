@@ -26,6 +26,8 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/Content/css/weather-icons/css/weather-icons.min.css" />
     
+
+    
 </head>
 <body id="page-top">
     <div id="wrapper">
@@ -45,6 +47,7 @@
     @yield('extra-js')
     @yield('weather-js')
     @yield('weather-option-js')
+    @yield('sales-js')
 
 </body>
 </html>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\DamageReport;
 use App\Order;
+use App\Season;
 
 
 class SaleReportController extends Controller
@@ -18,10 +19,12 @@ class SaleReportController extends Controller
     {
         $dreports = DamageReport::all();
         $orders = Order::all();
+        $seasons = Season::all();
 
         return view('reports.sales_reports.index')
             ->with('orders', $orders)
             ->with('dreports',$dreports)
+            ->with('seasons',$seasons)
             ;
     }
 

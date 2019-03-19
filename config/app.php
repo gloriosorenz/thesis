@@ -164,6 +164,7 @@ return [
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         // Yajra\Address\AddressServiceProvider::class,
         Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
+        // ConsoleTVs\Charts\ChartsServiceProvider::class,
 
         Collective\Html\HtmlServiceProvider::class,
         // Barryvdh\DomPDF\ServiceProvider::class,
@@ -240,7 +241,7 @@ return [
         // 'PDF' => Barryvdh\DomPDF\Facade::class,
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
-
+        // 'Charts' => ConsoleTVs\Charts\Charts::class
     ],
 
 ];
