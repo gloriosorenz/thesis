@@ -32,7 +32,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="invoice-title">
-                            <h3>Order #{{$order->order_id}}</h3>
+                            <h3>Order #{{$order->tracking_id}}</h3>
                         </div>
                         <hr>
                         <div class="row">
