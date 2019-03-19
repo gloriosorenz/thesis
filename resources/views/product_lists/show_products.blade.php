@@ -1,12 +1,9 @@
 @extends('layouts.web')
 @section('content')
 
-{{-- <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">Samahan ng Magsasaka Sta. Rosa Laguna Portal</h1>
-    <p class="lead">All products are produced by the farmers of Laguna.</p>
-</div> --}}
+
 <br>
-{{-- JUMBOTRON --}}
+<!-- Jumbotron -->
 <div class="jumbotron p-3 p-md-5 rounded text-center">
     <div class="col-md-12 px-0">
         <h1 class="display-4 font-bold">Samahan ng Magsasaka <br>Sta. Rosa Laguna RicE-Commerce</h1>
@@ -21,8 +18,7 @@
             <div class="card shadow mb-4">
                 <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
                 <div class="card-body">
-                    <h4 class="card-title"><a href="/product_lists/view_product/{{$product_list->id}}" title="View Product">{{ $product_list->products->type }}</a></h4>
-                    {{-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
+                    <h4 class="card-title">{{ $product_list->products->type }}</h4>
                     <ul class="list-unstyled mt-3 mb-4">
                         <li>FOR TEST REASONS = Season {{ $product_list->seasons->id }}</li>
                         <li>Available: {{ $product_list->curr_quantity }}</li>

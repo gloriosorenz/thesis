@@ -178,20 +178,20 @@ class ProductListController extends Controller
     public function update(Request $request, $id)
     {
         $season = Season::findOrFail($id);
+        $id = $season->id;
 
-      
-
-        foreach($request['products_id'] as $key => $value) {
+        foreach($request->products_id as $key => $value) {
             DB::table('product_lists')
-                ->where('seasons_id', '=', $season->id)
-                ->where('users_id', auth()->user()->id)
-                ->update([
-                    'curr_quantity' => $request->curr_quantity [$key],
-                    'price'=>$request->price [$key],
-                    'harvest_date'=>$request->harvest_date [$key],
-                    'updated_at' => \Carbon\Carbon::now(),  # \Datetime()
-                    ]);
-        }
+            ->where('seasons_id', '=', $season->id)
+            ->where('users_id', auth()->user()->id)
+            ->update([
+                'products_id'=>$request->products_id [$key],
+                'curr_quantity' => $request->curr_quantity [$key],
+                'price'=>$request->price [$key],
+                'harvest_date'=>$request->harvest_date [$key],
+                'updated_at' => \Carbon\Carbon::now(),  # \Datetime()
+                ]);
+        }  
         
         return redirect()->route('product_lists.index')->with('success','Season Updated ');
     }
@@ -215,9 +215,15 @@ class ProductListController extends Controller
      */
     public function display_products()
     {
+        // Get latest season
+        $latest_season = DB::table('seasons')
+                ->where('season_statuses_id', 2)
+                ->orderBy('id', 'desc')->first();
+
         //Show All Products Page
         $product_lists = ProductList::where('products_id', '!=', 3) 
                         ->where('curr_quantity', '>', 0)
+                        ->where('seasons_id', $latest_season->id)
                         ->get();
 
         // $product_lists = ProductList::all();
