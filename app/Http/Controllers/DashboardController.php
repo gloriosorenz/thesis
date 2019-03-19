@@ -42,11 +42,11 @@ class DashboardController extends Controller
             ->sum('curr_quantity');
 
         // Chart
-        $allseasonid = Season::orderBy('id')->pluck( 'id');
-        $product_lists_id = ProductList::pluck('id');
-        $prodid = ProductList::pluck('products_id');
-        $rprodct = ProductList::where('products_id','=',1);
-        $quantity = ProductList::pluck('curr_quantity');
+        // $allseasonid = Season::orderBy('id')->pluck( 'id');
+        // $product_lists_id = ProductList::pluck('id');
+        // $prodid = ProductList::pluck('products_id');
+        // $rprodct = ProductList::where('products_id','=',1);
+        // $quantity = ProductList::pluck('curr_quantity');
 
         // $dmg_prod_ls = ProductList::where('seasons_id', $last_com_season->id);
         $prodlistid = ProductList::groupBy('products_id')->pluck('products_id');
@@ -69,32 +69,12 @@ class DashboardController extends Controller
             ->pluck('sum','products_id');
         */
 
-        // $char
-        // $data = ProductList::all();
-        // $chart = Charts::create('bar', 'highcharts')
-        //      ->title('My nice chart')
-        //      ->elementLabel('My nice label')
-        //      ->labels($data->pluck('products_id'))
-        //      ->values($data->pluck('curr_quantity'))
-        //      ->responsive(true);
-
         $chart = Charts::create('pie', 'highcharts')
                 ->title('Total Production Percentage')
                 ->labels($prodjoin)
                 ->values($prodlist)
                 ->dimensions(500,250)
                 ->responsive(false);
-
-        // $chart= Charts::database(ProductList::all(),'bar', 'material')
-        // ->responsive(false);
-        // ->setWidth(0)
-
-        // $countrice = DB::table('product_lists')
-        // ->select(DB::raw("SUM(curr_quantity) as count"))
-        // ->where('products_id',$prodid)
-        // ->get();
-        // $totalVisits = ProductList::pluck('id')->totalVisits();
-        
         /*
             $chart = new OrderChart;
             $chart = Charts::database(ProductList::all(),'bar','material')
@@ -102,12 +82,7 @@ class DashboardController extends Controller
             ->setWidth(0)
             ->groupBy('products_id');
         */
-
-        // $chart = new OrderChart;
-        // $chart->labels($prodid);
-        // $chart->dataset('My dataset', 'bar', $countrice);
-        // $chart->dataset('My dataset 2', 'bar', $countrice);
-
+        
         // //Lava Charts
         // $lava = new Lavacharts;
         // $season_start = Season::count();
