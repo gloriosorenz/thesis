@@ -15,7 +15,7 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('tracking_id');
+            $table->integer('tracking_id')->unique();
             $table->integer('order_statuses_id')->unsigned()->nullable();
             $table->double('total_price');
 

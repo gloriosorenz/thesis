@@ -86,7 +86,7 @@
 
             <div class="col-md-6 mb-5">
                 <div class="card h-100">
-                    <img class="card-img-top" src="http://placehold.it/300x200" alt="">
+                    <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="">
                     <div class="card-body">
                     <h4 class="card-title">{{$product->type}}</h4>
                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
