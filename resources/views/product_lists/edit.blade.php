@@ -58,7 +58,7 @@
                     <tr>
                         <td>
                             <input type="text" class="form-control" name="product_type" value="{{$product->products->type}}" disabled/>
-                            <input name="products_id[]" type="hidden" value="{{$product->id}}">
+                            <input name="products_id[]" type="hidden" value="{{$product->id}}"/>
                         </td>
                         <td><input type="text" class="form-control" name="curr_quantity[]" value="{{$product->curr_quantity}}"/></td>
                         <td><input type="text" class="form-control" name="price[]" value="{{$product->price}}"/></td>

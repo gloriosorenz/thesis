@@ -75,7 +75,7 @@
             <tbody>
                 @foreach ($done as $order)
                 <tr class="active">
-                    <td>{{$order->id}}</td>
+                    <td>{{$order->tracking_id}}</td>
                     <td>{{$order->created_at->toFormattedDateString()}}</td>
                     <td>{{$order->total_price}}</td>
                     <td>
@@ -109,7 +109,7 @@
             <tbody>
                 @foreach ($cancelled as $order)
                 <tr class="active">
-                    <td>{{$order->id}}</td>
+                    <td>{{$order->tracking_id}}</td>
                     <td>{{$order->created_at->toFormattedDateString()}}</td>
                     <td>{{$order->total_price}}</td>
                     <td>

@@ -148,7 +148,7 @@ class OrderController extends Controller
         $orders = Order::all();
         $pending = Order::where('order_statuses_id', 1)->get();
         $done = Order::where('order_statuses_id', 2)->get();
-        $cancelled = Order::where('order_statuses_id', 3)->get();
+        $cancelled = Order::where('order_statuses_id', 4)->get();
         
         // dd($orders);
         return view('orders/my_orders')

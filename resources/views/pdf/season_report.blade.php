@@ -13,9 +13,9 @@
         <br>
         <div class="row text-center">
             <div class="col-lg-12">
-                <h4><small>CITY COOPERATIVE DEVELOPMENT OFFICE</small> <br>
+                <h5><small>CITY COOPERATIVE DEVELOPMENT OFFICE</small> <br>
                     <strong>SAMAHAN NG MAGSASAKA STA. ROSA LAGUNA</strong>
-                </h4>
+                </h5>
             </div>
         </div>
 

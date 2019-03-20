@@ -3,14 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\DamageReport;
-use App\Order;
-use App\Season;
-use App\ProductList;
-use PDF;
-use DB;
+use App\PlantReport;
 
-class SaleReportController extends Controller
+class PlantReportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,15 +14,10 @@ class SaleReportController extends Controller
      */
     public function index()
     {
-        $dreports = DamageReport::all();
-        $orders = Order::all();
-        $seasons = Season::all();
+        $preports = PlantReport::all();
 
-        return view('reports.sale_reports.index')
-            ->with('orders', $orders)
-            ->with('dreports',$dreports)
-            ->with('seasons',$seasons)
-            ;
+        return view('reports.plant_reports.index')
+            ->with('preports', $preports);
     }
 
     /**
@@ -94,25 +84,5 @@ class SaleReportController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-
-
-    public function pdfview(Request $request, $id)
-    {
-
-        $season = Season::findOrFail($id);
-        $prod_list = ProductList::where('seasons_id', $season->id)->get();
-
-        $sales = DB::table('orders')
-                ->where('order_statuses_id', 2)
-                ->sum('total_price');
-
-        
-
-        // pass view file
-        $pdf = PDF::loadView('pdf.sale_report', compact('season'), compact('sales'))->setPaper('a4', 'landscape');
-        // download pdf
-        return $pdf->stream('sale_report.pdf');
     }
 }

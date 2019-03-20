@@ -29,7 +29,7 @@
                         <td>{{$p->created_at->toFormattedDateString()}}</td>
                         <td>{{$p->total_price}}</td>
                         <td>
-                            <a href="/pdf/invoice/{{$p->id}}" class="btn btn-primary"><i class="fas fa-download fa-sm text-white"></i></a>
+                            <a href="/pdf/invoice/{{$p->id}}" class="btn btn-secondary"><i class="fas fa-download fa-sm text-white"></i></a>
                         </td>
                     </tr>
                     @endif
@@ -55,7 +55,7 @@
         <table id="orders_table" class="table table-hover track_tbl">
             <thead>
                 <tr>
-                    <th>Order ID</th>
+                    <th>Tracking ID</th>
                     <th>Order Date</th>
                     <th>Price</th>
                     <th>Options</th>
@@ -65,11 +65,11 @@
                 @foreach ($done as $order)
                     @if ($order->users_id == auth()->user()->id)
                     <tr class="active">
-                        <td>{{$order->id}}</td>
+                        <td>{{$order->tracking_id}}</td>
                         <td>{{$order->created_at->toFormattedDateString()}}</td>
                         <td>{{$order->total_price}}</td>
                         <td>
-                            {{-- <a href="/orders/{{$order->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a> --}}
+                            <a href="/pdf/invoice/{{$order->id}}" class="btn btn-secondary"><i class="fas fa-download fa-sm text-white"></i></a>
                         </td>
                     </tr>
                     @endif
@@ -95,7 +95,7 @@
         <table id="orders_table" class="table table-hover track_tbl">
             <thead>
                 <tr>
-                    <th>Order ID</th>
+                    <th>Tracking ID</th>
                     <th>Order Date</th>
                     <th>Price</th>
                     <th>Options</th>
@@ -105,11 +105,11 @@
                 @foreach ($cancelled as $order)
                     @if ($order->users_id == auth()->user()->id)
                     <tr class="active">
-                        <td>{{$order->id}}</td>
+                        <td>{{$order->tracking_id}}</td>
                         <td>{{$order->created_at->toFormattedDateString()}}</td>
                         <td>{{$order->total_price}}</td>
                         <td>
-                            <a href="/orders/{{$order->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
+                            <a href="/pdf/invoice/{{$order->id}}" class="btn btn-secondary"><i class="fas fa-download fa-sm text-white"></i></a>
                         </td>
                     </tr>
                     @endif

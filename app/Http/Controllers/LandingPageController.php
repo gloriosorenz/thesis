@@ -10,6 +10,8 @@ use Log;
 use Gmopx\LaravelOWM\LaravelOWM;
 use Cmfcmf\OpenWeatherMap;
 use Cmfcmf\OpenWeatherMap\Exception as OWMException;
+use App\ProductList;
+use Carbon\Carbon;
 
 class LandingPageController extends Controller
 {
@@ -59,6 +61,8 @@ class LandingPageController extends Controller
             // dd($forecast);
             // dd($current_weather);
         // return view('welcome', ["forecast" => $forecast]);
+
+
 
 
         return view('landing-page')

@@ -35,7 +35,6 @@
                             <th width="5%">ID</th>
                             <th width="30%">Farmer</th>
                             <th width="25%">Season</th>
-                            <th width="25%">Status</th>
                             <th width="15%">Options</th>
                         </tr>
                     </thead>
@@ -45,7 +44,6 @@
                                 <td>{{$o->id}}</td>
                                 <td>{{$o->users->company}}</td>
                                 <td>Season {{$o->seasons->id}}</td>
-                                <td>{{$o->season_list_statuses->status}}</td>
                                 <td>
                                     {{-- <a href="#"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a> --}}
                                     <a href="/season_statuses/complete_season_farmer/{{$o->id}}" class="btn btn-success">Done <i class="fas fa-check"></i></a>
@@ -74,8 +72,7 @@
                             <th width="5%">ID</th>
                             <th width="35%">Farmer</th>
                             <th width="20%">Season</th>
-                            <th width="20%">Status</th>
-                            <th width="20%">Options</th>
+                            <th width="15%">Options</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,7 +81,6 @@
                             <td>{{$d->id}}</td>
                             <td>{{$d->users->company}}</td>
                             <td>Season {{$d->seasons->id}}</td>
-                            <td>{{$d->season_list_statuses->status}}</td>
                             <td>
                                 {{-- <a href="#"><button class="btn btn-info btn-md btn-fill" id="btn_view" name="btn_view">View <i class="fas fa-eye"></i></button></a> --}}
                                 <a href="/season_statuses/cancel/{{$d->id}}" class="btn btn-danger">Cancel <i class="fas fa-trash"></i></a>

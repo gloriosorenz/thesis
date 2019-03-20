@@ -101,6 +101,7 @@ Route::get('/season_statuses/complete_season/{id}', 'SeasonStatusController@comp
 Route::get('pdf/damage_report/{id}', 'DamageReportController@pdfview');
 Route::get('pdf/invoice/{id}', 'OrderController@pdfview');
 Route::get('pdf/season_report/{id}', 'SeasonController@pdfview');
+Route::get('pdf/sale_report/{id}', 'SaleReportController@pdfview');
 
 // Weather
 Route::get('/weather/weather_statistics', 'LandingPageController@weather_statistics')->name('weather_statistics');
@@ -115,11 +116,13 @@ Route::resource('customers', 'CustomerController');
 Route::resource('products', 'ProductController');
 Route::resource('product_lists', 'ProductListController');
 Route::resource('seasons', 'SeasonController');
+Route::resource('season_statuses', 'SeasonStatusController');
 Route::resource('dashboard', 'DashboardController');
 Route::resource('orders', 'OrderController');
 Route::resource('damage_reports', 'DamageReportController');
-Route::resource('sales_reports', 'SaleReportController');
-Route::resource('season_statuses', 'SeasonStatusController');
+Route::resource('sale_reports', 'SaleReportController');
+Route::resource('plant_reports', 'PlantReportController');
+
 
 
 

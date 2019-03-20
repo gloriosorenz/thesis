@@ -37,5 +37,10 @@ class ProductList extends Model
     {
         return $this->belongsTo(User::class, 'users_id');
     }
+
+    public function getProd1($data){
+        return $data->curr_quantity;
+    }
+
 }
 

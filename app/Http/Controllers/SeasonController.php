@@ -322,14 +322,6 @@ class SeasonController extends Controller
         $product_lists = ProductList::where('seasons_id', $season->id)->get();
 
 
-
-        // $dreport = DamageReport::findOrFail($id);
-        // $ddatas = DamageData::where('damage_reports_id', $dreport->id)->get();
-
-        // $users = DB::table('users')->get();
-        // view()->share('users',$users);
-
-
         // pass view file
         $pdf = PDF::loadView('pdf.season_report', compact('season'), compact('lists'))->setPaper('a4', 'landscape');
         // download pdf
