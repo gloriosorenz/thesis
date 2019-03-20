@@ -36,11 +36,11 @@
     </li>
 
     <!-- Products -->
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link" href="{{ route('product_lists.index') }}">
         <i class="fas fa-box"></i>
         <span>Products</span></a>
-    </li>
+    </li> --}}
 
     <!-- Orders -->
     <li class="nav-item">
@@ -132,7 +132,7 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Components:</h6>
-                <a class="collapse-item" href="{{ route('reports.index') }}">Sales Report</a>
+                <a class="collapse-item" href="{{ route('sales_reports.index') }}">Sales Report</a>
                 <a class="collapse-item" href="#">Season Reports</a>
                 <a class="collapse-item" href="{{ route('plant_reports.index') }}">Plant Reports</a>
                 <a class="collapse-item" href="{{ route('damage_reports.index') }}">Damage Report</a>

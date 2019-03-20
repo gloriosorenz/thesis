@@ -102,6 +102,7 @@ Route::get('pdf/damage_report/{id}', 'DamageReportController@pdfview');
 Route::get('pdf/invoice/{id}', 'OrderController@pdfview');
 Route::get('pdf/season_report/{id}', 'SeasonController@pdfview');
 Route::get('pdf/sales_report/{id}', 'SalesReportController@pdfview');
+Route::get('pdf/plant_report/{id}', 'PlantReportController@pdfview');
 
 // Weather
 Route::get('/weather/weather_statistics', 'LandingPageController@weather_statistics')->name('weather_statistics');

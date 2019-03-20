@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@include('partials.add_data_javascript')
+{{-- @include('partials.add_data_javascript') --}}
 @section('content')
 <!-- Breadcrumb -->
 <nav aria-label="breadcrumb">
@@ -166,24 +166,23 @@
                             <th>Fish</th>
                             <th>Area</th>
                             <th>Fish Pieces</th>
-                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody class="resultbody">
+                        @foreach ($ddatas as $d)
                         <tr>
-                            <td><input type="text" class="form-control" name="crop[]" value=""/></td>
-                            <td><input type="text" class="form-control" name="crop_stage[]" value=""/></td>
-                            <td><input type="text" class="form-control" name="production[]" value=""/></td>
-                            <td><input type="text" class="form-control" name="animal[]" value=""/></td>
-                            <td><input type="text" class="form-control" name="animal_head[]" value=""/></td>
-                            <td><input type="text" class="form-control" name="fish[]" value=""/></td>
-                            <td><input type="text" class="form-control" name="area[]" value=""/></td>
-                            <td><input type="text" class="form-control" name="fish_pieces[]" value=""/></td>
-                            <td><input type="button" class="btn btn-danger remove" value="x"></td>
+                            <td><input type="text" class="form-control" name="crop[]" value="{{$d->crop}}"/></td>
+                            <td><input type="text" class="form-control" name="crop_stage[]" value="{{$d->crop_stage}}"/></td>
+                            <td><input type="text" class="form-control" name="production[]" value="{{$d->production}}"/></td>
+                            <td><input type="text" class="form-control" name="animal[]" value="{{$d->animal}}"/></td>
+                            <td><input type="text" class="form-control" name="animal_head[]" value="{{$d->animal_head}}"/></td>
+                            <td><input type="text" class="form-control" name="fish[]" value="{{$d->fish}}"/></td>
+                            <td><input type="text" class="form-control" name="area[]" value="{{$d->area}}"/></td>
+                            <td><input type="text" class="form-control" name="fish_pieces[]" value="{{$d->fish_pieces}}"/></td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
-                <center><input type="button" class="btn btn-lg btn-warning addRow" value="+"></center>
             </div>
         </div>
     </div>

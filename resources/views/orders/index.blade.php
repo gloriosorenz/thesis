@@ -31,7 +31,7 @@
                     <th>Tracking ID</th>
                     <th>Order Date</th>
                     <th>Price</th>
-                    <th>Options</th>
+                    <th width="15%">Options</th>
                 </tr>
             </thead>
             <tbody>
@@ -69,7 +69,7 @@
                     <th>Tracking ID</th>
                     <th>Order Date</th>
                     <th>Price</th>
-                    <th>Options</th>
+                    <th width="15%">Options</th>
                 </tr>
             </thead>
             <tbody>
@@ -103,7 +103,7 @@
                     <th>Tracking ID</th>
                     <th>Order Date</th>
                     <th>Price</th>
-                    <th>Options</th>
+                    <th width="15%">Options</th>
                 </tr>
             </thead>
             <tbody>

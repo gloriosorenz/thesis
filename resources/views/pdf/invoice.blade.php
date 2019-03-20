@@ -55,7 +55,7 @@
                                 <address>
                                     <strong>Payment Method:</strong><br>
                                     Cash<br>
-                                    {{auth()->user()->email}}
+                                    {{-- {{auth()->user()->email}} --}}
                                 </address>
                             </div>
                             <div class="col-md-6 text-right">
@@ -82,7 +82,7 @@
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <td><strong>Item</strong></td>
+                                                <td class="text-left"><strong>Item</strong></td>
                                                 <td class="text-center"><strong>Seller</strong></td>
                                                 <td class="text-center"><strong>Price</strong></td>
                                                 <td class="text-center"><strong>Quantity</strong></td>
@@ -92,31 +92,19 @@
                                         <tbody>
                                             @foreach ($orders as $item)
                                             <tr>
-                                                <td>{{ $item->product_lists->products->type }}</td>
-                                                <td>{{ $item->product_lists->users->company }}</td>
-                                                <td class="text-center"></td>
-                                                <td class="text-center">{{ $item->qty }} kaban/s</td>
-                                                <td class="text-right">{{ presentPrice($item->subtotal) }}</td>
+                                                <td class="text-left">{{ $item->product_lists->products->type }}</td>
+                                                <td class="text-center">{{ $item->product_lists->users->company }}</td>
+                                                <td class="text-center">{{$item->product_lists->price}}</td>
+                                                <td class="text-center">{{ $item->quantity }} kaban/s</td>
+                                                <td class="text-right">{{ presentPrice($item->product_lists->price *  $item->quantity)}}</td>
                                             </tr>
                                             @endforeach
-                                            {{-- <tr>
-                                                <td class="thick-line"></td>
-                                                <td class="thick-line"></td>
-                                                <td class="thick-line text-center"><strong>Subtotal</strong></td>
-                                                <td class="thick-line text-right">$670.99</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="no-line"></td>
-                                                <td class="no-line"></td>
-                                                <td class="no-line text-center"><strong>Shipping</strong></td>
-                                                <td class="no-line text-right">$15</td>
-                                            </tr> --}}
                                             <tr>
                                                 <td class="thick-line"></td>
                                                 <td class="thick-line"></td>
                                                 <td class="thick-line"></td>
                                                 <td class="thick-line text-center"><strong>Total</strong></td>
-                                                <td class="thick-line text-right">₱{{$order->total_price}}</td>
+                                                <td class="thick-line text-right">₱{{presentPrice($order->total_price)}}</td>
                                             </tr>
                                         </tbody>
                                     </table>

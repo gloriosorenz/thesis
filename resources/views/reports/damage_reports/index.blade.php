@@ -29,7 +29,7 @@
                     <th width="">ID</th>
                     <th width="">Calamity</th>
                     <th width="">Date Created</th>
-                    <th width="">Options</th>
+                    <th width="15%">Options</th>
                 </tr>
             </thead>
             <tbody>
