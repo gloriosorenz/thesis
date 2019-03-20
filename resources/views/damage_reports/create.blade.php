@@ -5,7 +5,7 @@
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Dashboard</a></li>
-    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('damage_reports.index') }}">Damage Report</a></li>
+    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('damage_reports.index') }}">Damage Reports</a></li>
     <li class="breadcrumb-item active" aria-current="page">Create</li>
 </ol>
 </nav>
@@ -26,41 +26,40 @@
             </div>
             <div class="card-body">
                 <div class="row">
-                    <!-- Calamity -->
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="calamity">Calamity:</label>
-                            <input type="text" class="form-control" name="calamity" value="" />
+                            <select class="form-control" name="calamity" id="calamity">
+                                <option value="0" selected="true" disabled="True">Select Calamity</option>
+                                @foreach ($calamities as $calamity)
+                                    <option value="{{ $calamity['id']}}">{{ $calamity['type']}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <!-- Region -->
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="region">Region:</label>
-                            <select class="form-control" name="region" id="region">
-                                <option value="0" selected="true" disabled="True">Select Region</option>
-                                @foreach ($regions as $region)
-                                    <option value="{{ $region['id']}}">{{ $region['name']}}</option>
-                                @endforeach
-                            </select>
+                            @foreach($calabarzon as $c)
+                                <input readonly type="text" class="form-control" value="{{$c->name}}"/>
+                            @endforeach
                         </div>
                     </div>
 
-                    <!-- Provice -->
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="barangay">Province:</label>
-                            <select class="form-control" name="province" id="province">
-                                <option value="0" selected="true" disabled="True">Select Province</option>
-                                @foreach ($provinces as $province)
-                                    <option value="{{ $province['id']}}">{{ $province['name']}}</option>
+                    <!-- Province -->
+                    <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="province">Province:</label>
+                                @foreach($laguna as $l)
+                                    <input readonly type="text" class="form-control"  value="{{$l->name}}"/>
                                 @endforeach
-                            </select>
+                            </div>
                         </div>
-                    </div>
+
                 </div>
 
                 <div class="row">
