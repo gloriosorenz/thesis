@@ -78,8 +78,8 @@ class DashboardController extends Controller
                 ->responsive(true);
         
         $areachart = Charts::database(Order::where('order_statuses_id','=',2)->get(),'line', 'highcharts')
-                ->title('Total Production Percentage')
-                ->elementLabel("Orders")
+                ->title('For the current year (per Month)')
+                ->elementLabel("Number of Orders")
                 // ->values($prodlist)
                 ->dimensions(700,450)
                 ->responsive(true)

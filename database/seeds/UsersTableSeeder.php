@@ -148,7 +148,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'larryaristorenas@yahoo.com',  //temp
                 'phone' => '09178484154', //temp
                 'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
-                'company' => 'Samahan ng Magsasaka', //temp
+                'company' => 'Samahan ng Magsasaka sa Sta. Rosa Laguna', //temp
                 'no_farmers' => 18, //temp
                 'hectares' => 19.10, //temp
                 'roles_id' => 2, 
@@ -165,7 +165,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'gregtrinidad@yahoo.com',  //temp
                 'phone' => '09178484154', //temp
                 'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
-                'company' => 'Irrigators', //temp
+                'company' => 'Makabling River Irrigators',
                 'no_farmers' => 18, //temp
                 'hectares' => 19.10, //temp
                 'roles_id' => 2,
@@ -182,7 +182,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'eduardoumali@yahoo.com',  //temp
                 'phone' => '09178484154', //temp
                 'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
-                'company' => 'Irrigators', //temp
+                'company' => 'Diezmo River Irrigators Association',
                 'no_farmers' => 18, //temp
                 'hectares' => 19.10, //temp
                 'roles_id' => 2, 
