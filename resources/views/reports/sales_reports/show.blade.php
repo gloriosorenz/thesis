@@ -15,35 +15,35 @@
 <br>
 
 <div class="wrapper">
+    <div class="container">
     <br>
     <div class="row text-center">
         <div class="col-lg-12">
-            <h6><small>CITY COOPERATIVE DEVELOPMENT OFFICE</small> <br>
-                <strong>SAMAHAN NG MAGSASAKA STA. ROSA LAGUNA</strong>
-            </h6>
+            <h1><strong>SEASON {{$season->id}} SALES REPORT</strong></h1>
         </div>
     </div>
-
     <br>
-    <div class="row text-center">
-        <div class="col-lg-12">
-            <h3><strong>SEASON {{$season->id}} SALES REPORT</strong></h3>
+    <br>
+
+    <div class="row">
+        <div class="offset-2 col-lg-4">
+            <h4>
+            <div class="text-left">Season Start: {{$season->season_start}}</div>
+            </h4>
+        </div>
+        <div class="col-lg-4">
+            <h4>
+                    <div class="text-right">Season End: {{$season->season_end}}</div>
+            </h4>
         </div>
     </div>
+    
+    <br>
+    <br>
 
     <div class="row">
         <div class="col-lg-12">
-            <strong>
-            <p>Season Start: {{$season->season_start}}</p>
-            <p>Season End: {{$season->season_end}}</p>
-            </strong>
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col-lg-12">
-            <table class="table table-striped">
+            <table id="table_id" class="table table-striped">
                 <thead>
                     <th width="11.25">Order Product Number</th>
                     <th width="11.25">Order Track Number </th>
@@ -68,6 +68,18 @@
                         <td>{{$g->created_at}}</td>
                     </tr>
                     @endforeach
+                    <tr>
+                        <td class="thick-line"></td>
+                        <td class="thick-line"></td>
+                        <td class="thick-line"></td>
+                        <td class="thick-line"></td>
+                        <td class="thick-line text-right"><strong>Total Amount: </strong></td>
+                        <td class="thick-line text-left">
+                                @foreach($allprodsum as $sum)
+                                <h4> {{presentPrice($sum)}} </h4>
+                            @endforeach
+                        </td>
+                    </tr>
                 </tbody>
             </table>
 
@@ -91,6 +103,7 @@
             <p><strong>Noted By:</strong></p>
         </div>
     </div> --}}
+    </div>
 </div>
 <!-- End wrapper -->
 @endsection
