@@ -9,6 +9,8 @@ use App\User;
 use App\Barangay;
 use App\City;
 use App\Province;
+use Mail;
+use App\Mail\SendPassword;
 
 class RiceFarmerController extends Controller
 {
@@ -52,14 +54,14 @@ class RiceFarmerController extends Controller
      */
     public function store(Request $request)
     {
-        $random = str_shuffle('abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890!$%^&!$%^&');
+        $random = str_shuffle('abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890');
         $password = substr($random, 0, 6);
         
         // Validation
         $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'email' => 'string|email|max:255',
+            'email' => 'unique:users,email,$this->id,id',
             'phone' => 'required|string|max:255',
             'street' => 'required|string|max:255',
             'barangay' => 'required',
@@ -84,9 +86,17 @@ class RiceFarmerController extends Controller
         $user->roles_id = 2;
         $user->save();
 
-    
-        // $farmers = RiceFarmer::create($request->all());
-        // $users = User::create($request->all());
+
+         // EMAIL
+         $first_name = $user->first_name;
+         $data = array(
+             'password' => $password,
+             'first_name' => $first_name,
+         );
+          // Mail to User
+          Mail::to($user->email)->send(
+              new SendPassword($data)
+          );
 
         return redirect()->route('rice_farmers.index')->with('success','Farmer Created ');
     }

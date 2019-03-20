@@ -28,7 +28,7 @@
         <table id="orders_table" class="table table-hover track_tbl">
             <thead>
                 <tr>
-                    <th>Order ID</th>
+                    <th>Tracking ID</th>
                     <th>Order Date</th>
                     <th>Price</th>
                     <th>Options</th>
@@ -66,7 +66,7 @@
         <table id="orders_table" class="table table-hover track_tbl">
             <thead>
                 <tr>
-                    <th>Order ID</th>
+                    <th>Tracking ID</th>
                     <th>Order Date</th>
                     <th>Price</th>
                     <th>Options</th>
@@ -100,7 +100,7 @@
         <table id="orders_table" class="table table-hover track_tbl">
             <thead>
                 <tr>
-                    <th>Order ID</th>
+                    <th>Tracking ID</th>
                     <th>Order Date</th>
                     <th>Price</th>
                     <th>Options</th>

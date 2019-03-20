@@ -15,7 +15,7 @@
 <br>
 <div class="row">
   <div class="col-md-8">
-    <div class="card">
+    <div class="card shadow mb-4">
       <div class="card-header card-header-primary">
         <h4 class="card-title">{{ $customer->first_name }} {{ $customer->last_name }}'s Profile</h4>
         <p class="card-category">Edit your profile</p>

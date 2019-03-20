@@ -97,10 +97,10 @@ class CheckoutController extends Controller
             Cart::instance('default')->destroy();
 
 
-            // User Email
-            $email = auth()->user()->email;
+            // // User Email
+            // $email = auth()->user()->email;
 
-            // Mail to User
+            // // Mail to User
             // Mail::to($email)->send(
             //     new OrderCreated()
             // );

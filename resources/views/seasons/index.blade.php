@@ -18,7 +18,7 @@
 
 <!-- Complete Season-->
 @if ($latest_season->season_statuses_id == 1)
-<a class="btn btn-secondary btn-md mb-2" href="/seasons/complete_season/{{$latest_season->id}}">Complete Season <i class="fas fa-check"></i></a>
+<a class="btn btn-secondary btn-md mb-2" href="/seasons/complete_season/{{$latest_season->id}}">Complete Season {{$latest_season->id}} <i class="fas fa-check"></i></a>
 @endif
       
       

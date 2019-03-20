@@ -15,7 +15,7 @@
         <table id="orders_table" class="table table-hover track_tbl">
             <thead>
                 <tr>
-                    <th>Order ID</th>
+                    <th>Tracking ID</th>
                     <th>Order Date</th>
                     <th>Price</th>
                     <th>Options</th>
@@ -25,7 +25,7 @@
                 @foreach ($pending as $p)
                     @if ($p->users_id == auth()->user()->id)
                     <tr class="active">
-                        <td>{{$p->order_id}}</td>
+                        <td>{{$p->tracking_id}}</td>
                         <td>{{$p->created_at->toFormattedDateString()}}</td>
                         <td>{{$p->total_price}}</td>
                         <td>

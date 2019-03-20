@@ -16,7 +16,7 @@
 <br>
 
 <!-- User List Datatable -->
-<div class="card">
+<div class="card shadow mb-4">
     <div class="card-header">
         <h2 class="title">Users</h2>
     </div>

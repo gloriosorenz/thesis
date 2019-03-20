@@ -19,11 +19,11 @@
     
             @if (sizeof(Cart::content()) > 0)
     
-            <div class="card shadow mb-4">
+            {{-- <div class="card shadow mb-4">
                 <div class="card-header">
                     <h2 class="title">Your Cart</h2>
                 </div>
-                <div class="card-body">
+                <div class="card-body"> --}}
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -89,8 +89,8 @@
                     </table>
                     <a href="{{ url('/product_lists/show_products') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
                 <a href="{{ route('checkout.index') }}" class="btn btn-success btn-lg">Proceed to Checkout</a>
-                </div>
-            </div>
+                {{-- </div>
+            </div> --}}
     
                 
                 

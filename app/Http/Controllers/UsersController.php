@@ -9,6 +9,8 @@ use App\Role;
 use App\Barangay;
 use App\City;
 use App\Province;
+use Mail;
+use App\Mail\SendPassword;
 
 class UsersController extends Controller
 {
@@ -52,19 +54,20 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $random = str_shuffle('abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890!$%^&!$%^&');
+        $random = str_shuffle('abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890');
         $password = substr($random, 0, 6);
 
-        // Validation
-        $request->validate([
+       // Validation
+       $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
+            'email' => 'unique:users,email,$this->id,id',
             'phone' => 'required|string|max:255',
             'street' => 'required|string|max:255',
             'barangay' => 'required',
             'city' => 'required',
             'province' => 'required',
+            'roles_id' => 'required',
         ]);
 
         $user = new User;
@@ -81,8 +84,18 @@ class UsersController extends Controller
         // $user->password = Hash::make($request['password']);
         $user->password = Hash::make($password);
         $user->save();
-        
-        // $users = User::create($request->all());
+
+         
+        // EMAIL
+        $first_name = $user->first_name;
+        $data = array(
+            'password' => $password,
+            'first_name' => $first_name,
+        );
+         // Mail to User
+         Mail::to($user->email)->send(
+             new SendPassword($data)
+            );
 
         return redirect()->route('users.index')->with('success','User Created ');
     }

@@ -112,7 +112,8 @@
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-success">Update</button>
+          <button type="submit" class="btn btn-lg btn-success">Update</button>
+          <a class="btn btn-lg btn-danger" href="{{ route('rice_farmers.index') }}">Cancel</a>
         </form>
       </div>
     </div>
