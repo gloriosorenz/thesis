@@ -32,9 +32,12 @@ class ProductListController extends Controller
         $product_lists = SeasonList::all();
 
         
+
+        
         return view('product_lists.index')
             ->with('seasons', $seasons)
-            ->with('product_lists', $product_lists);
+            ->with('product_lists', $product_lists)
+            ;
     }
 
      
@@ -110,6 +113,29 @@ class ProductListController extends Controller
         
         $season = Season::find($id);
         $product_lists = ProductList::where('seasons_id', $season->id)->get();
+
+
+        $productlist = ProductList::where('harvest_date', '>', Carbon::now()->subdays(7))
+        // ->where('products_id', '=', 1)
+        ->get();
+
+
+        foreach($productlist as $pl){
+            if($pl->products_id == 1){
+                $pl->products_id = 2;
+            }
+
+            elseif($pl->products_id == 2){
+                $pl->products_id = 3;
+            }
+        }
+
+
+        // $product_lists->update([
+        //     'products_id' =>
+        // ]);
+
+        // dd($product_lists);
 
         // $product = ProductList::where('created_at', '>=', Carbon::now()->subDays(7))
         //     ->where('product_id', '=', 2)
@@ -202,5 +228,14 @@ class ProductListController extends Controller
         return view('product_lists.view_product')
             ->with('season', $season)
             ->with('product_lists', $product_lists);
+    }
+
+    public function check_product(){
+
+        $product_lists = ProductList::where('harvest_date', '>=', Carbon::now()->subdays(3))
+                ->where('products_id', '=', 1);
+
+        dd($product_lists);
+        
     }
 }
