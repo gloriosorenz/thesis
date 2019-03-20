@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\DamageReport;
 use App\Order;
+use App\OrderProduct;
 use App\Season;
 use App\ProductList;
+use App\SeasonList;
 use PDF;
 use DB;
 
-class SaleReportController extends Controller
+class SalesReportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +25,7 @@ class SaleReportController extends Controller
         $orders = Order::all();
         $seasons = Season::all();
 
-        return view('reports.sale_reports.index')
+        return view('reports.sales_reports.index')
             ->with('orders', $orders)
             ->with('dreports',$dreports)
             ->with('seasons',$seasons)
@@ -59,7 +61,43 @@ class SaleReportController extends Controller
      */
     public function show($id)
     {
-        //
+        $season = Season::find($id);
+        $product_lists = ProductList::find($id);
+        
+        $allprodperseason = DB::table('seasons')
+            ->join('product_lists', 'seasons.id', '=', 'product_lists.seasons_id')
+            ->join('order_products','product_lists.id','=','order_products.product_lists_id')
+            ->where('order_product_statuses_id','=',2)
+            ->where('seasons_id',$season->id)
+            // ->groupBy('orders_id')
+            ->get();
+            // ->get();
+        // dd($allprodperseason);
+
+        $allprodsum = DB::table('seasons')
+            ->join('product_lists', 'seasons.id', '=', 'product_lists.seasons_id')
+            ->join('order_products','product_lists.id','=','order_products.product_lists_id')
+            ->where('seasons_id',$season->id) 
+            ->where('order_product_statuses_id','=',2)
+            ->select(DB::raw("SUM(price*quantity) as sum"))  
+            ->pluck('sum');
+        // dd($allprodsum);
+
+        $what = OrderProduct::with('orders')
+            ->get();
+        // dd($what);
+
+        $lists = SeasonList::where('seasons_id', $season->id)->get();
+        // $product_lists = ProductList::where('seasons_id', $season->id)->get();
+
+        return view('reports.sales_reports.show')
+            ->with('season', $season)
+            ->with('lists', $lists)
+            ->with('allprodperseason',$allprodperseason)
+            ->with('allprodsum',$allprodsum)
+            // ->with('what', $what)
+            // ->with('product_lists', $product_lists)
+            ;
     }
 
     /**
@@ -111,8 +149,8 @@ class SaleReportController extends Controller
         
 
         // pass view file
-        $pdf = PDF::loadView('pdf.sale_report', compact('season'), compact('sales'))->setPaper('a4', 'landscape');
+        $pdf = PDF::loadView('pdf.sales_report', compact('season'), compact('sales'))->setPaper('a4', 'landscape');
         // download pdf
-        return $pdf->stream('sale_report.pdf');
+        return $pdf->stream('sales_report.pdf');
     }
 }

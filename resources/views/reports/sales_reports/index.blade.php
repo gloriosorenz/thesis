@@ -48,8 +48,8 @@
                         {{-- @if ($season->season_statuses_id == 1)
                         <a href="/seasons/{{$season->id}}/edit" class="btn btn-md btn-success"><i class="fas fa-edit fa-sm text-white"></i></a>
                         @endif --}}
-                        <a href="/seasons/{{$season->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
-                        <a href="/pdf/sale_report/{{$season->id}}" class="btn btn-md btn-secondary"><i class="fas fa-download fa-sm text-white"></i></a>
+                        <a href="sales_reports/{{$season->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
+                        <a href="/pdf/sales_report/{{$season->id}}" class="btn btn-md btn-secondary"><i class="fas fa-download fa-sm text-white"></i></a>
                     </td>
                 </tr>
                 @endforeach

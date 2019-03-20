@@ -80,7 +80,7 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Components:</h6>
-                <a class="collapse-item" href="{{ route('sale_reports.index') }}">Sales Report</a>
+                <a class="collapse-item" href="{{ route('sales_reports.index') }}">Sales Report</a>
                 <a class="collapse-item" href="#">Season Reports</a>
                 <a class="collapse-item" href="{{ route('plant_reports.index') }}">Plant Reports</a>
                 <a class="collapse-item" href="{{ route('damage_reports.index') }}">Damage Report</a>
@@ -132,7 +132,7 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Components:</h6>
-                <a class="collapse-item" href="{{ route('sale_reports.index') }}">Sales Report</a>
+                <a class="collapse-item" href="{{ route('reports.index') }}">Sales Report</a>
                 <a class="collapse-item" href="#">Season Reports</a>
                 <a class="collapse-item" href="{{ route('plant_reports.index') }}">Plant Reports</a>
                 <a class="collapse-item" href="{{ route('damage_reports.index') }}">Damage Report</a>
