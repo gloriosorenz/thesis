@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
- 
- 
+
 use Illuminate\Http\Request;
 use App\User;
 use App\RiceFarmer;
@@ -40,7 +39,7 @@ class DashboardController extends Controller
 
         $dmg_prod_ls = ProductList::where('seasons_id', $last_com_season->id)
             ->where('products_id',3)
-            ->sum('curr_quantity');
+            ->sum('orig_quantity');
 
         // Chart
         // $allseasonid = Season::orderBy('id')->pluck( 'id');

@@ -15,11 +15,11 @@ class SeasonTypeTableSeeder extends Seeder
             
             [
                 'id' => 1, 
-                'type' => "Wet", 
+                'type' => "Wet", //March 16 -> Sept. 15 (March, April, May, June, July, August, September)
             ],
             [
                 'id' => 2, 
-                'type' => "Dry", 
+                'type' => "Dry", //Sept. 16 -> March 15 (September, October, November, December, January, February, March)
             ],
 
         ];

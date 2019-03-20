@@ -19,15 +19,15 @@ class CalamityTableSeeder extends Seeder
             ],
             [
                 'id' => 2, 
-                'type' => "Flood", 
-            ],
-            [
-                'id' => 3, 
                 'type' => "Drought", 
             ],
             [
+                'id' => 3, 
+                'type' => "Infestation/Pest", 
+            ],
+            [
                 'id' => 4, 
-                'type' => "Infestation", 
+                'type' => "Plant Disease", 
             ],
             [
                 'id' => 5, 
@@ -36,10 +36,6 @@ class CalamityTableSeeder extends Seeder
             [
                 'id' => 6, 
                 'type' => "Earthquake", 
-            ],
-            [
-                'id' => 7, 
-                'type' => "Volcanic Eruption", 
             ],
 
         ];

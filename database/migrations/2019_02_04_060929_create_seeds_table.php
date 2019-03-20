@@ -13,14 +13,14 @@ class CreateSeedsTable extends Migration
      */
     public function up()
     {
-        Schema::create('seeds', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->nullable();
-            $table->string('type')->nullable();
-            $table->boolean('active')->nullable();
+        // Schema::create('seeds', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->string('name')->nullable();
+        //     $table->string('type')->nullable();
+        //     $table->boolean('active')->nullable();
 
-            $table->timestamps();
-        });
+        //     $table->timestamps();
+        // });
     }
 
     /**
