@@ -121,6 +121,8 @@
                 <p>Santa Rosa, Laguna</p>
                 <p><i class="fa fa-phone"></i> 049 530 0015</p>
                 <p><i class="fa fa-envelope"></i> cityagricultureoffice_csrl@yahoo.com</p>
+                <p><a href="https://www.facebook.com/citygovernmentofsantarosa/"><i class="fab fa-facebook-square"></i>Facebook</a></p>
+                <p><a href="https://twitter.com/cityofsantarosa?lang=en"><i class="fab fa-twitter-square"></i>Twitter</a></p>
             </div>
             {{-- <div class="col-md-3">
                 <h3>Business Hours</h3>

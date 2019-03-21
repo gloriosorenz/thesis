@@ -9,11 +9,17 @@ class PlantData extends Model
     protected $table = 'plant_datas'; 
 
     protected $fillable = [
-        'plant_area', 'farmers', 'barangays_id',
+        'plant_area', 'farmers', 'users_id', 'plant_reports_id',
     ];
 
-    public function barangays()
+    public function users()
     {
-        return $this->belongsTo(Barangay::class, 'barangays_id');
+        return $this->belongsTo(User::class, 'users_id');
     }
+
+    public function plant_reports()
+    {
+        return $this->belongsTo(PlantReport::class, 'plant_reports_id');
+    }
+    
 }

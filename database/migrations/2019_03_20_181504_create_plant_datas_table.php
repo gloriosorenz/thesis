@@ -19,7 +19,7 @@ class CreatePlantDatasTable extends Migration
             $table->integer('farmers');
 
             $table->integer('plant_reports_id')->unsigned()->nullable();
-            $table->integer('barangays_id')->unsigned()->nullable();
+            $table->integer('users_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

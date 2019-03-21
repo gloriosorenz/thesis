@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\PlantReport;
 use App\PlantData;
 use App\Barangay;
+use App\User;
 use PDF;
 
 class PlantReportController extends Controller
@@ -18,6 +19,7 @@ class PlantReportController extends Controller
     public function index()
     {
         $preports = PlantReport::all();
+        // $preports = PlantReport::with('plant_datas')->find();
 
         return view('reports.plant_reports.index')
             ->with('preports', $preports);
@@ -31,38 +33,11 @@ class PlantReportController extends Controller
     public function create()
     {
         $barangays = Barangay::orderBy('name')->get();
+        $users = User::where('roles_id', '=', 2)->get()->pluck('company', 'id');
 
-        $tagapo = Barangay::where('id', 11230)->first();
-        $malitlit = Barangay::where('id', 9148)->first();
-        $dita = Barangay::where('id', 8995)->first();
-        $caingin = Barangay::where('id', 5875)->first();
-        $sinalhan = Barangay::where('id', 11229)->first();
-        $pooc = Barangay::where('id', 8757)->first();
-        $labas = Barangay::where('id', 10711)->first();
-        $balibago = Barangay::where('id', 7234)->first();
-        $macabling = Barangay::where('id', 11221)->first();;
-        $pulong = Barangay::where('id', 11227)->first();
-
-        
-
-        $data=array(
-            'Tagapo' => $tagapo,
-            'Malitlit' => $malitlit,
-            'Dita' => $dita,
-            'Caingin' => $caingin,
-            'Sinalhan' => $sinalhan,
-            'Pooc' => $pooc,
-            'Labas' => $labas,
-            'Balibago' => $balibago,
-            'Macabling' => $macabling,
-            'Pulong' => $pulong,
-        );
-        // dd($data);
         
         return view('reports.plant_reports.create')
-            ->with('data', $data)
-            ->with('tagapo', $tagapo)
-            ->with('barangays', $barangays);
+            ->with('users', $users);
     }
 
     /**
@@ -77,15 +52,18 @@ class PlantReportController extends Controller
         $request->validate([
             // 'barangay' => 'required',
             // 'plant_area' => 'required|string|max:255',
+            "plant_area.*"  => "required",
+            "farmers.*"  => "required|integer",
+            "users_id.*"  => "required|distinct",
         ]);
         
         $preport = new PlantReport;
         $preport->save();
     
-        foreach($request->barangays_id as $key => $value) {
+        foreach($request->users_id as $key => $value) {
             $data=array(
                         'plant_reports_id'=>$preport->id,
-                        'barangays_id'=>$request->barangays_id [$key],
+                        'users_id'=>$request->users_id [$key],
                         'plant_area'=>$request->plant_area [$key],
                         'farmers'=>$request->farmers [$key],
                         'created_at' =>  \Carbon\Carbon::now(), # \Datetime()

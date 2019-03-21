@@ -9,11 +9,13 @@ class PlantReport extends Model
     protected $table = 'plant_reports'; 
 
     protected $fillable = [
-        // 'plant_area', 'farmers', 'barangays_id',
+        'plant_area', 'farmers',
     ];
 
-    public function barangays()
+    public function plant_datas()
     {
-        return $this->belongsTo(Barangay::class, 'barangays_id');
+        return $this->hasMany('App\PlantData');
     }
+
+
 }

@@ -28,6 +28,7 @@
                     <thead>
                         <tr>
                             <th width="">ID</th>
+                            {{-- <th width="">Farmer</th> --}}
                             <th width="">Month</th>
                             <th width="20%">Options</th>
                         </tr>
@@ -36,6 +37,7 @@
                         @foreach($preports as $pr)
                         <tr class="tr">
                             <td>{{$pr->id}}</td>
+                            {{-- <td>{{$pr}}</td> --}}
                             <td>{{$pr->created_at->format('M-Y')}}</td>
                             <td>
                                 <a href="/plant_reports/{{$pr->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>

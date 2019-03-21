@@ -48,14 +48,14 @@
             <div class="col-lg-12">
                 <table class="table table-striped mb-5">
                     <thead>
-                        <th width="11.25">Barangay</th>
+                        <th width="11.25">Farmer</th>
                         <th width="11.25">Plant Area</th>
                         <th width="11.25">Farmers</th>
                     </thead>
                     <tbody>
                         @foreach ($pdatas as $d)
                         <tr>
-                            <td>{{ $d->barangays->name }}</td>
+                            <td>{{ $d->users->company }}</td>
                             <td>{{ $d->plant_area }}</td>
                             <td>{{ $d->farmers }}</td>
                         </tr>
