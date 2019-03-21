@@ -32,12 +32,12 @@ class OrderController extends Controller
                     ]);                    
             }
             
-        // Auto add canceled order product quantity
+        // Auto add canceled order quantity
         $orderproducts = OrderProduct::where('created_at', '<', Carbon::now()->subDays(3))
             ->get();
             foreach($orderproducts as $op){
                     $op->product_lists->update(['curr_quantity' => $op->product_lists->curr_quantity + $op->quantity]);
-                    $op->update(['order_product_statuses'=>4]);
+                    $op->update(['order_product_statuses_id'=>4]);    
             }
 
         // $orders1 = App\Order::with('order_products')->get();
@@ -164,10 +164,10 @@ class OrderController extends Controller
         $order->order_statuses_id = 2;
         $order->save();
 
-        $orderproducts = OrderProduct::where('orders_id','=',$id)
+        $orderproducts = OrderProduct::where('orders_id', '=', $id)
             ->get();
             foreach($orderproducts as $op){
-                    $op->update(['order_product_statuses' => 2]);
+                    $op->update(['order_product_statuses_id'=>2]);    
             }
 
         return redirect('/orders')->with('success', 'Order Confirmed');
@@ -182,6 +182,7 @@ class OrderController extends Controller
 
         foreach($orderproducts as $op){
             if($order->id == $op->orders_id){
+                $op->update(['order_product_statuses_id'=>4]);    
                 $op->product_lists->update(['curr_quantity' => $op->product_lists->curr_quantity + $op->quantity]);
             }
         }

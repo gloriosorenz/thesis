@@ -81,7 +81,15 @@ class SalesReportController extends Controller
             ->where('order_product_statuses_id','=',2)
             ->select(DB::raw("SUM(price*quantity) as sum"))  
             ->pluck('sum');
-        // dd($allprodsum);
+
+        $allprodquan = DB::table('seasons')
+            ->join('product_lists', 'seasons.id', '=', 'product_lists.seasons_id')
+            ->join('order_products','product_lists.id','=','order_products.product_lists_id')
+            ->where('seasons_id',$season->id) 
+            ->where('order_product_statuses_id','=',2)
+            ->select(DB::raw("SUM(quantity) as sum"))  
+            ->pluck('sum');
+        // dd($allprodquan);
 
         $what = OrderProduct::with('orders')
             ->get();
@@ -95,6 +103,7 @@ class SalesReportController extends Controller
             ->with('lists', $lists)
             ->with('allprodperseason',$allprodperseason)
             ->with('allprodsum',$allprodsum)
+            ->with('allprodquan',$allprodquan)
             // ->with('what', $what)
             // ->with('product_lists', $product_lists)
             ;

@@ -13,7 +13,7 @@
 <a class="btn btn-md btn-secondary" href="{{URL::previous()}}">Back</a>
 <br>
 <br>
-{{-- hello --}}
+
 <div class="wrapper">
     <div class="container">
     <br>
@@ -85,9 +85,15 @@
             <br>
             <br>
 
+            @foreach($allprodquan as $kabs)
+                <div class="text-center">
+                    <h4> Total Quantity: {{$kabs}} kaban/s</h4>
+                </div>
+            @endforeach
+
             @foreach($allprodsum as $sum)
                 <div class="text-right">
-                <h4> Total Amount: {{presentPrice($sum)}} </h4>
+                    <h4> Total Amount: {{presentPrice($sum)}} </h4>
                 </div>
             @endforeach
 
