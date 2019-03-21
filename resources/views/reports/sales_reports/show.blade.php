@@ -46,7 +46,7 @@
             <table id="table_id" class="table table-striped">
                 <thead>
                     <th width="11.25">Orderss Product Number</th>
-                    <th width="11.25">Order Track Number </th>
+                    <th width="11.25">Orders Track Number </th>
                     <th width="11.25">Quantity</th>
                     <th width="11.25">Pricesss per kaban</th>
                     <th width="11.25">Subtotal</th>
