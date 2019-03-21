@@ -29,22 +29,24 @@
             <thead>
                 <tr>
                     <th>Tracking ID</th>
+                    <th>Customer</th>
                     <th>Order Date</th>
-                    <th>Price</th>
+                    <th>Total Amount</th>
                     <th width="15%">Options</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($pending as $p)
+                @foreach ($pending as $order)
                     {{-- @if ($p->order_products->product_lists->users_id == auth()->user()->id) --}}
                     <tr class="active">
-                        <td>{{$p->tracking_id}}</td>
-                        <td>{{$p->created_at->toFormattedDateString()}}</td>
-                        <td>{{$p->total_price}}</td>
+                        <td>{{$order->tracking_id}}</td>
+                        <td>{{$order->users->first_name}} {{$order->users->last_name}}</td>
+                        <td>{{$order->created_at->toFormattedDateString()}}</td>
+                        <td>{{presentPrice($order->total_price)}}</td>
                         <td>
-                            <a href="/orders/{{$p->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
-                            <a href="/orders/confirm_order/{{$p->id}}" class="btn btn-success"><i class="fas fa-check"></i></a>
-                            <a href="/orders/cancel_order/{{$p->id}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                            <a href="/orders/{{$order->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
+                            <a href="/orders/confirm_order/{{$order->id}}" class="btn btn-success"><i class="fas fa-check"></i></a>
+                            <a href="/orders/cancel_order/{{$order->id}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                     {{-- @endif --}}
@@ -67,8 +69,9 @@
             <thead>
                 <tr>
                     <th>Tracking ID</th>
+                    <th>Customer</th>
                     <th>Order Date</th>
-                    <th>Price</th>
+                    <th>Total Amount</th>
                     <th width="15%">Options</th>
                 </tr>
             </thead>
@@ -76,8 +79,9 @@
                 @foreach ($done as $order)
                 <tr class="active">
                     <td>{{$order->tracking_id}}</td>
+                    <td>{{$order->users->first_name}} {{$order->users->last_name}}</td>
                     <td>{{$order->created_at->toFormattedDateString()}}</td>
-                    <td>{{$order->total_price}}</td>
+                    <td>{{presentPrice($order->total_price)}}</td>
                     <td>
                         <a href="/orders/{{$order->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
                     </td>
@@ -101,8 +105,9 @@
             <thead>
                 <tr>
                     <th>Tracking ID</th>
+                    <th>Customer</th>
                     <th>Order Date</th>
-                    <th>Price</th>
+                    <th>Total Amount</th>
                     <th width="15%">Options</th>
                 </tr>
             </thead>
@@ -110,8 +115,9 @@
                 @foreach ($cancelled as $order)
                 <tr class="active">
                     <td>{{$order->tracking_id}}</td>
+                    <td>{{$order->users->first_name}} {{$order->users->last_name}}</td>
                     <td>{{$order->created_at->toFormattedDateString()}}</td>
-                    <td>{{$order->total_price}}</td>
+                    <td>{{presentPrice($order->total_price)}}</td>
                     <td>
                         <a href="/orders/{{$order->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
                     </td>

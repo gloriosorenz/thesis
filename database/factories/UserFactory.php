@@ -37,7 +37,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'roles_id' => 3,
-        'barangays_id' => 282,
+        'barangays_id' => 433,
         'provinces_id' => 19,
         'cities_id' => 19,
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', 

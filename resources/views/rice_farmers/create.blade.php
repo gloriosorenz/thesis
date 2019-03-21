@@ -76,33 +76,31 @@
                         <label for="barangay">Barangay:</label>
                         <select class="form-control" name="barangay" id="barangay">
                             <option value="0" selected="true" disabled="True">Select Barangay</option>
-                            @foreach ($barangays as $barangay)
-                                <option value="{{ $barangay['id']}}">{{ $barangay['name']}}</option>
+                            @foreach ($lagunabarangays as $lagbarangay)
+                                <option value="{{ $lagbarangay['id']}}">{{ $lagbarangay['name']}}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <!-- City -->
-                    <div class="form-group">
-                        <label for="city">City:</label>
-                        <select class="form-control" name="city" id="city">
-                            <option value="0" selected="true" disabled="True">Select City</option>
-                            @foreach ($cities as $city)
-                                <option value="{{ $city['id']}}">{{ $city['name']}}</option>
-                            @endforeach
-                        </select>
+                 <!-- City -->
+                 <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="city">City:</label>
+                                <select class="form-control" name="city" id="city" readonly>
+                                    @foreach ($starosa as $sa)
+                                        <option value="{{ $sa['id']}}">{{ $sa['name']}}</option>
+                                    @endforeach
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <!-- City -->
+                 <!-- Province -->
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="province">Province:</label>
-                        <select class="form-control" name="province" id="province">
-                            <option value="0" selected="true" disabled="True">Select Province</option>
-                            @foreach ($provinces as $province)
-                                <option value="{{ $province['id']}}">{{ $province['name']}}</option>
-                            @endforeach
+                            <select class="form-control" name="province" id="province" readonly>
+                                @foreach ($laguna as $l)
+                                    <option value="{{ $l['id']}}">{{ $l['name']}}</option>
+                                @endforeach
                         </select>
                     </div>
                 </div>

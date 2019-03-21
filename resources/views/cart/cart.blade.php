@@ -38,7 +38,7 @@
                             <th>Farmer Organization</th>
                             <th>Quantity per Kaban</th>
                             <th>Individual Price</th>
-                            <th>Total Price</th>
+                            <th>Subtotal</th>
                             <th class="column-spacer"></th>
                             <th></th>
                         </tr>

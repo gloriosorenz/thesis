@@ -134,7 +134,7 @@
                                     <td class="text-center"><strong>Seller</strong></td>
                                     <td class="text-center"><strong>Price</strong></td>
                                     <td class="text-center"><strong>Quantity</strong></td>
-                                    <td class="text-right"><strong>Totals</strong></td>
+                                    <td class="text-right"><strong>Subtotal</strong></td>
                                 </tr>
                             </thead>
                             <tbody>

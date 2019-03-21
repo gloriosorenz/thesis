@@ -186,6 +186,19 @@ class OrderController extends Controller
                 $op->product_lists->update(['curr_quantity' => $op->product_lists->curr_quantity + $op->quantity]);
             }
         }
+
+     
+        return redirect('/orders')->with('success', 'Order has been cancelled!');
+    }
+
+    public function cancel_perOrder(Request $request, $id){
+        $orderproducts = OrderProduct::where('orders_id', '=', $id)
+        ->get();
+        
+        foreach($orderproducts as $op){
+            $op->update(['order_product_statuses_id'=>4]);    
+            $op->product_lists->update(['curr_quantity' => $op->product_lists->curr_quantity + $op->quantity]);                
+        }
      
         return redirect('/orders')->with('success', 'Order has been cancelled!');
     }

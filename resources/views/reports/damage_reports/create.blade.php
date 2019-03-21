@@ -58,19 +58,19 @@
 
                     <!-- Province -->
                     <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="province">Province:</label>
-                                {{-- @foreach($laguna as $l)
-                                    <input readonly type="text" class="form-control"  value="{{$l->name}}"/>
-                                @endforeach --}}
+                        <div class="form-group">
+                            <label for="province">Province:</label>
+                            {{-- @foreach($laguna as $l)
+                                <input readonly type="text" class="form-control"  value="{{$l->name}}"/>
+                            @endforeach --}}
 
-                                <select class="form-control" name="province" id="province" readonly>
-                                    @foreach ($laguna as $l)
-                                        <option value="{{ $l['id']}}">{{ $l['name']}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                            <select class="form-control" name="province" id="province" readonly>
+                                @foreach ($laguna as $l)
+                                    <option value="{{ $l['id']}}">{{ $l['name']}}</option>
+                                @endforeach
+                            </select>
                         </div>
+                    </div>
 
                 </div>
 
@@ -116,16 +116,16 @@
                     </thead>
                     <tbody class="resultbody">
                         <tr>
-                            <td><input type="text" class="form-control" name="crop[]" value=""/></td>
-                            <td><input type="text" class="form-control" name="crop_stage[]" value=""/></td>
-                            <td><input type="text" class="form-control" name="production[]" value=""/></td>
+                            <td><input type="text" class="form-control" name="crop[]" value="" placeholder="Rice"/></td>
+                            <td><input type="text" class="form-control" name="crop_stage[]" value="" placeholder="Rice"/></td>
+                            <td><input type="text" class="form-control" name="production[]" value="" placeholder="30"/></td>
                             <td></td>
-                            <td><input type="text" class="form-control" name="animal[]" value=""/></td>
-                            <td><input type="text" class="form-control" name="animal_head[]" value=""/></td>
+                            <td><input type="text" class="form-control" name="animal[]" value="" placeholder="Cow"/></td>
+                            <td><input type="text" class="form-control" name="animal_head[]" value="" placeholder="20"/></td>
                             <td></td>
-                            <td><input type="text" class="form-control" name="fish[]" value=""/></td>
-                            <td><input type="text" class="form-control" name="area[]" value=""/></td>
-                            <td><input type="text" class="form-control" name="fish_pieces[]" value=""/></td>
+                            <td><input type="text" class="form-control" name="fish[]" value="" placeholder="Bangus"/></td>
+                            <td><input type="text" class="form-control" name="area[]" value="" placeholder="4.5"/></td>
+                            <td><input type="text" class="form-control" name="fish_pieces[]" value="" placeholder="10"/></td>
                             <td><input type="button" class="btn btn-danger remove" value="x"></td>
                         </tr>
                     </tbody>

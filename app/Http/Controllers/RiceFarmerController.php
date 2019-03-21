@@ -9,6 +9,7 @@ use App\User;
 use App\Barangay;
 use App\City;
 use App\Province;
+use App\Region;
 use Mail;
 use App\Mail\SendPassword;
 
@@ -36,14 +37,41 @@ class RiceFarmerController extends Controller
      */
     public function create()
     {
+        //282 Santa Rosa Region 3  0349
+        //433 City of Santa Rosa Region 4 province 0434 ->> LAGUNA 043428
+        /*
+            Tagapo
+            Pooc
+            Labas
+            Sinalhan
+            Aplaya
+            Balibago
+            Macabling
+            Caingin
+            Dita
+            Dila
+            Malitlit
+            Pulong Sta. Cruz
+        */
+
         $barangays = Barangay::orderBy('name')->get();
+        $lagunabarangays = Barangay::where('cities_id','=', 43428)->whereNotIn('id', array(11218, 11219, 11223,11224,11225,11228))->get();
+            // dd($lagunabarangays);
         $cities = City::orderBy('name')->get();
         $provinces = Province::orderBy('name')->get();
+        $calabarzon = Region::where('id','=', 4)->get();
+        $starosa = City::where('id','=', 433)->get();
+        $laguna = Province::where('id','=',19)->get();
       
         return view('rice_farmers.create')
             ->with('barangays', $barangays)
+            ->with('lagunabarangays', $lagunabarangays)
             ->with('cities', $cities)
-            ->with('provinces', $provinces);
+            ->with('provinces', $provinces)
+            ->with('calabarzon', $calabarzon)
+            ->with('laguna',$laguna)
+            ->with('starosa',$starosa)
+            ;
     }
 
     /**
@@ -125,14 +153,23 @@ class RiceFarmerController extends Controller
     {
         $farmer = User::find($id);
         $barangays = Barangay::orderBy('name')->get();
+        $lagunabarangays = Barangay::where('cities_id','=', 43428)->whereNotIn('id', array(11218, 11219, 11223,11224,11225,11228))->get();
+            // dd($lagunabarangays);
         $cities = City::orderBy('name')->get();
         $provinces = Province::orderBy('name')->get();
-
+        $calabarzon = Region::where('id','=', 4)->get();
+        $starosa = City::where('id','=', 433)->get();
+        $laguna = Province::where('id','=',19)->get();
+      
         return view('rice_farmers.edit')
-            ->with('farmer', $farmer)
             ->with('barangays', $barangays)
+            ->with('lagunabarangays', $lagunabarangays)
             ->with('cities', $cities)
-            ->with('provinces', $provinces);
+            ->with('provinces', $provinces)
+            ->with('calabarzon', $calabarzon)
+            ->with('laguna',$laguna)
+            ->with('starosa',$starosa)
+            ;
     }
 
     /**

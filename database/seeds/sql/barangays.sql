@@ -8689,7 +8689,7 @@ INSERT INTO barangays VALUES ('8688', '041001012', 'Pamiga', '04', '0410', '0410
 INSERT INTO barangays VALUES ('8689', '041001013', 'Panhulan', '04', '0410', '041001');
 INSERT INTO barangays VALUES ('8690', '041001014', 'Pansipit', '04', '0410', '041001');
 INSERT INTO barangays VALUES ('8691', '041001015', 'Poblacion', '04', '0410', '041001');
-INSERT INTO barangays VALUES ('8692', '041001016', 'Pook', '04', '0410', '041001');
+INSERT INTO barangays VALUES ('8692', '041001016', 'Pooc', '04', '0410', '041001');
 INSERT INTO barangays VALUES ('8693', '041001017', 'San Jacinto', '04', '0410', '041001');
 INSERT INTO barangays VALUES ('8694', '041001018', 'San Teodoro', '04', '0410', '041001');
 INSERT INTO barangays VALUES ('8695', '041001019', 'Santa Cruz', '04', '0410', '041001');
@@ -9619,7 +9619,7 @@ INSERT INTO barangays VALUES ('9618', '041029030', 'Poblacion 6', '04', '0410', 
 INSERT INTO barangays VALUES ('9619', '041029031', 'Poblacion 7', '04', '0410', '041029');
 INSERT INTO barangays VALUES ('9620', '041029032', 'Poblacion 8', '04', '0410', '041029');
 INSERT INTO barangays VALUES ('9621', '041029033', 'Poblacion 9', '04', '0410', '041029');
-INSERT INTO barangays VALUES ('9622', '041029034', 'Pook', '04', '0410', '041029');
+INSERT INTO barangays VALUES ('9622', '041029034', 'Pooc', '04', '0410', '041029');
 INSERT INTO barangays VALUES ('9623', '041029044', 'Seiran', '04', '0410', '041029');
 INSERT INTO barangays VALUES ('9624', '041029045', 'Laguile', '04', '0410', '041029');
 INSERT INTO barangays VALUES ('9625', '041029046', 'Latag', '04', '0410', '041029');
@@ -10921,7 +10921,7 @@ INSERT INTO barangays VALUES ('10920', '043416027', 'Panalaban', '04', '0434', '
 INSERT INTO barangays VALUES ('10921', '043416028', 'Panglan', '04', '0434', '043416');
 INSERT INTO barangays VALUES ('10922', '043416029', 'Pangil', '04', '0434', '043416');
 INSERT INTO barangays VALUES ('10923', '043416030', 'Piit', '04', '0434', '043416');
-INSERT INTO barangays VALUES ('10924', '043416031', 'Pook', '04', '0434', '043416');
+INSERT INTO barangays VALUES ('10924', '043416031', 'Pooc', '04', '0434', '043416');
 INSERT INTO barangays VALUES ('10925', '043416032', 'Rizal', '04', '0434', '043416');
 INSERT INTO barangays VALUES ('10926', '043416033', 'San Francisco (Pob.)', '04', '0434', '043416');
 INSERT INTO barangays VALUES ('10927', '043416034', 'San Isidro', '04', '0434', '043416');
@@ -11055,7 +11055,7 @@ INSERT INTO barangays VALUES ('11054', '043423004', 'Paule 1', '04', '0434', '04
 INSERT INTO barangays VALUES ('11055', '043423005', 'Paule 2', '04', '0434', '043423');
 INSERT INTO barangays VALUES ('11056', '043423006', 'East Poblacion', '04', '0434', '043423');
 INSERT INTO barangays VALUES ('11057', '043423007', 'West Poblacion', '04', '0434', '043423');
-INSERT INTO barangays VALUES ('11058', '043423008', 'Pook', '04', '0434', '043423');
+INSERT INTO barangays VALUES ('11058', '043423008', 'Pooc', '04', '0434', '043423');
 INSERT INTO barangays VALUES ('11059', '043423009', 'Tala', '04', '0434', '043423');
 INSERT INTO barangays VALUES ('11060', '043423010', 'Talaga', '04', '0434', '043423');
 INSERT INTO barangays VALUES ('11061', '043423011', 'Tuy', '04', '0434', '043423');
@@ -11223,7 +11223,7 @@ INSERT INTO barangays VALUES ('11222', '043428010', 'Malitlit', '04', '0434', '0
 INSERT INTO barangays VALUES ('11223', '043428011', 'Malusak (Pob.)', '04', '0434', '043428');
 INSERT INTO barangays VALUES ('11224', '043428012', 'Market Area (Pob.)', '04', '0434', '043428');
 INSERT INTO barangays VALUES ('11225', '043428015', 'Kanluran (Pob.)', '04', '0434', '043428');
-INSERT INTO barangays VALUES ('11226', '043428016', 'Pook', '04', '0434', '043428');
+INSERT INTO barangays VALUES ('11226', '043428016', 'Pooc', '04', '0434', '043428');
 INSERT INTO barangays VALUES ('11227', '043428018', 'Pulong Santa Cruz', '04', '0434', '043428');
 INSERT INTO barangays VALUES ('11228', '043428020', 'Santo Domingo', '04', '0434', '043428');
 INSERT INTO barangays VALUES ('11229', '043428022', 'Sinalhan', '04', '0434', '043428');
@@ -12412,7 +12412,7 @@ INSERT INTO barangays VALUES ('12411', '045647043', 'Mateuna', '04', '0456', '04
 INSERT INTO barangays VALUES ('12412', '045647044', 'Mayowe', '04', '0456', '045647');
 INSERT INTO barangays VALUES ('12413', '045647045', 'Opias', '04', '0456', '045647');
 INSERT INTO barangays VALUES ('12414', '045647046', 'Pandakaki', '04', '0456', '045647');
-INSERT INTO barangays VALUES ('12415', '045647047', 'Pook', '04', '0456', '045647');
+INSERT INTO barangays VALUES ('12415', '045647047', 'Pooc', '04', '0456', '045647');
 INSERT INTO barangays VALUES ('12416', '045647048', 'Potol', '04', '0456', '045647');
 INSERT INTO barangays VALUES ('12417', '045647049', 'San Diego Zone I (Pob.)', '04', '0456', '045647');
 INSERT INTO barangays VALUES ('12418', '045647050', 'San Diego Zone II', '04', '0456', '045647');
@@ -17754,7 +17754,7 @@ INSERT INTO barangays VALUES ('17753', '060407010', 'Mabilo', '06', '0604', '060
 INSERT INTO barangays VALUES ('17754', '060407011', 'Mobo', '06', '0604', '060407');
 INSERT INTO barangays VALUES ('17755', '060407012', 'Nalook', '06', '0604', '060407');
 INSERT INTO barangays VALUES ('17756', '060407013', 'Poblacion', '06', '0604', '060407');
-INSERT INTO barangays VALUES ('17757', '060407014', 'Pook', '06', '0604', '060407');
+INSERT INTO barangays VALUES ('17757', '060407014', 'Pooc', '06', '0604', '060407');
 INSERT INTO barangays VALUES ('17758', '060407015', 'Tigayon', '06', '0604', '060407');
 INSERT INTO barangays VALUES ('17759', '060407016', 'Tinigaw', '06', '0604', '060407');
 INSERT INTO barangays VALUES ('17760', '060408001', 'Agcawilan', '06', '0604', '060408');
@@ -32968,7 +32968,7 @@ INSERT INTO barangays VALUES ('32967', '104325007', 'Mandahilag', '10', '1043', 
 INSERT INTO barangays VALUES ('32968', '104325008', 'Mintabon', '10', '1043', '104325');
 INSERT INTO barangays VALUES ('32969', '104325009', 'Pangpangon', '10', '1043', '104325');
 INSERT INTO barangays VALUES ('32970', '104325010', 'Poblacion', '10', '1043', '104325');
-INSERT INTO barangays VALUES ('32971', '104325011', 'Pook', '10', '1043', '104325');
+INSERT INTO barangays VALUES ('32971', '104325011', 'Pooc', '10', '1043', '104325');
 INSERT INTO barangays VALUES ('32972', '104325012', 'Punta Santiago', '10', '1043', '104325');
 INSERT INTO barangays VALUES ('32973', '104325013', 'Puting Balas', '10', '1043', '104325');
 INSERT INTO barangays VALUES ('32974', '104325014', 'San Jose', '10', '1043', '104325');
