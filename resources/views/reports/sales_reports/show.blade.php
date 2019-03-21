@@ -45,7 +45,7 @@
         <div class="col-lg-12">
             <table id="table_id" class="table table-striped">
                 <thead>
-                    <th width="11.25">Order Product Number</th>
+                    <th width="11.25">Order Productss Number</th>
                     <th width="11.25">Order Track Number </th>
                     <th width="11.25">Quantity</th>
                     <th width="11.25">Price per kaban</th>
