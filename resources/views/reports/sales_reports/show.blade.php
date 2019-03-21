@@ -54,21 +54,21 @@
                 </thead>
                 <tbody>
                     @foreach ($allprodperseason as $g)
-                        @php
-                            $order = App\Order::findOrFail($g->orders_id);
-                        @endphp
+                    @php
+                         $order = App\Order::findOrFail($g->orders_id);
+                    @endphp
 
-                        <tr>
-                            <td>{{$g->id}}</td>
-                            <td>{{$order->tracking_id}}</td>
-                            <td>{{$g->quantity}}</td>
-                            <td>{{presentPrice($g->price)}}</td>
-                            <td>{{presentPrice($g->quantity * $g->price)}}</td>
-                            {{-- <td>{{$order->total_price}}</td> --}}
-                            <td>{{$g->created_at}}</td>
-                        </tr>
-                        @endforeach
                     <tr>
+                        <td>{{$g->id}}</td>
+                        <td>{{$order->tracking_id}}</td>
+                        <td>{{$g->quantity}} kaban/s</td>
+                        <td>{{presentPrice($g->price)}}</td>
+                        <td>{{presentPrice($g->quantity * $g->price)}}</td>
+                        {{-- <td>{{$order->total_price}}</td> --}}
+                        <td>{{$g->created_at}}</td>
+                    </tr>
+                    @endforeach
+                    {{-- <tr>
                         <td class="thick-line"></td>
                         <td class="thick-line"></td>
                         <td class="thick-line"></td>
@@ -79,12 +79,16 @@
                                 <h4> {{presentPrice($sum)}} </h4>
                             @endforeach
                         </td>
-                    </tr>
+                    </tr> --}}
                 </tbody>
             </table>
+            <br>
+            <br>
 
             @foreach($allprodsum as $sum)
-                <p> Total Amount: {{presentPrice($sum)}} </p>
+                <div class="text-right">
+                <h4> Total Amount: {{presentPrice($sum)}} </h4>
+                </div>
             @endforeach
 
         </div>
