@@ -54,20 +54,20 @@
                 </thead>
                 <tbody>
                     @foreach ($allprodperseason as $g)
-                    @php
-                         $order = App\Order::findOrFail($g->orders_id);
-                    @endphp
+                        @php
+                            $order = App\Order::findOrFail($g->orders_id);
+                        @endphp
 
-                    <tr>
-                        <td>{{$g->id}}</td>
-                        <td>{{$order->tracking_id}}</td>
-                        <td>{{$g->quantity}}</td>
-                        <td>{{presentPrice($g->price)}}</td>
-                        <td>{{presentPrice($g->quantity * $g->price)}}</td>
-                        {{-- <td>{{$order->total_price}}</td> --}}
-                        <td>{{$g->created_at}}</td>
-                    </tr>
-                    @endforeach
+                        <tr>
+                            <td>{{$g->id}}</td>
+                            <td>{{$order->tracking_id}}</td>
+                            <td>{{$g->quantity}}</td>
+                            <td>{{presentPrice($g->price)}}</td>
+                            <td>{{presentPrice($g->quantity * $g->price)}}</td>
+                            {{-- <td>{{$order->total_price}}</td> --}}
+                            <td>{{$g->created_at}}</td>
+                        </tr>
+                        @endforeach
                     <tr>
                         <td class="thick-line"></td>
                         <td class="thick-line"></td>

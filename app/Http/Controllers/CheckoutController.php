@@ -132,12 +132,15 @@ class CheckoutController extends Controller
             'tracking_id' => $tracking_id,
         ]);
 
+
         // Insert into order_product table
         foreach (Cart::content() as $item) {
             OrderProduct::create([
                 'orders_id' => $order->id,
                 'product_lists_id' => $item->model->id,
                 'quantity' => $item->qty,
+                'order_product_statuses_id' => 1,
+
             ]);
         }
 
