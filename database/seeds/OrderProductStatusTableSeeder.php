@@ -19,11 +19,11 @@ class OrderProductStatusTableSeeder extends Seeder
             ],
             [
                 'id' => 2, 
-                'status' => "Done", 
+                'status' => "Confirmed", 
             ],
             [
                 'id' => 3, 
-                'status' => "Incomplete", 
+                'status' => "Paid", 
             ],
             [
                 'id' => 4, 

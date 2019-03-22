@@ -24,6 +24,10 @@ class ProductTableSeeder extends Seeder
                 'id' => 3, 
                 'type' => 'Damaged Product', 
             ],
+            [
+                'id' => 4, 
+                'type' => 'Withered Product', 
+            ],
 
         ];
     

@@ -10,14 +10,14 @@ class Season extends Model
         'season_start', 'season_end', 'season_types_id', 'seasons_statuses_id'
     ];
 
-    public function users()
+    public function products()
     {
         return $this->belongsTo(Product::class, 'products_id');
     }
 
-    public function products()
+    public function product_lists()
     {
-        return $this->belongsTo(ProductList::class, 'productlists_id');
+        return $this->belongsTo(ProductList::class, 'product_lists_id');
     }
 
     public function season_types()

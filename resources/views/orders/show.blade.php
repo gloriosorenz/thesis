@@ -18,6 +18,7 @@
 <div class="card shadow mb-4">
     <div class="card-header">
     <h2 class="title">Order {{ $order->id }}</h2>
+    <h5> Tracking Number: {{$order->tracking_id}}</h5>
     </div>
     <div class="card-body">
         <table id="orders_table" class="table table-bordered">
@@ -26,19 +27,25 @@
                 <tr>
                     <th width="">Product Type</th>
                     <th width="">Seller/Producer</th>
+                    <th width="">Contact Person</th>
+                    <th width="">Contact Number</th>
                     <th width="">Quantity</th>
                     <th width="">Price</th>
                     <th width="">Subtotal</th>
+                    <th width="">Status</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($products as $p)
                 <tr class="tr">
-                    <td>{{ $p->product_lists->products->type }}</td>
+                    <td>{{ $p->product_lists->curr_products->type }}</td>
                     <td>{{ $p->product_lists->users->company }}</td>
+                    <td>{{ $p->product_lists->users->first_name}} {{ $p->product_lists->users->last_name}}</td>
+                    <td>{{ $p->product_lists->users->phone }}</td>
                     <td>{{ $p->quantity }}</td>
-                    <td>{{ $p->product_lists->price }}</td>
+                    <td>{{ presentPrice($p->product_lists->price) }}</td>
                     <td>{{ presentPrice($p->product_lists->price *  $p->quantity)}}</td>
+                    <td>{{ $p->order_product_statuses->status}}</td>
                     {{-- <td>
                         <a href="/product_lists/{{$list->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
                         <a href="/season_lists/{{$list->id}}/edit" class="btn btn-success"><i class="fas fa-edit"></i></a>

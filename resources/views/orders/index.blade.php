@@ -29,9 +29,11 @@
             <thead>
                 <tr>
                     <th>Tracking ID</th>
-                    <th>Customer</th>
+                    <th>Customer Name</th>
+                    <th>Customer Contact Number</th>
                     <th>Order Date</th>
                     <th>Total Amount</th>
+                    <th>Status</th>
                     <th width="15%">Options</th>
                 </tr>
             </thead>
@@ -41,8 +43,10 @@
                     <tr class="active">
                         <td>{{$order->tracking_id}}</td>
                         <td>{{$order->users->first_name}} {{$order->users->last_name}}</td>
+                        <td>{{$order->users->phone}}</td>
                         <td>{{$order->created_at->toFormattedDateString()}}</td>
                         <td>{{presentPrice($order->total_price)}}</td>
+                        <td>{{$order->order_statuses->status}}</td>
                         <td>
                             <a href="/orders/{{$order->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
                             <a href="/orders/confirm_order/{{$order->id}}" class="btn btn-success"><i class="fas fa-check"></i></a>
@@ -70,6 +74,7 @@
                 <tr>
                     <th>Tracking ID</th>
                     <th>Customer</th>
+                    <th>Customer Contact Number</th>
                     <th>Order Date</th>
                     <th>Total Amount</th>
                     <th width="15%">Options</th>
@@ -80,6 +85,7 @@
                 <tr class="active">
                     <td>{{$order->tracking_id}}</td>
                     <td>{{$order->users->first_name}} {{$order->users->last_name}}</td>
+                    <td>{{$order->users->phone}}</td>
                     <td>{{$order->created_at->toFormattedDateString()}}</td>
                     <td>{{presentPrice($order->total_price)}}</td>
                     <td>
@@ -106,6 +112,7 @@
                 <tr>
                     <th>Tracking ID</th>
                     <th>Customer</th>
+                    <th>Customer Contact Number</th>
                     <th>Order Date</th>
                     <th>Total Amount</th>
                     <th width="15%">Options</th>
@@ -116,6 +123,7 @@
                 <tr class="active">
                     <td>{{$order->tracking_id}}</td>
                     <td>{{$order->users->first_name}} {{$order->users->last_name}}</td>
+                    <td>{{$order->users->phone}}</td>
                     <td>{{$order->created_at->toFormattedDateString()}}</td>
                     <td>{{presentPrice($order->total_price)}}</td>
                     <td>

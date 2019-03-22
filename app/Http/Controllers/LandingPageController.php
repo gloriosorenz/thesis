@@ -37,7 +37,7 @@ class LandingPageController extends Controller
         // dd($forecast);
 
         $farmers = DB::table('product_lists')
-                        ->groupBy('rice_farmers_id', 'seasons_id', 'products_id');
+                        ->groupBy('rice_farmers_id', 'seasons_id', 'curr_products_id');
 
             // $minutes = 60;
             // $forecast = Cache::remember('forecast', $minutes, function () {

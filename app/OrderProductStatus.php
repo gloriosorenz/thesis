@@ -15,7 +15,7 @@ class OrderProductStatus extends Model
     //     return $this->belongsTo(OrderProduct::class, 'order_product_statuses_id');
     // }
 
-    public function order_products(){
-        return $this->hasMany('App\OrderProduct');
-    }
+    // public function order_products(){
+    //     return $this->hasMany('App\OrderProduct');
+    // }
 }

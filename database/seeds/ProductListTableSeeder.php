@@ -14,7 +14,8 @@ class ProductListTableSeeder extends Seeder
         $items = [
             [
                 'id' => 1, 
-                'products_id' => 1, 
+                'orig_products_id' => 1, 
+                'curr_products_id' => 1, 
                 'seasons_id' => 1, 
                 'users_id' => 2,
                 'price' => 16.0,
@@ -24,7 +25,8 @@ class ProductListTableSeeder extends Seeder
             ],
             [
                 'id' => 2, 
-                'products_id' => 2, 
+                'orig_products_id' => 2, 
+                'curr_products_id' => 2, 
                 'seasons_id' => 1, 
                 'users_id' => 2,
                 'price' => 11.0,
@@ -34,7 +36,8 @@ class ProductListTableSeeder extends Seeder
             ],
             [
                 'id' => 3, 
-                'products_id' => 3, 
+                'orig_products_id' => 3, 
+                'curr_products_id' => 3, 
                 'seasons_id' => 1, 
                 'users_id' => 2,
                 'price' => 0.0,
@@ -44,7 +47,8 @@ class ProductListTableSeeder extends Seeder
             ],
             [
                 'id' => 4, 
-                'products_id' => 1, 
+                'orig_products_id' => 1,                  
+                'curr_products_id' => 1,  
                 'seasons_id' => 1, 
                 'users_id' => 4,
                 'price' => 16.0,
@@ -54,7 +58,8 @@ class ProductListTableSeeder extends Seeder
             ],
             [
                 'id' => 5, 
-                'products_id' => 2, 
+                'orig_products_id' => 2,                  
+                'curr_products_id' => 2,  
                 'seasons_id' => 1, 
                 'users_id' => 4,
                 'price' => 11.0,
@@ -64,7 +69,8 @@ class ProductListTableSeeder extends Seeder
             ],
             [
                 'id' => 6, 
-                'products_id' => 3, 
+                'orig_products_id' => 3,                  
+                'curr_products_id' => 3,  
                 'seasons_id' => 1, 
                 'users_id' => 4,
                 'price' => 0.0,
@@ -74,7 +80,8 @@ class ProductListTableSeeder extends Seeder
             ],
             [
                 'id' => 7, 
-                'products_id' => 1, 
+                'orig_products_id' => 1,                  
+                'curr_products_id' => 1,  
                 'seasons_id' => 2, 
                 'users_id' => 4,
                 'price' => 19.0,
@@ -84,7 +91,8 @@ class ProductListTableSeeder extends Seeder
             ],
             [
                 'id' => 8, 
-                'products_id' => 2, 
+                'orig_products_id' => 2,                  
+                'curr_products_id' => 2,  
                 'seasons_id' => 2, 
                 'users_id' => 4,
                 'price' => 14.0,
@@ -94,7 +102,8 @@ class ProductListTableSeeder extends Seeder
             ],
             [
                 'id' => 9, 
-                'products_id' => 3, 
+                'orig_products_id' => 3,                  
+                'curr_products_id' => 3,  
                 'seasons_id' => 2, 
                 'users_id' => 4,
                 'price' => 0.0,
@@ -104,7 +113,8 @@ class ProductListTableSeeder extends Seeder
             ],
             [
                 'id' => 10, 
-                'products_id' => 1, 
+                'orig_products_id' => 1,                  
+                'curr_products_id' => 1,  
                 'seasons_id' => 3, 
                 'users_id' => 2,
                 'price' => 16.0,
@@ -114,7 +124,8 @@ class ProductListTableSeeder extends Seeder
             ],
             [
                 'id' => 11, 
-                'products_id' => 2, 
+                'orig_products_id' => 2,                  
+                'curr_products_id' => 2,  
                 'seasons_id' => 3, 
                 'users_id' => 2,
                 'price' => 11.0,
@@ -124,7 +135,8 @@ class ProductListTableSeeder extends Seeder
             ],
             [
                 'id' => 12, 
-                'products_id' => 3, 
+                'orig_products_id' => 3,                  
+                'curr_products_id' => 3,  
                 'seasons_id' => 3, 
                 'users_id' => 2,
                 'price' => 0.0,
@@ -134,7 +146,8 @@ class ProductListTableSeeder extends Seeder
             ],
             [
                 'id' => 13, 
-                'products_id' => 1, 
+                'orig_products_id' => 1,                  
+                'curr_products_id' => 1,  
                 'seasons_id' => 3, 
                 'users_id' => 4,
                 'price' => 16.0,
@@ -144,7 +157,8 @@ class ProductListTableSeeder extends Seeder
             ],
             [
                 'id' => 14, 
-                'products_id' => 2, 
+                'orig_products_id' => 2,                  
+                'curr_products_id' => 2,  
                 'seasons_id' => 3, 
                 'users_id' => 4,
                 'price' => 11.0,
@@ -154,7 +168,8 @@ class ProductListTableSeeder extends Seeder
             ],
             [
                 'id' => 15, 
-                'products_id' => 3, 
+                'orig_products_id' => 3,                  
+                'curr_products_id' => 3,  
                 'seasons_id' => 3, 
                 'users_id' => 4,
                 'price' => 0.0,
@@ -164,7 +179,8 @@ class ProductListTableSeeder extends Seeder
             ],
             [
                 'id' => 16, 
-                'products_id' => 1, 
+                'orig_products_id' => 1,                  
+                'curr_products_id' => 1,  
                 'seasons_id' => 3, 
                 'users_id' => 9,
                 'price' => 19.0,
@@ -174,7 +190,8 @@ class ProductListTableSeeder extends Seeder
             ],
             [
                 'id' => 17, 
-                'products_id' => 2, 
+                'orig_products_id' => 2,                  
+                'curr_products_id' => 2,  
                 'seasons_id' => 3, 
                 'users_id' => 9,
                 'price' => 14.0,
@@ -184,7 +201,8 @@ class ProductListTableSeeder extends Seeder
             ],
             [
                 'id' => 18, 
-                'products_id' => 3, 
+                'orig_products_id' => 3,                  
+                'curr_products_id' => 3,  
                 'seasons_id' => 3, 
                 'users_id' => 9,
                 'price' => 0.0,

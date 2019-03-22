@@ -38,7 +38,7 @@ class DashboardController extends Controller
         // dd($last_com_season);
 
         $dmg_prod_ls = ProductList::where('seasons_id', $last_com_season->id)
-            ->where('products_id',3)
+            ->where('orig_products_id',3)
             ->sum('orig_quantity');
 
         // Chart
@@ -49,14 +49,14 @@ class DashboardController extends Controller
         // $quantity = ProductList::pluck('curr_quantity');
 
         // $dmg_prod_ls = ProductList::where('seasons_id', $last_com_season->id);
-        $prodlistid = ProductList::groupBy('products_id')->pluck('products_id');
+        $prodlistid = ProductList::groupBy('orig_products_id')->pluck('orig_products_id');
         $prodjoin = DB::table('products')
-            ->join('product_lists', 'products.id', '=', 'product_lists.products_id')
-            ->groupBy('products_id')
+            ->join('product_lists', 'products.id', '=', 'product_lists.orig_products_id')
+            ->groupBy('orig_products_id')
             ->pluck('type');
         // dd($prodjoin);
 
-        $prodlist = ProductList::groupBy('products_id')
+        $prodlist = ProductList::groupBy('orig_products_id')
             ->selectRaw('*,sum(curr_quantity) as sum')
             ->where('seasons_id',$last_com_season->id)
             ->pluck('sum');
@@ -69,6 +69,7 @@ class DashboardController extends Controller
             ->pluck('sum','products_id');
         */
 
+        //ADMIN CHARTS
         $piechart = Charts::create('pie', 'highcharts')
                 ->title('Total Production Percentage')
                 ->labels($prodjoin)
@@ -84,7 +85,17 @@ class DashboardController extends Controller
                 ->dimensions(700,450)
                 ->responsive(true)
                 ->groupByMonth();
-                ;
+        ;
+
+
+        $areachart = Charts::database(Order::where('order_statuses_id','=',2)->get(),'line', 'highcharts')
+                ->title('For the current year (per Month)')
+                ->elementLabel("Number of Orders")
+                // ->values($prodlist)
+                ->dimensions(700,450)
+                ->responsive(true)
+                ->groupByMonth();
+                ; 
 
         /*
             $chart = new OrderChart;

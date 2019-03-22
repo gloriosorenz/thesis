@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProductList extends Model
 {
     protected $fillable = [
-        'products_id', 'seasons_id', 'users_id', 'orig_quantity','price', 'curr_quantity'
+        'curr_products_id', 'orig_products_id', 'seasons_id', 'users_id', 'orig_quantity','price', 'curr_quantity'
     ];
 
 
@@ -23,9 +23,14 @@ class ProductList extends Model
         return '₱'.number_format($this->price / 100 * 100, 2);
     }
 
-    public function products()
+    public function orig_products()
     {
-        return $this->belongsTo(Product::class, 'products_id');
+        return $this->belongsTo(Product::class, 'orig_products_id');
+    }
+
+    public function curr_products()
+    {
+        return $this->belongsTo(Product::class, 'curr_products_id');
     }
 
     public function seasons()

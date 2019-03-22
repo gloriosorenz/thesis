@@ -40,6 +40,15 @@ class OrderController extends Controller
                     $op->update(['order_product_statuses_id'=>4]);    
             }
 
+        $allorderproducts = OrderProduct::all();
+
+        // foreach($allorderproducts as $aop){
+        //     while($aop->orders_id == 
+        //     $aop->orders_id)
+        //         if($aop->orders->)
+        // }
+
+
         // $orders1 = App\Order::with('order_products')->get();
         // $product_lists1 = App\Order::with('users')->get();
 
