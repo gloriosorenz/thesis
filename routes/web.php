@@ -92,10 +92,17 @@ Route::get('/orders/cancel_order/{id}', 'OrderController@cancel_order');
 // Damage Report
 // Route::get('pdf/damage_report/{id}','DamageReportController@generatePDF');
 
+// Plant Report
+Route::get('reports/plant_reports/deactivateReport{id}','PlantReportController@deactivateReport');
+
 // Season List
-Route::get('/season_statuses/complete_season_farmer/{id}', 'SeasonStatusController@complete_season_farmer');
-Route::get('/season_statuses/cancel/{id}', 'SeasonStatusController@cancel');
+Route::get('/season_lists/complete_season_farmer/{id}', 'SeasonListController@complete_season_farmer');
+Route::get('/season_lists/cancel/{id}', 'SeasonListController@cancel');
+
+// Route::get('/season_statuses/complete_season_farmer/{id}', 'SeasonStatusController@complete_season_farmer');
+// Route::get('/season_statuses/cancel/{id}', 'SeasonStatusController@cancel');
 Route::get('/season_statuses/complete_season/{id}', 'SeasonStatusController@complete_season');
+
 
 // PDF
 Route::get('pdf/damage_report/{id}', 'DamageReportController@pdfview');
@@ -117,6 +124,7 @@ Route::resource('customers', 'CustomerController');
 Route::resource('products', 'ProductController');
 Route::resource('product_lists', 'ProductListController');
 Route::resource('seasons', 'SeasonController');
+Route::resource('season_lists', 'SeasonListController');
 Route::resource('season_statuses', 'SeasonStatusController');
 Route::resource('dashboard', 'DashboardController');
 Route::resource('orders', 'OrderController');

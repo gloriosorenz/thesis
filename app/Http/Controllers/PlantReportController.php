@@ -150,4 +150,11 @@ class PlantReportController extends Controller
         // download pdf
         return $pdf->stream('plant_report.pdf');
     }
+
+
+    public function deactivateReport($id){
+        $preport = PlantReport::findOrFail($id);
+        $preport->active = 2;
+        $preport->save();
+    }
 }

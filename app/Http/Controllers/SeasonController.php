@@ -62,6 +62,7 @@ class SeasonController extends Controller
             ->with('statuses', $statuses);
     }
 
+
     /**
      * Store a newly created resource in storage.
      *
@@ -74,10 +75,10 @@ class SeasonController extends Controller
         $request->validate([
             // "name"    => "required|array|min:3",
             // "name.*"  => "required|string|distinct|min:3",
-            "planned_hectares.*"  => "required",
-            "planned_num_farmers.*"  => "required|integer",
-            "planned_qty.*"  => "required|integer",
-            "users_id.*"  => "required|distinct",
+            // "planned_hectares.*"  => "required",
+            // "planned_num_farmers.*"  => "required|integer",
+            // "planned_qty.*"  => "required|integer",
+            // "users_id.*"  => "required|distinct",
         ]);
         
 
@@ -85,6 +86,7 @@ class SeasonController extends Controller
         $season->season_start = $request->input('season_start');
         $season->season_types_id = $request->input('season_types_id');
         $season->season_statuses_id =1;
+        // $season->save();
 
         
 
@@ -107,11 +109,9 @@ class SeasonController extends Controller
         }
 
        
-
         // Notification
         $recipients = User::where('roles_id', 3)->get();
         Notification::send($recipients, new SeasonCreated());
-
 
 
         return redirect()->route('seasons.index')->with('success','Season Created ');
@@ -191,57 +191,19 @@ class SeasonController extends Controller
         $request->validate([
             // "name"    => "required|array|min:3",
             // "name.*"  => "required|string|distinct|min:3",
-            "actual_hectares.*"  => "required",
-            "actual_num_farmers.*"  => "required",
-            "actual_qty.*"  => "required",
-            "orig_quantity.*"  => "required",
-            "harvest_date.*"  => "required",
-            "price.*"  => "required",
+            "season_end" => "required",
+            // "actual_hectares.*"  => "required",
+            // "actual_num_farmers.*"  => "required",
+            // "actual_qty.*"  => "required",
+            // "orig_quantity.*"  => "required",
+            // "harvest_date.*"  => "required",
+            // "price.*"  => "required",
         ]);
 
         $season = Season::findOrFail($id);
         $season->season_end = $request->input('season_end');
-        // $season->season_statuses_id =2;
-
-        // $list = SeasonList::count();
-        // $done = SeasonList::where('seasons_id', $id)
-        //     ->where('season_list_statuses_id', 2)->count();
-        
-        // if($list == $done)
-        //     $season->season_statuses_id =2;
-        // else
-        //     $season->season_statuses_id =1;
-
-
-        if($season->save()){
-            $id = $season->id;
-            $plist = $request->all();
-            $plist = ProductList::where('seasons_id', $season->id)->get();
-            foreach($request->id as $i => $id) { 
-                $list = SeasonList::findOrFail($id);
-                $list->actual_hectares = $request->actual_hectares[$i];
-                $list->actual_num_farmers = $request->actual_num_farmers[$i];
-                // $list->season_list_statuses_id = 2;
-                $list->save();
-            }
-
-        
-            foreach($request->products_id as $key => $value) {
-                $data=array(
-                            'seasons_id' => $season->id,
-                            'users_id'=>$request->users_id [$key],
-                            'products_id'=>$request->products_id [$key],
-                            'orig_quantity'=>$request->orig_quantity [$key],
-                            'curr_quantity'=>$request->orig_quantity [$key],
-                            'harvest_date'=>$request->harvest_date [$key],
-                            'price'=>$request->price [$key],
-                            'created_at' =>  \Carbon\Carbon::now(), # \Datetime()
-                            'updated_at' => \Carbon\Carbon::now(),  # \Datetime()
-                        );
- 
-                ProductList::insert($data);
-            }  
-        }
+        // $season->season_statuses_id = 2;
+        $season->save();
 
         
 

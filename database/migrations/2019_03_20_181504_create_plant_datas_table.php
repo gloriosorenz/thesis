@@ -17,6 +17,7 @@ class CreatePlantDatasTable extends Migration
             $table->increments('id');
             $table->double('plant_area');
             $table->integer('farmers');
+            $table->boolean('active');
 
             $table->integer('plant_reports_id')->unsigned()->nullable();
             $table->integer('users_id')->unsigned()->nullable();

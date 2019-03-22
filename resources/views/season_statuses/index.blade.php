@@ -103,7 +103,7 @@
         <h2 class="title">Season History</h2>
     </div>
     <div class="card-body">
-        <table id="table_id3" class="table table-hover track_tbl">
+        <table id="table_id" class="table table-hover track_tbl">
             <thead>
                 <tr>
                     <th width="10%">ID</th>

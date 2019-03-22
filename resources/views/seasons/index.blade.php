@@ -13,21 +13,18 @@
       
 <!-- Add Planned Crop -->
 @if (count($seasons) == count($statuses))
-<a class="btn btn-secondary btn-md mb-2" href="{{ route('seasons.create') }}">+Add</a>
+<a class="btn btn-secondary btn-md mb-2" href="{{ route('seasons.create') }}">+Add New Season</a>
 @endif
+
 
 <!-- Complete Season-->
 @if ($latest_season->season_statuses_id == 1)
-<a class="btn btn-secondary btn-md mb-5" href="/seasons/complete_season/{{$latest_season->id}}">Complete Season {{$latest_season->id}} <i class="fas fa-check"></i></a>
+    @if (auth()->user()->roles_id == 1)
+    <a class="btn btn-secondary btn-md mb-3" href="/seasons/complete_season/{{$latest_season->id}}">Complete Season {{$latest_season->id}} <i class="fas fa-check"></i></a>
+    @endif
 @endif
       
       
-<!-- Page Heading -->
-{{-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Seasons</h1>
-</div> --}}
-
-
 
 <!-- Seasons Datatable -->
 <div class="card shadow mb-4">
@@ -53,10 +50,8 @@
                     <td>{{ $season->season_end }}</td>
                     <td>
                         @if ($season->season_statuses_id == 1)
-                            {{-- <div class="text-sm font-weight-bold text-warning text-uppercase">{{ $season->season_statuses->status }}</div> --}}
                             <h5><span class="badge badge-warning">{{ $season->season_statuses->status }}</span></h5>
                         @else
-                            {{-- <div class="text-sm font-weight-bold text-success text-uppercase">{{ $season->season_statuses->status }}</div> --}}
                             <h5><span class="badge badge-success">{{ $season->season_statuses->status }}</span></h5>
                         @endif
                     </td>

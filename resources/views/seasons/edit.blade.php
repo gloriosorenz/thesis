@@ -61,47 +61,8 @@
 
 <br>
 
-<!-- Update Farmer -->
-<div class="row">
-    <div class="offset-md-2 col-md-8 offset-md-2">
-        <div class="card shadow mb-4">
-            <div class="card-header card-header-primary">
-                <h4 class="card-title">Update Farmer/s</h4>
-            </div>
-            <div class="card-body">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Rice Farmer</th>
-                            <th>Planned Hectares</th>
-                            <th>Actual Hectares</th>
-                            <th>Planned Number of Farmers</th>
-                            <th>Actual Number of Farmers</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($season_lists as $list)
-                        <tr>
-                            <td>
-                                <input name="id[]" id="id" type="hidden" value="{{$list->id}}">
-                                {{ $list->users->company }}
-                            </td>
-                            <td><input type="text" class="form-control" value="{{$list->planned_hectares}}" disabled/></td>
-                            <td><input type="text" class="form-control" name="actual_hectares[]" value="{{ $list->actual_hectares }}" /></td>
-                            <td><input type="text" class="form-control" value="{{$list->planned_num_farmers}}" disabled/></td>
-                            <td><input type="text" class="form-control" name="actual_num_farmers[]" value="{{ $list->actual_num_farmers }}" /></td>
-                            {{-- <td><input type="text" class="form-control" name="actual_qty[]" value="{{ $list->actual_qty }}" /></td> --}}
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Add Products -->
-<div class="row">
+{{-- <div class="row">
     <div class="offset-md-2 col-md-8 offset-md-2">
         <div class="card shadow mb-4">
             <div class="card-header card-header-primary">
@@ -135,7 +96,6 @@
                             <td>
                                 <input name="users_id[]" type="hidden" value="{{$list->users_id}}">
                                 <input name="products_id[]" type="hidden" value="{{$product->id}}">
-                                {{-- <input type="text" class="form-control" name="product_type" value="{{$product->type}}" disabled/> --}}
                                 {{$product->type}}
                             </td>
                             <td><input type="text" class="form-control" name="orig_quantity[]" value="{{$product->orig_quantity}}" /></td>
@@ -148,13 +108,12 @@
                     </tbody>
                 </table>
                 @endforeach
-                {{-- <button type="submit" class="btn btn-lg btn-success">Update</button>
-            </form> --}}
             <!-- End Form -->
             </div>
         </div>
     </div>
-</div>
+</div> --}}
+
 <!-- Submit Button -->
 <div class="row">
     <div class="offset-md-2 col-md-8 offset-md-2">
@@ -162,114 +121,7 @@
     </div>
 </div>
 </form>
-
-
-
-<!-- Rice Farmer Functionalities -->
-@elseif(Auth::user()->roles_id == 2)
-<!-- Update Farmer -->
-<div class="row">
-    <div class="offset-md-2 col-md-8 offset-md-2">
-        <div class="card shadow mb-4">
-            <div class="card-header card-header-primary">
-                <h4 class="card-title">Update Farmer</h4>
-            </div>
-            <div class="card-body">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Rice Farmer</th>
-                            <th>Planned Hectares</th>
-                            <th>Actual Hectares</th>
-                            <th>Planned Number of Farmers</th>
-                            <th>Actual Number of Farmers</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($farmer as $f)
-                        <tr>
-                            <td>
-                                <input name="id[]" id="id" type="hidden" value="{{$f->id}}">
-                                {{ $f->users->company }}
-                            </td>
-                            <td><input type="text" class="form-control" value="{{$f->planned_hectares}}" disabled/></td>
-                            <td><input type="text" class="form-control" name="actual_hectares[]" value="{{$f->actual_hectares}}" /></td>
-                            <td><input type="text" class="form-control" value="{{$f->planned_num_farmers}}" disabled/></td>
-                            <td><input type="text" class="form-control" name="actual_num_farmers[]" value="{{$f->actual_num_farmers}}" /></td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Add Products -->
-<div class="row">
-    <div class="offset-md-2 col-md-8 offset-md-2">
-        <div class="card shadow mb-4">
-            <div class="card-header card-header-primary">
-                <h4 class="card-title">Products</h4>
-            </div>
-            <div class="card-body">
-                @foreach ($farmer as $f)
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">Rice Farmer</span>
-                            </div>
-                            <input type="text" class="form-control" aria-label="RiceFarmer" aria-describedby="basic-addon1" value="{{$f->users->company}}" readonly>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Product</th>
-                            <th>Original Quantity</th>
-                            <th>Price</th>
-                            <th>Harvest Date</th>
-                        </tr>
-                    </thead>
-                    <tbody class="resultbody3">
-                        @foreach ($products as $product)
-                        <tr>
-                            <td>
-                                <input name="users_id[]" type="hidden" value="{{$f->users_id}}">
-                                <input name="products_id[]" type="hidden" value="{{$product->id}}">
-                                {{-- <input type="text" class="form-control" name="product_type" value="{{$product->type}}" disabled/> --}}
-                                {{$product->type}}
-                            </td>
-                            <td><input type="text" class="form-control" name="orig_quantity[]" value="{{$f->orig_quantity}}" /></td>
-                            <td><input type="text" class="form-control" name="price[]" value="{{$f->price}}" /></td>
-                            <td>
-                                {{ Form::date('harvest_date[]', \Carbon\Carbon::now(), ['class' => 'datepicker form-control','id'=>'harvest_date[]'])}}
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                @endforeach
-                {{-- <button type="submit" class="btn btn-lg btn-success">Update</button>
-            </form> --}}
-            <!-- End Form -->
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Submit Button -->
-<div class="row">
-    <div class="offset-md-2 col-md-8 offset-md-2">
-        <button type="submit" class="btn btn-lg btn-success">Update</button>
-    </div>
-</div>
-</form>
-
 @endif
-
 
 
 @endsection

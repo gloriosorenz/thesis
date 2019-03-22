@@ -5,7 +5,7 @@
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Dashboard</a></li>
-    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('seasons.index') }}">Seasons</a></li>
+    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('season_lists.index') }}">Season List</a></li>
     <li class="breadcrumb-item active" aria-current="page">Create</li>
 </ol>
 </nav>
@@ -15,56 +15,18 @@
 <br>
 
 
-<!-- Form -->
-<form method="post" action="{{action('SeasonController@store')}}" enctype="multipart/form-data">
+<!-- Start Form -->
+<form method="post" action="{{action('SeasonListController@store')}}" enctype="multipart/form-data">
 @csrf
 
+<!-- Admin Functionality  -->
 @if (auth()->user()->roles_id == 1)
-<!-- New Season -->
-<div class="row">
-    <div class="offset-md-2 col-md-8 ">
-        <div class="card shadow mb-4">
-        <div class="card-header card-header-primary">
-            <h4 class="card-title">New Season</h4>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <!-- Season Type -->
-                <div class="col-md-6">
-                    <div class="form-group">
-                        {!! Form::label('season_types_id', 'Type:', ['class' => 'control-label']) !!}
-                        {!! Form::select('season_types_id', $types, old('season_types_id'), ['class' => 'form-control select2', 'required' => '']) !!}
-                        <p class="help-block"></p>
-                        @if($errors->has('season_types_id'))
-                            <p class="help-block">
-                                {{ $errors->first('season_types_id') }}
-                            </p>
-                        @endif
-                        </div>
-                </div>
-            </div> 
-            <div class="row">
-                <!-- Start Date -->
-                <div class="col-md-6">
-                    <div class="form-group row">
-                            {{ Form::label('season_start', 'Season Start:') }}
-                        <div class="col-12">
-                            {{ Form::date('season_start', \Carbon\Carbon::now(), ['class' => 'datepicker form-control','id'=>'date_start'])}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-    </div>
-</div>
-
-<!-- Add Farmer -->
+<!-- Add Plan/Actual Season  -->
 <div class="row">
     <div class="offset-md-2 col-md-8">
         <div class="card shadow mb-4">
             <div class="card-header card-header-primary">
-                <h4 class="card-title">Add Farmer</h4>
+                <h4 class="card-title">Plan For Season</h4>
             </div>
             <div class="card-body">
             <h3>Add Farmer</h3>
@@ -76,7 +38,6 @@
                         <th>Planned Number of Farmers</th>
                         <th>Planned Quantity</th>
                         <th>Delete</th>
-                        {{-- <th style="text-align:center"><a href="#" class="addRow"><i class="fas fa-plus"></i></a></th> --}}
                     </tr>
                 </thead>
                 <tbody class="resultbody1">
@@ -102,9 +63,9 @@
     </div>
 </div>
 
-
+<!-- Farmer Functionality  -->
 @elseif(auth()->user()->roles_id == 2)
-<!-- Add Farmer -->
+<!-- Add Plan For Season -->
 <div class="row">
     <div class="offset-md-2 col-md-8">
         <div class="card shadow mb-4">
@@ -148,4 +109,5 @@
     </div>
 </div>
 </form>
+<!-- End Form -->
 @endsection

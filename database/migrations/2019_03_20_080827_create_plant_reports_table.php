@@ -15,9 +15,7 @@ class CreatePlantReportsTable extends Migration
     {
         Schema::create('plant_reports', function (Blueprint $table) {
             $table->increments('id');
-            // $table->integer('calamities_id')->unsigned()->nullable();
-            // $table->double('plant_area');
-            // $table->integer('farmers');
+            $table->boolean('active');
 
 
             // $table->integer('users_id')->unsigned()->nullable(); //prepared by

@@ -19,7 +19,6 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Products</h1>
-    {{-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
 </div>
 
 @if (count($seasons) > 0)
@@ -42,9 +41,6 @@
                 </div>
                 <a href="/product_lists/{{$season->id}}/edit" class="btn btn-sm btn-success">Update</a>
             </div>
-            {{-- <div class="card-footer text-muted">
-                <a href="/seasons/{{$season->id}}/edit" class="btn btn-success"><!-- <i class="fas fa-edit"></i> -->Update</a>
-            </div> --}}
         </div>
     </div>
     @elseif ($season->season_statuses->id == 1)
@@ -63,9 +59,6 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="card-footer">
-                <a href="/seasons/{{$season->id}}/edit" class="btn btn-success"><!-- <i class="fas fa-edit"></i> -->Update</a>
-            </div> --}}
         </div>
     </div>
     @endif

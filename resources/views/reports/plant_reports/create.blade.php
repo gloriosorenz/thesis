@@ -60,7 +60,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Rice Farmer</th>
+                            <th>Barangay</th>
                             <th>Plant Area</th>
                             <th>Number of Farmers</th>
                         </tr>

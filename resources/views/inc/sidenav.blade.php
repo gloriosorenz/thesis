@@ -28,19 +28,26 @@
         <span>Seasons</span></a>
     </li>
 
-    <!-- Statuses -->
+    <!-- Season List -->
     <li class="nav-item">
+        <a class="nav-link" href="{{ route('season_lists.index') }}">
+        <i class="fas fa-list"></i>
+        <span>Season List</span></a>
+    </li>
+
+    <!-- Statuses -->
+    {{-- <li class="nav-item">
         <a class="nav-link" href="{{ route('season_statuses.index') }}">
         <i class="fas fa-check-circle"></i>
         <span>Season Statuses</span></a>
-    </li>
+    </li> --}}
 
     <!-- Products -->
-    {{-- <li class="nav-item">
+    <li class="nav-item">
         <a class="nav-link" href="{{ route('product_lists.index') }}">
         <i class="fas fa-box"></i>
         <span>Products</span></a>
-    </li> --}}
+    </li>
 
     <!-- Orders -->
     <li class="nav-item">
@@ -107,6 +114,13 @@
         <a class="nav-link" href="{{ route('seasons.index') }}">
         <i class="fas fa-sun"></i>
         <span>Seasons</span></a>
+    </li>
+
+    <!-- Season List -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('season_lists.index') }}">
+        <i class="fas fa-list"></i>
+        <span>Season List</span></a>
     </li>
 
     <!-- Products -->

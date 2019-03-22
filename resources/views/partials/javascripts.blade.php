@@ -50,7 +50,9 @@
 
 <script type="text/javascript">
     jQuery(document).ready( function ($) {
-        $('#table_id').DataTable();
+        $('#table_id').DataTable({
+          order: [[ 0, 'desc' ]]
+        });
         $('#table_id2').DataTable();
         $('#table_id3').DataTable();
         $('#users_table').DataTable();
