@@ -56,9 +56,7 @@
                         @endif
                     </td>
                     <td>
-                        @if ($season->season_statuses_id == 1)
                         <a href="/seasons/{{$season->id}}/edit" class="btn btn-md btn-success"><i class="fas fa-edit fa-sm text-white"></i></a>
-                        @endif
                         <a href="/seasons/{{$season->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
                         <a href="pdf/season_report/{{$season->id}}" class="btn btn-md btn-secondary"> <i class="fas fa-download fa-sm text-white"></i></a>
                     </td>

@@ -19,25 +19,37 @@
                     <h2 class="title">Products</h2>
                 </div>
                 <div class="card-body">
-                    <table id="table_id" class="table table-hover">
+                    <table id="table_id2" class="table table-hover">
                         <thead>
                             <tr>
-                                <th width="30%">Rice Farmer</th>
+                                <th width="">Product</th>
+                                <th width="">Rice Farmer</th>
+                                <th width="">Location</th>
                                 <th width="">Harves Date</th>
                                 <th width="">Available</th>
-                                <th width="">Status</th>
+                                <th width="">Price</th>
                                 <th width="15%">Options</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($product_lists as $product_list)
                             <tr class="tr">
+                                <td>{{$product_list->curr_products->type}}</td>
                                 <td>{{$product_list->users->company}}</td>
+                                <td>{{ $product_list->users->barangays->name }}, {{ $product_list->users->cities->name }}, {{ $product_list->users->provinces->name }}</td>
                                 <td>{{$product_list->harvest_date}}</td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $product_list->curr_quantity }}</td>
                                 <td>
-                                    <a href=""><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view">View Products <i class="fas fa-eye"></i></button></a>
+                                    <button type="button" class="btn btn-lg btn-secondary btn-block"  disabled>{{ $product_list->presentPrice() }} </td>
+                                <td>
+                                    {{-- <a href=""><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view">View Products <i class="fas fa-eye"></i></button></a> --}}
+                                    <form method="post" action="{{action('CartController@store')}}">
+                                    @csrf
+                                        <input type="hidden" name="id" value="{{ $product_list->id }}">
+                                        <input type="hidden" name="price" value="{{ $product_list->price }}">
+                                        <input type="hidden" name="quantity" value="{{ $product_list->curr_quantity }}">
+                                        <button type="submit" class="btn btn-success btn-lg btn-block">Add to Cart</button>
+                                    </form>  
                                 </td>
                             </tr>
                             @endforeach
@@ -47,14 +59,14 @@
         </div>
     </div>
 
-     <div class="row">
+     {{-- <div class="row">
     @if(count($product_lists) > 0)
         @foreach($product_lists as $product_list)
         <div class="col-md-6">
             <div class="card shadow mb-4">
                 <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
                 <div class="card-body">
-                    <h4 class="card-title">{{ $product_list->products->type }}</h4>
+                    <h4 class="card-title">{{ $product_list->curr_products->type }}</h4>
                     <ul class="list-unstyled mt-3 mb-4">
                         <li>FOR TEST REASONS = Season {{ $product_list->seasons->id }}</li>
                         <li>Available: {{ $product_list->curr_quantity }}</li>
@@ -84,7 +96,7 @@
     @else
         <p>No products found</p>
     @endif
-    </div>
+    </div> --}}
    
     
 </div>

@@ -85,7 +85,7 @@ class CheckoutController extends Controller
         }
 
         $contents = Cart::content()->map(function ($item) {
-            return $item->model->products->type.', '.$item->qty;
+            return $item->model->curr_products->type.', '.$item->qty;
         })->values()->toJson();
 
             $order = $this->addToOrdersTables($request, null);
@@ -140,7 +140,7 @@ class CheckoutController extends Controller
                 'product_lists_id' => $item->model->id,
                 'quantity' => $item->qty,
                 'order_product_statuses_id' => 1,
-
+                'farmers_id' => $item->model->users->id,
             ]);
         }
 

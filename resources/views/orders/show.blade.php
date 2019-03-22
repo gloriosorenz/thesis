@@ -14,6 +14,10 @@
 <br>
 <br>
 
+<a class="btn btn-secondary btn-md mb-2" href="">Confirm All Orders</a>
+<a class="btn btn-secondary btn-md mb-2" href="">Cancel All Orders</a>
+<a class="btn btn-secondary btn-md mb-2" href="">Order is incomplete</a>
+
 <!-- Seasons List Datatable -->
 <div class="card shadow mb-4">
     <div class="card-header">

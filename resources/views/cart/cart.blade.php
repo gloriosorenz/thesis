@@ -48,7 +48,7 @@
 
                         @foreach (Cart::content() as $item)
                         <tr>
-                            <td><a href="{{ url('/product_lists/show_products', [$item->model->products->type]) }}">{{ $item->model->products->type }}</a></td>
+                            <td><a href="{{ url('/product_lists/show_products', [$item->model->curr_products->type]) }}">{{ $item->model->curr_products->type }}</a></td>
                             <td>{{ $item->model->users->company }}</td>
                             <td>
                                 <div class="cart-table-row-right">

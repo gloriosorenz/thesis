@@ -75,10 +75,8 @@ class SeasonController extends Controller
         $request->validate([
             // "name"    => "required|array|min:3",
             // "name.*"  => "required|string|distinct|min:3",
-            // "planned_hectares.*"  => "required",
-            // "planned_num_farmers.*"  => "required|integer",
-            // "planned_qty.*"  => "required|integer",
-            // "users_id.*"  => "required|distinct",
+            'season_start' => 'required',
+            'season_types_id' => 'required',
         ]);
         
 
@@ -86,27 +84,9 @@ class SeasonController extends Controller
         $season->season_start = $request->input('season_start');
         $season->season_types_id = $request->input('season_types_id');
         $season->season_statuses_id =1;
-        // $season->save();
+        $season->save();
 
-        
-
-        if($season->save()){
-            $id = $season->id;
-            foreach($request->users_id as $key => $value) {
-                $data=array(
-                            'seasons_id' => $id,
-                            'users_id'=>$request->users_id [$key],
-                            'planned_hectares'=>$request->planned_hectares [$key],
-                            'planned_num_farmers'=>$request->planned_num_farmers [$key],
-                            'planned_qty'=>$request->planned_qty [$key],
-                            'season_list_statuses_id' => 1,
-                            'created_at' =>  \Carbon\Carbon::now(), # \Datetime()
-                            'updated_at' => \Carbon\Carbon::now(),  # \Datetime()
-                        );
-
-                SeasonList::insert($data);
-            }  
-        }
+    
 
        
         // Notification

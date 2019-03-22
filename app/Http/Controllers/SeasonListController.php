@@ -68,8 +68,6 @@ class SeasonListController extends Controller
     {
         // Validation
         $request->validate([
-            // "name"    => "required|array|min:3",
-            // "name.*"  => "required|string|distinct|min:3",
             "planned_hectares.*"  => "required",
             "planned_num_farmers.*"  => "required|integer",
             "planned_qty.*"  => "required|integer",

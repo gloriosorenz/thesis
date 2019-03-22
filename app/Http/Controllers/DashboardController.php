@@ -140,8 +140,8 @@ class DashboardController extends Controller
             ->with('pending_orders',$pending_orders)
             ->with('seasons', $seasons)
             ->with('dmg_prod_ls',$dmg_prod_ls)
-            ->with('piechart',$piechart)
-            ->with('areachart',$areachart)
+            // ->with('piechart',$piechart)
+            // ->with('areachart',$areachart)
 
             ;
     }

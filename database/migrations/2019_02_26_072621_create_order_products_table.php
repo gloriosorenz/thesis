@@ -21,6 +21,7 @@ class CreateOrderProductsTable extends Migration
             $table->integer('order_product_statuses_id')->unsigned()->nullable();
             $table->integer('product_lists_id')->unsigned()->nullable();
             $table->integer('orders_id')->unsigned()->nullable();
+            $table->integer('farmers_id')->unsigned()->nullable();
 
 
             $table->timestamps();

@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 // use Illuminate\Support\Facades\DB;
 
-use App\ProductList;
+
 use Illuminate\Http\Request;
 use App\Product;
+use App\ProductList;
 use App\RiceFarmer;
 use App\Season;
 use App\SeasonList;
@@ -27,47 +28,46 @@ class ProductListController extends Controller
      */
     public function index()
     {
-        $seasons = Season::orderBy('id', 'desc')->paginate(10);
-        // $lists = SeasonList::where('rice_farmers_id', '=', Auth::user()->id)->get();
-        $season_lists = SeasonList::all();
+        // Get latest season
+        $latest_season = DB::table('seasons')->orderBy('id', 'desc')->first();
 
-
-        
-            // Date Automation
-            $decrease1 = ProductList::where('harvest_date', '<', Carbon::now()->subDays(7))
-                // ->where('products_id', '!=', 3) 
-                ->where('curr_quantity', '>', 0)
+        $product_lists = ProductList::where('seasons_id', $latest_season->id)
+                ->where('users_id', auth()->user()->id)
                 ->get();
- 
-            foreach($decrease1 as $pl){
-            $sub = $pl->curr_quantity;
-                if($pl->products_id == 1){
-                    $pl->update([
-                        'curr_quantity' => $pl->curr_quantity - $sub
-                        ]);
-                }
-                if($pl->products_id == 2){
-                    $pl->update([
-                        'curr_quantity' => $pl->curr_quantity - $sub,
-                        ]);
-                }
-                // if($pl->products_id == 3){
-                //     $pl->update([
-                //         'curr_quantity' => $pl->curr_quantity + $sub,
-                //         ]);
-                // }
-            }
 
-    //    dd($decrease2);
+        $all_products = ProductList::where('seasons_id', $latest_season->id)
+                ->get();
+
+
+            // // Date Automation
+            // $decrease1 = ProductList::where('harvest_date', '<', Carbon::now()->subDays(7))
+            //     ->where('curr_quantity', '>', 0)
+            //     ->get();
+
+ 
+            // // dd($prod1);
+            // foreach($decrease1 as $pl){
+            // $sub = $pl->curr_quantity;
+            // $prod1 = $decrease1['products_id' == 1 ];
+            //     if($pl->products_id == 1){
+            //         $pl->update([
+            //             'curr_quantity' => $pl->curr_quantity - $sub,
+            //             ]);
+            //     }
+            //     if($pl->products_id == 2){
+            //         $pl->update([
+            //             'curr_quantity' => $pl->curr_quantity + $prod1->curr_quantity,
+            //             ]);
+            //     }
+            // }
+
 
         return view('product_lists.index')
-            ->with('seasons', $seasons)
-            ->with('season_lists', $season_lists)
-            // ->with('product_list',$product_list)
+                ->with('product_lists', $product_lists)
+                ->with('all_products', $all_products)
+                ->with('latest_season', $latest_season)
             ;
     }
-
-
      
 
     /**
@@ -95,32 +95,31 @@ class ProductListController extends Controller
     {
        // Validation
        $request->validate([
-            // 'season_start' => 'required|date|',
-            // 'season_types_id' => 'required|int',
-            // 'planned_hectares' => 'required|int',
-            // 'planned_num_farmers' => 'required|string|max:255',
-            // 'planned_qty' => 'required|string|max:255',
+            'orig_quantity.*' => 'required|int|',
+            'price.*' => 'required|int',
         ]);
 
-        $seasons_id = $request->input('seasons_id');
+        // Get latest season
+        $latest_season = DB::table('seasons')->orderBy('id', 'desc')->first();
+
         
         foreach($request->products_id as $key => $value) {
             $data=array(
                         'users_id'=> auth()->user()->id,
-                        'seasons_id' => $seasons_id,
-                        'products_id'=>$request->products_id [$key],
+                        'seasons_id' => $latest_season->id,
+                        'orig_products_id'=>$request->products_id [$key],
+                        'curr_products_id'=>$request->products_id [$key],
                         'orig_quantity'=>$request->orig_quantity [$key],
                         'curr_quantity'=>$request->orig_quantity [$key],
                         'harvest_date'=>$request->harvest_date [$key],
-                        'price'=>$request->price [$key]);
+                        'price'=>$request->price [$key],
+                        'created_at' =>  \Carbon\Carbon::now(), # \Datetime()
+                        'updated_at' => \Carbon\Carbon::now(),  # \Datetime()
+                    );
 
             ProductList::insert($data);
-            // dd($data);
-        }  
-
-
-
-        return redirect()->route('product_lists.index')->with('success','Products Updated ');
+        }
+        return redirect()->route('product_lists.index')->with('success','Products Added ');
     }
 
     /**
@@ -131,6 +130,8 @@ class ProductListController extends Controller
      */
     public function show($id)
     {
+
+
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
 
@@ -153,19 +154,26 @@ class ProductListController extends Controller
      */
     public function edit($id)
     {
-        $user_id = auth()->user()->id;
-        $user = User::find($user_id);
 
-        $season = Season::find($id);
-        $product_lists = ProductList::where('users_id', '=', auth()->user()->id)
-                ->where('seasons_id', $season->id)
+        // Get latest season
+        $latest_season = DB::table('seasons')->orderBy('id', 'desc')->first();
+
+        $product_list = ProductList::findOrFail($id);
+
+
+        
+        $product_lists =ProductList::where('users_id', auth()->user()->id)
+                ->where('seasons_id', $latest_season->id)
                 ->get();
+        $products = Product::all();
 
-        // dd($product_lists);
+        // dd($product_list);
 
         return view('product_lists.edit')
-            ->with('season', $season)
-            ->with('product_lists', $product_lists);
+            ->with('product_list', $product_list)
+            ->with('product_lists', $product_lists)
+            ->with('products', $products)
+            ;
     }
 
     /**
@@ -177,23 +185,15 @@ class ProductListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $season = Season::findOrFail($id);
-        $id = $season->id;
+        $product_list = ProductList::findOrFail($id);
 
-        foreach($request->products_id as $key => $value) {
-            DB::table('product_lists')
-            ->where('seasons_id', '=', $season->id)
-            ->where('users_id', auth()->user()->id)
-            ->update([
-                'products_id'=>$request->products_id [$key],
-                'curr_quantity' => $request->curr_quantity [$key],
-                'price'=>$request->price [$key],
-                'harvest_date'=>$request->harvest_date [$key],
-                'updated_at' => \Carbon\Carbon::now(),  # \Datetime()
-                ]);
-        }  
+        $product_list->orig_quantity = $request->input('orig_quantity');
+        $product_list->curr_quantity = $request->input('curr_quantity');
+        $product_list->price = $request->input('price');
+        $product_list->save();
         
-        return redirect()->route('product_lists.index')->with('success','Season Updated ');
+
+        return redirect()->route('product_lists.index')->with('success','Products Updated ');
     }
 
     /**
@@ -221,12 +221,19 @@ class ProductListController extends Controller
                 ->orderBy('id', 'desc')->first();
 
         //Show All Products Page
-        $product_lists = ProductList::where('products_id', '!=', 3) 
+        // $product_lists = ProductList::where('products_id', '!=', 3) 
+        //                 // ->where('curr_quantity', '>', 0)
+        //                 ->where('seasons_id', $latest_season->id)
+        //                 ->groupBy('users_id')
+        //                 ->get();
+
+        //Show all Products
+        $product_lists = ProductList::where('seasons_id', $latest_season->id)
+                        ->where('curr_products_id', '!=', 3) 
                         ->where('curr_quantity', '>', 0)
-                        ->where('seasons_id', $latest_season->id)
                         ->get();
 
-        // $product_lists = ProductList::all();
+        // dd($product_lists);
                         
 
         $farmers = DB::table('product_lists')
@@ -242,22 +249,22 @@ class ProductListController extends Controller
 
 
 
-    public function view_product($id)
-    {
-        $user_id = auth()->user()->id;
-        $user = User::find($user_id);
+    // public function view_product($id)
+    // {
+    //     $user_id = auth()->user()->id;
+    //     $user = User::find($user_id);
 
         
-        $season = Season::find($id);
-        $product_lists = ProductList::where('seasons_id', $season->id)->get();
+    //     $season = Season::find($id);
+    //     $product_lists = ProductList::where('seasons_id', $season->id)->get();
 
-        // $product = ProductList::where('created_at', '>=', Carbon::now()->subDays(7))
-        //     ->where('product_id', '=', 2)
-        //     ->get();
+    //     // $product = ProductList::where('created_at', '>=', Carbon::now()->subDays(7))
+    //     //     ->where('product_id', '=', 2)
+    //     //     ->get();
 
        
-        return view('product_lists.view_product')
-            ->with('season', $season)
-            ->with('product_lists', $product_lists);
-    }
+    //     return view('product_lists.view_product')
+    //         ->with('season', $season)
+    //         ->with('product_lists', $product_lists);
+    // }
 }

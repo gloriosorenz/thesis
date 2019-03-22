@@ -17,7 +17,6 @@
 <!-- Form -->
 <form method="post" action="{{action('ProductListController@store')}}" enctype="multipart/form-data">
  @csrf
-
 <!-- Add Products -->
 <div class="row">
     <div class="offset-md-1 col-md-10 offset-md-1">
@@ -26,48 +25,33 @@
                 <h2 class="card-title">Add Products</h2>
             </div>
             <div class="card-body">
+                <!-- Products -->
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Original Quantity</th>
+                            <th>Price</th>
+                            <th>Harvest Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($products as $product)
+                        <tr>
+                            <td>
+                                <input type="text" class="form-control" name="product_type" value="{{$product->type}}" disabled/>
+                                <input name="products_id[]" type="hidden" value="{{$product->id}}">
+                            </td>
+                            <td><input type="text" class="form-control" name="orig_quantity[]" value=""/></td>
+                            <td><input type="text" class="form-control" name="price[]" value=""/></td>
+                            <td>
+                                {{ Form::date('harvest_date[]', \Carbon\Carbon::now(), ['class' => 'datepicker form-control','id'=>'harvest_date[]'])}}
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
 
-            <!-- Select Season -->
-            <div class="row">
-                <!-- Season -->
-                <div class="col-md-3">
-                    <!-- Seasons -->
-                    <div class="form-group">
-                        <label for="seasons_id">Season:</label>
-                        <td>
-                            <input type="text" class="form-control" value="Season {{$season->id}}" disabled/>
-                            <input name="seasons_id" type="hidden" value="{{$season->id}}">
-                        </td>
-                    </div>
-                </div>
-            </div> 
-
-            <!-- Prodcts -->
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Product</th>
-                        <th>Original Quantity</th>
-                        <th>Price</th>
-                        <th>Harvest Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($products as $product)
-                    <tr>
-                        <td>
-                            <input type="text" class="form-control" name="product_type" value="{{$product->type}}" disabled/>
-                            <input name="products_id[]" type="hidden" value="{{$product->id}}">
-                        </td>
-                        <td><input type="text" class="form-control" name="orig_quantity[]" value=""/></td>
-                        <td><input type="text" class="form-control" name="price[]" value=""/></td>
-                        <td>
-                            {{ Form::date('harvest_date[]', \Carbon\Carbon::now(), ['class' => 'datepicker form-control','id'=>'harvest_date[]'])}}
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
             </div>
         </div>
     </div>

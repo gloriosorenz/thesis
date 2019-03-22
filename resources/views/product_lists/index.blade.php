@@ -16,12 +16,92 @@
 <br>
 
 
-<!-- Page Heading -->
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Products</h1>
+
+@if (auth()->user()->roles_id == 1)
+<!-- All Product List Datatable -->
+<div class="card shadow mb-4 border-left-warning">
+    <div class="card-header py-3">
+        <h2 class="title">Product for Season {{$latest_season->id}}</h2>
+    </div>
+    <div class="card-body">
+        <table id="table_id" class="table table-hover track_tbl">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Product Type</th>
+                    <th>Rice Farmer</th>
+                    <th>Original Quantity</th>
+                    <th>Current Quantity</th>
+                    <th>Harvest Date</th>
+                    <th width="15%">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($all_products as $pl)
+                <tr class="active">
+                    <td>{{$pl->id}}</td>
+                    <td>{{$pl->orig_products->type}}</td>
+                    <td>{{$pl->users->company}}</td>
+                    <td>{{$pl->orig_quantity}}</td>
+                    <td>{{$pl->curr_quantity}}</td>
+                    <td>{{$pl->harvest_date}}</td>
+                    <td>
+                        {{-- <a href="/product_lists/{{$pl->id}}"><button class="btn btn-warning btn-md btn-fill" ><i class="fas fa-eye"></i></button></a> --}}
+                        <a href="/product_lists/{{$pl->id}}/edit"><button class="btn btn-success btn-md btn-fill"  ><i class="fas fa-eye"></i></button></a>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
 
-@if (count($seasons) > 0)
+@elseif(auth()->user()->roles_id == 2)
+    <!-- Per Farmer Product Lis Datatable -->
+    <div class="card shadow mb-4 border-left-warning">
+        <div class="card-header py-3">
+            <h2 class="title">Product for Season {{$latest_season->id}}</h2>
+        </div>
+        <div class="card-body">
+            <table id="table_id" class="table table-hover track_tbl">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Product Type</th>
+                        <th>Rice Farmer</th>
+                        <th>Original Quantity</th>
+                        <th>Current Quantity</th>
+                        <th>Harvest Date</th>
+                        <th width="15%">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($product_lists as $pl)
+                    <tr class="active">
+                        <td>{{$pl->id}}</td>
+                        <td>{{$pl->orig_products->type}}</td>
+                        <td>{{$pl->users->company}}</td>
+                        <td>{{$pl->orig_quantity}}</td>
+                        <td>{{$pl->curr_quantity}}</td>
+                        <td>{{$pl->harvest_date}}</td>
+                        <td>
+                            {{-- <a href="/product_lists/{{$pl->id}}"><button class="btn btn-warning btn-md btn-fill" ><i class="fas fa-eye"></i></button></a> --}}
+                            <a href="/product_lists/{{$pl->id}}/edit"><button class="btn btn-success btn-md btn-fill"  ><i class="fas fa-eye"></i></button></a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+@endif
+
+
+
+
+
+
+{{-- @if (count($seasons) > 0)
 <div class="row">
     @foreach ($seasons as $season)
     @if ($season->season_statuses->id == 2)
@@ -67,5 +147,6 @@
 {{$seasons->links()}}
 @else
 <p>No seasons found</p>
-@endif
+@endif --}}
+
 @endsection

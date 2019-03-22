@@ -101,7 +101,6 @@
                     <address>
                         <strong>Payment Method:</strong><br>
                         Cash<br>
-                        {{auth()->user()->email}}
                     </address>
                 </div>
                 <div class="col-md-6 text-right">
@@ -140,7 +139,7 @@
                             <tbody>
                                 @foreach (Cart::content() as $item)
                                 <tr>
-                                    <td>{{ $item->model->products->type }}</td>
+                                    <td>{{ $item->model->curr_products->type }}</td>
                                     <td>{{ $item->model->users->company }}</td>
                                     <td class="text-center">{{ $item->model->presentPrice() }}</td>
                                     <td class="text-center">{{ $item->qty }} kaban/s</td>

@@ -40,12 +40,10 @@
                                 {{ $errors->first('season_types_id') }}
                             </p>
                         @endif
-                        </div>
+                    </div>
                 </div>
-            </div> 
-            <div class="row">
-                <!-- Start Date -->
-                <div class="col-md-6">
+                 <!-- Start Date -->
+                 <div class="col-md-6">
                     <div class="form-group row">
                             {{ Form::label('season_start', 'Season Start:') }}
                         <div class="col-12">
@@ -54,13 +52,16 @@
                     </div>
                 </div>
             </div>
+            </div> 
+            <div class="row">
+               
         </div>
         </div>
     </div>
 </div>
 
 <!-- Add Farmer -->
-<div class="row">
+{{-- <div class="row">
     <div class="offset-md-2 col-md-8">
         <div class="card shadow mb-4">
             <div class="card-header card-header-primary">
@@ -76,7 +77,6 @@
                         <th>Planned Number of Farmers</th>
                         <th>Planned Quantity</th>
                         <th>Delete</th>
-                        {{-- <th style="text-align:center"><a href="#" class="addRow"><i class="fas fa-plus"></i></a></th> --}}
                     </tr>
                 </thead>
                 <tbody class="resultbody1">
@@ -100,12 +100,12 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 
 @elseif(auth()->user()->roles_id == 2)
 <!-- Add Farmer -->
-<div class="row">
+{{-- <div class="row">
     <div class="offset-md-2 col-md-8">
         <div class="card shadow mb-4">
             <div class="card-header card-header-primary">
@@ -137,7 +137,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @endif
 
 

@@ -9,15 +9,9 @@
     <li class="breadcrumb-item active" aria-current="page">Orders</li>
 </ol>
 </nav>
-
-<!-- Add Planned Crop -->
-{{-- @if (count($seasons) == count($statuses))
-    <a class="btn btn-secondary btn-md" href="{{ route('seasons.create') }}">+Add</a>
-@else
-@endif --}}
     
 <br>
-<br>
+
 
 <!-- Pending Orders Datatable -->
 <div class="card shadow mb-4 border-left-warning">
@@ -61,8 +55,6 @@
 </div>
 
 
-
-
 <!-- Confirmed Orders Datatable -->
 <div class="card shadow mb-4 border-left-primary">
     <div class="card-header py-3 ">
@@ -99,8 +91,6 @@
 </div>
 
 
-
-
 <!-- Cancelled Orders Datatable -->
 <div class="card shadow mb-4 border-left-danger">
     <div class="card-header py-3">
@@ -135,5 +125,7 @@
         </table>
     </div>
 </div>
+
+
 
 @endsection

@@ -53,7 +53,9 @@
         $('#table_id').DataTable({
           order: [[ 0, 'desc' ]]
         });
-        $('#table_id2').DataTable();
+        $('#table_id2').DataTable({
+          order: [[ 1, 'desc' ]]
+        });
         $('#table_id3').DataTable();
         $('#users_table').DataTable();
         $('#roles_table').DataTable();

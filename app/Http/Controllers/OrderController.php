@@ -23,44 +23,36 @@ class OrderController extends Controller
         // $orders = auth()->user()->orders()->with('product_lists')->get(); // fix n + 1 issues
         $orders = Order::all();
 
-        // Auto Cancel Order after 3 days
-        $order = Order::where('created_at', '<', Carbon::now()->subDays(3))
-            ->get();
-            foreach($order as $o){
-                    $o->update([
-                        'order_statuses_id' => 4
-                    ]);                    
-            }
-            
-        // Auto add canceled order quantity
+        // Auto add Cancel Order with Quantity
         $orderproducts = OrderProduct::where('created_at', '<', Carbon::now()->subDays(3))
+            ->where('order_product_statuses_id','=', 1)
             ->get();
+
             foreach($orderproducts as $op){
                     $op->product_lists->update(['curr_quantity' => $op->product_lists->curr_quantity + $op->quantity]);
-                    $op->update(['order_product_statuses_id'=>4]);    
+                    $op->update(['order_product_statuses_id' => 4]);    
             }
 
-        $allorderproducts = OrderProduct::all();
+        // Auto check status of Product Order to change status or Order
+        $poee = OrderProduct::groupBy('orders_id')->select( 'orders_id', DB::raw( 'AVG(order_product_statuses_id) as avg' ) )->get();
+        // dd($poee);
 
-        // foreach($allorderproducts as $aop){
-        //     while($aop->orders_id == 
-        //     $aop->orders_id)
-        //         if($aop->orders->)
-        // }
+        foreach($poee as $pee){
+            // dd($pee);
+            if($pee->avg == 2){
+                $pee->orders->update(['order_statuses_id'=>2]); // Done
+            } elseif ($pee->avg == 4){
+                $pee->orders->update(['order_statuses_id'=>4]); // Cancelled
+            } else
+                $pee->orders->update(['order_statuses_id'=>1]); // Pending
+        }
 
-
-        // $orders1 = App\Order::with('order_products')->get();
-        // $product_lists1 = App\Order::with('users')->get();
-
-        $order_products = DB::table('order_products')
-            ->join('orders', 'order_products.orders_id', '=', 'orders.id')
-            ->join('product_lists', 'order_products.product_lists_id', '=', 'product_lists.id')
-            ->get();
+        
 
         $pending = Order::where('order_statuses_id', 1)->get();
         $done = Order::where('order_statuses_id', 2)->get();
         $cancelled = Order::where('order_statuses_id', 4)->get();
-        // $products = OrderProduct::all();
+        $order_products = OrderProduct::all();
 
         // dd($orders);
         return view('orders.index')
@@ -68,12 +60,8 @@ class OrderController extends Controller
             ->with('pending', $pending)
             ->with('done', $done)
             ->with('cancelled', $cancelled)
-            ->with('order',$order)
             ->with('order_products', $order_products)
-            ->with('orderproducts',$orderproducts)
             ;
-            // ->with('orders1',$orders1)
-            // ->with('order_products1'->$order_products1);
     }
 
     /**

@@ -63,6 +63,8 @@ class Migrations extends Migration
                 ->references('id')->on('orders')->onDelete('cascade');
             $table->foreign('order_product_statuses_id')
                 ->references('id')->on('order_product_statuses')->onDelete('cascade');
+            $table->foreign('farmers_id')
+                ->references('id')->on('users')->onDelete('cascade');
         });
 
         // Reserve Products

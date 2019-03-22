@@ -56,6 +56,13 @@
         <span>Orders</span></a>
     </li>
 
+    <!-- Order Products -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('order_products.index') }}">
+        <i class="fas fa-clipboard-check"></i>
+        <span>Incoming Orders</span></a>
+    </li>
+
     <!-- Nav Item - Users Management Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -131,9 +138,16 @@
     </li>
 
     <!-- Orders -->
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link" href="{{ route('orders.index') }}">
         <i class="fas fa-clipboard-list"></i>
+        <span>Orders</span></a>
+    </li> --}}
+
+    <!-- Order Products -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('order_products.index') }}">
+        <i class="fas fa-clipboard-check"></i>
         <span>Orders</span></a>
     </li>
 

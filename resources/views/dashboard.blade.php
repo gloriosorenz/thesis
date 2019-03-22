@@ -147,7 +147,7 @@
                     </div>
                   </div>
                   <!-- Card Body -->
-                  <div class="card-body">
+                  {{-- <div class="card-body">
                       {!! Charts::styles() !!}
                       <div class="container">
                         <div class="app">
@@ -159,7 +159,7 @@
                         <!-- End Of Main Application -->
                         {!! Charts::scripts() !!}
                         {!! $areachart->script() !!}
-                  </div>
+                  </div> --}}
                 </div>
               </div>
   
@@ -183,7 +183,7 @@
                     </div>
                   </div>
                   <!-- Card Body -->
-                  <div class="card-body">
+                  {{-- <div class="card-body">
                       {!! Charts::styles() !!}
                     <div class="container">
                       <div class="app">
@@ -196,7 +196,7 @@
                       {!! Charts::scripts() !!}
                       {!! $piechart->script() !!}
                       
-                    </div>
+                    </div> --}}
                   </div>
                 </div>
               </div>
