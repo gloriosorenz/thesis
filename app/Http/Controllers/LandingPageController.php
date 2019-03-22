@@ -10,6 +10,8 @@ use Log;
 use Gmopx\LaravelOWM\LaravelOWM;
 use Cmfcmf\OpenWeatherMap;
 use Cmfcmf\OpenWeatherMap\Exception as OWMException;
+use App\OrderProduct;
+use App\Order;
 use App\ProductList;
 use Carbon\Carbon;
 
@@ -63,7 +65,29 @@ class LandingPageController extends Controller
         // return view('welcome', ["forecast" => $forecast]);
 
 
+        // Auto add Cancel Order with Quantity
+        $orderproducts = OrderProduct::where('created_at', '<', Carbon::now()->subDays(3))
+            ->where('order_product_statuses_id','=', 1)
+            ->get();
 
+            foreach($orderproducts as $op){
+                    $op->product_lists->update(['curr_quantity' => $op->product_lists->curr_quantity + $op->quantity]);
+                    $op->update(['order_product_statuses_id' => 4]);    
+            }
+
+        // Auto check status of Product Order to change status or Order
+        $poee = OrderProduct::groupBy('orders_id')->select( 'orders_id', DB::raw( 'AVG(order_product_statuses_id) as avg' ) )->get();
+        // dd($poee);
+
+        foreach($poee as $pee){
+            // dd($pee);
+            if($pee->avg == 2){
+                $pee->orders->update(['order_statuses_id'=>2]); // Done
+            } elseif ($pee->avg == 4){
+                $pee->orders->update(['order_statuses_id'=>4]); // Cancelled
+            } else
+                $pee->orders->update(['order_statuses_id'=>1]); // Pending
+        }
 
         return view('landing-page')
                 ->with('products', $products)
