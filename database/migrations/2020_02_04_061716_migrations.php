@@ -101,7 +101,7 @@ class Migrations extends Migration
         // Plant Data Report
         Schema::table('plant_datas',function(Blueprint $table){
             $table->foreign('plant_reports_id')
-                ->references('id')->on('barangays')->onDelete('cascade');
+                ->references('id')->on('plant_reports')->onDelete('cascade');
             $table->foreign('users_id')
                 ->references('id')->on('users')->onDelete('cascade');
         });
