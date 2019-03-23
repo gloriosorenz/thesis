@@ -9,7 +9,7 @@ class PlantReport extends Model
     protected $table = 'plant_reports'; 
 
     protected $fillable = [
-        'plant_area', 'farmers',
+        'seasons_id', 'active',
     ];
 
     public function plant_datas()
@@ -17,5 +17,9 @@ class PlantReport extends Model
         return $this->hasMany('App\PlantData');
     }
 
+    public function seasons()
+    {
+        return $this->belongsTo(Season::class, 'seasons_id');
+    }
 
 }

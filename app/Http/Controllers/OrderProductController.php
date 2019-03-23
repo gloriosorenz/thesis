@@ -111,7 +111,7 @@ class OrderProductController extends Controller
         $order->order_product_statuses_id = 2;
         $order->save();
 
-        return redirect('/order_products')->with('success', 'Order Confirmed');
+        return redirect()->back()->with('success', 'Order Confirmed');
     }
 
     public function cancel_order(Request $request, $id){
@@ -119,7 +119,7 @@ class OrderProductController extends Controller
         $order->order_product_statuses_id = 4;
         $order->save();
 
-        return redirect('/order_products')->with('success', 'Order Cancelled');
+        return redirect()->back()->with('success', 'Order Cancelled');
     }
 
     public function paid_order(Request $request, $id){
@@ -127,6 +127,6 @@ class OrderProductController extends Controller
         $order->order_product_statuses_id = 3;
         $order->save();
 
-        return redirect('/order_products')->with('success', 'Order Cancelled');
+        return redirect()->back()->with('success', 'Order Cancelled');
     }
 }

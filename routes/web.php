@@ -94,6 +94,7 @@ Route::get('/orders/cancel_order/{id}', 'OrderController@cancel_order');
 
 // Plant Report
 Route::get('reports/plant_reports/deactivateReport{id}','PlantReportController@deactivateReport');
+Route::get('reports/plant_reports/addPlantReport','PlantReportController@addPlantReport');
 
 // Season List
 Route::get('/season_lists/complete_season_farmer/{id}', 'SeasonListController@complete_season_farmer');

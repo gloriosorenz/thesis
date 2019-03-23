@@ -5,8 +5,8 @@
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ url('dashboard') }}">Dashboard</a></li>
-    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('damage_reports.index') }}">Damage Reports</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Create</li>
+    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('plant_reports.index') }}">Plant Reports</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit</li>
 </ol>
 </nav>
 
@@ -27,7 +27,7 @@
         <br>
         <div class="row text-center">
             <div class="col-lg-12">
-                <h3><strong>RICE PRODUCTION REPORT</strong></h3>
+                <h3><strong>PLANT REPORT</strong></h3>
             </div>
         </div>
         <br>
@@ -48,14 +48,18 @@
             <div class="col-lg-12">
                 <table class="table table-striped mb-5">
                     <thead>
-                        <th width="11.25">Farmer</th>
+                        <th width="11.25">Barangay</th>
                         <th width="11.25">Plant Area</th>
                         <th width="11.25">Farmers</th>
                     </thead>
                     <tbody>
                         @foreach ($pdatas as $d)
                         <tr>
-                            <td>{{ $d->users->company }}</td>
+                            @php
+                                $bang = App\Barangay::findOrFail($d->barangays_id);
+                            @endphp
+
+                            <td>{{ $bang->name }}</td>
                             <td>{{ $d->plant_area }}</td>
                             <td>{{ $d->farmers }}</td>
                         </tr>

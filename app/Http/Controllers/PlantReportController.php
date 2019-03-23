@@ -8,6 +8,8 @@ use App\PlantData;
 use App\Barangay;
 use App\User;
 use PDF;
+use DB;
+use Carbon\Carbon;
 
 class PlantReportController extends Controller
 {
@@ -21,8 +23,15 @@ class PlantReportController extends Controller
         $preports = PlantReport::all();
         // $preports = PlantReport::with('plant_datas')->find();
 
+        $check_date = PlantReport::whereMonth('created_at', '=', date('m'))
+                    ->get();
+
+        // dd($check_date);
+
         return view('reports.plant_reports.index')
-            ->with('preports', $preports);
+            ->with('preports', $preports)
+            ->with('check_date', $check_date)
+            ;
     }
 
     /**
@@ -32,7 +41,6 @@ class PlantReportController extends Controller
      */
     public function create()
     {
-        $barangays = Barangay::orderBy('name')->get();
         $users = User::where('roles_id', '=', 2)->get()->pluck('company', 'id');
 
         
@@ -40,13 +48,14 @@ class PlantReportController extends Controller
             ->with('users', $users);
     }
 
+    
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         // Validation
         $request->validate([
@@ -57,8 +66,8 @@ class PlantReportController extends Controller
             "users_id.*"  => "required|distinct",
         ]);
         
-        $preport = new PlantReport;
-        $preport->save();
+
+        $plant_report = PlantReport::findOrFail($id);
     
         foreach($request->users_id as $key => $value) {
             $data=array(
@@ -77,6 +86,18 @@ class PlantReportController extends Controller
         return redirect()->route('plant_reports.index')->with('success','Plant Report Created ');
     }
 
+
+    public function addPlantReport(){
+        // Get latest season
+        $latest_season = DB::table('seasons')->orderBy('id', 'desc')->first();
+
+        $preport = new PlantReport;
+        $preport->seasons_id = $latest_season->id;
+        $preport->save();
+
+        return redirect()->back()->with('success','Plant Report Created ');
+    }
+    
     /**
      * Display the specified resource.
      *
@@ -86,7 +107,16 @@ class PlantReportController extends Controller
     public function show($id)
     {
         $preport = PlantReport::findOrFail($id);
-        $pdatas = PlantData::where('plant_reports_id', $preport->id)->get();
+
+        // $pdatas = PlantData::where('plant_reports_id', $preport->id)->get();
+
+        $pdatas = DB::table('plant_datas')
+            ->join('users', 'plant_datas.users_id', '=', 'users.id')
+            ->select('users.barangays_id', 	DB::raw("SUM(plant_area) as plant_area"), 	DB::raw("SUM(farmers) as farmers"))
+            ->groupBy('barangays_id')
+            ->get();
+
+        // dd($pdatas);
 
         return view('reports.plant_reports.show')
             ->with('preport', $preport)
@@ -102,11 +132,13 @@ class PlantReportController extends Controller
     public function edit($id)
     {
         $preport = PlantReport::findOrFail($id);
-        $barangays = Barangay::orderBy('name')->get();
+        $users = User::where('roles_id', '=', 2)->get()->pluck('company', 'id');
+
 
         return view('reports.plant_reports.edit')
             ->with('preport', $preport)
-            ->with('barangays', $barangays);
+            ->with('users', $users)
+            ;
     }
 
     /**
@@ -118,13 +150,35 @@ class PlantReportController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $preport = PlantReport::findOrFail($id);
-        $preport->barangays_id = $request->get('barangay');
-        $preport->plant_area = $request->get('plant_area');
-        $preport->farmers = $request->get('farmers');
-        $preport->save();
 
-        return redirect('plant_reports')->with('success','Plant Report Upsated ');
+        // Validation
+        $request->validate([
+            "plant_area.*"  => "required",
+            "farmers.*"  => "required|integer",
+            "users_id.*"  => "required|distinct",
+        ]);
+        
+
+        $plant_report = PlantReport::findOrFail($id);
+    
+        foreach($request->users_id as $key => $value) {
+            $data=array(
+                        'plant_reports_id'=>$plant_report->id,
+                        'users_id'=>$request->users_id [$key],
+                        'plant_area'=>$request->plant_area [$key],
+                        'farmers'=>$request->farmers [$key],
+                        'created_at' =>  \Carbon\Carbon::now(), # \Datetime()
+                        'updated_at' => \Carbon\Carbon::now(),  # \Datetime()
+                    );
+
+            PlantData::insert($data);
+            // dd($data);
+        }  
+
+        return redirect()->route('plant_reports.index')->with('success','Plant Report Created ');
+       
+
+        return redirect('plant_reports')->with('success','Plant Report Updated ');
     }
 
     /**
@@ -144,6 +198,12 @@ class PlantReportController extends Controller
 
         $preport = PlantReport::findOrFail($id);
         $pdatas = PlantData::where('plant_reports_id', $preport->id)->get();
+
+        $pdatas = DB::table('plant_datas')
+            ->join('users', 'plant_datas.users_id', '=', 'users.id')
+            ->select('users.barangays_id', 	DB::raw("SUM(plant_area) as plant_area"), 	DB::raw("SUM(farmers) as farmers"))
+            ->groupBy('barangays_id')
+            ->get();
 
         // pass view file
         $pdf = PDF::loadView('pdf.plant_report', compact('preport'), compact('pdatas'))->setPaper('a4', 'landscape');

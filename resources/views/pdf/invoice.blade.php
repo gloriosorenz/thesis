@@ -29,7 +29,7 @@
 <body>
         <div class="container" id="invoice_container">
                 <hr>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-md-12">
                         <div class="invoice-title">
                             <h3>Tracking #{{$order->tracking_id}}</h3>
@@ -55,7 +55,6 @@
                                 <address>
                                     <strong>Payment Method:</strong><br>
                                     Cash<br>
-                                    {{-- {{auth()->user()->email}} --}}
                                 </address>
                             </div>
                             <div class="col-md-6 text-right">
@@ -68,14 +67,16 @@
                         <!-- End Row -->
                     </div>
                     <!-- End Col-md-12 -->
-                </div>
+                </div> --}}
                 <!-- End Row -->
                 
                 <div class="row">
                     <div class="col-md-12">
+
+                        @foreach ($data as $key => $value)
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><strong>Order summary</strong></h3>
+                                <h3 class="panel-title"><strong>Order summary </strong></h3>
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
@@ -90,21 +91,33 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($orders as $item)
+                                            @foreach ($value as $v)
+                                            @php
+                                                $product = App\ProductList::findOrFail($v->product_lists_id);
+                                                $seller = App\User::findOrFail($v->farmers_id);
+                                            @endphp
                                             <tr>
-                                                <td class="text-left">{{ $item->product_lists->products->type }}</td>
+                                                <td class="text-left">{{$product->orig_products->type}}</td>
+                                                <td class="text-center">{{$seller->company}}</td>
+                                                <td class="text-center">{{$product->price}}</td>
+                                                <td class="text-center">{{$v->quantity}} kaban/s</td>
+                                                <td class="text-right">{{ presentPrice($product->price *  $v->quantity)}}</td>
+                                            </tr>
+                                            @endforeach
+                                            {{-- <tr>
+                                                <td class="text-left">{{ $item->product_lists->curr_products->type }}</td>
                                                 <td class="text-center">{{ $item->product_lists->users->company }}</td>
                                                 <td class="text-center">{{$item->product_lists->price}}</td>
                                                 <td class="text-center">{{ $item->quantity }} kaban/s</td>
                                                 <td class="text-right">{{ presentPrice($item->product_lists->price *  $item->quantity)}}</td>
-                                            </tr>
-                                            @endforeach
+                                            </tr> --}}
                                             <tr>
                                                 <td class="thick-line"></td>
                                                 <td class="thick-line"></td>
                                                 <td class="thick-line"></td>
                                                 <td class="thick-line text-center"><strong>Total</strong></td>
-                                                <td class="thick-line text-right">₱{{presentPrice($order->total_price)}}</td>
+                                                <td class="thick-line text-right">{{presentPrice($order->total_price)}}</td>
+
                                             </tr>
                                         </tbody>
                                     </table>
@@ -113,7 +126,18 @@
                             </div> 
                             <!-- End Panel Body -->
                         </div>
-                        <!-- End Pane -->
+                        <!-- End Panel -->
+                        @endforeach
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="text-right">
+                                    <h3>Total: {{presentPrice($order->total_price)}}<h3>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
                     </div>
                     <!-- End Col-md-12 -->
                 </div>

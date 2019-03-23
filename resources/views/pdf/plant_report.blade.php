@@ -46,7 +46,11 @@
                 <tbody>
                     @foreach ($pdatas as $d)
                     <tr>
-                        <td>{{ $d->barangays->name }}</td>
+                        @php
+                            $bang = App\Barangay::findOrFail($d->barangays_id);
+                        @endphp
+
+                        <td>{{ $bang->name }}</td>
                         <td>{{ $d->plant_area }}</td>
                         <td>{{ $d->farmers }}</td>
                     </tr>

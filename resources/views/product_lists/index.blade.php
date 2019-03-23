@@ -11,7 +11,7 @@
 </nav>
 
 <!-- Add Season -->
-<a class="btn btn-secondary btn-md" href="{{ route('product_lists.create') }}">+Add</a>
+<a class="btn btn-secondary btn-md" href="{{ route('product_lists.create') }}">+ Add Products</a>
 <br>
 <br>
 
@@ -19,7 +19,7 @@
 
 @if (auth()->user()->roles_id == 1)
 <!-- All Product List Datatable -->
-<div class="card shadow mb-4 border-left-warning">
+<div class="card shadow mb-4 border-left-primary">
     <div class="card-header py-3">
         <h2 class="title">Product for Season {{$latest_season->id}}</h2>
     </div>
@@ -47,7 +47,7 @@
                     <td>{{$pl->harvest_date}}</td>
                     <td>
                         {{-- <a href="/product_lists/{{$pl->id}}"><button class="btn btn-warning btn-md btn-fill" ><i class="fas fa-eye"></i></button></a> --}}
-                        <a href="/product_lists/{{$pl->id}}/edit"><button class="btn btn-success btn-md btn-fill"  ><i class="fas fa-eye"></i></button></a>
+                        <a href="/product_lists/{{$pl->id}}/edit"><button class="btn btn-success btn-md btn-fill"  ><i class="fas fa-edit"></i></button></a>
                     </td>
                 </tr>
                 @endforeach
@@ -86,7 +86,7 @@
                         <td>{{$pl->harvest_date}}</td>
                         <td>
                             {{-- <a href="/product_lists/{{$pl->id}}"><button class="btn btn-warning btn-md btn-fill" ><i class="fas fa-eye"></i></button></a> --}}
-                            <a href="/product_lists/{{$pl->id}}/edit"><button class="btn btn-success btn-md btn-fill"  ><i class="fas fa-eye"></i></button></a>
+                            <a href="/product_lists/{{$pl->id}}/edit"><button class="btn btn-success btn-md btn-fill"  ><i class="fas fa-edit"></i></button></a>
                         </td>
                     </tr>
                     @endforeach

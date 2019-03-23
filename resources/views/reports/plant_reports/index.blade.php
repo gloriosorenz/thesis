@@ -11,7 +11,10 @@
 </nav>
 
 <!-- Add Plant Report -->
-<a class="btn btn-secondary btn-md" href="{{ route('plant_reports.create') }}">+Add</a>
+@if (count($check_date) != 1)
+<a class="btn btn-secondary btn-md" href="/reports/plant_reports/addPlantReport">+Add</a>
+
+@endif
 {{-- <a href="{{ route('generate-pdf',['download'=>'pdf']) }}">Download PDF</a> --}}
 <br>
 <br>
@@ -28,7 +31,7 @@
                     <thead>
                         <tr>
                             <th width="">ID</th>
-                            {{-- <th width="">Farmer</th> --}}
+                            <th width="">Season</th>
                             <th width="">Month</th>
                             <th width="20%">Options</th>
                         </tr>
@@ -37,7 +40,7 @@
                         @foreach($preports as $pr)
                         <tr class="tr">
                             <td>{{$pr->id}}</td>
-                            {{-- <td>{{$pr}}</td> --}}
+                            <td>Season {{$pr->seasons->id}}</td>
                             <td>{{$pr->created_at->format('M-Y')}}</td>
                             <td>
                                 <a href="/plant_reports/{{$pr->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>

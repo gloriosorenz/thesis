@@ -95,7 +95,6 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         $products = OrderProduct::where('orders_id', $order->id)->get();
-        // $product_lists = ProductList::where('seasons_id', $season->id)->get();
 
         return view('orders.show')
             ->with('order', $order)
@@ -204,10 +203,44 @@ class OrderController extends Controller
     {
 
         $order = Order::findOrFail($id);
-        $orders = OrderProduct::where('orders_id', $order->id)->get();
+
+        // $farmers = OrderProduct::where('orders_id', $order->id)
+        //         ->groupBy('farmers_id')
+        //         ->get();
+
+        $farmers = OrderProduct::
+                where('orders_id', $order->id)
+                // ->selectRaw('farmers.*')
+                ->get()
+                ->groupBy('farmers_id');
+
+
+        $data = $farmers->all();
+
+        // dd($farmers);
+
+        // $farmers2 = OrderProduct::
+        //         where('orders_id', $order->id)
+        //         // ->selectRaw('farmers.*')
+        //         ->groupBy('farmers_id')
+        //         ->get()
+        //         ;
+
+        // dd($farmers2);
+
+        // $products = OrderProduct::where('farmers_id', $farmers->farmers_id)-get();
+
+        // $products = DB::table('order_products')
+        //         ->join('product_lists', 'order_products.product_lists_id', '=', 'product_lists.id')
+        //         ->join('products', 'product_lists.orig_products_id', '=', 'products.id')
+        //         ->where('orders_id', $order->id)
+        //         ->groupBy('products.id' )
+        //         ->get();
+
+        // dd($farmers);
 
         // pass view file
-        $pdf = PDF::loadView('pdf.invoice', compact('order'), compact('orders'))->setPaper('a4', 'landscape');
+        $pdf = PDF::loadView('pdf.invoice', compact('order', 'data'))->setPaper('a4', 'landscape');
         // download pdf
         return $pdf->stream('invoice.pdf');
     }

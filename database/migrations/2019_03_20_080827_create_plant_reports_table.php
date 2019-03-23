@@ -17,7 +17,7 @@ class CreatePlantReportsTable extends Migration
             $table->increments('id');
             $table->boolean('active');
 
-
+            $table->integer('seasons_id')->unsigned()->nullable();
             // $table->integer('users_id')->unsigned()->nullable(); //prepared by
             // $table->integer('barangays_id')->unsigned()->nullable();
             // $table->integer('regions_id')->unsigned()->nullable();
