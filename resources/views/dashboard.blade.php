@@ -6,7 +6,7 @@
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
               <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-              <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+              {{-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
             </div>
 
             <div id="my-dash">
@@ -147,7 +147,7 @@
                     </div>
                   </div>
                   <!-- Card Body -->
-                  {{-- <div class="card-body">
+                  <div class="card-body">
                       {!! Charts::styles() !!}
                       <div class="container">
                         <div class="app">
@@ -159,7 +159,7 @@
                         <!-- End Of Main Application -->
                         {!! Charts::scripts() !!}
                         {!! $areachart->script() !!}
-                  </div> --}}
+                  </div>
                 </div>
               </div>
   
@@ -183,7 +183,7 @@
                     </div>
                   </div>
                   <!-- Card Body -->
-                  {{-- <div class="card-body">
+                  <div class="card-body">
                       {!! Charts::styles() !!}
                     <div class="container">
                       <div class="app">
@@ -196,12 +196,91 @@
                       {!! Charts::scripts() !!}
                       {!! $piechart->script() !!}
                       
-                    </div> --}}
+                    </div>
+
+                   
+                    
                   </div>
                 </div>
+
+                 <!-- Pie Chart -->
+              <div class="col-xl-6 col-lg-6">
+                  <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Most Valuable Customers (MVC)</h6>
+                      <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                          <div class="dropdown-header">Dropdown Header:</div>
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card-body">
+                        {!! Charts::styles() !!}
+                      <div class="container">
+                        <div class="app">
+                            <center>
+                                {!! $barchart->html() !!}
+                            </center>
+                        </div>
+                      </div>
+                        <!-- End Of Main Application -->
+                        {!! Charts::scripts() !!}
+                        {!! $barchart->script() !!}
+                        
+                      </div>
+                  </div>
+                </div>
+
+                <div class="col-xl-6 col-lg-6">
+                    <div class="card shadow mb-4">
+                      <!-- Card Header - Dropdown -->
+                      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                      <h6 class="m-0 font-weight-bold text-primary">Best Selling Farmer</h6>
+                        <div class="dropdown no-arrow">
+                          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-header">Dropdown Header:</div>
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                          </div>
+                        </div>
+                      </div>
+  
+                      <div class="card-body">
+                          {!! Charts::styles() !!}
+                        <div class="container">
+                          <div class="app">
+                              <center>
+                                  {!! $barchart2->html() !!}
+                              </center>
+                          </div>
+                        </div>
+                          <!-- End Of Main Application -->
+                          {!! Charts::scripts() !!}
+                          {!! $barchart2->script() !!}
+                          
+                        </div>
+                    </div>
+                  </div>
+
               </div>
             </div>
   
+
+            
             <!-- Content Row -->
             <div class="row">
   
@@ -209,7 +288,7 @@
               <div class="col-lg-6 mb-4">
   
                 <!-- Project Card Example -->
-                <div class="card shadow mb-4">
+                {{-- <div class="card shadow mb-4">
                   <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Season {{$seasons}}</h6>
                   </div>
@@ -291,7 +370,7 @@
   
               </div>
   
-              <div class="col-lg-6 mb-4">
+              <div class="col-lg-6 mb-4"> --}}
   
                 <!-- Illustrations -->
                 {{-- <div class="card shadow mb-4">
@@ -308,7 +387,7 @@
                 </div> --}}
   
                 <!-- Approach -->
-                <div class="card shadow mb-4">
+                {{-- <div class="card shadow mb-4">
                   <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Notifications</h6>
                   </div>
@@ -316,7 +395,7 @@
                     <p>{{auth()->user()->notifications}}</p>
                     <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
                   </div>
-                </div>
+                </div> --}}
   
               </div>
             </div>

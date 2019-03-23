@@ -25,20 +25,22 @@
             @if(count($customers) > 0)
             <thead>
                 <tr>
-                    <th width="">ID</th>
-                    <th width="">Name</th>
-                    <th width="">Email</th>
                     <th width="">Company</th>
+                    <th width="">Type</th>
+                    <th width="">Name</th>
+                    <th width="">Number</th>
+                    <th width="">Email</th>
                     <th width="">Options</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($customers as $customer)
                 <tr class="tr">
-                    <td>{{ $customer->id }}</td>
-                    <td>{{ $customer->first_name }} {{ $customer->last_name }} </td>
-                    <td>{{ $customer->email }}</td>
                     <td>{{ $customer->company }}</td>
+                    <td>{{ $customer->roles->title}}
+                    <td>{{ $customer->first_name }} {{ $customer->last_name }} </td>
+                    <td>{{ $customer->phone }}</td>
+                    <td>{{ $customer->email }}</td>
                     <td>
                         <a href="/customers/{{$customer->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
                         <a href="/customers/{{$customer->id}}/edit" class="btn btn-success"><i class="fas fa-edit"></i></a>

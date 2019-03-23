@@ -45,8 +45,9 @@
         <div class="col-lg-12">
             <table id="table_id" class="table table-striped">
                 <thead>
-                    <th width="11.25">Order Product Number</th>
-                    <th width="11.25">Order Track Number </th>
+                    <th width="11.25">Order Track #</th>
+                    <th width="11.25">Order Product Type</th>
+                    <th width="11.25">Producer/Seller</th>
                     <th width="11.25">Quantity</th>
                     <th width="11.25">Price per kaban</th>
                     <th width="11.25">Subtotal</th>
@@ -56,11 +57,14 @@
                     @foreach ($allprodperseason as $g)
                     @php
                          $order = App\Order::findOrFail($g->orders_id);
+                         $prod = App\Product::findOrFail($g->curr_products_id);
+                         $user = App\User::findOrFail($g->users_id);
                     @endphp
 
                     <tr>
-                        <td>{{$g->id}}</td>
                         <td>{{$order->tracking_id}}</td>
+                        <td>{{$prod->type}}</td>
+                        <td>{{$user->company}}</td>
                         <td>{{$g->quantity}} kaban/s</td>
                         <td>{{presentPrice($g->price)}}</td>
                         <td>{{presentPrice($g->quantity * $g->price)}}</td>

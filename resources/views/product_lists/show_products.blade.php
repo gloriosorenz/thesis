@@ -24,8 +24,8 @@
                             <tr>
                                 <th width="">Product</th>
                                 <th width="">Rice Farmer</th>
-                                <th width="">Location</th>
-                                <th width="">Harves Date</th>
+                                <th width="">Farm Location</th>
+                                <th width="">Harvest Date</th>
                                 <th width="">Available</th>
                                 <th width="">Price</th>
                                 <th width="15%">Options</th>
@@ -39,8 +39,10 @@
                                 <td>{{ $product_list->users->barangays->name }}, {{ $product_list->users->cities->name }}, {{ $product_list->users->provinces->name }}</td>
                                 <td>{{$product_list->harvest_date}}</td>
                                 <td>{{ $product_list->curr_quantity }}</td>
+                                {{-- <td>{{ $product_list->presentPrice() }}</td> --}}
                                 <td>
-                                    <button type="button" class="btn btn-lg btn-secondary btn-block"  disabled>{{ $product_list->presentPrice() }} </td>
+                                    <div class="text-danger font-weight-bold">{{ $product_list->presentPrice() }} </div>
+                                </td>
                                 <td>
                                     {{-- <a href=""><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view">View Products <i class="fas fa-eye"></i></button></a> --}}
                                     <form method="post" action="{{action('CartController@store')}}">

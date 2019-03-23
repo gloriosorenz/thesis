@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            <label><strong>Farm Address</strong></label>
+            <label><strong>Customer Address</strong></label>
             <div class="row">
                 <!-- Street -->
                 <div class="col-md-8">
@@ -70,18 +70,20 @@
             </div>
             <div class="row">
                 <!-- Address -->
+                    
                     <div class="col-md-4">
-                        <!-- Barangay -->
+                        <!-- City -->
                         <div class="form-group">
-                            <label for="barangay">Barangay:</label>
-                            <select class="form-control" name="barangay" id="barangay">
-                                <option value="0" selected="true" disabled="True">Select Barangay</option>
-                                @foreach ($barangays as $barangay)
-                                    <option value="{{ $barangay['id']}}">{{ $barangay['name']}}</option>
+                            <label for="province">Province:</label>
+                            <select class="form-control" name="province" id="province">
+                                <option value="0" selected="true" disabled="True">Select Province</option>
+                                @foreach ($provinces as $province)
+                                    <option value="{{ $province['id']}}">{{ $province['name']}}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
+                   
                     <div class="col-md-4">
                         <!-- City -->
                         <div class="form-group">
@@ -94,14 +96,15 @@
                             </select>
                         </div>
                     </div>
+
                     <div class="col-md-4">
-                        <!-- City -->
+                        <!-- Barangay -->
                         <div class="form-group">
-                            <label for="province">Province:</label>
-                            <select class="form-control" name="province" id="province">
-                                <option value="0" selected="true" disabled="True">Select Province</option>
-                                @foreach ($provinces as $province)
-                                    <option value="{{ $province['id']}}">{{ $province['name']}}</option>
+                            <label for="barangay">Barangay:</label>
+                            <select class="form-control" name="barangay" id="barangay">
+                                <option value="0" selected="true" disabled="True">Select Barangay</option>
+                                @foreach ($barangays as $barangay)
+                                    <option value="{{ $barangay['id']}}">{{ $barangay['name']}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -117,6 +120,21 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <!-- Role -->
+                <div class="col-lg-6">
+                    <label for="role">Customer Type:</label>
+                    <select class="form-control" name="role" id="role">
+                        <option value="0" selected="true" disabled="True">Select Role</option>
+                        @foreach ($roles as $role)
+                            <option value="{{ $role['id']}}">{{ $role['title']}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <br>
 
             <!-- Submit Button -->
             <button type="submit" class="btn btn-success">Create</button>

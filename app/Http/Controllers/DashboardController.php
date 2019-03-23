@@ -52,11 +52,13 @@ class DashboardController extends Controller
         $prodlistid = ProductList::groupBy('orig_products_id')->pluck('orig_products_id');
         $prodjoin = DB::table('products')
             ->join('product_lists', 'products.id', '=', 'product_lists.orig_products_id')
+            ->where('orig_products_id','!=',4)
             ->groupBy('orig_products_id')
             ->pluck('type');
         // dd($prodjoin);
 
-        $prodlist = ProductList::groupBy('orig_products_id')
+        $prodlist = ProductList::where('orig_products_id','!=',4)
+            ->groupBy('orig_products_id')
             ->selectRaw('*,sum(curr_quantity) as sum')
             ->where('seasons_id',$last_com_season->id)
             ->pluck('sum');
@@ -77,6 +79,8 @@ class DashboardController extends Controller
                 ->colors(['#2196F3', '#FFC107','#F44336'])
                 ->dimensions(700,450)
                 ->responsive(true);
+
+
         
         $areachart = Charts::database(Order::where('order_statuses_id','=',2)->get(),'line', 'highcharts')
                 ->title('For the current year (per Month)')
@@ -87,22 +91,71 @@ class DashboardController extends Controller
                 ->groupByMonth();
         ;
 
+        $csdkjn = Order::where('order_statuses_id','=',2)
+        ->select('users_id', \DB::raw('count(*) as total'))
+        ->groupBy('users_id')
+        ->pluck('total')
+        ;
+        // dd($csdkjn);
 
-        $areachart = Charts::database(Order::where('order_statuses_id','=',2)->get(),'line', 'highcharts')
-                ->title('For the current year (per Month)')
-                ->elementLabel("Number of Orders")
-                // ->values($prodlist)
-                ->dimensions(700,450)
+        $aaaa =  DB::table('users')
+        ->join('orders', 'users.id', '=', 'orders.users_id')
+        ->where('order_statuses_id','=',2)
+        ->groupBy('users_id')
+        ->pluck('company')
+        ;
+        // dd($aaaa);
+
+        $barchart = Charts::create('bar', 'highcharts')
+                ->title('Customer with Most Orders')
+                ->labels($aaaa)
+                ->values($csdkjn)
+                ->elementLabel('Number of Orders')
+                ->dimensions(1000, 500)
                 ->responsive(true)
-                ->groupByMonth();
-                ; 
+        ;
 
+        $popi = OrderProduct::where('order_product_statuses_id','=',3)
+                // ->select('farmers_id', \DB::raw('count(*) as total'))
+                ->groupBy('farmers_id')
+                ->selectRaw('*,sum(quantity) as sum')
+                ->pluck('sum')
+        ;
+        // dd($popi);
+
+        $lala =  DB::table('users')
+                ->join('order_products', 'users.id', '=', 'order_products.farmers_id')
+                ->where('order_product_statuses_id','=',3)
+                ->groupBy('farmers_id')
+                ->pluck('first_name')
+        ;
+        // dd($aaaa);
+
+
+        $barchart2 = Charts::create('bar', 'highcharts')
+                ->title('Best Selling Farmer')
+                ->labels($lala)
+                ->values($popi)
+                ->elementLabel('Number of Product Orders')
+                ->dimensions(1000, 500)
+                ->responsive(true)
+        ;
+
+                
         /*
             $chart = new OrderChart;
             $chart = Charts::database(ProductList::all(),'bar','material')
             ->setResponsive(false)
             ->setWidth(0)
             ->groupBy('products_id');
+
+            Charts::create('bar', 'highcharts')
+                ->title('My nice chart')
+                ->elementLabel('My nice label')
+                ->labels(['First', 'Second', 'Third'])
+                ->values([5,10,20])
+                ->dimensions(1000,500)
+                ->responsive(false);
         */
         
 
@@ -140,9 +193,10 @@ class DashboardController extends Controller
             ->with('pending_orders',$pending_orders)
             ->with('seasons', $seasons)
             ->with('dmg_prod_ls',$dmg_prod_ls)
-            // ->with('piechart',$piechart)
-            // ->with('areachart',$areachart)
-
+            ->with('piechart',$piechart)
+            ->with('areachart',$areachart)
+            ->with('barchart',$barchart)
+            ->with('barchart2',$barchart2)
             ;
     }
 

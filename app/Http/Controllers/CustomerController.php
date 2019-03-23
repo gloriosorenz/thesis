@@ -11,6 +11,7 @@ use App\Barangay;
 use App\City;
 use App\Province;
 use Mail;
+use App\Role;
 use App\Mail\SendPassword;
 
 class CustomerController extends Controller
@@ -23,7 +24,7 @@ class CustomerController extends Controller
     public function index()
     {
         // Get Customers
-        $customers = User::where('roles_id', '=', 3)->get();
+        $customers = User::where('roles_id', '>=', 3)->get();
 
         return view('customers.index')
                 ->with('customers', $customers);
@@ -39,11 +40,14 @@ class CustomerController extends Controller
         $barangays = Barangay::orderBy('name')->get();
         $provinces = Province::orderBy('name')->get();
         $cities = City::orderBy('name')->get();
+        $roles = Role::where('id','>',2)->get();
 
         return view('customers.create')
             ->with('barangays', $barangays)
             ->with('provinces', $provinces)
-            ->with('cities', $cities);    
+            ->with('cities', $cities)
+            ->with('roles', $roles)
+            ;    
     }
 
     /**
@@ -81,7 +85,7 @@ class CustomerController extends Controller
         $user->provinces_id = $request->input('province');
         $user->company = $request->input('company');
         $user->password = Hash::make($password);
-        $user->roles_id = 3;
+        $user->roles_id = $request->input('role');
         $user->save();
 
          // EMAIL

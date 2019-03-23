@@ -14,6 +14,8 @@ use App\OrderProduct;
 use App\Order;
 use App\ProductList;
 use Carbon\Carbon;
+use App\User;
+use App\Barangay;
 
 class LandingPageController extends Controller
 {
@@ -24,7 +26,18 @@ class LandingPageController extends Controller
      */
     public function index()
     {
-        $products = Product::where('id', '!=', 3)->get();
+        $farmergroups = User::where('roles_id','=',2)
+            ->count();
+        $clients = User::where('roles_id','>',2)
+            ->count();
+        $lagunabarangays = Barangay::where('cities_id','=', 43428)
+            ->whereNotIn('id', array(11218, 11219, 11223,11224,11225,11228))
+            ->count();
+
+        
+        $products = Product::where('id', '!=', 3)
+        ->where('id','!=',4)
+        ->get();
 
         // $product_lists = Product::where('products_id', '!=', 3) 
         //                 ->where('curr_quantity', '>', 0)
@@ -92,6 +105,10 @@ class LandingPageController extends Controller
         return view('landing-page')
                 ->with('products', $products)
                 ->with('farmers', $farmers)
+                ->with('farmergroups', $farmergroups)
+                ->with('clients', $clients)
+                ->with('lagunabarangays', $lagunabarangays)
+
                 // ->with('forecast',$forecast)
                 // ->with('current_weather',$current_weather)
                 ;
