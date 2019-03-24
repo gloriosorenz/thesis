@@ -107,9 +107,9 @@ class CheckoutController extends Controller
 
 
             // Notify Customer
-            $id = auth()->user()->id;
-            $user = User::findOrFail($id);
-            $user->notify(new NewOrder());
+            // $id = auth()->user()->id;
+            // $user = User::findOrFail($id);
+            // $user->notify(new NewOrder());
             // Notification::send($user, new NewOrder());
 
 

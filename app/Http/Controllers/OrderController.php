@@ -9,6 +9,8 @@ use App\ProductList;
 use DB;
 use PDF;
 use Carbon\Carbon;
+use App\Mail\OrderConfirmed;
+use Mail;
 
 
 class OrderController extends Controller
@@ -23,12 +25,22 @@ class OrderController extends Controller
         // $orders = auth()->user()->orders()->with('product_lists')->get(); // fix n + 1 issues
         $orders = Order::all();
 
-        // Auto add Cancel Order with Quantity
+        // Auto add Cancel Order with Quantity (Pending Status)
         $orderproducts = OrderProduct::where('created_at', '<', Carbon::now()->subDays(3))
             ->where('order_product_statuses_id','=', 1)
             ->get();
 
             foreach($orderproducts as $op){
+                    $op->product_lists->update(['curr_quantity' => $op->product_lists->curr_quantity + $op->quantity]);
+                    $op->update(['order_product_statuses_id' => 4]);    
+            }
+
+        // Auto add Cancel Order with Quantity (Confirmed Status)
+        $orderproducts1 = OrderProduct::where('updated_at', '<', Carbon::now()->subDays(3))
+            ->where('order_product_statuses_id','=', 2)
+            ->get();
+
+            foreach($orderproducts1 as $op){
                     $op->product_lists->update(['curr_quantity' => $op->product_lists->curr_quantity + $op->quantity]);
                     $op->update(['order_product_statuses_id' => 4]);    
             }
@@ -39,7 +51,7 @@ class OrderController extends Controller
 
         foreach($poee as $pee){
             // dd($pee);
-            if($pee->avg == 2){
+            if($pee->avg == 3){
                 $pee->orders->update(['order_statuses_id'=>2]); // Done
             } elseif ($pee->avg == 4){
                 $pee->orders->update(['order_statuses_id'=>4]); // Cancelled
@@ -163,8 +175,16 @@ class OrderController extends Controller
         $orderproducts = OrderProduct::where('orders_id', '=', $id)
             ->get();
             foreach($orderproducts as $op){
-                    $op->update(['order_product_statuses_id'=>2]);    
+                    $op->update(['order_product_statuses_id'=>3]);    
             }
+
+        // // Get email
+        // $email = $order->users->email;
+
+        // // Mail to User
+        // Mail::to($email)->send(
+        //     new OrderConfirmed($order)
+        // );
 
         return redirect('/orders')->with('success', 'Order Confirmed');
     }

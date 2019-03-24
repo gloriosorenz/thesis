@@ -41,7 +41,7 @@
                                 <td>{{ $product_list->curr_quantity }}</td>
                                 {{-- <td>{{ $product_list->presentPrice() }}</td> --}}
                                 <td>
-                                    <div class="text-danger font-weight-bold">{{ $product_list->presentPrice() }} </div>
+                                    <div class="font-weight-bold">{{ $product_list->presentPrice() }} </div>
                                 </td>
                                 <td>
                                     {{-- <a href=""><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view">View Products <i class="fas fa-eye"></i></button></a> --}}

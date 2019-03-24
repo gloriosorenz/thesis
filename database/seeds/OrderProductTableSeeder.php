@@ -16,7 +16,7 @@ class OrderProductTableSeeder extends Seeder
             [
                 'id' => 1, 
                 'quantity' => 10, 
-                'order_product_statuses_id' => 1,
+                'order_product_statuses_id' => 3,
                 'product_lists_id' => 10,
                 'orders_id' => 1,
                 'farmers_id' => 2,
@@ -25,7 +25,7 @@ class OrderProductTableSeeder extends Seeder
             [
                 'id' => 2, 
                 'quantity' => 10, 
-                'order_product_statuses_id' => 1,
+                'order_product_statuses_id' => 3,
                 'product_lists_id' => 11,
                 'orders_id' => 1,
                 'farmers_id' => 2,
@@ -34,7 +34,7 @@ class OrderProductTableSeeder extends Seeder
             [
                 'id' => 3, 
                 'quantity' => 10, 
-                'order_product_statuses_id' => 1,
+                'order_product_statuses_id' => 3,
                 'product_lists_id' => 13,
                 'orders_id' => 1,
                 'farmers_id' => 4,
@@ -43,7 +43,7 @@ class OrderProductTableSeeder extends Seeder
             [
                 'id' => 4, 
                 'quantity' => 20, 
-                'order_product_statuses_id' => 1,
+                'order_product_statuses_id' => 3,
                 'product_lists_id' => 16,
                 'orders_id' => 2,
                 'farmers_id' => 9,
@@ -52,7 +52,7 @@ class OrderProductTableSeeder extends Seeder
             [
                 'id' => 5, 
                 'quantity' => 8, 
-                'order_product_statuses_id' => 1,
+                'order_product_statuses_id' => 3,
                 'product_lists_id' => 12,
                 'orders_id' => 2,
                 'farmers_id' => 9,
@@ -61,7 +61,7 @@ class OrderProductTableSeeder extends Seeder
             [
                 'id' => 6, 
                 'quantity' => 8, 
-                'order_product_statuses_id' => 1,
+                'order_product_statuses_id' => 3,
                 'product_lists_id' => 13,
                 'orders_id' => 2,
                 'farmers_id' => 4,
@@ -70,7 +70,7 @@ class OrderProductTableSeeder extends Seeder
             [
                 'id' => 7, 
                 'quantity' => 5, 
-                'order_product_statuses_id' => 1,
+                'order_product_statuses_id' => 3,
                 'product_lists_id' => 10,
                 'orders_id' => 2,
                 'farmers_id' => 2,
@@ -79,7 +79,7 @@ class OrderProductTableSeeder extends Seeder
             [
                 'id' => 8, 
                 'quantity' => 8, 
-                'order_product_statuses_id' => 1,
+                'order_product_statuses_id' => 3,
                 'product_lists_id' => 16,
                 'orders_id' => 3,
                 'farmers_id' => 9,
@@ -88,7 +88,7 @@ class OrderProductTableSeeder extends Seeder
             [
                 'id' => 9, 
                 'quantity' => 12, 
-                'order_product_statuses_id' => 1,
+                'order_product_statuses_id' => 3,
                 'product_lists_id' => 10,
                 'orders_id' => 3,
                 'farmers_id' => 2,
@@ -106,7 +106,7 @@ class OrderProductTableSeeder extends Seeder
             [
                 'id' => 11, 
                 'quantity' => 12, 
-                'order_product_statuses_id' => 1,
+                'order_product_statuses_id' => 3,
                 'product_lists_id' => 17,
                 'orders_id' => 3,
                 'farmers_id' => 9,

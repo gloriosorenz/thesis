@@ -7,6 +7,8 @@ use App\Season;
 use App\SeasonList;
 use App\User;
 use DB;
+use App\Mail\FarmerSeasonDone;
+use Mail;
 
 class SeasonListController extends Controller
 {
@@ -21,12 +23,23 @@ class SeasonListController extends Controller
         // Get latest season
         $latest_season = DB::table('seasons')->orderBy('id', 'desc')->first();
 
+        // Farmer Side
         $ongoing = SeasonList::where('season_list_statuses_id', 1)
-                    ->where('seasons_id', $latest_season->id)->get();
+                    ->where('seasons_id', $latest_season->id)
+                    ->where('users_id', auth()->user()->id)
+                    ->get();
         $done = SeasonList::where('season_list_statuses_id', 2)
-                    ->where('seasons_id', $latest_season->id)->get();
-        $season_lists = SeasonList::all();
+                    ->where('seasons_id', $latest_season->id)
+                    ->where('users_id', auth()->user()->id)
+                    ->get();
 
+        $season_lists = SeasonList::where('users_id', auth()->user()->id)
+                    ->get();
+
+
+        // Admin Side
+        $current = SeasonList::where('seasons_id', $latest_season->id)->get();
+        $all_season_lists =SeasonList::all();
 
 
         $active = SeasonList::where('seasons_id', $latest_season->id)
@@ -34,10 +47,14 @@ class SeasonListController extends Controller
                     ->get()
                     ->count();
         
+        
+        
 
         // dd($active);
 
         return view('season_lists.index')
+            ->with('all_season_lists', $all_season_lists)
+            ->with('current', $current)
             ->with('season_lists', $season_lists)
             ->with('ongoing', $ongoing)
             ->with('done', $done)
@@ -109,6 +126,7 @@ class SeasonListController extends Controller
     {
         $season_list = SeasonList::findOrFail($id);
 
+
         return view('season_lists.show')
             ->with('season_list', $season_list);
     }
@@ -148,6 +166,15 @@ class SeasonListController extends Controller
         $season_list->actual_num_farmers = $request->input('actual_num_farmers');
         $season_list->season_list_statuses_id = 2;
         $season_list->save();
+
+
+        // Get email
+        $admin = User::where('roles_id',1)->pluck('email');
+        // Get Season 
+        $season = $season_list->seasons->id;
+
+        // Mail to User
+        Mail::to($admin)->send(new FarmerSeasonDone($season_list));
 
         return redirect()->route('season_lists.index')->with('success','Season List Updated ');
     }

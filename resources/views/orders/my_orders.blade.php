@@ -8,7 +8,7 @@
 <!-- Pending Orders Datatable -->
 <div class="card shadow mt-5 mb-4 ">
     <div class="card-header py-3 bg-warning text-white">
-        <h2 class="title">Pending Orders</h2>
+        <h2 class="title font-weight-bold">Pending Orders</h2>
     </div>
     <div class="card-body">
         @if (count($pending) > 0)
@@ -48,7 +48,7 @@
 <!-- Confirmed Orders Datatable -->
 <div class="card shadow mb-4">
     <div class="card-header py-3 bg-primary text-white">
-        <h2 class="title">Confirmed Orders</h2>
+        <h2 class="title font-weight-bold">Confirmed Orders</h2>
     </div>
     <div class="card-body">
         @if (count($done) > 0)
@@ -88,7 +88,7 @@
 <!-- Cancelled Orders Datatable -->
 <div class="card shadow mb-4">
     <div class="card-header py-3 bg-danger text-white">
-        <h2 class="title">Cancelled Orders</h2>
+        <h2 class="title font-weight-bold">Cancelled Orders</h2>
     </div>
     <div class="card-body">
         @if(count($cancelled) > 0)

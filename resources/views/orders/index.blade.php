@@ -58,7 +58,7 @@
 <!-- Confirmed Orders Datatable -->
 <div class="card shadow mb-4 border-left-primary">
     <div class="card-header py-3 ">
-        <h2 class="title">Confirmed Orders</h2>
+        <h2 class="title">Completed Orders</h2>
     </div>
     <div class="card-body">
         <table id="orders_table" class="table table-hover track_tbl">

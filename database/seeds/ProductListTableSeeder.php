@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class ProductListTableSeeder extends Seeder
 {
@@ -21,7 +22,7 @@ class ProductListTableSeeder extends Seeder
                 'price' => 16.0,
                 'orig_quantity' => 70,
                 'curr_quantity' => 70, 
-                'harvest_date' => '2019-03-13',           
+                'harvest_date' => Carbon::create('2019', '03', '13'),       
             ],
             [
                 'id' => 2, 
@@ -32,7 +33,7 @@ class ProductListTableSeeder extends Seeder
                 'price' => 11.0,
                 'orig_quantity' => 20,
                 'curr_quantity' => 20,
-                'harvest_date' => '2019-03-13',             
+                'harvest_date' => Carbon::create('2019', '03', '13'),       
             ],
             [
                 'id' => 3, 
@@ -43,7 +44,7 @@ class ProductListTableSeeder extends Seeder
                 'price' => 0.0,
                 'orig_quantity' => 10,
                 'curr_quantity' => 10, 
-                'harvest_date' => '2019-03-13',            
+                'harvest_date' => Carbon::create('2019', '03', '13'),       
             ],
             [
                 'id' => 4, 
@@ -54,7 +55,7 @@ class ProductListTableSeeder extends Seeder
                 'price' => 16.0,
                 'orig_quantity' => 70,
                 'curr_quantity' => 70,
-                'harvest_date' => '2019-03-13', 
+                'harvest_date' => Carbon::create('2019', '03', '13'),       
             ],
             [
                 'id' => 5, 
@@ -65,7 +66,7 @@ class ProductListTableSeeder extends Seeder
                 'price' => 11.0,
                 'orig_quantity' => 20,
                 'curr_quantity' => 20, 
-                'harvest_date' => '2019-03-13',            
+                'harvest_date' => Carbon::create('2019', '03', '13'),       
             ],
             [
                 'id' => 6, 
@@ -76,7 +77,7 @@ class ProductListTableSeeder extends Seeder
                 'price' => 0.0,
                 'orig_quantity' => 10,
                 'curr_quantity' => 10, 
-                'harvest_date' => '2019-03-13',            
+                'harvest_date' => Carbon::create('2019', '03', '13'),       
             ],
             [
                 'id' => 7, 
@@ -87,7 +88,7 @@ class ProductListTableSeeder extends Seeder
                 'price' => 19.0,
                 'orig_quantity' => 200,
                 'curr_quantity' => 200,  
-                'harvest_date' => '2019-03-13',          
+                'harvest_date' => Carbon::create('2019', '03', '13'),       
             ],
             [
                 'id' => 8, 
@@ -98,7 +99,7 @@ class ProductListTableSeeder extends Seeder
                 'price' => 14.0,
                 'orig_quantity' => 50,
                 'curr_quantity' => 50,      
-                'harvest_date' => '2019-03-13',       
+                'harvest_date' => Carbon::create('2019', '03', '13'),       
             ],
             [
                 'id' => 9, 
@@ -109,7 +110,7 @@ class ProductListTableSeeder extends Seeder
                 'price' => 0.0,
                 'orig_quantity' => 50,
                 'curr_quantity' => 50,          
-                'harvest_date' => '2019-03-13',   
+                'harvest_date' => Carbon::create('2019', '03', '13'),       
             ],
             [
                 'id' => 10, 
@@ -120,7 +121,7 @@ class ProductListTableSeeder extends Seeder
                 'price' => 16.0,
                 'orig_quantity' => 70,
                 'curr_quantity' => 70, 
-                'harvest_date' => '2019-03-13',           
+                'harvest_date' => Carbon::create('2019', '03', '13'),       
             ],
             [
                 'id' => 11, 
@@ -131,7 +132,7 @@ class ProductListTableSeeder extends Seeder
                 'price' => 11.0,
                 'orig_quantity' => 20,
                 'curr_quantity' => 20,
-                'harvest_date' => '2019-03-13',             
+                'harvest_date' => Carbon::create('2019', '03', '13'),       
             ],
             [
                 'id' => 12, 
@@ -142,7 +143,7 @@ class ProductListTableSeeder extends Seeder
                 'price' => 0.0,
                 'orig_quantity' => 10,
                 'curr_quantity' => 10, 
-                'harvest_date' => '2019-03-13',            
+                'harvest_date' => Carbon::create('2019', '03', '13'),       
             ],
             [
                 'id' => 13, 
@@ -153,7 +154,7 @@ class ProductListTableSeeder extends Seeder
                 'price' => 16.0,
                 'orig_quantity' => 70,
                 'curr_quantity' => 70,
-                'harvest_date' => '2019-03-13', 
+                'harvest_date' => Carbon::create('2019', '03', '13'),       
             ],
             [
                 'id' => 14, 
@@ -164,7 +165,7 @@ class ProductListTableSeeder extends Seeder
                 'price' => 11.0,
                 'orig_quantity' => 20,
                 'curr_quantity' => 20, 
-                'harvest_date' => '2019-03-13',            
+                'harvest_date' => Carbon::create('2019', '03', '13'),       
             ],
             [
                 'id' => 15, 
@@ -175,7 +176,7 @@ class ProductListTableSeeder extends Seeder
                 'price' => 0.0,
                 'orig_quantity' => 10,
                 'curr_quantity' => 10, 
-                'harvest_date' => '2019-03-13',            
+                'harvest_date' => Carbon::create('2019', '03', '13'),       
             ],
             [
                 'id' => 16, 
@@ -186,7 +187,7 @@ class ProductListTableSeeder extends Seeder
                 'price' => 19.0,
                 'orig_quantity' => 200,
                 'curr_quantity' => 200,  
-                'harvest_date' => '2019-03-13',          
+                'harvest_date' => Carbon::create('2019', '03', '13'),       
             ],
             [
                 'id' => 17, 
@@ -197,7 +198,7 @@ class ProductListTableSeeder extends Seeder
                 'price' => 14.0,
                 'orig_quantity' => 50,
                 'curr_quantity' => 50,      
-                'harvest_date' => '2019-03-13',       
+                'harvest_date' => Carbon::create('2019', '03', '13'),       
             ],
             [
                 'id' => 18, 
@@ -208,7 +209,7 @@ class ProductListTableSeeder extends Seeder
                 'price' => 0.0,
                 'orig_quantity' => 50,
                 'curr_quantity' => 50,          
-                'harvest_date' => '2019-03-13',   
+                'harvest_date' => Carbon::create('2019', '03', '13'),       
             ],
 
         ];

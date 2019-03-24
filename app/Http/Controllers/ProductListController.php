@@ -36,8 +36,11 @@ class ProductListController extends Controller
                 ->get();
 
         $all_products = ProductList::where('seasons_id', $latest_season->id)
+                // ->groupBy('users_id')
                 ->get();
+               
 
+        // dd($all_products);
 
             // // Date Automation
             // $decrease1 = ProductList::where('harvest_date', '<', Carbon::now()->subDays(7))
@@ -102,23 +105,37 @@ class ProductListController extends Controller
         // Get latest season
         $latest_season = DB::table('seasons')->orderBy('id', 'desc')->first();
 
-        
-        foreach($request->products_id as $key => $value) {
-            $data=array(
-                        'users_id'=> auth()->user()->id,
-                        'seasons_id' => $latest_season->id,
-                        'orig_products_id'=>$request->products_id [$key],
-                        'curr_products_id'=>$request->products_id [$key],
-                        'orig_quantity'=>$request->orig_quantity [$key],
-                        'curr_quantity'=>$request->orig_quantity [$key],
-                        'harvest_date'=>$request->harvest_date [$key],
-                        'price'=>$request->price [$key],
-                        'created_at' =>  \Carbon\Carbon::now(), # \Datetime()
-                        'updated_at' => \Carbon\Carbon::now(),  # \Datetime()
-                    );
 
-            ProductList::insert($data);
+        $counter = 0;
+        foreach($request->products_id as $key => $value) {
+            $product_list = new ProductList;
+            $product_list->users_id = auth()->user()->id;
+            $product_list->seasons_id = $latest_season->id;
+            $product_list->orig_products_id = $request->input('products_id') [$key];
+            $product_list->curr_products_id = $request->input('products_id') [$key];
+            $product_list->orig_quantity = $request->input('orig_quantity') [$key];
+            $product_list->curr_quantity = $request->input('orig_quantity') [$key];
+            $product_list->harvest_date = $request->input('harvest_date') [$key];
+            $product_list->price = $request->input('price') [$key];
+
+            $product_list->save();
+
+
+
+            $season_list = SeasonList::where('seasons_id', $product_list->seasons_id)
+                        ->where('users_id', $product_list->users_id)
+                        ->first();
+
+            $counter = $product_list->orig_quantity + $counter;
+            
         }
+
+        $season_list = SeasonList::findOrFail($season_list->id);
+        $season_list->actual_qty = $counter;
+        $season_list->save();
+        
+
+
         return redirect()->route('product_lists.index')->with('success','Products Added ');
     }
 
@@ -191,6 +208,8 @@ class ProductListController extends Controller
         $product_list->curr_quantity = $request->input('curr_quantity');
         $product_list->price = $request->input('price');
         $product_list->save();
+
+       
         
 
         return redirect()->route('product_lists.index')->with('success','Products Updated ');

@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\OrderProduct;
 use DB;
+use App\Mail\OrderConfirmed;
+use App\Mail\OrderCancelled;
+use App\Mail\OrderPaid;
+use Mail;
+use Carbon\Carbon;
+use App\ProductList;
 
 class OrderProductController extends Controller
 {
@@ -111,6 +117,31 @@ class OrderProductController extends Controller
         $order->order_product_statuses_id = 2;
         $order->save();
 
+        // Get email
+        $email = $order->orders->users->email;
+
+        // Get Harvest Date
+        $harvest_date = $order->product_lists->harvest_date;
+        // Get Date Now
+        $now = Carbon::now();
+        // Get date after 7 days
+        $end_date = Carbon::parse($harvest_date)->addDays(7);
+
+        $days = $now->diffIndays($end_date);
+
+        // dd($days);
+        
+        // Mail to User
+        Mail::to($email)->send(
+            new OrderConfirmed($order, $days)
+        );
+
+        // Mail::send('mail.order_confirmed', $order, function($message)
+        // {
+        //     $message->from($order->users->email, $order->users->company);
+        //     $message->to($email);
+        // });
+
         return redirect()->back()->with('success', 'Order Confirmed');
     }
 
@@ -119,6 +150,14 @@ class OrderProductController extends Controller
         $order->order_product_statuses_id = 4;
         $order->save();
 
+        // Get email
+        $email = $order->orders->users->email;
+
+        // Mail to User
+        Mail::to($email)->send(
+            new OrderCancelled($order)
+        );
+
         return redirect()->back()->with('success', 'Order Cancelled');
     }
 
@@ -126,6 +165,14 @@ class OrderProductController extends Controller
         $order = OrderProduct::findOrFail($id);
         $order->order_product_statuses_id = 3;
         $order->save();
+
+        // Get email
+        $email = $order->orders->users->email;
+
+        // Mail to User
+        Mail::to($email)->send(
+            new OrderPaid($order)
+        );
 
         return redirect()->back()->with('success', 'Order Cancelled');
     }

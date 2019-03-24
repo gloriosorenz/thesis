@@ -11,7 +11,9 @@
 </nav>
 
 <!-- Add Season -->
-<a class="btn btn-secondary btn-md" href="{{ route('product_lists.create') }}">+ Add Products</a>
+@if (auth()->user()->roles_id == 2)
+    <a class="btn btn-secondary btn-md" href="{{ route('product_lists.create') }}">+ Add Products</a>
+@endif
 <br>
 <br>
 
@@ -30,7 +32,7 @@
                     <th>ID</th>
                     <th>Product Type</th>
                     <th>Rice Farmer</th>
-                    <th>Original Quantity</th>
+                    <th>Initial Quantity</th>
                     <th>Current Quantity</th>
                     <th>Harvest Date</th>
                     <th width="15%">Options</th>
@@ -69,7 +71,7 @@
                         <th>ID</th>
                         <th>Product Type</th>
                         <th>Rice Farmer</th>
-                        <th>Original Quantity</th>
+                        <th>Initial Quantity</th>
                         <th>Current Quantity</th>
                         <th>Harvest Date</th>
                         <th width="15%">Options</th>

@@ -10,7 +10,7 @@
 </ol>
 </nav>
 
-<a class="btn btn-md btn-secondary" href="{{URL::previous()}}">Back</a>
+<a class="btn btn-md btn-secondary" href="{{ route('season_lists.index') }}">Back</a>
 <br>
 <br>
 

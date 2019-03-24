@@ -30,7 +30,7 @@
                     <thead>
                         <tr>
                             <th>Product</th>
-                            <th>Original Quantity</th>
+                            <th>Quantity</th>
                             <th>Price</th>
                             <th>Harvest Date</th>
                         </tr>

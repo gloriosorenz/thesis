@@ -56,10 +56,10 @@
                         @foreach ($pdatas as $d)
                         <tr>
                             @php
-                                $bang = App\Barangay::findOrFail($d->barangays_id);
+                                $barangay = App\Barangay::findOrFail($d->barangays_id);
                             @endphp
 
-                            <td>{{ $bang->name }}</td>
+                            <td>{{ $barangay->name }}</td>
                             <td>{{ $d->plant_area }}</td>
                             <td>{{ $d->farmers }}</td>
                         </tr>

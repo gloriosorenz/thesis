@@ -88,6 +88,16 @@ class LandingPageController extends Controller
                     $op->update(['order_product_statuses_id' => 4]);    
             }
 
+        // Auto add Cancel Order with Quantity (Confirmed Status)
+        $orderproducts1 = OrderProduct::where('updated_at', '<', Carbon::now()->subDays(3))
+            ->where('order_product_statuses_id','=', 2)
+            ->get();
+
+            foreach($orderproducts1 as $op){
+                    $op->product_lists->update(['curr_quantity' => $op->product_lists->curr_quantity + $op->quantity]);
+                    $op->update(['order_product_statuses_id' => 4]);    
+            }
+
         // Auto check status of Product Order to change status or Order
         $poee = OrderProduct::groupBy('orders_id')->select( 'orders_id', DB::raw( 'AVG(order_product_statuses_id) as avg' ) )->get();
         // dd($poee);

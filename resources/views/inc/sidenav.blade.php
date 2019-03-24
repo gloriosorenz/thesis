@@ -117,11 +117,11 @@
     </li>
 
     <!-- Seasons -->
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link" href="{{ route('seasons.index') }}">
         <i class="fas fa-sun"></i>
         <span>Seasons</span></a>
-    </li>
+    </li> --}}
 
     <!-- Season List -->
     <li class="nav-item">

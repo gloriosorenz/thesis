@@ -39,7 +39,6 @@
             <div class="col-lg-12">
                 <table class="table table-striped">
                     <thead>
-                        <th width="11.25">Rice Farmer</th>
                         <th width="11.25">Barangay</th>
                         <th width="11.25">Planned Hectares</th>
                         <th width="11.25">Planned No. of Farmers</th>
@@ -51,8 +50,10 @@
                     <tbody>
                         @foreach ($lists as $data)
                         <tr>
-                            <td>{{$data->users->first_name}} {{$data->users->last_name}}</td>
-                            <td>{{$data->users->barangays->name}}</td>
+                            @php
+                                $barangay = App\Barangay::findOrFail($data->barangays_id);
+                            @endphp
+                            <td>{{$barangay->name}}</td>                            
                             <td>{{$data->planned_hectares}}</td>
                             <td>{{$data->planned_num_farmers}}</td>
                             <td>{{$data->planned_qty}}</td>
