@@ -81,7 +81,7 @@ class ProductListController extends Controller
     public function create()
     {
         $season = Season::latest()->first();
-        $products = Product::all();
+        $products = Product::where('id', '!=', 4)->get();
 
         return view('product_lists.create')
             ->with('season', $season)
