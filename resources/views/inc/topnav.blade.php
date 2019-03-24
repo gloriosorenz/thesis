@@ -136,7 +136,7 @@
     <!-- Nav Item - User Information -->
     <li class="nav-item dropdown no-arrow">
     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->first_name }}</span>
+        <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->first_name }} ({{Auth::user()->roles->title}})</span>
         {{-- <img class="img-profile rounded-circle" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80"> --}}
     </a>
     <!-- Dropdown - User Information -->

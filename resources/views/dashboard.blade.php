@@ -9,24 +9,52 @@
               {{-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
             </div>
 
-            <div id="my-dash">
-                <div id="chart">
+            <h5> Hi {{ Auth::user()->first_name }}!</h5>
+            <div class="row">
+              <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Last Complete Season  </div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">Season {{ $last_com_season->id }}</div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div id="control">
-                </div>
-            </div>
-        
-            <div id="stocks-div"></div>
 
-            {{-- <div id="app">
-                {!! $chart->container() !!}
+    
+                <!-- Earnings (Monthly) Card Example -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Current Ongoing Season</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">Season {{$curr_season->id}}</div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </div>
-            {!! $chart->script() !!} --}}
-            
+
+          
 
             <br>
             <!-- Content Row -->
             <div class="row">
+
+                
+
+              @if(Auth::user()->roles_id == 1)
 
               <!-- Earnings (Monthly) Card Example -->
               <div class="col-xl-3 col-md-6 mb-4">
@@ -44,6 +72,7 @@
                   </div>
                 </div>
               </div>
+
   
               <!-- Earnings (Monthly) Card Example -->
               <div class="col-xl-3 col-md-6 mb-4">
@@ -72,7 +101,7 @@
                           <div class="h5 mb-0 font-weight-bold text-gray-800">{{$dmg_prod_ls}}</div>
                         </div>
                         <div class="col-auto">
-                          <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                          <i class="fas fa-hashtag fa-2x text-gray-300"></i>
                         </div>
                       </div>
                     </div>
@@ -115,7 +144,7 @@
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{$pending_orders}}</div>
                       </div>
                       <div class="col-auto">
-                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                        <i class="fas fa-file fa-2x text-gray-300"></i>
                       </div>
                     </div>
                   </div>
@@ -126,40 +155,30 @@
             <!-- Content Row -->
   
             <div class="row">
-  
+
               <!-- Area Chart -->
               <div class="col-xl-6 col-lg-6">
                 <div class="card shadow mb-4">
                   <!-- Card Header - Dropdown -->
                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Total Order Overview</h6>
-                    <div class="dropdown no-arrow">
-                      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header">Dropdown Header:</div>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
-                    </div>
+                    
                   </div>
-                  <!-- Card Body -->
+
+                  <!-- Total Order Overview -->
                   <div class="card-body">
                       {!! Charts::styles() !!}
                       <div class="container">
                         <div class="app">
                             <center>
-                                {!! $areachart->html() !!}
+                                {!! $totalorderline->html() !!}
                             </center>
                         </div>
                       </div>
-                        <!-- End Of Main Application -->
                         {!! Charts::scripts() !!}
-                        {!! $areachart->script() !!}
+                        {!! $totalorderline->script() !!}
                   </div>
+
                 </div>
               </div>
   
@@ -168,19 +187,7 @@
                 <div class="card shadow mb-4">
                   <!-- Card Header - Dropdown -->
                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Product Output for Season {{$last_com_season->id}}</h6>
-                    <div class="dropdown no-arrow">
-                      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header">Dropdown Header:</div>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
-                    </div>
+                    <h6 class="m-0 font-weight-bold text-primary">Product Output for Season {{$last_com_season->id}}</h6>
                   </div>
                   <!-- Card Body -->
                   <div class="card-body">
@@ -188,39 +195,23 @@
                     <div class="container">
                       <div class="app">
                           <center>
-                              {!! $piechart->html() !!}
+                              {!! $prodoppie->html() !!}
                           </center>
                       </div>
                     </div>
                       <!-- End Of Main Application -->
                       {!! Charts::scripts() !!}
-                      {!! $piechart->script() !!}
-                      
-                    </div>
-
-                   
-                    
+                      {!! $prodoppie->script() !!}
                   </div>
                 </div>
+              </div>
 
-                 <!-- Pie Chart -->
+              <!-- Pie Chart -->
               <div class="col-xl-6 col-lg-6">
                   <div class="card shadow mb-4">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Most Valuable Customers (MVC)</h6>
-                      <div class="dropdown no-arrow">
-                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                          <div class="dropdown-header">Dropdown Header:</div>
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                      </div>
+                      <h6 class="m-0 font-weight-bold text-primary">Most Valuable Customers (MVC)</h6>
                     </div>
 
                     <div class="card-body">
@@ -228,13 +219,13 @@
                       <div class="container">
                         <div class="app">
                             <center>
-                                {!! $barchart->html() !!}
+                                {!! $mvcbarchart->html() !!}
                             </center>
                         </div>
                       </div>
                         <!-- End Of Main Application -->
                         {!! Charts::scripts() !!}
-                        {!! $barchart->script() !!}
+                        {!! $mvcbarchart->script() !!}
                         
                       </div>
                   </div>
@@ -244,19 +235,7 @@
                     <div class="card shadow mb-4">
                       <!-- Card Header - Dropdown -->
                       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                      <h6 class="m-0 font-weight-bold text-primary">Best Selling Farmer</h6>
-                        <div class="dropdown no-arrow">
-                          <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                          </a>
-                          <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                            <div class="dropdown-header">Dropdown Header:</div>
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                          </div>
-                        </div>
+                        <h6 class="m-0 font-weight-bold text-primary">Best Selling Farmer</h6>
                       </div>
   
                       <div class="card-body">
@@ -264,20 +243,170 @@
                         <div class="container">
                           <div class="app">
                               <center>
-                                  {!! $barchart2->html() !!}
+                                  {!! $bestfarmerbarchart->html() !!}
                               </center>
                           </div>
                         </div>
                           <!-- End Of Main Application -->
                           {!! Charts::scripts() !!}
-                          {!! $barchart2->script() !!}
-                          
+                          {!! $bestfarmerbarchart->script() !!}   
                         </div>
                     </div>
                   </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <!-- FARMER DASHBOARD -->
+                  @elseif(Auth::user()->roles_id == 2)
+
+                      <div class="col-xl-3 col-md-6 mb-4">
+                          <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                              <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                  <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Last Complete Season  </div>
+                                  <div class="h5 mb-0 font-weight-bold text-gray-800">Season {{ $last_com_season->id }}</div>
+                                </div>
+                                <div class="col-auto">
+                                  <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+        
+            
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                          <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                              <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Current Ongoing Season</div>
+                                  <div class="h5 mb-0 font-weight-bold text-gray-800">Season {{$curr_season->id}}</div>
+                                </div>
+                                <div class="col-auto">
+                                  <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  
+
+                  <!-- Area Chart -->
+              <div class="col-xl-6 col-lg-6">
+                <div class="card shadow mb-4">
+                  <!-- Card Header - Dropdown -->
+
+                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Production Overview</h6>
+                    
+                  </div>
+
+                  <!-- Total Order Overview -->
+                  <div class="card-body">
+                      {!! Charts::styles() !!}
+                      <div class="container">
+                        <div class="app">
+                            <center>
+                                {!! $riceprodline->html() !!}
+                            </center>
+                        </div>
+                      </div>
+                        {!! Charts::scripts() !!}
+                        {!! $riceprodline->script() !!}
+                  </div>
+
+                  <!-- Total Order Overview -->
+                  <div class="card-body">
+                    {!! Charts::styles() !!}
+                    <div class="container">
+                      <div class="app">
+                          <center>
+                              {!! $origcurrprodbar->html() !!}
+                          </center>
+                      </div>
+                    </div>
+                      {!! Charts::scripts() !!}
+                      {!! $origcurrprodbar->script() !!}
+                  </div>
+
+        
+
+            <!-- End of charts -->
               </div>
             </div>
+
+                  <!-- Column 2 for Farmer -->
+
+                  <div class="col-xl-6 col-lg-6">
+                      <div class="card shadow mb-4">
+
+                          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-primary">Product Sales Overview</h6>
+                          </div>
+
+                        <!-- Card Header - Dropdown -->
+                        <!-- Total Order Overview -->
+                      <div class="card-body">
+                          {!! Charts::styles() !!}
+                          <div class="container">
+                            <div class="app">
+                                <center>
+                                    {!! $orderlinechart->html() !!}
+                                </center>
+                            </div>
+                          </div>
+                            {!! Charts::scripts() !!}
+                            {!! $orderlinechart->script() !!}
+                      </div>
+
+                      <div class="card-body">
+                        {!! Charts::styles() !!}
+                        <div class="container">
+                          <div class="app">
+                              <center>
+                                  {!! $revlinechart->html() !!}
+                              </center>
+                          </div>
+                        </div>
+                          {!! Charts::scripts() !!}
+                          {!! $revlinechart->script() !!}
+                      </div>
+
+                  </div>
+                </div>
+              
   
 
             
@@ -399,7 +528,7 @@
   
               </div>
             </div>
-  
+
           {{-- </div> --}}
           <!-- /.container-fluid -->
   
@@ -418,5 +547,24 @@
   
       </div>
       <!-- End of Content Wrapper -->
+      @endif
 </div>
 @endsection
+
+<!-- 
+
+  <div class="dropdown no-arrow">
+                      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                        <div class="dropdown-header">Dropdown Header:</div>
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                      </div>
+                    </div>
+
+                  -->
+
