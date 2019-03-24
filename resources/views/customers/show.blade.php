@@ -71,21 +71,21 @@
                 <!-- Barangay -->
                 <div class="form-group">
                     <label for="barangay">Barangay:</label>
-                    <input type="text" class="form-control" name="street" value="{{ $customer->barangays->name }}" readonly/>
+                    <input type="text" class="form-control" name="barangay" value="{{ $customer->barangays->name }}" readonly/>
                 </div>
             </div>
             <div class="col-md-4">
                 <!-- City -->
                 <div class="form-group">
                     <label for="city">City:</label>
-                    <input type="text" class="form-control" name="street" value="{{ $customer->cities->name }}" readonly/>
+                    <input type="text" class="form-control" name="city" value="{{ $customer->cities->name }}" readonly/>
                 </div>
             </div>
             <div class="col-md-4">
                 <!-- City -->
                 <div class="form-group">
                     <label for="province">Province:</label>
-                    <input type="text" class="form-control" name="street" value="{{ $customer->provinces->name }}" readonly/>
+                    <input type="text" class="form-control" name="province" value="{{ $customer->provinces->name }}" readonly/>
                 </div>
             </div>
         </div>

@@ -22,7 +22,7 @@
     <div class="col-md-8">
         <div class="card shadow mb-4">
             <div class="card-header card-header-primary">
-                <h4 class="card-title">Create a Damage Report</h4>
+                <h4 class="card-title">Update a Damage Report</h4>
                 <p class="card-category">Complete your report</p>
             </div>
             <div class="card-body">

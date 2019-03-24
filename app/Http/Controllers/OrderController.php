@@ -237,30 +237,13 @@ class OrderController extends Controller
 
         $data = $farmers->all();
 
+        // dd($data);
         // dd($farmers);
 
-        // $farmers2 = OrderProduct::
-        //         where('orders_id', $order->id)
-        //         // ->selectRaw('farmers.*')
-        //         ->groupBy('farmers_id')
-        //         ->get()
-        //         ;
 
-        // dd($farmers2);
-
-        // $products = OrderProduct::where('farmers_id', $farmers->farmers_id)-get();
-
-        // $products = DB::table('order_products')
-        //         ->join('product_lists', 'order_products.product_lists_id', '=', 'product_lists.id')
-        //         ->join('products', 'product_lists.orig_products_id', '=', 'products.id')
-        //         ->where('orders_id', $order->id)
-        //         ->groupBy('products.id' )
-        //         ->get();
-
-        // dd($farmers);
 
         // pass view file
-        $pdf = PDF::loadView('pdf.invoice', compact('order', 'data'))->setPaper('a4', 'landscape');
+        $pdf = PDF::loadView('pdf.invoice', compact('order', 'data', 'farmers'))->setPaper('a4', 'landscape');
         // download pdf
         return $pdf->stream('invoice.pdf');
     }

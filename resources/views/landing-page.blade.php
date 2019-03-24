@@ -3,6 +3,8 @@
 
 {{-- <div class="text-center"><a class="nav-link" href="{{ url('weather/weather_statistics') }}">More data found here!</a></div> --}}
 
+<br>
+<br>
 {{-- &font=Georgia --}}
 <iframe id="forecast_embed" frameborder="0" height="250" width="100%" src="//forecast.io/embed/#lat=14.3144&lon=121.1121&name=Santa Rosa, Laguna&units=ca&font=Sans-Serif"></iframe>
 <div class="text-center">

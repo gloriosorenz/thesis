@@ -88,8 +88,10 @@ class ProductListController extends Controller
     {
         $season = Season::latest()->first();
         $products = Product::where('id', '!=', 4)->get();
+        $users = User::where('roles_id', 2)->get()->pluck('company');
 
         return view('product_lists.create')
+            ->with('users', $users)
             ->with('season', $season)
             ->with('products', $products);
     }
@@ -115,7 +117,7 @@ class ProductListController extends Controller
         $counter = 0;
         foreach($request->products_id as $key => $value) {
             $product_list = new ProductList;
-            $product_list->users_id = auth()->user()->id;
+            $product_list->users_id = $request->input('users_id') [$key];
             $product_list->seasons_id = $latest_season->id;
             $product_list->orig_products_id = $request->input('products_id') [$key];
             $product_list->curr_products_id = $request->input('products_id') [$key];
@@ -126,8 +128,7 @@ class ProductListController extends Controller
 
             $product_list->save();
 
-
-
+            
             $season_list = SeasonList::where('seasons_id', $product_list->seasons_id)
                         ->where('users_id', $product_list->users_id)
                         ->first();

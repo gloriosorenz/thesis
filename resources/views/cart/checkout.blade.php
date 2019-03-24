@@ -74,6 +74,8 @@
 </div> <!-- end container --> --}}
 
 <div class="container" id="invoice_container">
+    <br>
+    <br>
     <hr>
     <div class="row">
         <div class="col-md-12">

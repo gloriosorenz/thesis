@@ -48,7 +48,7 @@
 <!-- Confirmed Orders Datatable -->
 <div class="card shadow mb-4">
     <div class="card-header py-3 bg-primary text-white">
-        <h2 class="title font-weight-bold">Confirmed Orders</h2>
+        <h2 class="title font-weight-bold">Completed Orders</h2>
     </div>
     <div class="card-body">
         @if (count($done) > 0)

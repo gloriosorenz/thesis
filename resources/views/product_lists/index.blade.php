@@ -10,7 +10,7 @@
   </ol>
 </nav>
 
-<!-- Add Season -->
+<!-- Add Products -->
 @if (auth()->user()->roles_id == 2)
     @if ($count == 0)
         <a class="btn btn-secondary btn-md" href="{{ route('product_lists.create') }}">+ Add Products</a>
