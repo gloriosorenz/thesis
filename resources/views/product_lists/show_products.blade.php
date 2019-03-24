@@ -1,7 +1,7 @@
 @extends('layouts.web')
 @section('content')
 
-
+<br>
 <br>
 <!-- Jumbotron -->
 <div class="jumbotron p-3 p-md-5 rounded text-center">

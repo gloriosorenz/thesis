@@ -13,7 +13,6 @@
 <!-- Add Plant Report -->
 @if (count($check_date) != 1)
 <a class="btn btn-secondary btn-md" href="/reports/plant_reports/addPlantReport">+Add</a>
-
 @endif
 {{-- <a href="{{ route('generate-pdf',['download'=>'pdf']) }}">Download PDF</a> --}}
 <br>

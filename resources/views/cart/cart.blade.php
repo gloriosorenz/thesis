@@ -4,6 +4,9 @@
 
     <div class="cart-section container">
     <br>
+
+    <br>
+    <br>
     
             @if (session()->has('success_message'))
                 <div class="alert alert-success">
@@ -25,6 +28,7 @@
                 </div>
                 <div class="card-body"> --}}
 
+        <br>
         <div class="row">
             <div class="col-md-12">
                 <hr>
@@ -48,7 +52,7 @@
 
                         @foreach (Cart::content() as $item)
                         <tr>
-                            <td><a href="{{ url('/product_lists/show_products', [$item->model->curr_products->type]) }}">{{ $item->model->curr_products->type }}</a></td>
+                            <td>{{ $item->model->curr_products->type }}</td>
                             <td>{{ $item->model->users->company }}</td>
                             <td>
                                 <div class="cart-table-row-right">
@@ -82,6 +86,7 @@
                         @endforeach
                         <tr>
                             <td class="table-image"></td>
+                            <td></td>
                             <td></td>
                             <td class="small-caps table-bg" style="text-align: right">Total</td>
                             <td>₱{{ Cart::instance('default')->subtotal() }}</td>

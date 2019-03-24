@@ -10,6 +10,7 @@ use App\User;
 use PDF;
 use DB;
 use Carbon\Carbon;
+use App\SeasonList;
 
 class PlantReportController extends Controller
 {
@@ -157,28 +158,40 @@ class PlantReportController extends Controller
             "farmers.*"  => "required|integer",
             "users_id.*"  => "required|distinct",
         ]);
-        
 
+        // Get latest season
+        $latest_season = DB::table('seasons')->orderBy('id', 'desc')->first();
+
+        
         $plant_report = PlantReport::findOrFail($id);
     
+        $counter = 0;
+        $counter1 = 0;
         foreach($request->users_id as $key => $value) {
-            $data=array(
-                        'plant_reports_id'=>$plant_report->id,
-                        'users_id'=>$request->users_id [$key],
-                        'plant_area'=>$request->plant_area [$key],
-                        'farmers'=>$request->farmers [$key],
-                        'created_at' =>  \Carbon\Carbon::now(), # \Datetime()
-                        'updated_at' => \Carbon\Carbon::now(),  # \Datetime()
-                    );
+            $preport = new PlantData;
+            $preport->plant_reports_id = $plant_report->id;
+            $preport->users_id = $request->input('users_id') [$key];
+            $preport->plant_area = $request->input('plant_area') [$key];
+            $preport->farmers = $request->input('farmers') [$key];
+            $preport->save();
 
-            PlantData::insert($data);
-            // dd($data);
-        }  
+            $season_list = SeasonList::where('seasons_id', $preport->plant_reports->seasons_id)
+                        ->where('users_id', $preport->users_id)
+                        ->first();
+
+            $counter = $preport->plant_area + $counter;
+            $counter1 = $preport->farmers + $counter1;
+        }
+
+        $season_list = SeasonList::findOrFail($season_list->id);
+        $season_list->actual_hectares = $counter;
+        $season_list->actual_num_farmers = $counter1;
+        $season_list->save();  
 
         return redirect()->route('plant_reports.index')->with('success','Plant Report Created ');
        
 
-        return redirect('plant_reports')->with('success','Plant Report Updated ');
+        // return redirect('plant_reports')->with('success','Plant Report Updated ');
     }
 
     /**

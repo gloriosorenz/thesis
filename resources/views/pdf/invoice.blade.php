@@ -28,7 +28,6 @@
 </head>
 <body>
         <div class="container" id="invoice_container">
-                <hr>
                 {{-- <div class="row">
                     <div class="col-md-12">
                         <div class="invoice-title">
@@ -79,6 +78,22 @@
                                 <h3 class="panel-title"><strong>Order summary </strong></h3>
                             </div>
                             <div class="panel-body">
+                                @php
+                                    $seller = App\User::findOrFail($key);
+                                @endphp
+
+                                <!-- Details -->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <strong>{{$value['0']->users->company}}</strong><br>
+                                        Contact Number: {{$value['0']->users->phone}}<br>
+                                        Location: {{$seller->street}}, {{$seller->barangays->name}}, {{$seller->cities->name}}, {{$seller->provinces->name}} <br>
+                                    </div>
+                                </div>
+                                
+                                
+                                <br>
+
                                 <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead>
@@ -91,17 +106,22 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @php
+                                                $sub_total = 0;
+                                            @endphp
                                             @foreach ($value as $v)
                                             @php
                                                 $product = App\ProductList::findOrFail($v->product_lists_id);
                                                 $seller = App\User::findOrFail($v->farmers_id);
+                                                
+                                                $sub_total = ($product->price *  $v->quantity) + $sub_total;
                                             @endphp
                                             <tr>
                                                 <td class="text-left">{{$product->orig_products->type}}</td>
                                                 <td class="text-center">{{$seller->company}}</td>
                                                 <td class="text-center">{{$product->price}}</td>
                                                 <td class="text-center">{{$v->quantity}} kaban/s</td>
-                                                <td class="text-right">{{ presentPrice($product->price *  $v->quantity)}}</td>
+                                                <td class="text-right">{{ presentPrice($v->product_lists->price *  $v->quantity)}}</td>
                                             </tr>
                                             @endforeach
                                             {{-- <tr>
@@ -116,7 +136,7 @@
                                                 <td class="thick-line"></td>
                                                 <td class="thick-line"></td>
                                                 <td class="thick-line text-center"><strong>Total</strong></td>
-                                                <td class="thick-line text-right">{{presentPrice($order->total_price)}}</td>
+                                                <td class="thick-line text-right">{{presentPrice($sub_total)}}</td>
 
                                             </tr>
                                         </tbody>

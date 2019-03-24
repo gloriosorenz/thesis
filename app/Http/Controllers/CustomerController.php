@@ -112,6 +112,8 @@ class CustomerController extends Controller
     public function show($id)
     {
         $customer = User::find($id);
+
+        // dd($customer);
         return view('customers.show')
             ->with('customer', $customer);
     }
