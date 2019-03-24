@@ -57,11 +57,11 @@
     </li>
 
     <!-- Order Products -->
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link" href="{{ route('order_products.index') }}">
         <i class="fas fa-clipboard-check"></i>
         <span>Incoming Orders</span></a>
-    </li>
+    </li> --}}
 
     <!-- Nav Item - Users Management Collapse Menu -->
     <li class="nav-item">

@@ -33,9 +33,15 @@ class SeasonController extends Controller
         // Get latest season
         $latest_season = DB::table('seasons')->orderBy('id', 'desc')->first();
 
+        // Count Products
+        $count = ProductList::where('seasons_id', $latest_season->id)
+                ->count();
+        // dd($count);
+
     
         // dd($seasons, $statuses);
         return view('seasons.index')
+            ->with('count', $count)
             ->with('seasons', $seasons)
             ->with('statuses', $statuses)
             ->with('latest_season', $latest_season);

@@ -13,14 +13,16 @@
       
 <!-- Add Planned Crop -->
 @if (count($seasons) == count($statuses))
-<a class="btn btn-secondary btn-md mb-2" href="{{ route('seasons.create') }}">+Add New Season</a>
+        <a class="btn btn-secondary btn-md mb-2" href="{{ route('seasons.create') }}">+Add New Season</a>
 @endif
 
 
 <!-- Complete Season-->
 @if ($latest_season->season_statuses_id == 1)
-    @if (auth()->user()->roles_id == 1)
-    <a class="btn btn-secondary btn-md mb-3" href="/seasons/complete_season/{{$latest_season->id}}">Complete Season {{$latest_season->id}} <i class="fas fa-check"></i></a>
+    @if ($count != 0)
+        @if (auth()->user()->roles_id == 1)
+        <a class="btn btn-secondary btn-md mb-3" href="/seasons/complete_season/{{$latest_season->id}}">Complete Season {{$latest_season->id}} <i class="fas fa-check"></i></a>
+        @endif
     @endif
 @endif
       
