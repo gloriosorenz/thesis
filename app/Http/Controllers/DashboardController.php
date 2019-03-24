@@ -34,6 +34,9 @@ class DashboardController extends Controller
             ->count();
         $farmers = User::where('roles_id','=',2)
             ->count();
+
+        $curr_season = DB::table('seasons')->latest('id')->first();
+
         $last_com_season = Season::where('season_statuses_id','=', 2)->latest('id')->first();
         // dd($last_com_season);
 
@@ -72,50 +75,47 @@ class DashboardController extends Controller
         */
 
         //ADMIN CHARTS
-        $piechart = Charts::create('pie', 'highcharts')
+        $prodoppie = Charts::create('pie', 'highcharts')
                 ->title('Total Production Percentage')
                 ->labels($prodjoin)
                 ->values($prodlist)
                 ->colors(['#2196F3', '#FFC107','#F44336'])
                 ->dimensions(700,450)
                 ->responsive(true);
-
-
-        
-        $areachart = Charts::database(Order::where('order_statuses_id','=',2)->get(),'line', 'highcharts')
+    
+        $totalorderline = Charts::database(Order::where('order_statuses_id','=',2)->get(),'line', 'highcharts')
                 ->title('For the current year (per Month)')
                 ->elementLabel("Number of Orders")
-                // ->values($prodlist)
                 ->dimensions(700,450)
                 ->responsive(true)
                 ->groupByMonth();
         ;
 
-        $csdkjn = Order::where('order_statuses_id','=',2)
-        ->select('users_id', \DB::raw('count(*) as total'))
-        ->groupBy('users_id')
-        ->pluck('total')
+        $mvc = Order::where('order_statuses_id','=',2)
+                ->select('users_id', \DB::raw('count(*) as total'))
+                ->groupBy('users_id')
+                ->pluck('total')
         ;
         // dd($csdkjn);
 
-        $aaaa =  DB::table('users')
-        ->join('orders', 'users.id', '=', 'orders.users_id')
-        ->where('order_statuses_id','=',2)
-        ->groupBy('users_id')
-        ->pluck('company')
+        $mvcbarlabel =  DB::table('users')
+                ->join('orders', 'users.id', '=', 'orders.users_id')
+                ->where('order_statuses_id','=',2)
+                ->groupBy('users_id')
+                ->pluck('company')
         ;
         // dd($aaaa);
 
-        $barchart = Charts::create('bar', 'highcharts')
+        $mvcbarchart = Charts::create('bar', 'highcharts')
                 ->title('Customer with Most Orders')
-                ->labels($aaaa)
-                ->values($csdkjn)
+                ->labels($mvcbarlabel)
+                ->values($mvc)
                 ->elementLabel('Number of Orders')
                 ->dimensions(1000, 500)
                 ->responsive(true)
         ;
 
-        $popi = OrderProduct::where('order_product_statuses_id','=',3)
+        $bestfarmer = OrderProduct::where('order_product_statuses_id','=',3)
                 // ->select('farmers_id', \DB::raw('count(*) as total'))
                 ->groupBy('farmers_id')
                 ->selectRaw('*,sum(quantity) as sum')
@@ -123,24 +123,201 @@ class DashboardController extends Controller
         ;
         // dd($popi);
 
-        $lala =  DB::table('users')
+        $bestfarmerlbl =  DB::table('users')
                 ->join('order_products', 'users.id', '=', 'order_products.farmers_id')
                 ->where('order_product_statuses_id','=',3)
                 ->groupBy('farmers_id')
                 ->pluck('first_name')
         ;
-        // dd($aaaa);
+        // dd($bestfarmerlbl);
 
 
-        $barchart2 = Charts::create('bar', 'highcharts')
+        $bestfarmerbarchart = Charts::create('bar', 'highcharts')
                 ->title('Best Selling Farmer')
-                ->labels($lala)
-                ->values($popi)
+                ->labels($bestfarmerlbl)
+                ->values($bestfarmer)
                 ->elementLabel('Number of Product Orders')
                 ->dimensions(1000, 500)
                 ->responsive(true)
         ;
 
+        // FARMER DASHBOARD CHARTS
+
+            $authid = auth()->user()->id;
+
+            $riceprodfarm = ProductList::
+                    where('users_id','=',$authid)
+                    ->where('orig_products_id','=',1)
+                    ->groupBy('seasons_id')
+                    ->limit(10)
+                    ->get()
+                    ->pluck('orig_quantity')
+            ;
+            // dd($bn);
+            $witherprodfarm = ProductList::
+                    where('users_id','=',$authid)
+                    ->where('orig_products_id','=',2)
+                    ->groupBy('seasons_id')
+                    ->limit(10)
+                    ->get()
+                    ->pluck('orig_quantity')
+            ;
+
+            $dmgprodfarm = ProductList::
+                    where('users_id','=',$authid)
+                    ->where('orig_products_id','=',3)
+                    ->groupBy('seasons_id')
+                    ->limit(10)
+                    ->get()
+                    ->pluck('orig_quantity')
+            ;
+            
+            $riceprodfarmlbl = ProductList::
+                    where('users_id','=',$authid)
+                    ->where('orig_products_id','=',1)
+                    ->limit(10)
+                    ->get()
+                    ->pluck('seasons_id')
+            ;
+            // dd($bnd);
+
+        $riceprodline = Charts::multi('line', 'highcharts')
+            ->title('Seasonal Production')
+            // ->elementLabel('Number of Kabans')
+            ->labels($riceprodfarmlbl)
+            ->dataset('Rice Products',$riceprodfarm)
+            ->dataset('Withered Products',$witherprodfarm)
+            ->dataset('Damaged Products',$dmgprodfarm)
+            ->dimensions(1000,500)
+            ->responsive(true)
+        ;
+
+            $last_com_season2 = Season::where('season_statuses_id','=', 2)->latest('id')->pluck('id')->first();
+
+            $origprod = DB::table('seasons')
+                ->join('product_lists', 'seasons.id', '=', 'product_lists.seasons_id')
+                ->where('users_id','=',$authid)
+                ->where('seasons_id','=',$last_com_season2)
+                ->pluck('orig_quantity')
+            ;
+
+            $currprod = DB::table('seasons')
+                ->join('product_lists', 'seasons.id', '=', 'product_lists.seasons_id')
+                ->where('users_id','=',$authid)
+                ->where('seasons_id','=',$last_com_season2)
+                ->pluck('curr_quantity')
+            ;
+
+            $origcurrprod = DB::table('seasons')
+                ->join('product_lists', 'seasons.id', '=', 'product_lists.seasons_id')
+                ->where('users_id','=',$authid)
+                ->where('seasons_id','=',$last_com_season2)
+                ->pluck('orig_quantity')
+            ;
+
+        $origcurrprodbar = Charts::multi('bar', 'highcharts')
+            ->title('Product Comparison For the Latest Season')
+            ->labels(['Rice','Withered','Damaged'])
+            ->dataset('Original Quantity',$origprod)
+            ->dataset('Current Quantity',$currprod)
+            ->dimensions(1000,500)
+            ->responsive(true)
+        ;
+
+        /*
+            ->selectRaw('*,sum(curr_quantity) as sum')
+            ->where('seasons_id',$last_com_season->id)
+            ->pluck('sum');
+
+             DB::table('seasons')
+            ->join('product_lists', 'seasons.id', '=', 'product_lists.seasons_id')
+            ->join('order_products','product_lists.id','=','order_products.product_lists_id')
+            ->where('farmers_id','=',$authid)
+            ->where('order_product_statuses_id','=',3)
+            ->where('curr_products_id','=',1)
+            // ->sum('quantity')
+            // ->limit(10)
+            // ->get()
+            ->selectRaw('seasons_id,sum(quantity) as sum')
+
+            ->pluck('sum')
+            ->groupBy('seasons_id')
+        */
+
+            $ricesoldperse = DB::table('product_lists')
+                ->join('order_products', 'product_lists.id', '=', 'order_products.product_lists_id')
+                ->where('farmers_id','=',$authid)
+                ->where('order_product_statuses_id','=',3)
+                ->where('curr_products_id','=',1)
+                ->groupBy('seasons_id')
+                ->selectRaw('seasons_id,sum(quantity) as sum')
+                ->pluck('sum')
+            ;
+
+            $withersoldperse = DB::table('product_lists')
+                ->join('order_products', 'product_lists.id', '=', 'order_products.product_lists_id')
+                ->where('farmers_id','=',$authid)
+                ->where('order_product_statuses_id','=',3)
+                ->where('curr_products_id','=',2)
+                ->groupBy('seasons_id')
+                ->selectRaw('seasons_id,sum(quantity) as sum')
+                ->pluck('sum')
+            ;
+            $prodsoldperselbl = DB::table('product_lists')
+                ->join('order_products', 'product_lists.id', '=', 'order_products.product_lists_id')
+                ->where('farmers_id','=',$authid)
+                ->groupBy('seasons_id')
+                ->pluck('seasons_id')
+            ;
+
+        $orderlinechart = Charts::multi('line', 'highcharts')
+            ->title('Products Sold per Season')
+            ->labels($prodsoldperselbl)
+            ->dataset('Rice',$ricesoldperse)
+            ->dataset('Withered',$withersoldperse)
+            ->dimensions(1000,500)
+            ->responsive(true)
+        ;
+        
+            $ricesoldpriperse = DB::table('product_lists')
+            ->join('order_products', 'product_lists.id', '=', 'order_products.product_lists_id')
+            ->where('farmers_id','=',$authid)
+            ->where('order_product_statuses_id','=',3)
+            ->where('curr_products_id','=',1)
+            ->groupBy('seasons_id')
+            ->selectRaw('seasons_id,sum(quantity*price) as sum')
+            ->pluck('sum')
+            ;
+
+            $withersoldpriperse = DB::table('product_lists')
+                ->join('order_products', 'product_lists.id', '=', 'order_products.product_lists_id')
+                ->where('farmers_id','=',$authid)
+                ->where('order_product_statuses_id','=',3)
+                ->where('curr_products_id','=',2)
+                ->groupBy('seasons_id')
+                ->selectRaw('seasons_id,sum(quantity*price) as sum')
+                ->pluck('sum')
+            ;
+            $prodsoldpriperselbl = DB::table('product_lists')
+                ->join('order_products', 'product_lists.id', '=', 'order_products.product_lists_id')
+                ->where('farmers_id','=',$authid)
+                ->groupBy('seasons_id')
+                ->pluck('seasons_id')
+            ;
+
+        $revlinechart = Charts::multi('line', 'highcharts')
+            ->title('Revenue Earned')
+            ->labels($prodsoldpriperselbl)
+            ->dataset('Rice',$ricesoldpriperse)
+            ->dataset('Withered',$withersoldpriperse)
+            ->dimensions(1000,500)
+            ->responsive(true)
+        ;
+            
+
+
+
+        
                 
         /*
             $chart = new OrderChart;
@@ -157,113 +334,24 @@ class DashboardController extends Controller
                 ->dimensions(1000,500)
                 ->responsive(false);
         */
-        
-
-        // //Lava Charts
-        // $lava = new Lavacharts;
-        // $season_start = Season::count();
-
-        // $data = $lava->DataTable();
-
-        // $data->addDateColumn('Day of Month')
-        //     ->addNumberColumn('Rice')
-        //     ->addNumberColumn('Withered');
-
-        // for ($a = 1; $a < 30; $a++) {
-        //         $rowData = [
-        //         "2019-4-$a", rand(200,500), rand(200,500)
-        //         ];
-        //     $data->addRow($rowData);
-        // }
-        // $lava->LineChart('Stocks', $data, [
-        //     'title' => 'Product Sale',
-        //     'animation' => [
-        //         'startup' => true,
-        //         'easing' => 'inAndOut'
-        //     ],
-        //     'colors' => ['#3CB371', '#FFD700']
-        // ]);
 
         return view('dashboard')
             ->with('farmers',$farmers)
-            // ->with('lava',$lava)
-            // ->with('data',$data)
+            ->with('curr_season',$curr_season)
             ->with('last_com_season',$last_com_season)
             ->with('complete_orders',$complete_orders)
             ->with('pending_orders',$pending_orders)
             ->with('seasons', $seasons)
             ->with('dmg_prod_ls',$dmg_prod_ls)
-            ->with('piechart',$piechart)
-            ->with('areachart',$areachart)
-            ->with('barchart',$barchart)
-            ->with('barchart2',$barchart2)
+            ->with('prodoppie',$prodoppie)
+            ->with('totalorderline',$totalorderline)
+            ->with('mvcbarchart',$mvcbarchart)
+            ->with('bestfarmerbarchart',$bestfarmerbarchart)
+            ->with('riceprodline',$riceprodline)
+            ->with('origcurrprodbar',$origcurrprodbar)
+            ->with('orderlinechart',$orderlinechart)
+            ->with('revlinechart',$revlinechart)
             ;
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
 

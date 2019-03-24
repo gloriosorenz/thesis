@@ -22,10 +22,10 @@ class DatabaseSeeder extends Seeder
         $this->call(SeasonListStatusTableSeeder::class);
         $this->call(CountriesTableSeeder::class);
         $this->call(RolesTableSeeder::class);
+        $this->call(ProductTableSeeder::class);
 
         // Secondary Seeders
         $this->call(UsersTableSeeder::class);
-        $this->call(ProductTableSeeder::class);
         $this->call(SeasonTableSeeder::class);
         $this->call(SeasonListTableSeeder::class);
         $this->call(ProductListTableSeeder::class);
