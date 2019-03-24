@@ -38,6 +38,11 @@ class ProductListController extends Controller
         $all_products = ProductList::where('seasons_id', $latest_season->id)
                 // ->groupBy('users_id')
                 ->get();
+
+        $count = ProductList::where('seasons_id', $latest_season->id)
+                ->where('users_id', auth()->user()->id)->count();
+        
+        // dd($count);
                
 
         // dd($all_products);
@@ -69,6 +74,7 @@ class ProductListController extends Controller
                 ->with('product_lists', $product_lists)
                 ->with('all_products', $all_products)
                 ->with('latest_season', $latest_season)
+                ->with('count', $count)
             ;
     }
      

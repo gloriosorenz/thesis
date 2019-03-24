@@ -12,7 +12,9 @@
 
 <!-- Add Season -->
 @if (auth()->user()->roles_id == 2)
-    <a class="btn btn-secondary btn-md" href="{{ route('product_lists.create') }}">+ Add Products</a>
+    @if ($count == 0)
+        <a class="btn btn-secondary btn-md" href="{{ route('product_lists.create') }}">+ Add Products</a>
+    @endif
 @endif
 <br>
 <br>
@@ -48,7 +50,6 @@
                     <td>{{$pl->curr_quantity}}</td>
                     <td>{{$pl->harvest_date}}</td>
                     <td>
-                        {{-- <a href="/product_lists/{{$pl->id}}"><button class="btn btn-warning btn-md btn-fill" ><i class="fas fa-eye"></i></button></a> --}}
                         <a href="/product_lists/{{$pl->id}}/edit"><button class="btn btn-success btn-md btn-fill"  ><i class="fas fa-edit"></i></button></a>
                     </td>
                 </tr>
@@ -87,7 +88,6 @@
                         <td>{{$pl->curr_quantity}}</td>
                         <td>{{$pl->harvest_date}}</td>
                         <td>
-                            {{-- <a href="/product_lists/{{$pl->id}}"><button class="btn btn-warning btn-md btn-fill" ><i class="fas fa-eye"></i></button></a> --}}
                             <a href="/product_lists/{{$pl->id}}/edit"><button class="btn btn-success btn-md btn-fill"  ><i class="fas fa-edit"></i></button></a>
                         </td>
                     </tr>
