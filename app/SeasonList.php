@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class SeasonList extends Model
 {
     protected $fillable = [
-        'actual_hectares', 'actual_num_farmers', 'actual_qty', 'seasons_id', 'users_id','seasons_list_statuses_id'
+        'id','users_id', 'seasons_id', 'planned_hectares', 'actual_hectares', 'planned_num_farmers','actual_num_farmers','planned_qty','actual_qty','seasons_list_statuses_id'
     ];
 
     public function users()

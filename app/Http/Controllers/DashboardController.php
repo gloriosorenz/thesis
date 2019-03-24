@@ -63,7 +63,7 @@ class DashboardController extends Controller
         $prodlist = ProductList::where('orig_products_id','!=',4)
             ->groupBy('orig_products_id')
             ->selectRaw('*,sum(curr_quantity) as sum')
-            ->where('seasons_id',$last_com_season->id)
+            ->where('seasons_id',$last_com_season->id) //error
             ->pluck('sum');
         // dd($prodlistid);
 
@@ -74,12 +74,12 @@ class DashboardController extends Controller
             ->pluck('sum','products_id');
         */
 
-        //ADMIN CHARTS
+        // //ADMIN CHARTS
         $prodoppie = Charts::create('pie', 'highcharts')
                 ->title('Total Production Percentage')
                 ->labels($prodjoin)
                 ->values($prodlist)
-                ->colors(['#2196F3', '#FFC107','#F44336'])
+                // ->colors(['#2196F3', '#FFC107','#F44336'])
                 ->dimensions(700,450)
                 ->responsive(true);
     
@@ -102,7 +102,8 @@ class DashboardController extends Controller
                 ->join('orders', 'users.id', '=', 'orders.users_id')
                 ->where('order_statuses_id','=',2)
                 ->groupBy('users_id')
-                ->pluck('company')
+                ->select(DB::table('users')->raw("CONCAT(first_name, last_name) AS name"))
+                ->pluck('name')
         ;
         // dd($aaaa);
 
@@ -127,7 +128,7 @@ class DashboardController extends Controller
                 ->join('order_products', 'users.id', '=', 'order_products.farmers_id')
                 ->where('order_product_statuses_id','=',3)
                 ->groupBy('farmers_id')
-                ->pluck('first_name')
+                ->pluck('company')
         ;
         // dd($bestfarmerlbl);
 

@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'ande@gmail.com', 
                 'phone' => '09175446351',
                 'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
-                'company' => 'RK Farmer Corp.',
+                'company' => 'Salbabida Farmer Corp.',
                 'street'=> '52 Cataduaan St.',
                 'no_farmers' => 30,
                 'hectares' => 40.50,
@@ -48,7 +48,7 @@ class UsersTableSeeder extends Seeder
                 'phone' => '09178416388',
                 'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
                 'company' => 'Sta. Rosa Rice Millers',
-                'roles_id' => 3, 
+                'roles_id' => 3, //Customer
                 'barangays_id'=> 4,
                 'remember_token' => '',
             ],
@@ -57,12 +57,11 @@ class UsersTableSeeder extends Seeder
                 'first_name' => 'Kanor', 
                 'last_name' => 'Robledo', 
                 'phone' => '09178484154',
+                'email' => 'kanor@robledo.com', 
                 'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
                 'company' => 'Magsasaka Co.',
-                'no_farmers' => 110,
-                'hectares' => 20.30,
                 'street'=> '68 Aduana St.',
-                'roles_id' => 2, 
+                'roles_id' => 4, 
                 'barangays_id'=> 8,
                 'cities_id'=> 433,
                 'provinces_id'=> 19,
@@ -85,11 +84,9 @@ class UsersTableSeeder extends Seeder
                 'email' => 'c@o.c', 
                 'phone' => '09178484154',
                 'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
-                'company' => 'Ka Larry Foundation',
-                'no_farmers' => 200,
-                'hectares' => 30.10,
+                'company' => 'Ortega Foundation',
                 'street'=> '1 Magallanes St.',
-                'roles_id' => 2, 
+                'roles_id' => 4, 
                 'barangays_id'=> 2,
                 'cities_id'=> 433,
                 'provinces_id'=> 19,
@@ -115,10 +112,8 @@ class UsersTableSeeder extends Seeder
                 'phone' => '09178484154',
                 'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
                 'company' => 'Guy Sabino Farmery',
-                'no_farmers' => 18,
-                'hectares' => 19.10,
                 'street'=> '18 Legazpi St.',
-                'roles_id' => 2, 
+                'roles_id' => 4, 
                 'barangays_id'=> 7,
                 'cities_id'=> 433,
                 'provinces_id'=> 19,
@@ -132,15 +127,15 @@ class UsersTableSeeder extends Seeder
                 'phone' => '09178484154',
                 'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
                 'company' => 'Benechingco Rice Plantation',
-                'no_farmers' => 18,
-                'hectares' => 19.10,
-                'roles_id' => 2, 
+                'roles_id' => 3, 
                 'street'=> '42 Barcelona St.',
                 'barangays_id'=> 7,
                 'cities_id'=> 433,
                 'provinces_id'=> 19,
                 'remember_token' => '',
             ],
+
+            //FARMER SEEDERS
             [
                 'id' => 10, 
                 'first_name' => 'Larry', 
@@ -158,16 +153,17 @@ class UsersTableSeeder extends Seeder
                 'provinces_id'=> 19,
                 'remember_token' => '',
             ],
+
             [
                 'id' => 11, 
-                'first_name' => 'Greg', 
+                'first_name' => 'Gregorio', 
                 'last_name' => 'Trinidad', 
                 'email' => 'gregtrinidad@yahoo.com',  //temp
                 'phone' => '09178484154', //temp
                 'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
                 'company' => 'Makabling River Irrigators',
                 'no_farmers' => 18, //temp
-                'hectares' => 19.10, //temp
+                'hectares' => 20.10, //temp
                 'roles_id' => 2,
                 'street'=> '42 Barcelona St.', //temp
                 'barangays_id'=> 7,
@@ -186,6 +182,67 @@ class UsersTableSeeder extends Seeder
                 'no_farmers' => 18, //temp
                 'hectares' => 19.10, //temp
                 'roles_id' => 2, 
+                'street'=> '42 Barcelona St.', //temp
+                'barangays_id'=> 7,
+                'cities_id'=> 433,
+                'provinces_id'=> 19,
+                'remember_token' => '',
+            ],
+
+                // CUSTOMER SEEDERS
+
+            [
+                'id' => 13, 
+                'first_name' => 'Judith', 
+                'last_name' => 'Velasco', 
+                'email' => 'jmvricemillers@gmail.com',  //temp
+                'phone' => '09189277549', //temp
+                'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
+                'company' => 'JMV Ricemill',
+                'roles_id' => 3, 
+                'street'=> 'Blk 843 Francis 7 Subd.', //temp
+                'barangays_id'=> 11217, //Dita
+                'cities_id'=> 433,
+                'provinces_id'=> 19,
+                'remember_token' => '',
+            ],
+            [
+                'id' => 14, 
+                'first_name' => 'Luigi', 
+                'last_name' => 'Panaguiton', 
+                'email' => 'luigipanaguiton@gmail.com',  //temp
+                'phone' => '09170928492', //temp
+                'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
+                'roles_id' => 3,
+                'street'=> '96 Fort St.', //temp
+                'barangays_id'=> 7,
+                'cities_id'=> 433,
+                'provinces_id'=> 19,
+                'remember_token' => '',
+            ],
+            [
+                'id' => 15, 
+                'first_name' => 'Jan', 
+                'last_name' => 'Domingo', 
+                'email' => 'jandomingo@gmail.com',  //temp
+                'phone' => '09170194829', //temp
+                'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
+                'roles_id' => 4, 
+                'street'=> '42 Taft St.', //temp
+                'barangays_id'=> 7,
+                'cities_id'=> 433,
+                'provinces_id'=> 19,
+                'remember_token' => '',
+            ],
+            [
+                'id' => 16, 
+                'first_name' => 'Don', 
+                'last_name' => 'Macadat', 
+                'email' => 'donmac@yahoo.com',  //temp
+                'phone' => '09179528529', //temp
+                'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
+                'company' => 'Mac Greens Association',
+                'roles_id' => 4, 
                 'street'=> '42 Barcelona St.', //temp
                 'barangays_id'=> 7,
                 'cities_id'=> 433,

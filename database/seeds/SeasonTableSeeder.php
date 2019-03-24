@@ -12,62 +12,48 @@ class SeasonTableSeeder extends Seeder
     public function run()
     {
         $items = [
-            
+            // 1 = wet , 2 = dry
             [
                 'id' => 1, 
-                'season_types_id' => 1,
+                'season_types_id' => 1, //dry
                 'season_statuses_id' => 2,
-                'season_start'=> '2018-09-23',
-                'season_end'=> '2018-12-25',
+                'season_start'=> '2017-07-24', 
+                'season_end'=> '2017-11-01',
             ],
             [
                 'id' => 2, 
-                'season_types_id' => 2,
+                'season_types_id' => 2, //dry
                 'season_statuses_id' => 2,
-                'season_start'=> '2019-01-15',
-                'season_end'=> '2019-03-27',
+                'season_start'=> '2017-10-14',
+                'season_end'=> '2018-02-18',
             ],
             [
                 'id' => 3, 
-                'season_types_id' => 2,
+                'season_types_id' => 2, //wet
                 'season_statuses_id' => 2,
-                'season_start'=> '2019-04-29',
-                'season_end'=> '2019-08-12',
+                'season_start'=> '2018-03-12',
+                'season_end'=> '2018-06-28',
             ],
             [
                 'id' => 4, 
-                'season_types_id' => 1,
-                'season_statuses_id' => 1,
-                'season_start'=> '2019-10-17',
-                // 'season_end'=> '2018-12-25',
+                'season_types_id' => 1, //wet
+                'season_statuses_id' => 2,
+                'season_start'=> '2018-07-18',
+                'season_end'=> '2018-10-20',
 
             ],
-            // [
-            //     'id' => 5, 
-            //     'season_types_id' => 1,
-            //     'season_statuses_id' => 2,
-            //     'season_start'=> '2018-09-23',
-            //     'season_end'=> '2018-12-25',
-            // ],
+            [
+                'id' => 5, 
+                'season_types_id' => 1, //dry
+                'season_statuses_id' => 2,
+                'season_start'=> '2018-11-10', 
+                'season_end'=> '2019-03-26',
+            ],
             // [
             //     'id' => 6, 
-            //     'season_types_id' => 2,
-            //     'season_statuses_id' => 2,
-            //     'season_start'=> '2019-01-15',
-            //     'season_end'=> '2019-03-27',
-            // ],
-            // [
-            //     'id' => 7, 
-            //     'season_types_id' => 2,
-            //     'season_statuses_id' => 2,
-            //     'season_start'=> '2019-04-29',
-            //     'season_end'=> '2019-08-12',
-            // ],
-            // [
-            //     'id' => 8, 
-            //     'season_types_id' => 1,
+            //     'season_types_id' => 2, //wet
             //     'season_statuses_id' => 1,
-            //     'season_start'=> '2019-10-17',
+            //     'season_start'=> '2019-03-16', 
             // ],
 
         ];
