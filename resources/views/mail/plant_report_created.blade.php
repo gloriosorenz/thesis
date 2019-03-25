@@ -1,7 +1,8 @@
 @component('mail::message')
-# Good Day!
+# Plant Report
 
-{{$user->first_name}} {{$user->last_name}} of {{$user->company}} is requesting for a new season!
+{{$user->first_name}} {{$user->last_name}} of {{$user->company}} created a plant report!
+
 
 @component('mail::button', ['url' => ''])
 View Message

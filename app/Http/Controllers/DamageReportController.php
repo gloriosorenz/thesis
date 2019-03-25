@@ -8,8 +8,11 @@ use App\DamageData;
 use App\Region;
 use App\Province;
 use App\Calamity;
+use App\User;
 use PDF;
 use DB;
+use App\Mail\DamageReportCreated;
+use Mail;
 
 class DamageReportController extends Controller
 {
@@ -39,6 +42,8 @@ class DamageReportController extends Controller
         // $calabarzon = Region::where('id','=', 4)->get()->pluck('name');
         $calabarzon = Region::where('id','=', 4)->get();
         $laguna = Province::where('id','=',19)->get();
+
+        
 
         return view('reports.damage_reports.create')
             ->with('calabarzon', $calabarzon)
@@ -92,10 +97,20 @@ class DamageReportController extends Controller
         }  
 
 
+        // Get email
+        $email = User::where('roles_id', 1)->pluck('email');
+        $user = User::where('id', auth()->user()->id)->first();
 
+        // dd($user);
+        // Mail to User
+        Mail::to($email)->send(
+            new DamageReportCreated($user)
+        );
 
         return redirect()->route('damage_reports.index')->with('success','Damage Report Created ');
     }
+
+
 
     /**
      * Display the specified resource.
@@ -105,16 +120,13 @@ class DamageReportController extends Controller
      */
     public function show($id)
     {
+
         $dreport = DamageReport::findOrFail($id);
         $ddatas = DamageData::where('damage_reports_id', $dreport->id)->get();
-        $calamities = Calamity::orderBy('type')->get();
-        $calabarzon = Region::where('id','=', 4)->get();
-        $laguna = Province::where('id','=',19)->get();
+
+
 
         return view('reports.damage_reports.show')
-            ->with('calabarzon', $calabarzon)
-            ->with('calamities',$calamities)
-            ->with('laguna',$laguna)
             ->with('dreport', $dreport)
             ->with('ddatas', $ddatas);
     }

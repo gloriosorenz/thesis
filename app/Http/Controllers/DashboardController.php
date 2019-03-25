@@ -16,6 +16,8 @@ use DB;
 use Khill\Lavacharts\Lavacharts;
 use App\Charts\OrderChart;
 use Charts;
+use App\Mail\RequestSeason;
+use Mail;
 
 class DashboardController extends Controller
 {
@@ -384,6 +386,23 @@ class DashboardController extends Controller
             ->with('confordperfarmer',$confordperfarmer)
             ->with('cancomorders',$cancomorders)
             ;
+    }
+
+    public function request_season(){
+
+        // Get email
+        $email = User::where('roles_id', 2)->pluck('email');
+
+        $user = User::where('id', auth()->user()->id)->first();
+
+        // dd($user);
+
+        // Mail to User
+        Mail::to($email)->send(
+            new RequestSeason($user)
+        );
+
+        return redirect()->back()->with('success', 'Season Requested');
     }
 
 

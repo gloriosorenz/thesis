@@ -42,7 +42,6 @@
                             <td>{{$p->product_lists->orig_products->type}}</td>
                             <td>{{$p->orders->total_price}}</td>
                             <td>
-                                {{-- <a href="/order_products/"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a> --}}
                                 <a href="/order_products/confirm_order/{{$p->id}}" class="btn btn-success">Confirm <i class="fas fa-check"></i></a>
                                 <a href="/order_products/cancel_order/{{$p->id}}" class="btn btn-danger">Cancel <i class="fas fa-trash"></i></a>
                             </td>

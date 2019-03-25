@@ -258,6 +258,9 @@
                   <!-- FARMER DASHBOARD -->
                   @elseif(Auth::user()->roles_id == 2)
 
+                  <a class="btn btn-secondary btn-md mb-2" href="/request_season">Request Season</a>
+
+
                   <div class="row">
 
                       <div class="col-xl-3 col-md-6 mb-4">
