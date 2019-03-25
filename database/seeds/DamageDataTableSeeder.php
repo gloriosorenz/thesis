@@ -11,6 +11,8 @@ class DamageDataTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        if (! DB::table('damage_datas')->count()) {
+            DB::unprepared(file_get_contents(__DIR__ . '/sql/damagedata.sql'));
+        }
     }
 }
