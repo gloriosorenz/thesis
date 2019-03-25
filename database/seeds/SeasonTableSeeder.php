@@ -18,13 +18,13 @@ class SeasonTableSeeder extends Seeder
                 'season_types_id' => 1, //dry
                 'season_statuses_id' => 2,
                 'season_start'=> '2017-07-24', 
-                'season_end'=> '2017-11-01',
+                'season_end'=> '2017-10-01',
             ],
             [
                 'id' => 2, 
                 'season_types_id' => 2, //dry
                 'season_statuses_id' => 2,
-                'season_start'=> '2017-10-14',
+                'season_start'=> '2017-11-01',
                 'season_end'=> '2018-02-18',
             ],
             [
@@ -46,7 +46,7 @@ class SeasonTableSeeder extends Seeder
                 'id' => 5, 
                 'season_types_id' => 1, //dry
                 'season_statuses_id' => 2,
-                'season_start'=> '2018-11-10', 
+                'season_start'=> '2018-12-10', 
                 'season_end'=> '2019-03-26',
             ],
             // [

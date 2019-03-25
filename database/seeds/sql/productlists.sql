@@ -64,3 +64,14 @@ INSERT INTO product_lists VALUES (51, '5','18','3','3','2019-03-26','8','8',0.0,
 INSERT INTO product_lists VALUES (52, '5','19','1','1','2019-03-24','290','290',19.0,now(),now());
 INSERT INTO product_lists VALUES (53, '5','19','2','2','2019-03-24','16','16',14.0,now(),now());
 INSERT INTO product_lists VALUES (54, '5','19','3','3','2019-03-24','4','4',0.0,now(),now());
+
+-- season 4 farmers 17-19
+INSERT INTO product_lists VALUES (55, '4','17','1','1','2018-11-20','110','110',19.0,now(),now());
+INSERT INTO product_lists VALUES (56, '4','17','2','2','2018-11-20','10','10',14.0,now(),now());
+INSERT INTO product_lists VALUES (57, '4','17','3','3','2018-11-20','5','5',0.0,now(),now());
+INSERT INTO product_lists VALUES (58, '4','18','1','1','2018-11-20','80','80',19.0,now(),now());
+INSERT INTO product_lists VALUES (59, '4','18','2','2','2018-11-20','22','22',14.0,now(),now());
+INSERT INTO product_lists VALUES (60, '4','18','3','3','2018-11-20','8','8',0.0,now(),now());
+INSERT INTO product_lists VALUES (61, '4','19','1','1','2018-11-20','290','290',19.0,now(),now());
+INSERT INTO product_lists VALUES (62, '4','19','2','2','2018-11-20','16','16',14.0,now(),now());
+INSERT INTO product_lists VALUES (63, '4','19','3','3','2018-11-20','4','4',0.0,now(),now());
