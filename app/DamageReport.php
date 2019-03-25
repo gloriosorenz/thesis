@@ -9,7 +9,7 @@ class DamageReport extends Model
     protected $table = 'damage_reports'; 
 
     protected $fillable = [
-        'calamities_id', 'narrative', 'crop', 'crop_stage', 'production', 'animal', 'animal_head', 'fish', 'area', 'fish_pieces', 'regions_id', 'provinces_id'
+        'id','calamities_id', 'narrative', 'regions_id', 'provinces_id'
     ];
 
     public function calamities()
