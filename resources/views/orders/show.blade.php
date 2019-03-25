@@ -14,9 +14,12 @@
 <br>
 <br>
 
-<a class="btn btn-success btn-md mb-2" href="/orders/confirm_order/{{$order->id}}">Confirm All Orders</a>
-<a class="btn btn-danger btn-md mb-2" href="/orders/cancel_order/{{$order->id}}">Cancel All Orders</a>
-<a class="btn btn-warning btn-md mb-2" href="">Order is incomplete</a>
+@if ( $order->order_statuses_id == 1)
+    <a class="btn btn-success btn-md mb-2" href="/orders/confirm_order/{{$order->id}}">Confirm All Orders</a>
+    <a class="btn btn-danger btn-md mb-2" href="/orders/cancel_order/{{$order->id}}">Cancel All Orders</a>
+    <a class="btn btn-warning btn-md mb-2" href="">Order is incomplete</a>
+@endif
+
 
 <!--  Order Products Datatable -->
 <div class="card shadow mb-4">
@@ -36,7 +39,7 @@
                     <th width="">Price</th>
                     <th width="">Subtotal</th>
                     <th width="">Status</th>
-                    <th width="">Options</th>
+                    <th width="20%">Options</th>
                 </tr>
             </thead>
             <tbody>

@@ -1,8 +1,7 @@
 @component('mail::message')
-# Your order has been processed!
+# New Season Plant Report
 
-Please wait for the seller to confirm your order. <br>
-An email will be sent to you within 3 days.
+Incoming Season! You can now add your plant reports for the month!
 
 @component('mail::button', ['url' => ''])
 View Message
