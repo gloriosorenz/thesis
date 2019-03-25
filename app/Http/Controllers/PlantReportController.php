@@ -184,8 +184,8 @@ class PlantReportController extends Controller
         }
 
         $season_list = SeasonList::findOrFail($season_list->id);
-        $season_list->actual_hectares = $counter;
-        $season_list->actual_num_farmers = $counter1;
+        $season_list->actual_hectares = $counter + $season_list->actual_hectares;
+        $season_list->actual_num_farmers = $counter1 + $season_list->actual_num_farmers;
         $season_list->save();  
 
         return redirect()->route('plant_reports.index')->with('success','Plant Report Created ');

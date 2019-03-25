@@ -28,7 +28,11 @@
                                 <th width="">Harvest Date</th>
                                 <th width="">Available</th>
                                 <th width="">Price</th>
-                                <th width="15%">Options</th>
+                                @guest
+                                    @elseif (auth()->user()->roles_id == 3 || auth()->user()->roles_id == 4 )
+                                    <th width="15%">Options</th>
+                                @endguest
+                               
                             </tr>
                         </thead>
                         <tbody>
@@ -39,20 +43,22 @@
                                 <td>{{ $product_list->users->barangays->name }}, {{ $product_list->users->cities->name }}, {{ $product_list->users->provinces->name }}</td>
                                 <td>{{$product_list->harvest_date}}</td>
                                 <td>{{ $product_list->curr_quantity }}</td>
-                                {{-- <td>{{ $product_list->presentPrice() }}</td> --}}
                                 <td>
                                     <div class="font-weight-bold">{{ $product_list->presentPrice() }} </div>
                                 </td>
-                                <td>
-                                    {{-- <a href=""><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view">View Products <i class="fas fa-eye"></i></button></a> --}}
-                                    <form method="post" action="{{action('CartController@store')}}">
-                                    @csrf
-                                        <input type="hidden" name="id" value="{{ $product_list->id }}">
-                                        <input type="hidden" name="price" value="{{ $product_list->price }}">
-                                        <input type="hidden" name="quantity" value="{{ $product_list->curr_quantity }}">
-                                        <button type="submit" class="btn btn-success btn-lg btn-block">Add to Cart</button>
-                                    </form>  
-                                </td>
+                                @guest
+                                
+                                    @elseif (auth()->user()->roles_id == 3 || auth()->user()->roles_id == 4 )
+                                    <td>
+                                        <form method="post" action="{{action('CartController@store')}}">
+                                        @csrf
+                                            <input type="hidden" name="id" value="{{ $product_list->id }}">
+                                            <input type="hidden" name="price" value="{{ $product_list->price }}">
+                                            <input type="hidden" name="quantity" value="{{ $product_list->curr_quantity }}">
+                                            <button type="submit" class="btn btn-success btn-lg btn-block">Add to Cart</button>
+                                        </form>  
+                                    </td>
+                                @endguest
                             </tr>
                             @endforeach
                     </table>

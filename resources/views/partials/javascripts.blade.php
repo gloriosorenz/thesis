@@ -57,6 +57,8 @@
           order: [[ 1, 'desc' ]]
         });
         $('#table_id3').DataTable();
+        $('#table_id4').DataTable();
+        $('#table_id5').DataTable();
         $('#users_table').DataTable();
         $('#roles_table').DataTable();
         $('#farmers_table').DataTable();

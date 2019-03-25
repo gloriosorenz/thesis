@@ -15,7 +15,7 @@
                             <a class="nav-link" href="{{ url('weather/weather_statistics') }}">Weather Statistics</a>
                         </li>
                     <!-- {{-- CUSTOMER --}} -->
-                    @elseif(Auth::user()->roles_id == 3)
+                    @elseif(Auth::user()->roles_id == 3 || Auth::user()->roles_id == 4)
                         <li class="nav-item">
                             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                         </li>
@@ -98,11 +98,6 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ url('/orders/my_orders') }}">
-                            <i class="fas fa-clipboard-list"></i>
-                            Order History
-                        </a>
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                             <i class="fas fa-sign-out-alt"></i>
                             Logout
@@ -110,7 +105,7 @@
                     </div>
                 </li>
                 <!-- {{-- CUSTOMER --}} -->
-                @elseif(Auth::user()->roles_id == 3)
+                @elseif(Auth::user()->roles_id == 3 || Auth::user()->roles_id == 4)
                 <li class="nav-item">
                     {{-- <a class="nav-link" href="{{ url('cart') }}">Cart ({{ Cart::instance('default')->count(false) }})</a> --}}
                     <a class="nav-link" href="{{ url('cart') }}">Cart ({{ Cart::content()->count() }})</a>

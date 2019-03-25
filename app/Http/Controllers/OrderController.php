@@ -186,7 +186,7 @@ class OrderController extends Controller
         //     new OrderConfirmed($order)
         // );
 
-        return redirect('/orders')->with('success', 'Order Confirmed');
+        return redirect('/orders')->with('success', 'Order Completed');
     }
 
     public function cancel_order(Request $request, $id){

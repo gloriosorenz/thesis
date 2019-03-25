@@ -63,7 +63,7 @@
                 <h2 class="title">Confirmed Order Products</h2>
             </div>
             <div class="card-body">
-                <table id="table_id" class="table table-hover track_tbl">
+                <table id="table_id3" class="table table-hover track_tbl">
                     <thead>
                         <tr>
                             <th>Order ID</th>
@@ -104,7 +104,7 @@
                 <h2 class="title">Cancelled Order Products</h2>
             </div>
             <div class="card-body">
-                <table id="table_id" class="table table-hover track_tbl">
+                <table id="table_id4" class="table table-hover track_tbl">
                     <thead>
                         <tr>
                             <th>Order ID</th>
@@ -144,7 +144,7 @@
                 <h2 class="title">Paid Order Products</h2>
             </div>
             <div class="card-body">
-                <table id="table_id" class="table table-hover track_tbl">
+                <table id="table_id5" class="table table-hover track_tbl">
                     <thead>
                         <tr>
                             <th>Order ID</th>

@@ -78,8 +78,8 @@
     <h2>Featured Products</h2>
     <hr>
     <div class="row">
-        @if(count($products) > 0)
-            @foreach($products as $product)
+        {{-- @if(count($products) > 0)
+            @foreach($products as $product) --}}
             {{-- <div class="col-lg-6 mb-4">
                 <div class="card bg-primary text-white shadow">
                     <div class="card-body">
@@ -91,18 +91,31 @@
 
             <div class="col-md-6 mb-5">
                 <div class="card h-100">
-                    <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="">
+                    <img class="card-img-top" src="https://cdn.stocksnap.io/img-thumbs/960w/87GNUF5XXB.jpg" alt="">
                     <div class="card-body">
-                    <h4 class="card-title">{{$product->type}}</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
+                    <h4 class="card-title">Rice Product</h4>
+                    {{-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p> --}}
                     </div>
                     <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Find Out More!</a>
+                    <a href="{{ url('product_lists/show_products') }}" class="btn btn-primary">Shop now!</a>
                     </div>
                 </div>
-                  </div>
-            @endforeach
-        @endif
+            </div>
+
+            <div class="col-md-6 mb-5">
+                <div class="card h-100">
+                    <img class="card-img-top" src="http://www.rkmp.co.in/sites/default/files/eis_states/Nature%20of%20Damage%20of%20%20Stem%20Borer.jpg" alt="">
+                    <div class="card-body">
+                    <h4 class="card-title">Withered Product</h4>
+                    {{-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p> --}}
+                    </div>
+                    <div class="card-footer">
+                    <a href="{{ url('product_lists/show_products') }}" class="btn btn-primary">Shop now!!</a>
+                    </div>
+                </div>
+            </div>
+            {{-- @endforeach
+        @endif --}}
     </div>
     <!-- /.row -->
 </div>
