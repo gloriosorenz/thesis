@@ -27,6 +27,14 @@ INSERT INTO `season_lists` VALUES(13,'10','5','9.0','8.6','12','12','130','125',
 INSERT INTO `season_lists` VALUES(14,'11','5','8.9','8.5','15','13','120','110','2',now(),now());
 INSERT INTO `season_lists` VALUES(15,'12','5','21','20','23','20','350','320','2',now(),now());
 
+-- antonio farmer
+INSERT INTO `season_lists` VALUES(16,'2','1','8.0','8.0','13','11','120','115','2',now(),now());
+INSERT INTO `season_lists` VALUES(17,'2','2','7.7','7.5','11','10','120','110','2',now(),now());
+INSERT INTO `season_lists` VALUES(18,'2','3','5.6','5.5','10','9','100','88','2',now(),now());
+INSERT INTO `season_lists` VALUES(19,'2','4','6.2','6.0','11','11','90','89','2',now(),now());
+INSERT INTO `season_lists` VALUES(20,'2','5','7.9','7.4','12','11','105','104','2',now(),now());
+
+
 --season 6 wet
 -- INSERT INTO `season_lists` VALUES(16,'12','6','9.1',null,'10',null,'110',null,'1',now(),now());
 -- INSERT INTO `season_lists` VALUES(17,'12','6','8.9',null,'12',null,'105',null,'1',now(),now());

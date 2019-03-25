@@ -21,14 +21,25 @@ class SalesReportController extends Controller
      */
     public function index()
     {
-        $dreports = DamageReport::all();
-        $orders = Order::all();
+        // Admin
         $seasons = Season::all();
 
+        // Farmer
+        $authid = auth()->user()->id;
+
+        $seasonfarmer = DB::table('seasons')
+            ->join('product_lists', 'seasons.id', '=', 'product_lists.seasons_id')
+            ->where('users_id','=',$authid)
+            ->groupBy('seasons_id')
+            ->get()
+
+            ;
+
+        // dd($seasonfarmer);
+
         return view('reports.sales_reports.index')
-            ->with('orders', $orders)
-            ->with('dreports',$dreports)
             ->with('seasons',$seasons)
+            ->with('seasonfarmer',$seasonfarmer)
             ;
     }
 
@@ -64,6 +75,8 @@ class SalesReportController extends Controller
         $season = Season::find($id);
         $product_lists = ProductList::find($id);
         
+        // Admin
+
         $allprodperseason = DB::table('seasons')
             ->join('product_lists', 'seasons.id', '=', 'product_lists.seasons_id')
             ->join('order_products','product_lists.id','=','order_products.product_lists_id')
@@ -91,12 +104,44 @@ class SalesReportController extends Controller
             ->pluck('sum');
         // dd($allprodquan);
 
-        $what = OrderProduct::with('orders')
-            ->get();
-        // dd($what);
-
         $lists = SeasonList::where('seasons_id', $season->id)->get();
         // $product_lists = ProductList::where('seasons_id', $season->id)->get();
+
+
+
+
+        // Farmer
+
+        $authid = auth()->user()->id;
+
+        $farprodperseason = DB::table('seasons')
+            ->join('product_lists', 'seasons.id', '=', 'product_lists.seasons_id')
+            ->join('order_products','product_lists.id','=','order_products.product_lists_id')
+            ->where('farmers_id','=',$authid)
+            ->where('order_product_statuses_id','=',3)
+            ->where('seasons_id',$season->id)
+            // ->groupBy('orders_id')
+            ->get();
+            // ->get();
+        // dd($allprodperseason);
+
+        $farprodsum = DB::table('seasons')
+            ->join('product_lists', 'seasons.id', '=', 'product_lists.seasons_id')
+            ->join('order_products','product_lists.id','=','order_products.product_lists_id')
+            ->where('seasons_id',$season->id) 
+            ->where('farmers_id','=',$authid)
+            ->where('order_product_statuses_id','=',3)
+            ->select(DB::raw("SUM(price*quantity) as sum"))  
+            ->pluck('sum');
+
+        $farprodquan = DB::table('seasons')
+            ->join('product_lists', 'seasons.id', '=', 'product_lists.seasons_id')
+            ->join('order_products','product_lists.id','=','order_products.product_lists_id')
+            ->where('seasons_id',$season->id) 
+            ->where('farmers_id','=',$authid)
+            ->where('order_product_statuses_id','=',3)
+            ->select(DB::raw("SUM(quantity) as sum"))  
+            ->pluck('sum');
 
         return view('reports.sales_reports.show')
             ->with('season', $season)
@@ -104,6 +149,9 @@ class SalesReportController extends Controller
             ->with('allprodperseason',$allprodperseason)
             ->with('allprodsum',$allprodsum)
             ->with('allprodquan',$allprodquan)
+            ->with('farprodperseason',$farprodperseason)
+            ->with('farprodsum',$farprodsum)
+            ->with('farprodquan',$farprodquan)
             // ->with('what', $what)
             // ->with('product_lists', $product_lists)
             ;
