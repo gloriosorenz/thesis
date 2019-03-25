@@ -36,6 +36,7 @@ class DashboardController extends Controller
             ->count();
 
         $curr_season = DB::table('seasons')->latest('id')->first();
+        // dd($curr_season);
 
         $last_com_season = Season::where('season_statuses_id','=', 2)->latest('id')->first();
         // dd($last_com_season);
@@ -289,6 +290,7 @@ class DashboardController extends Controller
             ->selectRaw('seasons_id,sum(quantity*price) as sum')
             ->pluck('sum')
             ;
+            // dd($ricesoldpriperse);
 
             $withersoldpriperse = DB::table('product_lists')
                 ->join('order_products', 'product_lists.id', '=', 'order_products.product_lists_id')
@@ -316,9 +318,30 @@ class DashboardController extends Controller
         ;
             
 
+        $curr_seasonid = DB::table('seasons')->latest('id')->pluck('id')->first();
 
-
+        $ricesoldpricurrseason = DB::table('product_lists')
+            ->join('order_products', 'product_lists.id', '=', 'order_products.product_lists_id')
+            ->where('farmers_id','=',$authid)
+            ->where('order_product_statuses_id','=',3)
+            ->where('curr_products_id','!=',3)
+            ->where('curr_products_id','!=',4)
+            ->where('seasons_id','=',$curr_seasonid)
+            ->selectRaw('*,sum(quantity*price) as sum')
+            ->pluck('sum')
+            // ->get();
+            ;
         
+        // dd($ricesoldpricurrseason);
+
+        $pendordperfarmer = OrderProduct::where('farmers_id','=',$authid)
+            ->where('order_product_statuses_id','=',1)
+            ->count();
+        $confordperfarmer = OrderProduct::where('farmers_id','=',$authid)
+            ->where('order_product_statuses_id','=',2)
+            ->count();
+        
+        // dd($pendordperfarmer);
                 
         /*
             $chart = new OrderChart;
@@ -352,6 +375,10 @@ class DashboardController extends Controller
             ->with('origcurrprodbar',$origcurrprodbar)
             ->with('orderlinechart',$orderlinechart)
             ->with('revlinechart',$revlinechart)
+            ->with('curr_seasonid',$curr_seasonid)
+            ->with('ricesoldpricurrseason',$ricesoldpricurrseason)
+            ->with('pendordperfarmer',$pendordperfarmer)
+            ->with('confordperfarmer',$confordperfarmer)
             ;
     }
 

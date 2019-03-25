@@ -22,7 +22,7 @@ INSERT INTO `season_lists` VALUES(10,'10','4','8.5','8.5','11','10','90','85','2
 INSERT INTO `season_lists` VALUES(11,'11','4','7.8','7.4','9','9','100','94','2',now(),now());
 INSERT INTO `season_lists` VALUES(12,'12','4','19','8.5','19','18','240','220','2',now(),now());
 
---season 5 dry
+-- season 5 dry
 INSERT INTO `season_lists` VALUES(13,'10','5','9.0','8.6','12','12','130','125','2',now(),now());
 INSERT INTO `season_lists` VALUES(14,'11','5','8.9','8.5','15','13','120','110','2',now(),now());
 INSERT INTO `season_lists` VALUES(15,'12','5','21','20','23','20','350','320','2',now(),now());
