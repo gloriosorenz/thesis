@@ -342,6 +342,9 @@ class DashboardController extends Controller
         $confordperfarmer = OrderProduct::where('farmers_id','=',$authid)
             ->where('order_product_statuses_id','=',2)
             ->count();
+
+        $cancomorders = Order::where('order_statuses_id','=',4)
+            ->count();
         
         // dd($pendordperfarmer);
                 
@@ -381,6 +384,7 @@ class DashboardController extends Controller
             ->with('ricesoldpricurrseason',$ricesoldpricurrseason)
             ->with('pendordperfarmer',$pendordperfarmer)
             ->with('confordperfarmer',$confordperfarmer)
+            ->with('cancomorders',$cancomorders)
             ;
     }
 

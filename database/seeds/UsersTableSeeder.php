@@ -144,11 +144,11 @@ class UsersTableSeeder extends Seeder
                 'phone' => '09178484154', //temp
                 'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
                 'company' => 'Samahan ng Magsasaka sa Sta. Rosa Laguna', //temp
-                'no_farmers' => 18, //temp
-                'hectares' => 19.10, //temp
+                'no_farmers' => 20, //temp
+                'hectares' => 4.1, //temp 1.6, 1.0, 2.5
                 'roles_id' => 2, 
-                'street'=> '42 Barcelona St.', //temp
-                'barangays_id'=> 7,
+                'street'=> '713 Rizal Blvd.', //temp
+                'barangays_id'=> 11220,
                 'cities_id'=> 433,
                 'provinces_id'=> 19,
                 'remember_token' => '',
@@ -163,10 +163,10 @@ class UsersTableSeeder extends Seeder
                 'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
                 'company' => 'Makabling River Irrigators',
                 'no_farmers' => 18, //temp
-                'hectares' => 20.10, //temp
+                'hectares' => 5.0, //temp
                 'roles_id' => 2,
                 'street'=> '42 Barcelona St.', //temp
-                'barangays_id'=> 7,
+                'barangays_id'=> 11230,
                 'cities_id'=> 433,
                 'provinces_id'=> 19,
                 'remember_token' => '',
@@ -180,10 +180,10 @@ class UsersTableSeeder extends Seeder
                 'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
                 'company' => 'Diezmo River Irrigators Association',
                 'no_farmers' => 18, //temp
-                'hectares' => 19.10, //temp
+                'hectares' => 14.5, //temp 2.5 ,1.5 3.5 (5.0)
                 'roles_id' => 2, 
-                'street'=> '42 Barcelona St.', //temp
-                'barangays_id'=> 7,
+                'street'=> '32 Mali St.', //temp
+                'barangays_id'=> 11217,
                 'cities_id'=> 433,
                 'provinces_id'=> 19,
                 'remember_token' => '',
@@ -201,7 +201,7 @@ class UsersTableSeeder extends Seeder
                 'company' => 'JMV Ricemill',
                 'roles_id' => 3, 
                 'street'=> 'Blk 843 Francis 7 Subd.', //temp
-                'barangays_id'=> 11217, //Dita
+                'barangays_id'=> 2,//11217, //Dita
                 'cities_id'=> 433,
                 'provinces_id'=> 19,
                 'remember_token' => '',
@@ -245,6 +245,59 @@ class UsersTableSeeder extends Seeder
                 'roles_id' => 4, 
                 'street'=> '42 Barcelona St.', //temp
                 'barangays_id'=> 7,
+                'cities_id'=> 433,
+                'provinces_id'=> 19,
+                'remember_token' => '',
+            ],
+            //FARMER SEEDERS
+            [
+                'id' => 17, 
+                'first_name' => 'Julio', 
+                'last_name' => 'Ronquillo', 
+                'email' => 'julioronquillo@yahoo.com',  //temp
+                'phone' => '09178484154', //temp
+                'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
+                'company' => 'AUP', //temp
+                'no_farmers' => 14, //temp
+                'hectares' => 3.5,
+                'roles_id' => 2, 
+                'street'=> 'Malitlit', //temp
+                'barangays_id'=> 11222,
+                'cities_id'=> 433,
+                'provinces_id'=> 19,
+                'remember_token' => '',
+            ],
+
+            [
+                'id' => 18, 
+                'first_name' => 'Margarita', 
+                'last_name' => 'Velasco', 
+                'email' => 'margaritavelasco@yahoo.com',  //temp
+                'phone' => '09178484154', //temp
+                'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
+                'company' => 'Aglipayan Church',
+                'no_farmers' => 12, //temp
+                'hectares' => 2.0, //temp
+                'roles_id' => 2,
+                'street'=> '', //temp
+                'barangays_id'=> 11230,
+                'cities_id'=> 433,
+                'provinces_id'=> 19,
+                'remember_token' => '',
+            ],
+            [
+                'id' => 19, 
+                'first_name' => 'Ines', 
+                'last_name' => 'Ong-iko', 
+                'email' => 'inesongiko@yahoo.com',  //temp
+                'phone' => '0915892840', //temp
+                'password' => '$2y$10$Y9SOOUb2O3guzgGIqHyUMe8JLaYwIcwCT6l30/YRPAzjZNZqEgcMS', 
+                'company' => 'Wenceslao Alger',
+                'no_farmers' => 17, //temp
+                'hectares' => 4.5, //temp 2.5 ,1.5 3.5 (5.0)
+                'roles_id' => 2, 
+                'street'=> '', //temp
+                'barangays_id'=> 11217,
                 'cities_id'=> 433,
                 'provinces_id'=> 19,
                 'remember_token' => '',

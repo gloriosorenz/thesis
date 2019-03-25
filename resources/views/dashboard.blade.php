@@ -48,7 +48,7 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Number of Sales (Season {{$last_com_season->id}} )</div>
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Number of Orders (Season {{$last_com_season->id}} )</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{$complete_orders}}</div>
                       </div>
                       <div class="col-auto">
@@ -65,8 +65,8 @@
                     <div class="card-body">
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Number of Damaged Products (Season {{$last_com_season->id}} )</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">{{$dmg_prod_ls}}</div>
+                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Pending Orders</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">{{$pending_orders}}</div>
                         </div>
                         <div class="col-auto">
                           <i class="fas fa-hashtag fa-2x text-gray-300"></i>
@@ -108,8 +108,8 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Orders</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$pending_orders}}</div>
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Cancelled Orders</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$cancomorders}}</div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-file fa-2x text-gray-300"></i>
@@ -306,7 +306,7 @@
                           <div class="card-body">
                             <div class="row no-gutters align-items-center">
                               <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Confirmed Orders  </div>
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Incomplete Confirmed Orders  </div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $confordperfarmer }}</div>
                               </div>
                               <div class="col-auto">
