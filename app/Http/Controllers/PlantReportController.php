@@ -27,7 +27,7 @@ class PlantReportController extends Controller
         $preports = PlantReport::all();
         // $preports = PlantReport::with('plant_datas')->find();
 
-        $check_date = PlantReport::whereMonth('created_at', '=', date('m'))
+        $check_date = PlantReport::whereMonth('created_at', '=', date('m-Y'))
                     ->get();
 
         // dd($check_date);
