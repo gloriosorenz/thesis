@@ -27,7 +27,7 @@
                 <h2 class="title">Season {{$latest_season->id}} (Ongoing)</h2>
             </div>
             <div class="card-body">
-                <table id="" class="table table-hover">
+                <table id="table_id3" class="table table-hover">
                     <thead>
                         <tr>
                             <th width="">Farmer</th>
@@ -73,7 +73,7 @@
                 <h2 class="title">Season {{$latest_season->id}} (Done)</h2>
             </div>
             <div class="card-body">
-                <table class="table table-hover">
+                <table id="table_id4" class="table table-hover">
                     <thead>
                         <tr>
                             <th width="">Farmer</th>
@@ -169,7 +169,7 @@
                 <h2 class="title">Season {{$latest_season->id}} (Ongoing)</h2>
             </div>
             <div class="card-body">
-                <table id="" class="table table-hover">
+                <table id="table_id3" class="table table-hover">
                     <thead>
                         <tr>
                             <th width="">Farmer</th>

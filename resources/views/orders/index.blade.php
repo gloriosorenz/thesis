@@ -19,7 +19,7 @@
         <h2 class="title">Pending Orders</h2>
     </div>
     <div class="card-body">
-        <table id="orders_table" class="table table-hover track_tbl">
+        <table id="table_id3" class="table table-hover track_tbl">
             <thead>
                 <tr>
                     <th>Tracking ID</th>
@@ -61,7 +61,7 @@
         <h2 class="title">Completed Orders</h2>
     </div>
     <div class="card-body">
-        <table id="orders_table" class="table table-hover track_tbl">
+        <table id="table_id" class="table table-hover track_tbl">
             <thead>
                 <tr>
                     <th>Tracking ID</th>

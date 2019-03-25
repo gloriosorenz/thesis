@@ -11,6 +11,8 @@ use PDF;
 use DB;
 use Carbon\Carbon;
 use App\SeasonList;
+use App\Mail\PlantReportCreated;
+use Mail;
 
 class PlantReportController extends Controller
 {
@@ -187,6 +189,17 @@ class PlantReportController extends Controller
         $season_list->actual_hectares = $counter + $season_list->actual_hectares;
         $season_list->actual_num_farmers = $counter1 + $season_list->actual_num_farmers;
         $season_list->save();  
+
+
+        // Get email
+        $email = User::where('roles_id', 1)->pluck('email');
+        $user = User::where('id', auth()->user()->id)->first();
+
+        // dd($user);
+        // Mail to User
+        Mail::to($email)->send(
+            new PlantReportCreated($user)
+        );
 
         return redirect()->route('plant_reports.index')->with('success','Plant Report Created ');
        

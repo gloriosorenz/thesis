@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class RequestSeason extends Mailable
+class PlantReportCreated extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,6 +30,6 @@ class RequestSeason extends Mailable
      */
     public function build()
     {
-        return $this->subject('SEASON REQUEST')->markdown('mail.request_season');
+        return $this->subject('NEW PLANT REPORT')->markdown('mail.plant_report_created');
     }
 }

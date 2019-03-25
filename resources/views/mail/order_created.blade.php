@@ -1,10 +1,10 @@
 @component('mail::message')
-# Your order has been confirmed!
+# Your order has been processed!
 
-The body of your message.
+Please wait for the seller to confirm your order.
 
 @component('mail::button', ['url' => ''])
-Button Text
+View Message
 @endcomponent
 
 Thanks,<br>

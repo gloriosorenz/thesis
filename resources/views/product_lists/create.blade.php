@@ -46,7 +46,14 @@
                                 <input name="users_id[]" type="hidden" value="{{auth()->user()->id}}">
                             </td>
                             <td><input type="text" class="form-control" name="orig_quantity[]" value=""/></td>
-                            <td><input type="text" class="form-control" name="price[]" value=""/></td>
+                            @if ($product->id == 3)
+                                <td>
+                                    <input type="text" class="form-control" value="" readonly/>
+                                    <input type="hidden" class="form-control" name="price[]" value="0" readonly/>
+                                </td>
+                                @else
+                                <td><input type="text" class="form-control" name="price[]" value=""/></td>
+                            @endif
                             <td>
                                 {{ Form::date('harvest_date[]', \Carbon\Carbon::now(), ['class' => 'datepicker form-control','id'=>'harvest_date[]'])}}
                             </td>
