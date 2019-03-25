@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Season extends Model
 {
     protected $fillable = [
-        'season_start', 'season_end', 'season_types_id', 'seasons_statuses_id'
+        'season_start', 'season_end', 'season_types_id', 'season_statuses_id'
     ];
 
     public function products()

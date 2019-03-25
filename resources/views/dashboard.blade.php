@@ -265,8 +265,11 @@
                           <div class="card-body">
                             <div class="row no-gutters align-items-center">
                               <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Last Complete Season  </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">Season {{ $last_com_season->id }}</div>
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"> Current Season </div>
+                                    @php
+                                      $seasonstatus = App\SeasonStatus::findOrFail($curr_season->season_statuses_id);
+                                    @endphp
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">Season {{ $curr_season->id }} ({{ $seasonstatus->status }})</div>
                               </div>
                               <div class="col-auto">
                                 <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -283,8 +286,8 @@
                           <div class="card-body">
                             <div class="row no-gutters align-items-center">
                               <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Current Ongoing Season</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">Season {{$curr_season->id}}</div>
+                                  <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Pending Orders  </div>
+                                  <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $pendordperfarmer }}</div>
                               </div>
                               <div class="col-auto">
                                 <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -300,11 +303,11 @@
                           <div class="card-body">
                             <div class="row no-gutters align-items-center">
                               <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Last Complete Season  </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">Season {{ $last_com_season->id }}</div>
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Confirmed Orders  </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $confordperfarmer }}</div>
                               </div>
                               <div class="col-auto">
-                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                <i class="fas fa-file fa-2x text-gray-300"></i>
                               </div>
                             </div>
                           </div>
@@ -318,11 +321,14 @@
                           <div class="card-body">
                             <div class="row no-gutters align-items-center">
                               <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Current Ongoing Season</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">Season {{$curr_season->id}}</div>
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Current Income (Season {{$curr_seasonid}})</div>
+                                @foreach ($ricesoldpricurrseason as $rspcs)
+                                  <div class="h5 mb-0 font-weight-bold text-gray-800"> {{presentPrice($rspcs)}}</div>
+
+                                @endforeach
                               </div>
                               <div class="col-auto">
-                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                               </div>
                             </div>
                           </div>

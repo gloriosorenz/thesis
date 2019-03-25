@@ -1,15 +1,21 @@
 -- id, quantity, order_prod_stat_id, prod_list_id, order_id, farmer_id, date, date
 
-INSERT INTO order_products VALUES(1,'10','3','10','1','2',now(),now());
-INSERT INTO order_products VALUES(2,'10','3','11','1','2',now(),now());
-INSERT INTO order_products VALUES(3,'10','3','13','1','4',now(),now());
-INSERT INTO order_products VALUES(4,'20','3','16','2','9',now(),now());
-INSERT INTO order_products VALUES(5,'8','3','12','2','9',now(),now());
-INSERT INTO order_products VALUES(6,'8','3','13','2','4',now(),now());
-INSERT INTO order_products VALUES(7,'5','3','10','2','2',now(),now());
-INSERT INTO order_products VALUES(8,'8','3','16','3','9',now(),now());
-INSERT INTO order_products VALUES(9,'12','3','10','3','2',now(),now());
-INSERT INTO order_products VALUES(10,'10','3','11','3','2',now(),now());
+-- Prod List:
+-- Season 1 = 1-9
+--         2 = 10-18
+--          3 = 19 - 25
+
+-- Season 1
+INSERT INTO order_products VALUES(1,'10','3','1','1','2',now(),now());
+INSERT INTO order_products VALUES(2,'10','3','8','1','2',now(),now());
+INSERT INTO order_products VALUES(3,'10','3','5','1','4',now(),now());
+INSERT INTO order_products VALUES(4,'20','3','1','2','9',now(),now());
+INSERT INTO order_products VALUES(5,'8','3','1','2','9',now(),now());
+INSERT INTO order_products VALUES(6,'8','3','2','2','4',now(),now());
+INSERT INTO order_products VALUES(7,'5','3','1','2','2',now(),now());
+INSERT INTO order_products VALUES(8,'8','3','1','3','9',now(),now());
+INSERT INTO order_products VALUES(9,'12','3','1','3','2',now(),now());
+INSERT INTO order_products VALUES(10,'10','3','1','3','2',now(),now());
 
 INSERT INTO order_products VALUES(11,'12','3','17','3','9',now(),now());
 INSERT INTO order_products VALUES(12,'2','3','10','4','2',now(),now());
