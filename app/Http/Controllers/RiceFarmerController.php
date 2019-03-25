@@ -40,18 +40,18 @@ class RiceFarmerController extends Controller
         //282 Santa Rosa Region 3  0349
         //433 City of Santa Rosa Region 4 province 0434 ->> LAGUNA 043428
         /*
-            Tagapo
-            Pooc
-            Labas
-            Sinalhan
-            Aplaya
-            Balibago
-            Macabling
-            Caingin
-            Dita
-            Dila
-            Malitlit
-            Pulong Sta. Cruz
+            Tagapo = 11230
+            Pooc = 11226
+            Labas = 11220
+            Sinalhan = 11229
+            Aplaya = 11213
+            Balibago = 11214
+            Macabling = 11221
+            Caingin = 11215
+            Dita = 11217
+            Dila = 11216
+            Malitlit = 11222
+            Pulong Sta. Cruz = 11227
         */
 
         $barangays = Barangay::orderBy('name')->get();

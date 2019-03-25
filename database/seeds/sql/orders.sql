@@ -2,16 +2,16 @@
 
 -- season orders
 INSERT INTO orders VALUES(1,'816590','2','430',13 ,now(),now());
-INSERT INTO orders VALUES(2,'193502','2','716',13 ,now(),now());
-INSERT INTO orders VALUES(3,'907638','2','622',13 ,now(),now());
+INSERT INTO orders VALUES(2,'193502','2','716',14 ,now(),now());
+INSERT INTO orders VALUES(3,'907638','2','622',8 ,now(),now());
 INSERT INTO orders VALUES(4,'714629','2','427',13 ,now(),now());
 INSERT INTO orders VALUES(5,'139674','2','141',13 ,now(),now());
-INSERT INTO orders VALUES(6,'847613','2','659',13 ,now(),now());
-INSERT INTO orders VALUES(7,'260438','2','128',13 ,now(),now());
-INSERT INTO orders VALUES(8,'806391','2','1303',13 ,now(),now());
-INSERT INTO orders VALUES(9,'157936','2','493',13 ,now(),now());
-INSERT INTO orders VALUES(10,'432150','2','380',13 ,now(),now());
-INSERT INTO orders VALUES(11,'460793','2','809',13 ,now(),now());
+INSERT INTO orders VALUES(6,'847613','2','659',14 ,now(),now());
+INSERT INTO orders VALUES(7,'260438','2','128',8 ,now(),now());
+INSERT INTO orders VALUES(8,'806391','2','1303',6 ,now(),now());
+INSERT INTO orders VALUES(9,'157936','2','493',16 ,now(),now());
+INSERT INTO orders VALUES(10,'432150','2','380',14 ,now(),now());
+INSERT INTO orders VALUES(11,'460793','2','809',6 ,now(),now());
 -- random
 INSERT INTO orders VALUES(12,'111111','2','716',14 ,now(),now());
 INSERT INTO orders VALUES(13,'222222','2','622',9 ,now(),now());
