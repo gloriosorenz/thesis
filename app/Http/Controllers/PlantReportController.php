@@ -12,6 +12,7 @@ use DB;
 use Carbon\Carbon;
 use App\SeasonList;
 use App\Mail\PlantReportCreated;
+use App\Mail\NewPlantReportCreated;
 use Mail;
 
 class PlantReportController extends Controller
@@ -97,6 +98,17 @@ class PlantReportController extends Controller
         $preport = new PlantReport;
         $preport->seasons_id = $latest_season->id;
         $preport->save();
+
+         // Get email
+         $email = User::where('roles_id', 2)->pluck('email');
+        //  $user = User::where('id', auth()->user()->id)->first();
+ 
+        //  dd($email);
+         // Mail to User
+         Mail::to($email)->send(
+             new NewPlantReportCreated()
+         );
+ 
 
         return redirect()->back()->with('success','Plant Report Created ');
     }

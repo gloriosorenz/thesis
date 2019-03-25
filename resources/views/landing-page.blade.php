@@ -8,7 +8,7 @@
 {{-- &font=Georgia --}}
 <iframe id="forecast_embed" frameborder="0" height="250" width="100%" src="//forecast.io/embed/#lat=14.3144&lon=121.1121&name=Santa Rosa, Laguna&units=ca&font=Sans-Serif"></iframe>
 <div class="text-center">
-    <div class="row" style="background-color:#d9d9d9;">
+    <div class="row" style="background-color:#e6e6e6;">
         <div class="col-lg-12">
             <div class="font-weight-bold">Wind Speed Guide:</div>
             <ul class="list-inline">
