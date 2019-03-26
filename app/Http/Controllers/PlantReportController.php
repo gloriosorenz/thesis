@@ -28,6 +28,7 @@ class PlantReportController extends Controller
         // $preports = PlantReport::with('plant_datas')->find();
 
         $check_date = PlantReport::whereMonth('created_at', '=', date('m-Y'))
+                  
                     ->get();
 
         // dd($check_date);
@@ -129,6 +130,7 @@ class PlantReportController extends Controller
             ->join('users', 'plant_datas.users_id', '=', 'users.id')
             ->select('users.barangays_id', 	DB::raw("SUM(plant_area) as plant_area"), 	DB::raw("SUM(farmers) as farmers"))
             ->groupBy('barangays_id')
+            ->where('plant_reports_id', $id)
             ->get();
 
         // dd($pdatas);

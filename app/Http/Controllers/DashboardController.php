@@ -391,7 +391,7 @@ class DashboardController extends Controller
     public function request_season(){
 
         // Get email
-        $email = User::where('roles_id', 2)->pluck('email');
+        $email = User::where('roles_id', 1)->pluck('email');
 
         $user = User::where('id', auth()->user()->id)->first();
 
