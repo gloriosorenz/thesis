@@ -36,14 +36,14 @@ class DamageReportController extends Controller
      */
     public function create()
     {
-        $calamities = Calamity::orderBy('id')->get();
+        $calamities = Calamity::orderBy('type')->get();
         // $regions = Region::orderBy('name')->get();
         // $provinces = Province::orderBy('name')->get();
         // $calabarzon = Region::where('id','=', 4)->get()->pluck('name');
         $calabarzon = Region::where('id','=', 4)->get();
         $laguna = Province::where('id','=',19)->get();
 
-        // dd($calamities);
+        
 
         return view('reports.damage_reports.create')
             ->with('calabarzon', $calabarzon)
