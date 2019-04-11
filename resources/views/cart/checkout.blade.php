@@ -165,7 +165,7 @@
                                     <td class="thick-line"></td>
                                     <td class="thick-line"></td>
                                     <td class="thick-line text-center"><strong>Total</strong></td>
-                                    <td class="thick-line text-right">₱{{ Cart::instance('default')->subtotal() }}</td>
+                                    <td class="thick-line text-right">{{presentPrice(Cart::instance('default')->subtotal() ) }}</td>
                                 </tr>
                             </tbody>
                         </table>

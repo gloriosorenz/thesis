@@ -37,7 +37,8 @@
         <table id="table_id" class="table table-hover">
             <thead>
                 <tr>
-                    <th width="30%">Season</th>
+                    <th width="30%">Season Number</th>
+                    <th width="">Type</th>
                     <th width="">Start Date</th>
                     <th width="">End Date</th>
                     <th width="">Status</th>
@@ -48,6 +49,7 @@
                 @foreach($seasons as $season)
                 <tr class="tr">
                     <td>Season {{ $season->id }}</td>
+                    <td>{{ $season->season_types->type }}</td>
                     <td>{{ $season->season_start }}</td>
                     <td>{{ $season->season_end }}</td>
                     <td>

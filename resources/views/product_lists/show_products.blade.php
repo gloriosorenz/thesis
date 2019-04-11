@@ -27,7 +27,7 @@
                                 <th width="">Farm Location</th>
                                 <th width="">Harvest Date</th>
                                 <th width="">Available</th>
-                                <th width="">Price</th>
+                                <th width="">Price per Kaban</th>
                                 @guest
                                     @elseif (auth()->user()->roles_id == 3 || auth()->user()->roles_id == 4 )
                                     <th width="15%">Options</th>

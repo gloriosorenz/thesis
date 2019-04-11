@@ -9,12 +9,17 @@ class DamageReport extends Model
     protected $table = 'damage_reports'; 
 
     protected $fillable = [
-        'id','calamities_id', 'narrative', 'regions_id', 'provinces_id'
+        'id','calamities_id', 'narrative', 'regions_id', 'provinces_id','farmers_id'
     ];
 
     public function calamities()
     {
         return $this->belongsTo(Calamity::class, 'calamities_id');
+    }
+
+    public function farmers()
+    {
+        return $this->belongsTo(User::class, 'farmers_id');
     }
 
     public function regions()

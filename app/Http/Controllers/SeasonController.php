@@ -82,14 +82,31 @@ class SeasonController extends Controller
             // "name"    => "required|array|min:3",
             // "name.*"  => "required|string|distinct|min:3",
             'season_start' => 'required',
-            'season_types_id' => 'required',
+            // 'season_types_id' => 'required',
         ]);
+        
         
 
         $season = new Season;
         $season->season_start = $request->input('season_start');
-        $season->season_types_id = $request->input('season_types_id');
+            $input_date = $request->input('season_start');
+            $from = date('Y-03-16');
+            $to = date('Y-09-15');
+        if($input_date >= $from && $input_date <= $to){
+            $season->season_types_id = 1;
+        } else {
+            $season->season_types_id = 2;
+        }
         $season->season_statuses_id =1;
+
+        // dd($season);
+
+        /*
+            1 = March 16 -> Sept. 15 (March, April, May, June, July, August, September)
+            2 = Sept. 16 -> March 15 (September, October, November, December, January, February, March)
+        */
+
+
         $season->save();
 
     

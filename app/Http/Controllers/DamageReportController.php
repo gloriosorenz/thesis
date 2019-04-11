@@ -71,8 +71,10 @@ class DamageReportController extends Controller
         $dreport = new DamageReport;
         $dreport->calamities_id = $request->get('calamity');
         $dreport->narrative = $request->get('narrative');
+        $dreport->calamity_date = $request->get('calamity_date');
         $dreport->regions_id = $request->get('region');
         $dreport->provinces_id = $request->get('province');
+
         $dreport->save();
 
 
@@ -89,6 +91,7 @@ class DamageReportController extends Controller
                         'fish'=>$request->fish [$key],
                         'area'=>$request->area [$key],
                         'fish_pieces'=>$request->fish_pieces [$key],
+                        'calamity_date'=>$request->calamity_date,
                         'created_at' =>  \Carbon\Carbon::now(), # \Datetime()
                         'updated_at' => \Carbon\Carbon::now(),  # \Datetime()
                     );

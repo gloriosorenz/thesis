@@ -30,7 +30,7 @@
                     <th width="">Original Quantity</th>
                     <th width="">Current Quantity</th>
                     <th width="">Harvest Date</th>
-                    <th width="">Price</th>
+                    <th width="">Price per Kaban</th>
                     <th width="">Options</th>
                 </tr>
             </thead>

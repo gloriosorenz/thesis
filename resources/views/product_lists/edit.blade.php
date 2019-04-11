@@ -35,7 +35,7 @@
                         <th>Product</th>
                         <th>Original Quantity</th>
                         <th>Current Quantity</th>
-                        <th>Price</th>
+                        <th>Price per Kaban</th>
                         <th>Harvest Date</th>
                     </tr>
                 </thead>
@@ -47,7 +47,7 @@
                         </td>
                         <td><input type="text" class="form-control" name="orig_quantity" placeholder="{{$product_list->orig_quantity}}" /></td>
                         <td><input type="text" class="form-control" name="curr_quantity" placeholder="{{$product_list->curr_quantity}}" /></td>
-                        <td><input type="text" class="form-control" name="price" placeholder="{{$product_list->price}}"/></td>
+                        <td><input type="text" class="form-control" name="price" placeholder="{{presentPrice($product_list->price)}}"/></td>
                         <td>
                             {{ Form::date('harvest_date[]', \Carbon\Carbon::now(), ['class' => 'datepicker form-control','id'=>'harvest_date[]'])}}
                         </td>

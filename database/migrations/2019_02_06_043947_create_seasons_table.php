@@ -15,7 +15,7 @@ class CreateSeasonsTable extends Migration
     {
         Schema::create('seasons', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('season_start')->nullable();
+            $table->date('season_start');
             $table->date('season_end')->nullable();
 
             $table->integer('season_types_id')->unsigned()->nullable();

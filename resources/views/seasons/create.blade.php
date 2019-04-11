@@ -31,7 +31,10 @@
             <div class="row">
                 <!-- Season Type -->
                 <div class="col-md-6">
-                    <div class="form-group">
+
+                    {{-- AUTOMATIC SEASON TYPE BUT STILL PUT INFORMATION TO WHAT DATES ARE COVERED BY THE TYPE --}}
+
+                    {{-- <div class="form-group">
                         {!! Form::label('season_types_id', 'Type:', ['class' => 'control-label']) !!}
                         {!! Form::select('season_types_id', $types, old('season_types_id'), ['class' => 'form-control select2', 'required' => '']) !!}
                         <p class="help-block"></p>
@@ -40,16 +43,17 @@
                                 {{ $errors->first('season_types_id') }}
                             </p>
                         @endif
-                    </div>
-                </div>
-                 <!-- Start Date -->
-                 <div class="col-md-6">
-                    <div class="form-group row">
-                            {{ Form::label('season_start', 'Season Start:') }}
-                        <div class="col-12">
-                            {{ Form::date('season_start', \Carbon\Carbon::now(), ['class' => 'datepicker form-control','id'=>'date_start'])}}
+                    </div> --}}
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                                {{ Form::label('season_start', 'Season Start:') }}
+                            <div class="col-12">
+                                {{ Form::date('season_start', \Carbon\Carbon::now(), ['class' => 'datepicker form-control','id'=>'date_start'])}}
+                            </div>
                         </div>
                     </div>
+                 <!-- Start Date -->
+                 
                 </div>
             </div>
             </div> 

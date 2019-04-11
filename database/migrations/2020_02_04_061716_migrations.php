@@ -120,6 +120,10 @@ class Migrations extends Migration
                 ->references('id')->on('provinces')->onDelete('cascade');
             $table->foreign('calamities_id')
                 ->references('id')->on('calamities')->onDelete('cascade');
+            $table->foreign('farmers_id')
+                ->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('crop_stages_id')
+                ->references('id')->on('crop_stages')->onDelete('cascade');
         });
 
         // Damage Data

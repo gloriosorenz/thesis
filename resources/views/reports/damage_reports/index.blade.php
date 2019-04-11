@@ -28,7 +28,9 @@
                 <tr>
                     <th width="">ID</th>
                     <th width="">Calamity</th>
+                    <th width="">Date of Calamity</th>
                     <th width="">Date Created</th>
+                    <th width="">Prepared By</th>
                     <th width="15%">Options</th>
                 </tr>
             </thead>
@@ -37,7 +39,9 @@
                 <tr class="tr">
                     <td>{{$dr->id}}</td>
                     <td>{{$dr->calamities->type}}</td>
+                    <td>{{$dr->calamity_date}}</td>
                     <td>{{$dr->created_at->toFormattedDateString()}}</td>
+                    <td>{{$dr->farmers->first_name}} {{$dr->farmers->last_name}} of {{$dr->farmers->company}}</td>
                     <td>
                         <a href="/damage_reports/{{$dr->id}}"><button class="btn btn-warning btn-md btn-fill" id="btn_view" name="btn_view"><i class="fas fa-eye"></i></button></a>
                         <a href="/damage_reports/{{$dr->id}}/edit" class="btn btn-success"><i class="fas fa-edit"></i></a>

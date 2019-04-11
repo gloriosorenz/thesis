@@ -36,6 +36,7 @@
                     <th>Rice Farmer</th>
                     <th>Initial Quantity</th>
                     <th>Current Quantity</th>
+                    <th>Price per Kaban</th>
                     <th>Harvest Date</th>
                     <th width="15%">Options</th>
                 </tr>
@@ -48,6 +49,7 @@
                     <td>{{$pl->users->company}}</td>
                     <td>{{$pl->orig_quantity}}</td>
                     <td>{{$pl->curr_quantity}}</td>
+                    <td>{{presentPrice($pl->price)}}</td>
                     <td>{{$pl->harvest_date}}</td>
                     <td>
                         <a href="/product_lists/{{$pl->id}}/edit"><button class="btn btn-success btn-md btn-fill"  ><i class="fas fa-edit"></i></button></a>

@@ -44,11 +44,12 @@ class SeasonTableSeeder extends Seeder
             ],
             [
                 'id' => 5, 
-                'season_types_id' => 1, //dry
+                'season_types_id' => 2, //dry
                 'season_statuses_id' => 2,
                 'season_start'=> '2018-12-10', 
                 'season_end'=> '2019-03-26',
             ],
+            
             // [
             //     'id' => 6, 
             //     'season_types_id' => 2, //wet

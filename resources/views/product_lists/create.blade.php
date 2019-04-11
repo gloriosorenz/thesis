@@ -33,7 +33,7 @@
                         <tr>
                             <th>Product</th>
                             <th>Quantity</th>
-                            <th>Price</th>
+                            <th>Price per Kaban</th>
                             <th>Harvest Date</th>
                         </tr>
                     </thead>

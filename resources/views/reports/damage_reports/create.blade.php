@@ -83,6 +83,16 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ Form::label('calamity_date', 'Date of Calamity:') }}
+                            {{ Form::date('calamity_date', \Carbon\Carbon::now(), ['class' => 'datepicker form-control','id'=>'calamity_date'])}}
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
